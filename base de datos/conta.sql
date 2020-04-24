@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2018 a las 04:10:35
--- Versión del servidor: 10.1.31-MariaDB
--- Versión de PHP: 5.6.35
+-- Tiempo de generación: 25-04-2020 a las 01:58:37
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,47 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `taller`
+-- Base de datos: `conta`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `choque`
---
-
-CREATE TABLE `choque` (
-  `id` int(11) NOT NULL,
-  `choque_code` varchar(100) NOT NULL,
-  `fecha_choque` date NOT NULL,
-  `idvehiculo` int(11) NOT NULL,
-  `idempleado` int(11) NOT NULL,
-  `descripcion` text NOT NULL,
-  `nombre_ter` varchar(255) NOT NULL,
-  `dni_ter` varchar(20) NOT NULL,
-  `registro_ter` date NOT NULL,
-  `domicilio_ter` varchar(255) NOT NULL,
-  `localidad_ter` varchar(255) NOT NULL,
-  `patente_ter` varchar(30) NOT NULL,
-  `marca_modelo_ter` varchar(255) NOT NULL,
-  `color_ter` varchar(255) NOT NULL,
-  `seguro_ter` varchar(255) NOT NULL,
-  `poliza_ter` varchar(50) NOT NULL,
-  `telefono_ter` varchar(50) NOT NULL,
-  `celular_ter` varchar(50) NOT NULL,
-  `fecha_carga` datetime NOT NULL,
-  `foto1` varchar(255) NOT NULL,
-  `foto2` varchar(255) NOT NULL,
-  `foto3` varchar(255) NOT NULL,
-  `foto4` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `choque`
---
-
-INSERT INTO `choque` (`id`, `choque_code`, `fecha_choque`, `idvehiculo`, `idempleado`, `descripcion`, `nombre_ter`, `dni_ter`, `registro_ter`, `domicilio_ter`, `localidad_ter`, `patente_ter`, `marca_modelo_ter`, `color_ter`, `seguro_ter`, `poliza_ter`, `telefono_ter`, `celular_ter`, `fecha_carga`, `foto1`, `foto2`, `foto3`, `foto4`) VALUES
-(1, '1', '2018-06-06', 1, 2, 'faros no funcionan', 'rayan', '432334', '2018-07-08', 'av san juan', 'colchester', '233', 'hyundai', 'black', '2332', '0054', '233445', '233', '2018-06-25 03:48:22', 'view/resources/images/1529891341_asus.jpg', 'view/resources/images/1529891352_cabezas.jpg', 'view/resources/images/1529891346_cerdo2.jpg', 'view/resources/images/1529891357_dejare este momo.jpg');
 
 -- --------------------------------------------------------
 
@@ -104,8 +64,8 @@ CREATE TABLE `empleado` (
   `telefono` varchar(20) DEFAULT NULL,
   `celular` varchar(20) DEFAULT NULL,
   `registro` varchar(20) DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  `kind` tinyint(1) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `kind` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -180,6 +140,38 @@ INSERT INTO `empresa` (`id`, `nombre`, `cuit`, `estado`, `fecha_carga`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `gasto`
+--
+
+CREATE TABLE `gasto` (
+  `id` int(11) NOT NULL,
+  `gasto_code` varchar(100) NOT NULL,
+  `personal` varchar(50) NOT NULL,
+  `concepto` varchar(50) NOT NULL,
+  `cantidad` float NOT NULL,
+  `observaciones` varchar(50) NOT NULL DEFAULT '0',
+  `fecha_carga` datetime NOT NULL,
+  `foto1` varchar(255) NOT NULL,
+  `foto2` varchar(255) NOT NULL,
+  `foto3` varchar(255) NOT NULL,
+  `foto4` varchar(255) NOT NULL,
+  `foto5` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `gasto`
+--
+
+INSERT INTO `gasto` (`id`, `gasto_code`, `personal`, `concepto`, `cantidad`, `observaciones`, `fecha_carga`, `foto1`, `foto2`, `foto3`, `foto4`, `foto5`) VALUES
+(1, '1', '2018-06-06', '1', 2, 'faros no funcionan', '2018-06-25 03:48:22', 'view/resources/images/1529891341_asus.jpg', 'view/resources/images/1529891352_cabezas.jpg', 'view/resources/images/1529891346_cerdo2.jpg', 'view/resources/images/1529891357_dejare este momo.jpg', ''),
+(2, '1587772061-1', '', '', 0, '', '2020-04-25 01:47:41', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png'),
+(3, '1587772103-1', '', '', 0, '', '2020-04-25 01:48:23', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png'),
+(4, '1587772163-1', '', '', 0, '', '2020-04-25 01:49:23', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png'),
+(5, '1587772268-1', '', '', 0, '', '2020-04-25 01:51:08', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png', 'view/resources/images/choques.png');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `kind`
 --
 
@@ -213,7 +205,7 @@ INSERT INTO `permisos` (`id`, `nombre`) VALUES
 (7, 'Vehiculo'),
 (8, 'Tarjeta'),
 (9, 'Reparaciones'),
-(10, 'Choque'),
+(10, 'Gasto'),
 (11, 'Configuracion');
 
 -- --------------------------------------------------------
@@ -359,12 +351,6 @@ INSERT INTO `vehiculo` (`id`, `vehiculo_code`, `patente`, `marca`, `modelo`, `nr
 --
 
 --
--- Indices de la tabla `choque`
---
-ALTER TABLE `choque`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `configuracion`
 --
 ALTER TABLE `configuracion`
@@ -388,6 +374,12 @@ ALTER TABLE `empleado_permisos`
 -- Indices de la tabla `empresa`
 --
 ALTER TABLE `empresa`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `gasto`
+--
+ALTER TABLE `gasto`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -443,12 +435,6 @@ ALTER TABLE `vehiculo`
 --
 
 --
--- AUTO_INCREMENT de la tabla `choque`
---
-ALTER TABLE `choque`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT de la tabla `configuracion`
 --
 ALTER TABLE `configuracion`
@@ -471,6 +457,12 @@ ALTER TABLE `empleado_permisos`
 --
 ALTER TABLE `empresa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `gasto`
+--
+ALTER TABLE `gasto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `kind`
