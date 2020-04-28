@@ -1,5 +1,5 @@
 <?php
-    $active1="active";  
+    $active1="active";
     include "resources/header.php";
 
     if ($_SESSION['dashboard']==1){
@@ -102,7 +102,7 @@
 <?php
     include "resources/footer.php";
 ?>
-<script src="assets/plugins/chartjs/Chart.min.js"></script> 
+<script src="assets/plugins/chartjs/Chart.min.js"></script>
 <!--Page Level JS-->
 <script src="assets/plugins/countTo/jquery.countTo.js"></script>
 <script src="assets/plugins/weather/js/skycons.js"></script>
@@ -121,7 +121,7 @@ var barChartData = {
             data : [<?php echo suma_choques(1);?>, <?php echo suma_choques(2);?>, <?php echo suma_choques(3);?>, <?php echo suma_choques(4);?>, <?php echo suma_choques(5);?>, <?php echo suma_choques(6);?>, <?php echo suma_choques(7);?>,<?php echo suma_choques(8);?>,<?php echo suma_choques(9);?>,<?php echo suma_choques(10);?>,<?php echo suma_choques(11);?>,<?php echo suma_choques(12);?>]
         }
     ]
-    
+
 }
 var myLine = new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
 </script>
@@ -137,9 +137,9 @@ var myLine = new Chart(document.getElementById("bar").getContext("2d")).Bar(barC
         app.weather();
     });
 </script>
-<?php     
+<?php
     }else{
       require 'resources/acceso_prohibido.php';
     }
-    ob_end_flush(); 
+    ob_end_flush();
 ?>

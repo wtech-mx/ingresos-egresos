@@ -1,4 +1,4 @@
-    <button class="btn btn-primary" data-toggle="modal" data-target="#formModal"><i class='fa fa-plus'></i> Nuevo</button>
+
 
 
     <!-- Form Modal -->
@@ -91,7 +91,7 @@
                         <label for="permisos" class="col-sm-2 control-label">Permisos: </label>
                         <div class="col-sm-10">
                             <ul style="list-style: none;" id="permisos">
-                                <?php 
+                                <?php
                                     require_once ("config/config.php");
                                     $rspta = mysqli_query($con, "SELECT * FROM permisos");
                                     $id=0;
