@@ -24,7 +24,7 @@
 			&& !empty($_POST['estado'])
         ){
 		require_once ("../../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
-			
+
 			// escaping, additionally removing everything that could be (html/javascript-) code
             $nombre = mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
             $cuit = mysqli_real_escape_string($con,(strip_tags($_POST["cuit"],ENT_QUOTES)));
@@ -35,7 +35,7 @@
             $estado = mysqli_real_escape_string($con,(strip_tags($_POST["estado"],ENT_QUOTES)));
 			$fecha_carga=date("Y-m-d H:i:s");
 
-			//Write register in to database 
+			//Write register in to database
 			$sql = "INSERT INTO taller (nombre, cuit, direccion, localidad, telefono, celular, estado, fecha_carga) VALUES('".$nombre."','".$cuit."','".$direccion."','".$localidad."','".$telefono."','".$celular."','".$estado."','".$fecha_carga."');";
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
@@ -46,15 +46,15 @@
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
             }
 		} else {
-			$errors[] = "desconocido.";	
+			$errors[] = "desconocido.";
 		}
 
 if (isset($errors)){
-			
+
 			?>
 			<div class="alert alert-danger" role="alert">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
-					<strong>Error!</strong> 
+					<strong>Error!</strong>
 					<?php
 						foreach ($errors as $error) {
 								echo $error;
@@ -64,7 +64,7 @@ if (isset($errors)){
 			<?php
 			}
 			if (isset($messages)){
-				
+
 				?>
 				<div class="alert alert-success" role="alert">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -77,4 +77,4 @@ if (isset($errors)){
 				</div>
 				<?php
 			}
-?>			
+?>
