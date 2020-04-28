@@ -4,87 +4,103 @@
     }
 ?>
 <!DOCTYPE html>
-<html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Iniciar Sesión</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-        <!-- Bootstrap core CSS -->
-        <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-        <!-- Fonts from Font Awsome -->
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        <!-- CSS Animate -->
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <!-- Custom styles for this theme -->
-        <link rel="stylesheet" href="assets/css/main.css">
-        <!-- Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-        <!-- Feature detection -->
-        <script src="assets/js/modernizr-2.6.2.min.js"></script>
-    </head>
-    <body>
-        <section id="login-container" style="width: 95%"><!-- utilizo un ancho para no desajustarlo  -->
-            <div class="row">
-                <div class="col-md-3" id="login-wrapper">
-                    <div class="panel panel-primary animated flipInY">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">     
-                               Iniciar Sessión
-                            </h3>      
+<html dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <!-- Custom CSS -->
+    <link href="assets/css/style.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Login box.scss -->
+        <!-- ============================================================== -->
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative"
+            style="background:url(assets/images/big/auth-bg.jpg) no-repeat center center;">
+            <div class="auth-box row">
+                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url('assets/images/cont.jpg');">
+                </div>
+                <div class="col-lg-5 col-md-7 bg-white">
+                    <div class="p-3">
+                        <div class="text-center">
+                            <img src="https://metodosdehiladosingenieriatextil.files.wordpress.com/2013/10/esit1.gif" alt="wrapkit">
                         </div>
-                        <div class="panel-body">
-                        <?php 
-                            
+                        <h2 class="mt-3 text-center">Sign In</h2>
+                        <p class="text-center">Enter your email address and password to access admin panel.</p>
+                        <?php
+
                             if (isset($_GET['invalid'])) {
                                 echo "<div class='alert alert-danger alert-dismissible fade in' role='alert'>
                                     <strong>Error!</strong> Contraseña o correo Electrónico invalido
                                     </div>";
                             }
                         ?>
-                           <p> Ingresa Tus Datos.</p>
-                            <form class="form-horizontal" role="form" method="post" action="view/resources/login.php">
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <input type="text" class="form-control" name="email" id="email" value="admin@admin.com" autofocus>
-                                        <i class="fa fa-user"></i>
+                       <form class="mt-4" role="form" method="post" action="view/resources/login.php">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="text-dark" for="uname">Username</label>
+                                        <input type="text" class="form-control" name="email" id="email" value="" autofocus>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                   <div class="col-md-12">
-                                        <input type="password" class="form-control" name="password" id="password" value="admin">
-                                        <i class="fa fa-lock"></i>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="text-dark" for="pwd">Password</label>
+                                          <input type="password" class="form-control" name="password" id="password" value="">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                   <div class="col-md-12">
-                                        <button name="token" class="btn btn-primary btn-block" type="submit">Acceder</button>
-                                    </div>
+                                <div class="col-lg-12 text-center">
+                                    <button name="token" class="btn btn-primary btn-block" type="submit">Acceder</button>
                                 </div>
-                            </form>
-                        </div>
+<!--                                <div class="col-lg-12 text-center mt-5">
+                                    Don't have an account? <a href="#" class="text-danger">Sign Up</a>
+                                </div>-->
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
-        <!--Global JS-->
-        <script src="assets/js/jquery-1.10.2.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/plugins/waypoints/waypoints.min.js"></script>
-        <script src="assets/plugins/nanoScroller/jquery.nanoscroller.min.js"></script>
-        <script src="assets/js/application.js"></script>
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        </div>
+        <!-- ============================================================== -->
+        <!-- Login box.scss -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- All Required js -->
+    <!-- ============================================================== -->
+    <script src="assets/libs/jquery/dist/jquery.min.js "></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+    <script>
+        $(".preloader ").fadeOut();
+    </script>
+</body>
 
-            ga('create', 'UA-46627904-1', 'authenticgoods.co');
-            ga('send', 'pageview');
-        </script>
-    </body>
 </html>

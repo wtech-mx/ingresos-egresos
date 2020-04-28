@@ -24,119 +24,217 @@
     $configuracion=mysqli_query($con, "select * from configuracion");
     $rw=mysqli_fetch_array($configuracion);
     $nombre_empresa=$rw['nombre'];
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html class="no-js">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo $nombre_empresa; ?></title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <!-- Fonts from Font Awsome -->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <!-- CSS Animate -->
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <!-- Custom styles for this theme -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <!-- Vector Map  -->
-    <link rel="stylesheet" href="assets/plugins/jvectormap/css/jquery-jvectormap-1.2.2.css">
-    <!-- ToDos  -->
-    <link rel="stylesheet" href="assets/plugins/todo/css/todos.css">
-    <!-- Morris  -->
-    <link rel="stylesheet" href="assets/plugins/morris/css/morris.css">
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <!-- Feature detection -->
-    <script src="assets/js/modernizr-2.6.2.min.js"></script>
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title><?php echo $nombre_empresa; ?></title>
+    <!-- Custom CSS -->
+    <link href="assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+      <link href="assets/css/style.min.css" rel="stylesheet">
 
-    <!-- <link rel="stylesheet" href="assets/plugins/selectpicker/bootstrap-select.min.css"> -->
-    <!-- <link rel="stylesheet" href="assets/plugins/select2/css/select2.css"> -->
 </head>
 
 <body>
-    <section id="container">
-        <header id="header">
-            <!--logo start-->
-            <div class="brand">
-                <a href="./?view=dashboard" ><span><?php echo $nombre_empresa; ?></span></a>
-            </div>
-            <!--logo end-->
-            <div class="toggle-navigation toggle-left">
-                <button type="button" class="btn btn-default" id="toggle-left" data-toggle="tooltip" data-placement="right" title="Toggle Navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-            <div class="user-nav">
-                <ul>
-                    <li class="profile-photo">
-                        <img src="<?php echo $imagen_empleado ?>" height="40px" width="40px" alt="" class="img-circle">
-                    </li>
-                    <li class="dropdown settings">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                      <?php echo $nombre_empleado." ".$apellido_empleado; ?> <i class="fa fa-angle-down"></i>
+        <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md">
+                <div class="navbar-header" data-logobg="skin6">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                            class="ti-menu ti-close"></i></a>
+
+                    <div class="navbar-brand">
+                        <!-- Logo icon -->
+                        <a href="index.html">
+                            <b class="logo-icon">
+                                <!-- Dark Logo icon -->
+                                <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                                <!-- Light Logo icon -->
+                                <img src="assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                            </b>
+                            <!--End Logo icon -->
+                            <!-- Logo text -->
+                            <span class="logo-text">
+                                <!-- dark Logo text -->
+                                <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                                <!-- Light Logo text -->
+                                <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                            </span>
                         </a>
-                        <ul class="dropdown-menu animated fadeInDown">
-                            <li>
-                                <a href="./?view=perfil"><i class="fa fa-user"></i> Mi Perfil</a>
-                            </li>
-                            <li>
-                                <a href="./?view=logout"><i class="fa fa-power-off"></i> Salir</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                        data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+                            class="ti-more"></i></a>
+                </div>
+
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
+                        <!-- Notification -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
+                                id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <span><i data-feather="bell" class="svg-icon"></i></span>
+                                <span class="badge badge-primary notify-no rounded-circle">5</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
+                                <ul class="list-style-none">
+                                    <li>
+                                        <div class="message-center notifications position-relative">
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)"
+                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <div class="btn btn-danger rounded-circle btn-circle"><i
+                                                        data-feather="airplay" class="text-white"></i></div>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">Luanch Admin</h6>
+                                                    <span class="font-12 text-nowrap d-block text-muted">Just see
+                                                        the my new
+                                                        admin!</span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)"
+                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-success text-white rounded-circle btn-circle"><i
+                                                        data-feather="calendar" class="text-white"></i></span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">Event today</h6>
+                                                    <span
+                                                        class="font-12 text-nowrap d-block text-muted text-truncate">Just
+                                                        a reminder that you have event</span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)"
+                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-info rounded-circle btn-circle"><i
+                                                        data-feather="settings" class="text-white"></i></span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">Settings</h6>
+                                                    <span
+                                                        class="font-12 text-nowrap d-block text-muted text-truncate">You
+                                                        can customize this template
+                                                        as you want</span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)"
+                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-primary rounded-circle btn-circle"><i
+                                                        data-feather="box" class="text-white"></i></span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">Pavan kumar</h6> <span
+                                                        class="font-12 text-nowrap d-block text-muted">Just
+                                                        see the my admin!</span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link pt-3 text-center text-dark" href="javascript:void(0);">
+                                            <strong>Check all notifications</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <ul class="navbar-nav float-right">
+
+                        <li class="nav-item d-actio d-md-block">
+                            <a class="nav-link" href="javascript:void(0)">
+                                <form>
+                                    <div class="customize-input">
+                                        <input class="form-control custom-shadow custom-radius border-0 bg-white"
+                                            type="search" placeholder="Search" aria-label="Search">
+                                        <i class="form-control-icon" data-feather="search"></i>
+                                    </div>
+                                </form>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="<?php echo $imagen_empleado ?>" alt="user" class="rounded-circle"
+                                    width="40">
+                                <span class="ml-2 d-none d-lg-inline-block"><span>Hola,</span> <span
+                                        class="text-dark"> <?php echo $nombre_empleado." ".$apellido_empleado; ?></span> <i data-feather="chevron-down"
+                                        class="svg-icon"></i></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                                <a class="dropdown-item" href="./?view=perfil"><i data-feather="user"
+                                        class="svg-icon mr-2 ml-1"></i>
+                                    Mi Perfil</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
+                                        class="svg-icon mr-2 ml-1"></i>
+                                    Salir</a>
+                                <div class="dropdown-divider"></div>
+
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
         </header>
-        <!--sidebar left start-->
-        <aside class="sidebar">
-            <div id="leftside-navigation" class="nano">
-                                 <li >
-                        <a href="http://www.tusolutionweb.org/"><i class="fa fa-cog"></i><span>Textil IPN</span></a>
-                    </li>
-                <ul class="nano-content">
-                    <?php if ($_SESSION['dashboard']==1) { ?>
-                    <li class="<?php if(isset($active1)){echo $active1;}?>">
-                        <a href="./?view=dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
-                    </li>
+
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar" data-sidebarbg="skin6">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <?php if ($_SESSION['dashboard']==1) { ?>
+                        <li class="sidebar-item <?php if(isset($active1)){echo $active1;}?>">
+                            <a class="sidebar-link sidebar-link" href="./?view=dashboard"
+                                aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
+                                    class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <?php } ?>
+                        <li class="list-divider"></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Applications</span></li>
 
 
-                    <?php } ?>
-                    <?php if ($_SESSION['empleados']==1) { ?>
-                    <li class="<?php if(isset($active2)){echo $active2;}?>">
-                        <a href="./?view=empleados"><i class="fa fa-users"></i><span>Empleados</span></a>
-                    </li>
-                    <?php } ?>
-                    <!-- <li class="<?php if(isset($active3)){echo $active3;}?>">
-                        <a href="./?view=kind"><i class="fa fa-tag"></i><span>Kind</span></a>
-                    </li> -->
-                    <?php if ($_SESSION['taller']==1) { ?>
-                    <li class="<?php if(isset($active4)){echo $active4;}?>">
-                        <a href="./?view=taller"><i class="fa fa-indent"></i><span>Taller</span></a>
-                    </li>
-                    <?php } ?>
-                    <?php if ($_SESSION['seguro']==1) { ?>
-                    <li class="<?php if(isset($active5)){echo $active5;}?>">
-                        <a href="./?view=seguros"><i class="fa fa-lock"></i><span>Seguro</span></a>
-                    </li>
-                    <?php } ?>
-                    <?php if ($_SESSION['gasto']==1) { ?>
-                    <li class="<?php if(isset($active11)){echo $active11;}?>">
-                        <a href="./?view=gasto"><i class="fa fa-code-fork"></i><span>Gatos Corriente</span></a>
-                    </li>
-                    <?php } ?>
-                    <?php if ($_SESSION['configuracion']==1) { ?>
-                    <li class="<?php if(isset($active12)){echo $active12;}?>">
-                        <a href="./?view=configuracion"><i class="fa fa-cog"></i><span>Configuración</span></a>
-                    </li>
+                        <?php if ($_SESSION['empleados']==1) { ?>
+                        <li class="sidebar-item <?php if(isset($active2)){echo $active2;}?>"> <a class="sidebar-link sidebar-link" href="./?view=empleados"
+                                aria-expanded="false"><i data-feather="message-square" class="feather-icon"></i><span
+                                    class="hide-menu">empleados</span></a>
+                         </li>
+                          <?php } ?>
 
-                    <?php } ?>
-                </ul>
+
+                        <li class="list-divider"></li>
+                    </ul>
+                </nav>
+
             </div>
+
         </aside>
-        <!--sidebar left end-->
+

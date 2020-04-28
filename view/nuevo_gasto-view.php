@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <?php
     $active11="active";
     include "resources/header.php";
@@ -36,7 +37,7 @@
 
             <div class="row">
 
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div id="resultados_ajax"></div><!-- resultados ajax -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -46,39 +47,37 @@
                                 <i class="fa fa-times"></i>
                             </div>
                         </div>
+                       <div class="panel-body">
+                   			<form class="form-horizontal" role="form" name="update_register" id="update_register" method="post" enctype="multipart/form-data">
+							  <div class="form-row">
+							    <div class="form-group col-md-6">
+							      <label for="inputEmail4">Email</label>
+							      <input type="email" class="form-control" id="nombre" placeholder="Email">
+							    </div>
 
-                        <div class="panel-body">
+							    <div class="form-group col-md-6">
+							      <label for="inputPassword4">Password</label>
+							      <input type="password" class="form-control" id="apellido" placeholder="Password">
+							    </div>
 
-                    <form class="form-horizontal" role="form" name="update_register" id="update_register" method="post" enctype="multipart/form-data">
+							  <div class="form-group col-md-12">
+							    <label for="inputAddress">Address</label>
+							    <input type="text" class="form-control" id="cedula" placeholder="1234 Main St">
+							  </div>
+							 </div>
 
-
-                    <div class="container">
-                      <div class="row">
-                        <div class="form-group">
-                          <button type="button" class="btn btn-primary mr-2" onclick="agregarFila()">Agregar Fila</button>
-                          <button type="button" class="btn btn-danger" onclick="eliminarFila()">Eliminar Fila</button>
-                        </div>
-                        <table border="1" class="table" id="tablaprueba">
-                          <thead class="thead-dark">
-                            <tr>
-                              <th>ID</th>
-                              <th name="personal" id="personal">Personal</th>
-                              <th name="concepto" id="concepto">Concepto</th>
-                              <th name="cantidad" id="cantidad">Cantidad</th>
-                              <th name="observaciones" id="observaciones">Observaciones</th>
-                              <th name="imagefile" id="imagefile" onchange="upload_foto1(<?php echo $id_gastos; ?>);">Foto 1</th>
-                            </tr>
-                          </thead>
-                          <tbody></tbody>
-                        </table>
-                      </div>
-                    </div>
-
-                              <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-primary actualizar_datos">Guardar datos</button>
-                                    </div>
-                                </div>
+							 <button id="adicionar" class="btn btn-success" type="button">Adicionar</button>
+								<p>Elementos en la Tabla:
+								  <div id="adicionados"></div>
+								</p>
+								<table  id="mytable" class="table table-bordered table-hover ">
+								  <tr>
+								    <th>Nobmre</th>
+								    <th>Apellidos</th>
+								    <th>C&eacute;dula</th>
+								    <th>Eliminar</th>
+								  </tr>
+								</table>
                             </form>
                         </div>
                     </div>
@@ -86,22 +85,42 @@
             </div>
         </section>
     </section><!--main content end-->
+<script type="text/javascript">
+			  $(document).ready(function() {
+		//obtenemos el valor de los input
+
+		$('#adicionar').click(function() {
+		  var nombre = document.getElementById("nombre").value;
+		  var apellido = document.getElementById("apellido").value;
+		  var cedula = document.getElementById("cedula").value;
+		  var i = 1; //contador para asignar id al boton que borrara la fila
+		  var fila = '<tr id="row' + i + '"><td>' + nombre + '</td><td>' + apellido + '</td><td>' + cedula + '</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
+
+		  i++;
+
+		  $('#mytable tr:first').after(fila);
+		    $("#adicionados").text(""); //esta instruccion limpia el div adicioandos para que no se vayan acumulando
+		    var nFilas = $("#mytable tr").length;
+		    $("#adicionados").append(nFilas - 1);
+		    //le resto 1 para no contar la fila del header
+		    document.getElementById("apellido").value ="";
+		    document.getElementById("cedula").value = "";
+		    document.getElementById("nombre").value = "";
+		    document.getElementById("nombre").focus();
+		  });
+		$(document).on('click', '.btn_remove', function() {
+		  var button_id = $(this).attr("id");
+		    //cuando da click obtenemos el id del boton
+		    $('#row' + button_id + '').remove(); //borra la fila
+		    //limpia el para que vuelva a contar las filas de la tabla
+		    $("#adicionados").text("");
+		    var nFilas = $("#mytable tr").length;
+		    $("#adicionados").append(nFilas - 1);
+		  });
+		});
+</script>
 <?php  include "resources/footer.php" ?>
 <script>
-    function agregarFila(){
-  document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td></td><td></td><td></td><td></td><td></td><td></td>';
-}
-
-function eliminarFila(){
-  var table = document.getElementById("tablaprueba");
-  var rowCount = table.rows.length;
-  //console.log(rowCount);
-
-  if(rowCount <= 1)
-    alert('No se puede eliminar la fila');
-  else
-    table.deleteRow(rowCount -1);
-}
     function upload_foto1(id_gasto){
         $("#load_img").text('Cargando...');
         var inputFileImage = document.getElementById("imagefile");
