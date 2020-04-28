@@ -196,7 +196,7 @@
                                         class="svg-icon mr-2 ml-1"></i>
                                     Mi Perfil</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
+                                <a class="dropdown-item" href="./?view=logout"><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
                                     Salir</a>
                                 <div class="dropdown-divider"></div>
