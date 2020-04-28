@@ -54,6 +54,7 @@ if($action == 'ajax'){
 	}
 	if ($numrows>0){
 ?>
+
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -107,6 +108,7 @@ if($action == 'ajax'){
 
                 </td>
             </tr>
+
         </tbody>
         <?php }?>
         <tfoot>
@@ -127,5 +129,9 @@ if($action == 'ajax'){
 		echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <strong>Sin Resultados!</strong> No se encontraron resultados en la base de datos!.</div>';
 	}
+
 }
+
 ?>
+
+
