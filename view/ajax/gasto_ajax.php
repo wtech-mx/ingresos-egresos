@@ -20,7 +20,6 @@
 
 
 }
-
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if($action == 'ajax'){
 	$query = mysqli_real_escape_string($con,(strip_tags($_REQUEST['query'], ENT_QUOTES)));
@@ -38,7 +37,7 @@ if($action == 'ajax'){
 	if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 	else {echo mysqli_error($con);}
 	$total_pages = ceil($numrows/$per_page);
-	$reload = './gasto-view.php';
+	$reload = '../gasto-view.php';
 	//main query to fetch the data
 	$query = mysqli_query($con,"SELECT $campos FROM  $tables where $sWhere LIMIT $offset,$per_page");
 	//loop through fetched data
@@ -54,8 +53,12 @@ if($action == 'ajax'){
 	}
 	if ($numrows>0){
 ?>
+<<<<<<< HEAD
 
     <table class="table table-bordered table-striped">
+=======
+   <table class="table table-bordered table-striped">
+>>>>>>> cf4107354ade9b07e4135a27a167e24c76ef846b
         <thead>
             <tr>
                 <th>#ID</th>
@@ -100,12 +103,10 @@ if($action == 'ajax'){
                 <td><?php echo $fecha_cargas ?></td>
                 <td class="text-right">
 
-					<a style="color: white;" class="btn btn-warning btn-square btn-xs" href="./?view=editar_gasto&id=<?php echo $id;?>"><i class='fa fa-edit'></i></a>
+
+                    <button type="button" class="btn btn-warning btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $id;?>');"><i class="fa fa-edit"></i></button>
 
                     <button type="button" class="btn btn-danger btn-square btn-xs" onclick="eliminar('<?php echo $id;?>')"><i class="fa fa-trash-o"></i></button>
-
-                    <!-- <button type="button" class="btn btn-info btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $id;?>')"><i class="fa fa-eye"></i></button> -->
-
                 </td>
             </tr>
 
