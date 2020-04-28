@@ -163,8 +163,6 @@
 
                     </ul>
 
-                    <ul class="navbar-nav float-right">
-
                         <li class="nav-item d-actio d-md-block">
                             <a class="nav-link" href="javascript:void(0)">
                                 <form>
@@ -229,6 +227,26 @@
                          </li>
                           <?php } ?>
 
+                        <?php if ($_SESSION['taller']==1) { ?>
+                        <li class="sidebar-item <?php if(isset($active4)){echo $active4;}?>"> <a class="sidebar-link sidebar-link" href="./?view=taller"
+                                aria-expanded="false"><i data-feather="message-square" class="feather-icon"></i><span
+                                    class="hide-menu">taller</span></a>
+                         </li>
+                          <?php } ?>
+
+                        <?php if ($_SESSION['gasto']==1) { ?>
+                        <li class="sidebar-item <?php if(isset($active11)){echo $active11;}?>"> <a class="sidebar-link sidebar-link" href="./?view=gasto"
+                                aria-expanded="false"><i data-feather="message-square" class="feather-icon"></i><span
+                                    class="hide-menu">gasto</span></a>
+                         </li>
+                          <?php } ?>
+
+                        <?php if ($_SESSION['configuracion']==1) { ?>
+                        <li class="sidebar-item <?php if(isset($active12)){echo $active12;}?>"> <a class="sidebar-link sidebar-link" href="./?view=configuracion"
+                                aria-expanded="false"><i data-feather="message-square" class="feather-icon"></i><span
+                                    class="hide-menu">configuracion</span></a>
+                         </li>
+                          <?php } ?>
 
                         <li class="list-divider"></li>
                     </ul>
