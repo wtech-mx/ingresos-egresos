@@ -73,17 +73,11 @@ if($action == 'ajax'){
 			while($row = mysqli_fetch_array($query)){
 				$id=$row['id'];
 				$gasto_code=$row['gasto_code'];
-
 				$personal=$row['personal'];
 				$concepto=$row['concepto'];
 				$cantidad=$row['cantidad'];
 				$observaciones=$row['observaciones'];
 				$fecha_carga=$row['fecha_carga'];
-				$foto1=$row['foto1'];
-				$foto2=$row['foto2'];
-				$foto3=$row['foto3'];
-				$foto4=$row['foto4'];
-				$foto5=$row['foto5'];
 
 				list($date,$hora)=explode(" ",$fecha_carga);
 				list($Y,$m,$d)=explode("-",$date);

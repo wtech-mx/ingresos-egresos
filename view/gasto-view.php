@@ -10,7 +10,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-3 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">gasto</h4>
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Gasto</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
@@ -24,10 +24,6 @@
                         <div class="input-group">
                           <input type="text" class="form-control" placeholder="Buscar por nombre" id='q' onkeyup="load(1);">
                         </div><!-- /input-group -->
-                    </div>
-                    <div class="col-auto">
-                         <button class="btn btn-primary" data-toggle="modal" data-target="#formModal"><i class='fa fa-plus'></i> Nuevo</button>
-
                     </div>
                    <div class="col-auto align-self-end">
                         <div class="customize-input float-right">
@@ -85,6 +81,7 @@
 <?php
     include "resources/footer.php";
 ?>
+
 <script>
     $(function() {
         load(1);
@@ -164,7 +161,6 @@
       event.preventDefault();
     })
 </script>
-
 <script>
     $( "#update_register" ).submit(function( event ) {
       $('#actualizar_datos').attr("disabled", true);
@@ -205,6 +201,7 @@
             })
     }
 </script>
+
 <?php
     }else{
       require 'resources/acceso_prohibido.php';
