@@ -4,7 +4,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header modal-colored-header bg-success">
-                    <h4 class="modal-title" id="success-header-modalLabel">Modal Heading
+                    <h4 class="modal-title" id="success-header-modalLabel">Agregar
                     </h4>
                     <button type="button" class="close" data-dismiss="modal"
                         aria-hidden="true">×</button>
@@ -15,9 +15,9 @@
 
             <form class="form-horizontal" role="form" name="update_register" id="update_register" method="post" enctype="multipart/form-data">
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="inputEmail4">Email</label>
-                          <input type="email" class="form-control" id="nombre" placeholder="Email">
+                        <div class="form-group col">
+                          <label for="">Titulo</label>
+                          <input type="email" class="form-control" id="" placeholder="Titulo">
                         </div>
                     </div>
             </form>
