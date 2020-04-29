@@ -25,7 +25,7 @@ if($action == 'ajax'){
 	$query = mysqli_real_escape_string($con,(strip_tags($_REQUEST['query'], ENT_QUOTES)));
 	$tables="gasto";
 	$campos="*";
-	$sWhere=" fecha_carga LIKE '%".$query."%' and personal=' '";
+	$sWhere=" fecha_carga LIKE '%".$query."%'";
 	include 'pagination.php'; //include pagination file
 	//pagination variables
 	$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
