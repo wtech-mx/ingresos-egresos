@@ -9,62 +9,74 @@
 		$num=mysqli_num_rows($query);
 		if ($num==1){
 			$rw=mysqli_fetch_array($query);
-			$id=$rw['id'];
-            $personal=$rw['personal'];
-            $concepto=$rw['concepto'];
-            $cantidad=$rw['cantidad'];
-            $localidad=$rw['localidad'];
-            $telefono=$rw['telefono'];
-            $celular=$rw['celular'];
-            $status=$rw['estado'];
-            $created_at=$rw['fecha_carga'];
+                $id=$rw['id'];
+                $nombre=$rw['nombre'];
+                $gasto_code=$rw['gasto_code'];
+                $personal=$rw['personal'];
+                $concepto=$rw['concepto'];
+                $cantidad=$rw['cantidad'];
+                $observaciones=$rw['observaciones'];
 		}
 	}
 	else{exit;}
 ?>
 <input type="hidden" value="<?php echo $id;?>" name="id" id="id">
-<div class="form-group">
-    <label for="personal" class="col-sm-2 control-label">personal: </label>
-    <div class="col-sm-10">
-        <input type="text" required class="form-control" id="personal" name="personal" value="<?php echo $personal;?>" placeholder="Personal: ">
-    </div>
-</div>
-<div class="form-group">
-    <label for="concepto" class="col-sm-2 control-label">concepto: </label>
-    <div class="col-sm-10">
-        <input type="text" required class="form-control" id="concepto" name="concepto" value="<?php echo $concepto;?>" placeholder="concepto: ">
-    </div>
-</div>
-<div class="form-group">
-    <label for="direccion" class="col-sm-2 control-label">Dirección: </label>
-    <div class="col-sm-10">
-        <input type="text" required class="form-control" id="direccion" name="direccion" value="<?php echo $direccion;?>" placeholder="Dirección: ">
-    </div>
-</div>
-<div class="form-group">
-    <label for="localidad" class="col-sm-2 control-label">Localidad: </label>
-    <div class="col-sm-10">
-        <input type="text" required class="form-control" id="localidad" name="localidad" value="<?php echo $localidad;?>" placeholder="Localidad: ">
-    </div>
-</div>
-<div class="form-group">
-    <label for="telefono" class="col-sm-2 control-label">Telefono: </label>
-    <div class="col-sm-10">
-        <input type="text" required class="form-control" id="telefono" name="telefono" value="<?php echo $telefono;?>" placeholder="Telefono: ">
-    </div>
-</div>
-<div class="form-group">
-    <label for="celular" class="col-sm-2 control-label">Celular: </label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="celular" name="celular" value="<?php echo $celular;?>" placeholder="Celular: ">
-    </div>
-</div>
-<div class="form-group">
-    <label for="estado" class="col-sm-2 control-label">Estado: </label>
-    <div class="col-sm-10">
-        <select class="form-control" name="estado" id="estado">
-			<option value="1" <?php if ($status==1){echo "selected";}?>>Activo</option>
-			<option value="2" <?php if ($status==2){echo "selected";}?>>Inactivo</option>
-		</select>
-    </div>
-</div>
+<input type="hidden" value="<?php echo $nombre;?>" name="id" id="id">
+
+      <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="personal">Personal</label>
+              <input type="text" class="form-control" value=" <?php $personal ?> " id="personal">
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="gasto">Gasto/Concepto</label>
+              <input type="text" class="form-control" value=" <?php $gasto_code ?> " id="gasto">
+            </div>
+
+      </div>
+
+      <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="cantidad">Cantidad</label>
+              <input type="text" class="form-control" placeholder="<?php $cantidad ?>" value=" <?php $cantidad ?> " id="cantidad">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="observacion">Observacion</label>
+              <input type="text" class="form-control" value=" <?php $observaciones ?> " id="observacion">
+            </div>
+      </div>
+
+      <div class="form-row">
+            <div class="form-group col-md-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="Imagen1">
+                  <label class="custom-file-label" for="Imagen1">Imagen1</label>
+                </div>
+            </div>
+            <div class="form-group col-md-2">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="Imagen2">
+                  <label class="custom-file-label" for="Imagen2">Imagen2</label>
+                </div>
+            </div>
+            <div class="form-group col-md-2">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="Imagen3">
+                  <label class="custom-file-label" for="Imagen3">Imagen3</label>
+                </div>
+            </div>
+            <div class="form-group col-md-2">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="Imagen4">
+                  <label class="custom-file-label" for="Imagen4">Imagen4</label>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="Imagen5">
+                  <label class="custom-file-label" for="Imagen5">Imagen5</label>
+                </div>
+            </div>
+
+      </div>
