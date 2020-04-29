@@ -5,20 +5,6 @@
 	if (isset($_REQUEST["id"])){//codigo para eliminar
 	$id=$_REQUEST["id"];
 	$id=intval($id);
-
-	if($delete=mysqli_query($con, "DELETE FROM gasto WHERE id='$id'")){
-		$aviso="Bien hecho!";
-		$msj="Datos eliminados satisfactoriamente.";
-		$classM="alert alert-success";
-		$times="&times;";
-	}else{
-		$aviso="Aviso!";
-		$msj="Error al eliminar los datos ".mysqli_error($con);
-		$classM="alert alert-danger";
-		$times="&times;";
-	}
-
-
 }
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if($action == 'ajax'){
@@ -73,7 +59,7 @@ if($action == 'ajax'){
 				$finales++;
 		?>
 
-
+        <?php }?>
 					<form  role="form" method="post" id="update_register" name="update_register">
 						  <div class="form-row">
 							    <div class="form-group col-md-4">
@@ -161,9 +147,6 @@ if($action == 'ajax'){
 					                    <button type="button" class="btn btn-warning btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $id;?>');"><i class="fa fa-edit"></i></button>
 					        </tbody>
 					</form>
-
-
-        <?php }?>
         <tfoot>
             <tr>
 				<td colspan='10'>
