@@ -62,6 +62,7 @@
                     <input type='hidden' id='per_page' value='15'>
                 </div>
             </div>
+
             <div id="resultados_ajax"></div>
             <div class="row p-3">
                 <div class="col-md-12">

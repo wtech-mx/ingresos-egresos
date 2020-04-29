@@ -7,28 +7,43 @@
     <!--main content start-->
     <section class="main-content-wrapper">
         <section id="main-content">
-            <div class="row">
-                <div class="col-md-12">
-                        <!--breadcrumbs start -->
-                        <ul class="breadcrumb  pull-right">
-                            <li><a href="./?view=dashboard">Dashboard</a></li>
-                            <li class="active">gasto</li>
-                        </ul>
-                        <!--breadcrumbs end -->
-                        <br>
-                    <h1 class="h1">gasto</h1>
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-3 align-self-center">
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">gasto</h4>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb m-0 p-0">
+                                    <li class="breadcrumb-item"><a href="./?view=gasto" class="text-muted">Dashboard</a></li>
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">gasto</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Buscar por nombre" id='q' onkeyup="load(1);">
+                        </div><!-- /input-group -->
+                    </div>
+                    <div class="col-auto">
+                         <button class="btn btn-primary" data-toggle="modal" data-target="#formModal"><i class='fa fa-plus'></i> Nuevo</button>
+
+                    </div>
+                   <div class="col-auto align-self-end">
+                        <div class="customize-input float-right">
+                            <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
+                            <option class='active' selected onclick='per_page(15);' id='15'><a href="#">15</a></option>
+                            <option  onclick='per_page(25);' id='25'><a href="#">25</a></option>
+                            <option onclick='per_page(50);' id='50'><a href="#">50</a></option>
+                            <option onclick='per_page(100);' id='100'><a href="#">100</a></option>
+                            <option onclick='per_page(1000000);' id='1000000'><a href="#">Todos</a></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-xs-3">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Buscar por nombre" id='q' onkeyup="load(1);">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" onclick='load(1);'><i class='fa fa-search'></i></button>
-                      </span>
-                    </div><!-- /input-group -->
-                </div>
                 <div class="col-xs-3"></div>
                 <div class="col-xs-1">
                     <div id="loader" class="text-center"></div>
@@ -41,29 +56,14 @@
                             include "modals/editar/editar_gasto.php";
                         ?>
                     <!-- /end modals -->
-
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            Mostrar <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu pull-right" role="menu">
-                            <li class='active' onclick='per_page(15);' id='15'><a href="#">15</a></li>
-                            <li  onclick='per_page(25);' id='25'><a href="#">25</a></li>
-                            <li onclick='per_page(50);' id='50'><a href="#">50</a></li>
-                            <li onclick='per_page(100);' id='100'><a href="#">100</a></li>
-                            <li onclick='per_page(1000000);' id='1000000'><a href="#">Todos</a></li>
-                        </ul>
-                    </div>
                     <input type='hidden' id='per_page' value='15'>
                 </div>
             </div>
 
-
-
             <div id="resultados_ajax"></div>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
+                <div class="col-12 p-3">
+                    <div class="card panel panel-default p-2">
                         <div class="panel-heading">
                             <h3 class="panel-title">Datos de los gastoes</h3>
                             <div class="actions pull-right">

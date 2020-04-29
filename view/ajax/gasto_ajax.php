@@ -53,12 +53,10 @@ if($action == 'ajax'){
 	}
 	if ($numrows>0){
 ?>
-<<<<<<< HEAD
-
     <table class="table table-bordered table-striped">
-=======
+
    <table class="table table-bordered table-striped">
->>>>>>> cf4107354ade9b07e4135a27a167e24c76ef846b
+
         <thead>
             <tr>
                 <th>#ID</th>
@@ -135,4 +133,118 @@ if($action == 'ajax'){
 
 ?>
 
+<!--<div class="accordion" id="accordionExample">
+  <div class="card">
+    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+    <div class="card-header bg-primary" id="headingOne">
+      <h2 class="mb-0 text-white">
+          Collapsible Group Item #1
+      </h2>
+    </div>
+    </a>
 
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+
+			<form action="" method="get" accept-charset="utf-8">
+				  <div class="form-row">
+					    <div class="form-group col-md-4">
+					      <label for="Fecha">Fecha</label>
+					      <input class="form-control" type="date" value="" id="Fecha">
+					    </div>
+
+					    <div class="form-group col-md-4">
+					      <label for="Personal">Personal</label>
+					      <input type="text" class="form-control" id="Personal">
+					    </div>
+
+					    <div class="form-group col-md-4">
+					      <label for="Gasto">Gasto/Concepto</label>
+					      <input type="text" class="form-control" id="Gasto">
+					    </div>
+
+				  </div>
+
+				  <div class="form-row">
+					    <div class="form-group col-md-6">
+					      <label for="Cantidad">Cantidad</label>
+				 		  <input type="text" class="form-control" id="Cantidad">
+					    </div>
+					    <div class="form-group col-md-6">
+					      <label for="Observacion">Observacion</label>
+					      <input type="text" class="form-control" id="Observacion">
+					    </div>
+				  </div>
+
+				  <div class="form-row">
+					    <div class="form-group col-md-3">
+							<div class="custom-file">
+							  <input type="file" class="custom-file-input" id="Imagen1">
+							  <label class="custom-file-label" for="Imagen1">Imagen1</label>
+							</div>
+					    </div>
+					    <div class="form-group col-md-2">
+							<div class="custom-file">
+							  <input type="file" class="custom-file-input" id="Imagen2">
+							  <label class="custom-file-label" for="Imagen2">Imagen2</label>
+							</div>
+					    </div>
+					    <div class="form-group col-md-2">
+							<div class="custom-file">
+							  <input type="file" class="custom-file-input" id="Imagen3">
+							  <label class="custom-file-label" for="Imagen3">Imagen3</label>
+							</div>
+					    </div>
+					    <div class="form-group col-md-2">
+							<div class="custom-file">
+							  <input type="file" class="custom-file-input" id="Imagen4">
+							  <label class="custom-file-label" for="Imagen4">Imagen4</label>
+							</div>
+					    </div>
+					    <div class="form-group col-md-3">
+							<div class="custom-file">
+							  <input type="file" class="custom-file-input" id="Imagen5">
+							  <label class="custom-file-label" for="Imagen5">Imagen5</label>
+							</div>
+					    </div>
+				  </div>
+			</form>
+
+			<h2 class="text-center p-5">Tala de  2020 </h2>
+
+			<table class="table">
+				  <thead class="thead-default">
+				    <tr>
+				      <th>#</th>
+				      <th>First Name</th>
+				      <th>Last Name</th>
+				      <th>Username</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row">1</th>
+				      <td>Mark</td>
+				      <td>Otto</td>
+				      <td>@mdo</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">2</th>
+				      <td>Jacob</td>
+				      <td>Thornton</td>
+				      <td>@fat</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">3</th>
+				      <td>Larry</td>
+				      <td>the Bird</td>
+				      <td>@twitter</td>
+				    </tr>
+				  </tbody>
+			</table>
+
+      </div>
+    </div>
+  </div>
+</div>
+-->

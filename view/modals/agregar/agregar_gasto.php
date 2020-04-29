@@ -1,42 +1,34 @@
-    <button class="btn btn-primary" data-toggle="modal" data-target="#formModal"><i class='fa fa-plus'></i> Nuevo</button>
-
+    <!-- Form Modal -->
     <!-- Form Modal -->
     <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+                <div class="modal-header modal-colored-header bg-success">
+                    <h4 class="modal-title" id="success-header-modalLabel">Modal Heading
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×</button>
+                </div>
+
+                <div class="modal-body">
             <!-- form  -->
+
             <form class="form-horizontal" role="form" name="update_register" id="update_register" method="post" enctype="multipart/form-data">
-                              <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputEmail4">Email</label>
-                                  <input type="email" class="form-control" id="nombre" placeholder="Email">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                  <label for="inputPassword4">Password</label>
-                                  <input type="password" class="form-control" id="apellido" placeholder="Password">
-                                </div>
-
-                              <div class="form-group col-md-12">
-                                <label for="inputAddress">Address</label>
-                                <input type="text" class="form-control" id="cedula" placeholder="1234 Main St">
-                              </div>
-                             </div>
-
-                             <button id="adicionar" class="btn btn-success" type="button">Adicionar</button>
-                                <p>Elementos en la Tabla:
-                                  <div id="adicionados"></div>
-                                </p>
-                                <table  id="mytable" class="table table-bordered table-hover ">
-                                  <tr>
-                                    <th>Nobmre</th>
-                                    <th>Apellidos</th>
-                                    <th>C&eacute;dula</th>
-                                    <th>Eliminar</th>
-                                  </tr>
-                                </table>
-                            </form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Email</label>
+                          <input type="email" class="form-control" id="nombre" placeholder="Email">
+                        </div>
+                    </div>
+            </form>
             <!-- /end form  -->
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light"
+                        data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
