@@ -25,6 +25,11 @@
                           <input type="text" class="form-control" placeholder="Buscar por nombre" id='q' onkeyup="load(1);">
                         </div><!-- /input-group -->
                     </div>
+
+                    <div class="col-auto">
+                       <button class="btn btn-success " data-toggle="modal" data-target="#formModal"><i class='fa fa-plus'></i> Nuevo</button>
+                    </div>
+
                    <div class="col-auto align-self-end">
                         <div class="customize-input float-right">
                             <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
