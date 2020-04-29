@@ -53,25 +53,16 @@ if($action == 'ajax'){
 	}
 	if ($numrows>0){
 ?>
-    <table class="table table-bordered table-striped">
-
    <table class="table table-bordered table-striped">
 
         <thead>
-            <tr>
-                <th>#ID</th>
-                <th>Personal/Gasto</th>
-                <th>Concepto</th>
-                <th>Cantidad</th>
-                <th>Observaciones</th>
-                <th>Fecha Carga</th>
-                <th></th>
-            </tr>
+
         </thead>
         <?php
 			$finales=0;
 			while($row = mysqli_fetch_array($query)){
 				$id=$row['id'];
+				$nombre=$row['nombre'];
 				$gasto_code=$row['gasto_code'];
 				$personal=$row['personal'];
 				$concepto=$row['concepto'];
@@ -86,23 +77,156 @@ if($action == 'ajax'){
 				$finales++;
 		?>
         <tbody>
-            <tr>
-                <td><?php echo $gasto_code ?></td>
-                <td><?php echo $personal ?></td>
-                <td><?php echo $concepto ?></td>
-                <td><?php echo $cantidad ?></td>
-                <td><?php echo $observaciones ?></td>
-                <td><?php echo $fecha_cargas ?></td>
-                <td class="text-right">
 
-
-                    <button type="button" class="btn btn-warning btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $id;?>');"><i class="fa fa-edit"></i></button>
-
-                    <button type="button" class="btn btn-danger btn-square btn-xs" onclick="eliminar('<?php echo $id;?>')"><i class="fa fa-trash-o"></i></button>
-                </td>
-            </tr>
 
         </tbody>
+        <div class="accordion" id="accordionExample">
+  <div class="card">
+    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+    <div class="card-header bg-primary" id="headingOne">
+      <h2 class="mb-0 text-white">
+         <?php echo $nombre ?>
+      </h2>
+    </div>
+    </a>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+
+			<form action="" method="get" accept-charset="utf-8">
+				  <div class="form-row">
+					    <div class="form-group col-md-4">
+					      <label for="fecha">Fecha</label>
+					      <input class="form-control" type="date" value="" id="fecha">
+					    </div>
+
+					    <div class="form-group col-md-4">
+					      <label for="personal">Personal</label>
+					      <input type="text" class="form-control" id="personal">
+					    </div>
+
+					    <div class="form-group col-md-4">
+					      <label for="gasto">Gasto/Concepto</label>
+					      <input type="text" class="form-control" id="gasto">
+					    </div>
+
+				  </div>
+
+				  <div class="form-row">
+					    <div class="form-group col-md-6">
+					      <label for="cantidad">Cantidad</label>
+				 		  <input type="text" class="form-control" id="cantidad">
+					    </div>
+					    <div class="form-group col-md-6">
+					      <label for="observacion">Observacion</label>
+					      <input type="text" class="form-control" id="observacion">
+					    </div>
+				  </div>
+
+				  <div class="form-row">
+					    <div class="form-group col-md-3">
+							<div class="custom-file">
+							  <input type="file" class="custom-file-input" id="Imagen1">
+							  <label class="custom-file-label" for="Imagen1">Imagen1</label>
+							</div>
+					    </div>
+					    <div class="form-group col-md-2">
+							<div class="custom-file">
+							  <input type="file" class="custom-file-input" id="Imagen2">
+							  <label class="custom-file-label" for="Imagen2">Imagen2</label>
+							</div>
+					    </div>
+					    <div class="form-group col-md-2">
+							<div class="custom-file">
+							  <input type="file" class="custom-file-input" id="Imagen3">
+							  <label class="custom-file-label" for="Imagen3">Imagen3</label>
+							</div>
+					    </div>
+					    <div class="form-group col-md-2">
+							<div class="custom-file">
+							  <input type="file" class="custom-file-input" id="Imagen4">
+							  <label class="custom-file-label" for="Imagen4">Imagen4</label>
+							</div>
+					    </div>
+					    <div class="form-group col-md-3">
+							<div class="custom-file">
+							  <input type="file" class="custom-file-input" id="Imagen5">
+							  <label class="custom-file-label" for="Imagen5">Imagen5</label>
+							</div>
+					    </div>
+					    <button id="adicionar" class="btn btn-success" type="button">Adicionar a la tabla</button>
+				  </div>
+			</form>
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+			<p>Elementos en la Tabla:
+			  <div id="adicionados"></div>
+			</p>
+			<h2 class="text-center p-5"><?php echo $nombre ?></h2>
+
+			<table class="table" id="mytable">
+				  <thead class="thead-default">
+				    <tr>
+				      <th>Fecha</th>
+				      <th>Fecha</th>
+				      <th>Gasto</th>
+				      <th>Cantidad</th>
+				      <th>Observacion</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				    </tr>
+				    <tr>
+				    </tr>
+				    <tr>
+				    </tr>
+				    <tr>
+				    </tr>
+				  </tbody>
+			</table>
+
+	  </div>
+
+		<script type="text/javascript">
+				$(document).ready(function() {
+				$('#adicionar').click(function() {
+				  var fecha = document.getElementById("fecha").value;
+				  var personal = document.getElementById("personal").value;
+				  var gasto = document.getElementById("gasto").value;
+				  var cantidad = document.getElementById("cantidad").value;
+				  var observacion = document.getElementById("observacion").value;
+				  var i = 1; //contador para asignar id al boton que borrara la fila
+				  var fila = '<tr id="row' + i + '"><td>' + fecha + '</td><td>' + personal + '</td><td>' + gasto + '</td><td>' + cantidad +'</td><td>' + observacion +'</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
+
+				  i++;
+
+				  $('#mytable tr:first').after(fila);
+				    $("#adicionados").text(""); //esta instruccion limpia el div adicioandos para que no se vayan acumulando
+				    var nFilas = $("#mytable tr").length;
+				    $("#adicionados").append(nFilas - 1);
+				    //le resto 1 para no contar la fila del header
+				    document.getElementById("fecha").value = "";
+				    document.getElementById("personal").value ="";
+				    document.getElementById("gasto").value = "";
+				    document.getElementById("cantidad").focus();
+				    document.getElementById("observacion").focus();
+				  });
+				$(document).on('click', '.btn_remove', function() {
+				  var button_id = $(this).attr("id");
+				    //cuando da click obtenemos el id del boton
+				    $('#row' + button_id + '').remove(); //borra la fila
+				    //limpia el para que vuelva a contar las filas de la tabla
+				    $("#adicionados").text("");
+				    var nFilas = $("#mytable tr").length;
+				    $("#adicionados").append(nFilas - 1);
+				  });
+				});
+		</script>
+
+     </div>
+    </div>
+</div>
         <?php }?>
         <tfoot>
             <tr>
