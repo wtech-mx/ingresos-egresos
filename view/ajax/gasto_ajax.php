@@ -207,44 +207,77 @@ if($action == 'ajax'){
 							  <label class="custom-file-label" for="Imagen5">Imagen5</label>
 							</div>
 					    </div>
+					    <button id="adicionar" class="btn btn-success" type="button">Adicionar a la tabla</button>
 				  </div>
 			</form>
 
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+			<p>Elementos en la Tabla:
+			  <div id="adicionados"></div>
+			</p>
 			<h2 class="text-center p-5">Tala de  2020 </h2>
 
-			<table class="table">
+			<table class="table" id="mytable">
 				  <thead class="thead-default">
 				    <tr>
-				      <th>#</th>
-				      <th>First Name</th>
-				      <th>Last Name</th>
-				      <th>Username</th>
+				      <th>Fecha</th>
+				      <th>Fecha</th>
+				      <th>Gasto</th>
+				      <th>Cantidad</th>
+				      <th>Observacion</th>
 				    </tr>
 				  </thead>
 				  <tbody>
 				    <tr>
-				      <th scope="row">1</th>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
 				    </tr>
 				    <tr>
-				      <th scope="row">2</th>
-				      <td>Jacob</td>
-				      <td>Thornton</td>
-				      <td>@fat</td>
 				    </tr>
 				    <tr>
-				      <th scope="row">3</th>
-				      <td>Larry</td>
-				      <td>the Bird</td>
-				      <td>@twitter</td>
+				    </tr>
+				    <tr>
 				    </tr>
 				  </tbody>
 			</table>
 
-      </div>
+	  </div>
+
+		<script type="text/javascript">
+				$(document).ready(function() {
+				$('#adicionar').click(function() {
+				  var Fecha = document.getElementById("Fecha").value;
+				  var Personal = document.getElementById("Personal").value;
+				  var Gasto = document.getElementById("Gasto").value;Observacion
+				  var Cantidad = document.getElementById("Cantidad").value;
+				  var Observacion = document.getElementById("Observacion").value;
+				  var i = 1; //contador para asignar id al boton que borrara la fila
+				  var fila = '<tr id="row' + i + '"><td>' + Fecha + '</td><td>' + Personal + '</td><td>' + Gasto + '</td><td>' + Cantidad +'</td><td>' + Observacion +'</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
+
+				  i++;
+
+				  $('#mytable tr:first').after(fila);
+				    $("#adicionados").text(""); //esta instruccion limpia el div adicioandos para que no se vayan acumulando
+				    var nFilas = $("#mytable tr").length;
+				    $("#adicionados").append(nFilas - 1);
+				    //le resto 1 para no contar la fila del header
+				    document.getElementById("Fecha").value = "";
+				    document.getElementById("Personal").value ="";
+				    document.getElementById("Gasto").value = "";
+				    document.getElementById("Cantidad").focus();
+				    document.getElementById("Observacion").focus();
+				  });
+				$(document).on('click', '.btn_remove', function() {
+				  var button_id = $(this).attr("id");
+				    //cuando da click obtenemos el id del boton
+				    $('#row' + button_id + '').remove(); //borra la fila
+				    //limpia el para que vuelva a contar las filas de la tabla
+				    $("#adicionados").text("");
+				    var nFilas = $("#mytable tr").length;
+				    $("#adicionados").append(nFilas - 1);
+				  });
+				});
+		</script>
+
+     </div>
     </div>
-  </div>
-</div>
--->
+</div>-->
+

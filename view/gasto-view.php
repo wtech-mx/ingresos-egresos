@@ -26,8 +26,7 @@
                         </div><!-- /input-group -->
                     </div>
                     <div class="col-auto">
-                         <button class="btn btn-primary" data-toggle="modal" data-target="#formModal"><i class='fa fa-plus'></i> Nuevo</button>
-
+                       <button class="btn btn-success " data-toggle="modal" data-target="#formModal"><i class='fa fa-plus'></i> Nuevo</button>
                     </div>
                    <div class="col-auto align-self-end">
                         <div class="customize-input float-right">
