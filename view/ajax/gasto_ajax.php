@@ -49,15 +49,10 @@ if($action == 'ajax'){
 			<strong><?php echo $aviso?> </strong>
 			<?php echo $msj;?>
 		</div>
-<?php
-	}
-	if ($numrows>0){
-?>
-   <table class="table table-bordered table-striped">
-
-        <thead>
-
-        </thead>
+		<?php
+			}
+			if ($numrows>0){
+		?>
         <?php
 			$finales=0;
 			while($row = mysqli_fetch_array($query)){
@@ -76,28 +71,23 @@ if($action == 'ajax'){
 
 				$finales++;
 		?>
-        <tbody>
+		<div class="accordion" id="accordionExample">
+		     <div class="card">
+			    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				    <div class="card-header bg-primary" id="headingOne">
+				      <h2 class="mb-0 text-white">
+				         <?php echo $nombre ?>
+				      </h2>
+				    </div>
+			    </a>
 
-
-        </tbody>
-<div class="accordion" id="accordionExample">
-     <div class="card">
-	    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		    <div class="card-header bg-primary" id="headingOne">
-		      <h2 class="mb-0 text-white">
-		         <?php echo $nombre ?>
-		      </h2>
-		    </div>
-	    </a>
-
-	    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-	        <div class="card-body">
-				<div class="ediargastos-ajax">
-				</div>
-		    </div>
-	    </div>
-     </div>
-</div>
+			    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+			        <div class="card-body">
+						<?php include("gasto_ajax_collapse.php") ?>
+				    </div>
+			    </div>
+		     </div>
+		</div>
         <?php }?>
         <tfoot>
             <tr>
@@ -111,47 +101,14 @@ if($action == 'ajax'){
 				</td>
 			</tr>
 		</tfoot>
-    </table>
+
 <?php
 	}else{
 		echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <strong>Sin Resultados!</strong> No se encontraron resultados en la base de datos!.</div>';
 	}
-
 }
-
 ?>
-
-<script>
-    $(function() {
-        load(1);
-    });
-
-    function load(page){
-        var query=$("#q").val();
-        var per_page=$("#per_page").val();
-        var parametros = {"action":"ajax","page":page,'query':query,'per_page':per_page};
-        $("#loader").fadeIn('slow');
-        $.ajax({
-            url:'view/ajax/gasto_ajax_collapse.php',
-            data: parametros,
-             beforeSend: function(objeto){
-            $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
-          },
-            success:function(data){
-                $(".ediargastos-ajax").html(data).fadeIn('slow');
-                $("#loader").html("");
-            }
-        })
-    }
-
-    function per_page(valor){
-        $("#per_page").val(valor);
-        load(1);
-        $('.dropdown-menu li' ).removeClass( "active" );
-        $("#"+valor).addClass( "active" );
-    }
-</script>
 
 <!--<div class="accordion" id="accordionExample">
   <div class="card">
