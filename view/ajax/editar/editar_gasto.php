@@ -9,14 +9,14 @@
 
        // escaping, additionally removing everything that could be (html/javascript-) code
         $personal = mysqli_real_escape_string($con,(strip_tags($_POST["personal"],ENT_QUOTES)));
-            $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
-            $cantidad = mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
-            $observaciones = mysqli_real_escape_string($con,(strip_tags($_POST["observaciones"],ENT_QUOTES)));
-            $foto1 = mysqli_real_escape_string($con,(strip_tags($_POST["foto1"],ENT_QUOTES)));
-            $foto2 = mysqli_real_escape_string($con,(strip_tags($_POST["foto2"],ENT_QUOTES)));
-            $foto3 = mysqli_real_escape_string($con,(strip_tags($_POST["foto3"],ENT_QUOTES)));
-            $foto4 = mysqli_real_escape_string($con,(strip_tags($_POST["foto4"],ENT_QUOTES)));
-            $foto5 = mysqli_real_escape_string($con,(strip_tags($_POST["foto5"],ENT_QUOTES)));
+        $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
+        $cantidad = mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
+        $observaciones = mysqli_real_escape_string($con,(strip_tags($_POST["observaciones"],ENT_QUOTES)));
+        $foto1 = mysqli_real_escape_string($con,(strip_tags($_POST["foto1"],ENT_QUOTES)));
+        $foto2 = mysqli_real_escape_string($con,(strip_tags($_POST["foto2"],ENT_QUOTES)));
+        $foto3 = mysqli_real_escape_string($con,(strip_tags($_POST["foto3"],ENT_QUOTES)));
+        $foto4 = mysqli_real_escape_string($con,(strip_tags($_POST["foto4"],ENT_QUOTES)));
+        $foto5 = mysqli_real_escape_string($con,(strip_tags($_POST["foto5"],ENT_QUOTES)));
             $fecha_carga=date("Y-m-d H:i:s");
         $id=intval($_POST['id']);
 	// UPDATE data into database

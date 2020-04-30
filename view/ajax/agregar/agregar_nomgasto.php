@@ -1,14 +1,17 @@
 <?php
 	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
-
+	if (empty($_POST['nombre'])){
+			$errors[] = "Nombre está vacío.";
+		}  elseif (
+        	!empty($_POST['nombre'])
+        ){
 		require_once ("../../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
 
 			// escaping, additionally removing everything that could be (html/javascript-) code
-			$nombre = mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
-			$fecha_carga=date("Y-m-d H:i:s");
+            $nombre = mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
 
 			//Write register in to database
-			$sql = "INSERT INTO gasto (nombre, personal, concepto, cantidad, observaciones) VALUES( '".$nombre."', '', '', '', '');";
+			$sql = "INSERT INTO nombre_gasto (nombre) VALUES('".$nombre."');";
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
@@ -17,6 +20,9 @@
             } else {
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
             }
+		} else {
+			$errors[] = "desconocido.";
+		}
 
 if (isset($errors)){
 
