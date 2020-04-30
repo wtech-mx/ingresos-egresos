@@ -72,27 +72,31 @@
 		        	<div id="adicionados"></div>
 		            <tr>
 		                <th>#ID</th>
+		                 <th>Nombre</th>
 		                <th>Personal/Gasto</th>
 		                <th>Concepto</th>
 		                <th>Cantidad</th>
 		                <th>Observaciones</th>
 		                <th>Fecha Carga</th>
-		                <th></th>
+		                <th>Acciones</th>
 		            </tr>
 		    </thead>
 		        <tbody>
 		            <tr>
 		            <td><?php echo $reg->id ?></td>
 	            	<td><?php echo $reg->nombre ?></td>
-	                <td><?php echo $reg->concepto ?></td>
 	                <td><?php echo $reg->personal ?></td>
+	                <td><?php echo $reg->concepto ?></td>
 	                <td><?php echo $reg->cantidad ?></td>
 	                <td><?php echo $reg->observaciones ?></td>
 	                <td><?php echo $reg->fecha_carga; ?></td>
 			        <td class="text-right">
-	                    <button type="button" class="btn btn-warning btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $id;?>');">
+	                    <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $id;?>');">
 	                    	<i class="fa fa-edit"></i>
 	                    </button>
+		                    <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $id;?>')">
+		                    	<i class="fa fas fa-trash"></i>
+		                    </button>
 			        </td>
 		        </tbody>
 		    </table>
