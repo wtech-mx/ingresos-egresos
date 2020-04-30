@@ -4,15 +4,15 @@
 
     if ($_SESSION['dashboard']==1){
 
-        $empleados = mysqli_query($con, "select * from empleado");
-        $talleres = mysqli_query($con, "select * from taller");
-        $empresas = mysqli_query($con, "select * from empresa");
-        $vehiculos = mysqli_query($con, "select * from vehiculo");
+        $empleados = mysqli_query($con, "SELECT * FROM empleado");
+        $talleres = mysqli_query($con, "SELECT * FROM taller");
+        $empresas = mysqli_query($con, "SELECT * FROM empresa");
+        $vehiculos = mysqli_query($con, "SELECT * FROM vehiculo");
 
         function suma_reparaciones($month){
             global $con;
             $year=date('Y');
-            $sql="select count(id) as id from reparaciones where year(fecha_carga) = '$year' and month(fecha_carga)= '$month' ";
+            $sql="SELECT count(id) as id FROM reparaciones WHERE year(fecha_carga) = '$year' and month(fecha_carga)= '$month' ";
             $query = mysqli_query($con, $sql);
             $reg=mysqli_fetch_array($query);
             return $total=number_format($reg['id'],2,'.','');
@@ -20,7 +20,7 @@
         function suma_choques($month){
             global $con;
             $year=date('Y');
-            $sql="select count(id) as id from choque where year(fecha_carga) = '$year' and month(fecha_carga)= '$month' ";
+            $sql="SELECT count(id) as id FROM choque WHERE year(fecha_carga) = '$year' and month(fecha_carga)= '$month' ";
             $query = mysqli_query($con, $sql);
             $reg=mysqli_fetch_array($query);
             return $total=number_format($reg['id'],2,'.','');

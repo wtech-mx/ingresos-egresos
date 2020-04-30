@@ -224,34 +224,96 @@
                         </li>
                         <?php } ?>
                         <li class="list-divider"></li>
-                        <li class="nav-small-cap"><span class="hide-menu">Applications</span></li>
+                        <li class="nav-small-cap"><span class="hide-menu">MODULOS</span></li>
+
+
+                        <?php if ($_SESSION['gasto']==1) { ?>
+                       <li class="sidebar-item <?php if(isset($active11)){echo $active11;}?>">
+                        <a class="sidebar-link has-arrow" href="./?view=gasto"
+                                aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
+                                    class="hide-menu">Gastos Corriente
+                                </span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="./?view=gasto" class="sidebar-link"><span
+                                            class="hide-menu"></span></a></li>
+
+                                <li class="sidebar-item"><a href="./?view=gasto" class="sidebar-link"><span
+                                            class="hide-menu"></span></a></li>
+                            </ul>
+                        </li>
+                         <?php } ?>
+
+                        <?php if ($_SESSION['Fideicomiso']==1) { ?>
+                       <li class="sidebar-item <?php if(isset($active12)){echo $active12;}?>">
+                        <a class="sidebar-link has-arrow" href="./?view=Fideicomiso"
+                                aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
+                                    class="hide-menu">Fideicomisos
+                                </span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="./?view=Fideicomiso" class="sidebar-link"><span
+                                            class="hide-menu"></span></a></li>
+
+                                <li class="sidebar-item"><a href="./?view=Fideicomiso" class="sidebar-link"><span
+                                            class="hide-menu"></span></a></li>
+                            </ul>
+                        </li>
+                         <?php } ?>
+
+                        <?php if ($_SESSION['Exedentes']==1) { ?>
+                       <li class="sidebar-item <?php if(isset($active13)){echo $active13;}?>">
+                        <a class="sidebar-link has-arrow" href="./?view=Exedentes"
+                                aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
+                                    class="hide-menu">Exedentes
+                                </span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="./?view=Exedentes" class="sidebar-link"><span
+                                            class="hide-menu"></span></a></li>
+
+                                <li class="sidebar-item"><a href="./?view=Exedentes" class="sidebar-link"><span
+                                            class="hide-menu"></span></a></li>
+                            </ul>
+                        </li>
+                         <?php } ?>
+
+                        <?php if ($_SESSION['Presupuesto-general']==1) { ?>
+                       <li class="sidebar-item <?php if(isset($active14)){echo $active14;}?>">
+                        <a class="sidebar-link has-arrow" href="./?view=Presupuesto-general"
+                                aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
+                                    class="hide-menu">Presupuesto-general
+                                </span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item"><a href="./?view=Presupuesto-general" class="sidebar-link"><span
+                                            class="hide-menu"></span></a></li>
+
+                                <li class="sidebar-item"><a href="./?view=Presupuesto-general" class="sidebar-link"><span
+                                            class="hide-menu"></span></a></li>
+                            </ul>
+                        </li>
+                         <?php } ?>
 
 
                         <?php if ($_SESSION['empleados']==1) { ?>
-                        <li class="sidebar-item <?php if(isset($active2)){echo $active2;}?>"> <a class="sidebar-link sidebar-link" href="./?view=empleados"
-                                aria-expanded="false"><i data-feather="message-square" class="feather-icon"></i><span
-                                    class="hide-menu">empleados</span></a>
+                        <li class="sidebar-item <?php if(isset($active2)){echo $active2;}?>">
+                            <a class="sidebar-link sidebar-link" href="./?view=empleados"aria-expanded="false"><i data-feather="message-square" class="feather-icon"></i>
+                                <span class="hide-menu">empleados</span></a>
                          </li>
                           <?php } ?>
 
                         <?php if ($_SESSION['taller']==1) { ?>
-                        <li class="sidebar-item <?php if(isset($active4)){echo $active4;}?>"> <a class="sidebar-link sidebar-link" href="./?view=taller"
-                                aria-expanded="false"><i data-feather="message-square" class="feather-icon"></i><span
-                                    class="hide-menu">taller</span></a>
+                        <li class="sidebar-item <?php if(isset($active4)){echo $active4;}?>">
+                            <a class="sidebar-link sidebar-link" href="./?view=taller" aria-expanded="false">
+                                <i data-feather="message-square" class="feather-icon"></i><span class="hide-menu">taller</span>
+                            </a>
                          </li>
                           <?php } ?>
 
-                        <?php if ($_SESSION['gasto']==1) { ?>
-                        <li class="sidebar-item <?php if(isset($active11)){echo $active11;}?>"> <a class="sidebar-link sidebar-link" href="./?view=gasto"
-                                aria-expanded="false"><i data-feather="message-square" class="feather-icon"></i><span
-                                    class="hide-menu">gasto</span></a>
-                         </li>
-                          <?php } ?>
+
 
                         <?php if ($_SESSION['configuracion']==1) { ?>
-                        <li class="sidebar-item <?php if(isset($active12)){echo $active12;}?>"> <a class="sidebar-link sidebar-link" href="./?view=configuracion"
-                                aria-expanded="false"><i data-feather="message-square" class="feather-icon"></i><span
-                                    class="hide-menu">configuracion</span></a>
+                        <li class="sidebar-item <?php if(isset($active12)){echo $active12;}?>">
+                            <a class="sidebar-link sidebar-link" href="./?view=configuracion"aria-expanded="false">
+                                <i data-feather="message-square" class="feather-icon"></i><span class="hide-menu">configuracion</span>
+                            </a>
                          </li>
                           <?php } ?>
 
