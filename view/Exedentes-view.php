@@ -2,7 +2,7 @@
     $active13="active";
     include "resources/header.php";
 
-    if ($_SESSION['gasto']==1){
+    if ($_SESSION['Exedentes']==1){
 ?>
     <!--main content start-->
     <section class="main-content-wrapper">

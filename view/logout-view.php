@@ -6,12 +6,9 @@
 		unset($_SESSION['dashboard']);
 		unset($_SESSION['empleados']);
 		unset($_SESSION['taller']);
-		unset($_SESSION['seguro']);
-		unset($_SESSION['empresa']);
-		unset($_SESSION['sector']);
-		unset($_SESSION['vehiculo']);
-		unset($_SESSION['tarjeta']);
-		unset($_SESSION['reparaciones']);
+		unset($_SESSION['Exedentes']);
+		unset($_SESSION['Fideicomiso']);
+		unset($_SESSION['Presupuesto-general']);
 		unset($_SESSION['gasto']);
 		unset($_SESSION['configuracion']);
 

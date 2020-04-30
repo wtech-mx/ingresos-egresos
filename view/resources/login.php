@@ -26,12 +26,9 @@
 				in_array(1,$valores)?$_SESSION['dashboard']=1:$_SESSION['dashboard']=0;
 				in_array(2,$valores)?$_SESSION['empleados']=1:$_SESSION['empleados']=0;
 				in_array(3,$valores)?$_SESSION['taller']=1:$_SESSION['taller']=0;
-				in_array(4,$valores)?$_SESSION['seguro']=1:$_SESSION['seguro']=0;
-				in_array(5,$valores)?$_SESSION['empresa']=1:$_SESSION['empresa']=0;
-				in_array(6,$valores)?$_SESSION['sector']=1:$_SESSION['sector']=0;
-				in_array(7,$valores)?$_SESSION['vehiculo']=1:$_SESSION['vehiculo']=0;
-				in_array(8,$valores)?$_SESSION['tarjeta']=1:$_SESSION['tarjeta']=0;
-				in_array(9,$valores)?$_SESSION['reparaciones']=1:$_SESSION['reparaciones']=0;
+				in_array(4,$valores)?$_SESSION['Exedentes']=1:$_SESSION['Exedentes']=0;
+				in_array(5,$valores)?$_SESSION['Fideicomiso']=1:$_SESSION['Fideicomiso']=0;
+				in_array(6,$valores)?$_SESSION['Presupuesto-general']=1:$_SESSION['Presupuesto-general']=0;
 				in_array(10,$valores)?$_SESSION['gasto']=1:$_SESSION['gasto']=0;
 				in_array(11,$valores)?$_SESSION['configuracion']=1:$_SESSION['configuracion']=0;
 
