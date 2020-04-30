@@ -58,7 +58,7 @@
 					    <button  id="adicionar" class="btn btn-success" type="button">Adicionar a la tabla</button>
 				  </div>
 			</form>
-			<table class="table table-bordered table-striped">
+			<table class="table table-bordered table-striped" id="mytable">
 				<thead></thead>
 		        <thead>
 		        	<div id="adicionados"></div>
@@ -79,7 +79,7 @@
 		                <td><?php echo $concepto ?></td>
 		                <td><?php echo $cantidad ?></td>
 		                <td><?php echo $observaciones ?></td>
-		                <td><?php echo $fecha_cargas ?></td>
+		                <td><?php echo $fecha_carga ?></td>
 		        <td class="text-right">
 		                    <button type="button" class="btn btn-warning btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $id;?>');"><i class="fa fa-edit"></i></button>
 		        </tbody>
@@ -88,13 +88,13 @@
 <script type="text/javascript">
 				$(document).ready(function() {
 				$('#adicionar').click(function() {
-				  var fecha_carga = document.getElementById("fecha_carga").value;
 				  var personal = document.getElementById("personal").value;
 				  var concepto = document.getElementById("concepto").value;
 				  var cantidad = document.getElementById("cantidad").value;
 				  var observaciones = document.getElementById("observaciones").value;
+				  var fecha_carga = document.getElementById("fecha_carga").value;
 				  var i = 1; //contador para asignar id al boton que borrara la fila
-				  var fila = '<tr id="row' + i + '"><td>' + fecha_carga + '</td><td>' + personal + '</td><td>' + concepto + '</td><td>' + cantidad +'</td><td>' + observaciones +'</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
+				  var fila = '<tr id="row' + i + '"><td>' + personal + '</td><td>' + concepto + '</td><td>' + cantidad + '</td><td>' + observaciones +'</td><td>' + fecha_carga +'</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
 
 				  i++;
 
