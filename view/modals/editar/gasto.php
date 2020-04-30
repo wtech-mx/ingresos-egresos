@@ -4,7 +4,7 @@
 	if (isset($_GET["id"])){
 		$id=$_GET["id"];
 		$id=intval($id);
-		$sql="select * from gasto where id='$id'";
+		$sql="SELECT * FROM gasto where id='$id'";
 		$query=mysqli_query($con,$sql);
 		$num=mysqli_num_rows($query);
 		if ($num==1){
@@ -21,7 +21,6 @@
 	else{exit;}
 ?>
 <input type="hidden" value="<?php echo $id;?>" name="id" id="id">
-<input type="hidden" value="<?php echo $nombre;?>" name="id" id="id">
 
       <div class="form-row">
             <div class="form-group col-md-4">

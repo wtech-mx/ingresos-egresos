@@ -58,6 +58,14 @@
 					    <button  id="adicionar" class="btn btn-success" type="button">Adicionar a la tabla</button>
 				  </div>
 			</form>
+
+<?php       $rspta = mysqli_query($con, "SELECT * FROM gasto");
+	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE id=$id");
+            $valores=array();
+            //while($row = mysqli_fetch_array($query)){
+            while ($reg = $rspta->fetch_object()){
+                $sw=in_array($reg->id,$valores);
+                 ?>
 			<table class="table table-bordered table-striped" id="mytable">
 				<thead></thead>
 		        <thead>
@@ -74,17 +82,23 @@
 		    </thead>
 		        <tbody>
 		            <tr>
-		            	<td><?php echo $id ?></td>
-		                <td><?php echo $personal ?></td>
-		                <td><?php echo $concepto ?></td>
-		                <td><?php echo $cantidad ?></td>
-		                <td><?php echo $observaciones ?></td>
-		                <td><?php echo $fecha_carga ?></td>
-		        <td class="text-right">
-		                    <button type="button" class="btn btn-warning btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $id;?>');"><i class="fa fa-edit"></i></button>
+		            <td><?php echo $reg->id ?></td>
+	            	<td><?php echo $reg->nombre ?></td>
+	                <td><?php echo $reg->concepto ?></td>
+	                <td><?php echo $reg->personal ?></td>
+	                <td><?php echo $reg->cantidad ?></td>
+	                <td><?php echo $reg->observaciones ?></td>
+	                <td><?php echo $reg->fecha_carga; ?></td>
+			        <td class="text-right">
+	                    <button type="button" class="btn btn-warning btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $id;?>');">
+	                    	<i class="fa fa-edit"></i>
+	                    </button>
+			        </td>
 		        </tbody>
 		    </table>
-
+	<?php
+            }
+        ?>
 <script type="text/javascript">
 				$(document).ready(function() {
 				$('#adicionar').click(function() {
@@ -119,4 +133,4 @@
 				    $("#adicionados").append(nFilas - 1);
 				  });
 				});
-		</script>
+</script>

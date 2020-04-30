@@ -117,6 +117,7 @@
         $("#"+valor).addClass( "active" );
     }
 </script>
+
 <script>
     function eliminar(id){
         if(confirm('Esta acción  eliminará de forma permanente al gasto \n\n Desea continuar?')){
@@ -142,6 +143,7 @@
         }
     }
 </script>
+
 <script>
     $( "#new_register" ).submit(function( event ) {
       $('#guardar_datos').attr("disabled", true);

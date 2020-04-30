@@ -2,31 +2,31 @@
 	include("is_logged.php");//Archivo comprueba si el usuario esta logueado
 	/* Connect To Database*/
 	require_once ("../../config/config.php");
-	if (isset($_REQUEST["id"])){//codigo para eliminar 
+	if (isset($_REQUEST["id"])){//codigo para eliminar
 	$id=$_REQUEST["id"];
 	$id=intval($id);
 
-	$query_validate=mysqli_query($con,"select * from sector where idempresa='".$id."'");
+	$query_validate=mysqli_query($con,"SELECT * from sector where idempresa='".$id."'");
 	$count=mysqli_num_rows($query_validate);
 	if ($count==0){
 		if($delete=mysqli_query($con, "DELETE FROM empresa WHERE id='$id'")){
 			$aviso="Bien hecho!";
 			$msj="Datos eliminados satisfactoriamente.";
 			$classM="alert alert-success";
-			$times="&times;";	
+			$times="&times;";
 		}else{
 			$aviso="Aviso!";
 			$msj="Error al eliminar los datos ".mysqli_error($con);
 			$classM="alert alert-danger";
-			$times="&times;";					
+			$times="&times;";
 		}
 	}else{
 			$aviso="Aviso!";
 			$msj="Error al eliminar los datos. La empresa se encuentra vinculada con un sector";
 			$classM="alert alert-danger";
 			$times="&times;";
-		}	
-		
+		}
+
 }
 
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
@@ -50,14 +50,14 @@ if($action == 'ajax'){
 	//main query to fetch the data
 	$query = mysqli_query($con,"SELECT $campos FROM  $tables where $sWhere LIMIT $offset,$per_page");
 	//loop through fetched data
-	
+
 	if (isset($_REQUEST["id"])){
 ?>
 		<div class="<?php echo $classM;?>">
 			<button type="button" class="close" data-dismiss="alert"><?php echo $times;?></button>
 			<strong><?php echo $aviso?> </strong>
 			<?php echo $msj;?>
-		</div>	
+		</div>
 <?php
 	}
 	if ($numrows>0){
@@ -73,15 +73,15 @@ if($action == 'ajax'){
                 <th></th>
             </tr>
         </thead>
-        <?php 
+        <?php
 			$finales=0;
-			while($row = mysqli_fetch_array($query)){	
+			while($row = mysqli_fetch_array($query)){
 				$id=$row['id'];
 				$nombre=$row['nombre'];
 				$cuit=$row['cuit'];
 				$estado=$row['estado'];
 				$created_at=$row['fecha_carga'];
-				
+
 				list($date,$hora)=explode(" ",$created_at);
 				list($Y,$m,$d)=explode("-",$date);
 				$fecha=$d."-".$m."-".$Y;
@@ -95,9 +95,9 @@ if($action == 'ajax'){
 					$lbl_class='label label-danger';
 				}
 				/*$kind=$row['kind'];*/
-				
+
 				$finales++;
-		?>	
+		?>
         <tbody>
             <tr>
                 <td><?php echo $id ?></td>
@@ -111,11 +111,11 @@ if($action == 'ajax'){
                 </td>
             </tr>
         </tbody>
-        <?php }?>	
+        <?php }?>
         <tfoot>
             <tr>
-				<td colspan='10'> 
-					<?php 
+				<td colspan='10'>
+					<?php
 						$inicios=$offset+1;
 						$finales+=$inicios -1;
 						echo "Mostrando $inicios al $finales de $numrows registros";
@@ -125,7 +125,7 @@ if($action == 'ajax'){
 			</tr>
 		</tfoot>
     </table>
-<?php	
+<?php
 	}else{
 		echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <strong>Sin Resultados!</strong> No se encontraron resultados en la base de datos!.</div>';

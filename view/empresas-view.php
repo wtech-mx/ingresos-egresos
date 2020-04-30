@@ -1,4 +1,4 @@
-<?php 
+<?php
     $active6="active";
     include "resources/header.php";
     if ($_SESSION['empresa']==1){
@@ -18,7 +18,7 @@
                     <h1 class="h1">Empresas</h1>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-xs-3">
                     <div class="input-group">
@@ -35,12 +35,12 @@
 
                 <div class="col-md-offset-10">
                     <!-- modals -->
-                        <?php 
+                        <?php
                             include "modals/agregar/agregar_empresa.php";
                             include "modals/editar/editar_empresa.php";
                         ?>
                     <!-- /end modals -->
-                    
+
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             Mostrar <span class="caret"></span>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            
+
 
             <div id="resultados_ajax"></div>
             <div class="row">
@@ -72,12 +72,12 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <div class="outer_div"></div><!-- Datos ajax Final --> 
+                                <div class="outer_div"></div><!-- Datos ajax Final -->
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>       
+            </div>
 
         </section>
     </section><!--main content end-->
@@ -106,7 +106,7 @@
             }
         })
     }
-    
+
     function per_page(valor){
         $("#per_page").val(valor);
         load(1);
@@ -114,6 +114,7 @@
         $("#"+valor).addClass( "active" );
     }
 </script>
+
 <script>
     function eliminar(id){
         if(confirm('Esta acción  eliminará de forma permanente la empresa \n\n Desea continuar?')){
@@ -121,7 +122,7 @@
             var query=$("#q").val();
             var per_page=$("#per_page").val();
             var parametros = {"action":"ajax","page":page,"query":query,"per_page":per_page,"id":id};
-            
+
             $.ajax({
                 url:'view/ajax/empresas_ajax.php',
                 data: parametros,
@@ -139,6 +140,7 @@
         }
     }
 </script>
+
 <script>
     $( "#new_register" ).submit(function( event ) {
       $('#guardar_datos').attr("disabled", true);
@@ -204,9 +206,9 @@
             })
     }
 </script>
-<?php     
+<?php
     }else{
       require 'resources/acceso_prohibido.php';
     }
-    ob_end_flush(); 
+    ob_end_flush();
 ?>
