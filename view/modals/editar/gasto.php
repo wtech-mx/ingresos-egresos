@@ -20,29 +20,30 @@
 	}
 	else{exit;}
 ?>
-<input type="hidden" value="<?php echo $id;?>" name="id" id="id">
-
       <div class="form-row">
             <div class="form-group col-md-6">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" value="<?php echo $nombre;?>" id="nombre">
+            </div>
+            <div class="form-group col-md-6">
               <label for="personal">Personal</label>
-              <input type="text" class="form-control" value=" <?php $personal ?> " id="personal">
+              <input type="text" class="form-control" value="<?php echo $personal;?>" id="personal">
             </div>
 
             <div class="form-group col-md-6">
               <label for="gasto">Gasto/Concepto</label>
-              <input type="text" class="form-control" value=" <?php $gasto_code ?> " id="gasto">
+              <input type="text" class="form-control" value="<?php echo $concepto;?>" id="gasto">
             </div>
-
+            <div class="form-group col-md-6">
+              <label for="cantidad">Cantidad</label>
+              <input type="text" class="form-control" placeholder="<?php echo $cantidad;?>" value="<?php echo $cantidad;?>" id="cantidad">
+            </div>
       </div>
 
       <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="cantidad">Cantidad</label>
-              <input type="text" class="form-control" placeholder="<?php $cantidad ?>" value=" <?php $cantidad ?> " id="cantidad">
-            </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
               <label for="observacion">Observacion</label>
-              <input type="text" class="form-control" value=" <?php $observaciones ?> " id="observacion">
+              <input type="text" class="form-control" value="<?php echo $observaciones;?>" id="observacion">
             </div>
       </div>
 

@@ -120,7 +120,7 @@
 
 <script>
     function eliminar(id){
-        if(confirm('Esta acción  eliminará de forma permanente al gasto \n\n Desea continuar?')){
+        if(confirm('Esta acción  eliminará la informacion de gasto forma permanente al gasto \n\n Desea continuar?')){
             var page=1;
             var query=$("#q").val();
             var per_page=$("#per_page").val();

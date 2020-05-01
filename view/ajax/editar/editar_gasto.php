@@ -1,7 +1,7 @@
 <?php
     include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
     if (empty($_POST['personal'])){
-            $errors[] = "Personal está vacío.";
+            $errors[] = "personal está vacío.";
         } elseif (
             !empty($_POST['personal'])
         ){
