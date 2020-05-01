@@ -3,9 +3,10 @@
     <div class="modal-dialog">
     <form class="form-horizontal" role="form" method="post" id="update_register" name="update_register">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel"> Editar Gasto</h4>
+            <div class="modal-header modal-colored-header bg-warning">
+                <h4 class="modal-title" id="myModalLabel">Editar Gasto</h4>
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
                 <div id="loader2" class="text-center"></div>

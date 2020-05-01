@@ -23,12 +23,12 @@
 <input type="hidden" value="<?php echo $id;?>" name="id" id="id">
 
       <div class="form-row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
               <label for="personal">Personal</label>
               <input type="text" class="form-control" value=" <?php $personal ?> " id="personal">
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
               <label for="gasto">Gasto/Concepto</label>
               <input type="text" class="form-control" value=" <?php $gasto_code ?> " id="gasto">
             </div>
@@ -47,31 +47,31 @@
       </div>
 
       <div class="form-row">
-            <div class="form-group col-md-3">
+            <div class="form-group col-sm-6">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="Imagen1">
                   <label class="custom-file-label" for="Imagen1">Imagen1</label>
                 </div>
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-sm-6">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="Imagen2">
                   <label class="custom-file-label" for="Imagen2">Imagen2</label>
                 </div>
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-sm-6">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="Imagen3">
                   <label class="custom-file-label" for="Imagen3">Imagen3</label>
                 </div>
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-sm-6">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="Imagen4">
                   <label class="custom-file-label" for="Imagen4">Imagen4</label>
                 </div>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-sm-6">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="Imagen5">
                   <label class="custom-file-label" for="Imagen5">Imagen5</label>

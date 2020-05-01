@@ -1,20 +1,19 @@
 		<form  role="form" method="post" id="update_register" name="update_register">
-				  <div class="form-row">
+				    <div class="form-row">
 					    <div class="form-group col-md-4">
 					      <label for="fecha_carga">Fecha</label>
 					      <input class="form-control" type="date" value="" id="fecha_carga">
 					    </div>
-
-					 <div class="form-group col-md-4">
+					 	<div class="form-group col-md-4">
 					      <label for="personal">Personal</label>
 					      <input type="text" class="form-control" id="personal">
 					    </div>
-					 <div class="form-group col-md-4">
+					 	<div class="form-group col-md-4">
 					      <label for="concepto">Gasto/Concepto</label>
 					      <input type="text" class="form-control" id="concepto">
 					    </div>
-					 </div>
-					<div class="form-row">
+					</div>
+					 <div class="form-row">
 					    <div class="form-group col-md-6">
 					      <label for="cantidad">Cantidad</label>
 				 		  <input type="text" class="form-control" id="cantidad">
@@ -23,8 +22,8 @@
 					      <label for="observaciones">Observacion</label>
 					      <input type="text" class="form-control" id="observaciones">
 					    </div>
-				  </div>
-				  <div class="form-row">
+				     </div>
+				     <div class="form-row">
 					    <div class="form-group col-md-3">
 							<div class="custom-file">
 							  <input type="file" class="custom-file-input" id="Imagen1">
@@ -55,8 +54,14 @@
 							  <label class="custom-file-label" for="Imagen5">Imagen5</label>
 							</div>
 					    </div>
-					    <button  id="adicionar" class="btn btn-success" type="button">Adicionar a la tabla</button>
-				  </div>
+				     </div>
+					 	<div class="row">
+					 	  <div class="col-md-12">
+					      	<button  id="adicionar" class="btn btn-success" type="button">
+					      		Adicionar a la tabla
+					       </button>
+					      </div>
+					    </div>
 			</form>
 			<table class="table table-bordered table-striped" id="mytable">
 		        <thead>
@@ -77,35 +82,35 @@
 	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id");
             $valores=array();
             //while($row = mysqli_fetch_array($query)){
-            while ($reg = $rspta->fetch_object()){
-                $sw=in_array($reg->id,$valores);
-	            if ($id == $reg->gasto_code) {
+            while ($gasto = $rspta->fetch_object()){
+                $sw=in_array($gasto->id,$valores);
+	            if ($id == $gasto->gasto_code) {
                  ?>
 		        <tbody>
 		            <tr>
-		            <td><?php echo $reg->id?></td>
-	            	<td><?php echo $reg->nombre ?></td>
-	                <td><?php echo $reg->personal ?></td>
-	                <td><?php echo $reg->concepto ?></td>
-	                <td><?php echo $reg->cantidad ?></td>
-	                <td><?php echo $reg->observaciones ?></td>
-	                <td><?php echo $reg->fecha_carga; ?></td>
+		            <td><?php echo $gasto->id?></td>
+	            	<td><?php echo $gasto->nombre ?></td>
+	                <td><?php echo $gasto->personal ?></td>
+	                <td><?php echo $gasto->concepto ?></td>
+	                <td><?php echo $gasto->cantidad ?></td>
+	                <td><?php echo $gasto->observaciones ?></td>
+	                <td><?php echo $gasto->fecha_carga; ?></td>
 			        <td class="text-right">
-	                    <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $id;?>');">
+	                    <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $gasto->id;?>');">
 	                    	<i class="fa fa-edit"></i>
 	                    </button>
-		                    <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $id;?>')">
+		                    <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $gasto->id;?>')">
 		                    	<i class="fa fas fa-trash"></i>
 		                    </button>
 			        </td>
 		        </tbody>
 	<?php
-		            }
+		     }
             }
         ?>
 		    </table>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 				$(document).ready(function() {
 				$('#adicionar').click(function() {
 				  var personal = document.getElementById("personal").value;
@@ -139,4 +144,4 @@
 				    $("#adicionados").append(nFilas - 1);
 				  });
 				});
-</script>
+</script> -->
