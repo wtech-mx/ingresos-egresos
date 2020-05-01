@@ -1,9 +1,9 @@
 <?php
     include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
-    if (empty($_POST['personal'])){
+	if (empty($_POST['personal'])) {
             $errors[] = "personal está vacío.";
-        } elseif (
-            !empty($_POST['personal'])
+        }  elseif (
+        	!empty($_POST['personal'])
         ){
 		require_once ("../../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
 
@@ -12,6 +12,7 @@
         $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
         $cantidad = mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
         $observaciones = mysqli_real_escape_string($con,(strip_tags($_POST["observaciones"],ENT_QUOTES)));
+
         $id=intval($_POST['id']);
 	// UPDATE data into database
     $sql = "UPDATE gasto SET personal='".$personal."', concepto='".$concepto."', cantidad='".$cantidad."', observaciones='".$observaciones."' WHERE id='".$id."' ";

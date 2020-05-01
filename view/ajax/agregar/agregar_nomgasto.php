@@ -18,7 +18,7 @@
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
-                $messages[] = "Empresa ha sido agregado con éxito.";
+                $messages[] = "El gasto ha sido agregado con éxito.";
 				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
             } else {
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";

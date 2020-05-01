@@ -3,7 +3,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header modal-colored-header bg-success">
-                    <h4 class="modal-title" id="myModalLabel">Nombre</h4>
+                    <h4 class="modal-title" id="myModalLabel">Agregar Nombre Gasto</h4>
                     <button type="button" class="close" data-dismiss="modal"
                         aria-hidden="true">×</button>
                 </div>
