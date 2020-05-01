@@ -9,7 +9,7 @@
 	$query_validate=mysqli_query($con,"SELECT * FROM nombre_gasto WHERE id='".$id."'");
 	$count=mysqli_num_rows($query_validate);
 	if ($count==0){
-		if($delete=mysqli_query($con, "DELETE FROM nombre_gasto WHERE id='$id'")){
+		if($delete=mysqli_query($con, "DELETE FROM gasto WHERE id='$id'")){
 			$aviso="Bien hecho!";
 			$msj="Datos eliminados satisfactoriamente.";
 			$classM="alert alert-success";
@@ -73,6 +73,7 @@ if($action == 'ajax'){
 			    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 				    <div class="card-header bg-primary" id="headingOne">
 				      <h2 class="mb-0 text-white">
+				      	  <?php echo $id ?>
 				         <?php echo $nombre ?>
 				      </h2>
 				    </div>

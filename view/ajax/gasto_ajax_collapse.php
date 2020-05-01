@@ -58,16 +58,7 @@
 					    <button  id="adicionar" class="btn btn-success" type="button">Adicionar a la tabla</button>
 				  </div>
 			</form>
-
-<?php       $rspta = mysqli_query($con, "SELECT * FROM gasto");
-	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE id=$id");
-            $valores=array();
-            //while($row = mysqli_fetch_array($query)){
-            while ($reg = $rspta->fetch_object()){
-                $sw=in_array($reg->id,$valores);
-                 ?>
 			<table class="table table-bordered table-striped" id="mytable">
-				<thead></thead>
 		        <thead>
 		        	<div id="adicionados"></div>
 		            <tr>
@@ -80,10 +71,19 @@
 		                <th>Fecha Carga</th>
 		                <th>Acciones</th>
 		            </tr>
-		    </thead>
+		         </thead>
+			<?php
+      		$rspta = mysqli_query($con, "SELECT * FROM gasto");
+	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id");
+            $valores=array();
+            //while($row = mysqli_fetch_array($query)){
+            while ($reg = $rspta->fetch_object()){
+                $sw=in_array($reg->id,$valores);
+	            if ($id == $reg->gasto_code) {
+                 ?>
 		        <tbody>
 		            <tr>
-		            <td><?php echo $reg->id ?></td>
+		            <td><?php echo $reg->id?></td>
 	            	<td><?php echo $reg->nombre ?></td>
 	                <td><?php echo $reg->personal ?></td>
 	                <td><?php echo $reg->concepto ?></td>
@@ -99,10 +99,12 @@
 		                    </button>
 			        </td>
 		        </tbody>
-		    </table>
 	<?php
+		            }
             }
         ?>
+		    </table>
+
 <script type="text/javascript">
 				$(document).ready(function() {
 				$('#adicionar').click(function() {
