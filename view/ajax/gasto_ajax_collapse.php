@@ -2,64 +2,29 @@
 				    <div class="form-row">
 					    <div class="form-group col-md-4">
 					      <label for="fecha_carga">Fecha</label>
-					      <input class="form-control" type="date" value="" id="fecha_carga">
+					      <input class="form-control" type="date" value="" id="fecha_carga" name="fecha_carga">
 					    </div>
 
-					    <div class="form-group col-md-4">
-					      <label for="nombre">nombre</label>
-				 		  <input type="text" class="form-control" id="nombre">
-					    </div>
 					 	<div class="form-group col-md-4">
 					      <label for="concepto">Gasto/Concepto</label>
-					      <input type="text" class="form-control" id="concepto">
+					      <input type="text" class="form-control" id="concepto" name="concepto">
 					    </div>
 					</div>
 					 <div class="form-row">
 					 	<div class="form-group col-md-4">
 					      <label for="personal">Personal</label>
-					      <input type="text" class="form-control" id="personal">
+					      <input type="text" class="form-control" id="personal" name="personal">
 					    </div>
 					    <div class="form-group col-md-4">
 					      <label for="cantidad">Cantidad</label>
-				 		  <input type="text" class="form-control" id="cantidad">
+				 		  <input type="text" class="form-control" id="cantidad" name="cantidad">
 					    </div>
 					    <div class="form-group col-md-4">
 					      <label for="observaciones">Observacion</label>
-					      <input type="text" class="form-control" id="observaciones">
+					      <input type="text" class="form-control" id="observaciones" name="observaciones">
 					    </div>
 				     </div>
-				     <div class="form-row">
-					    <div class="form-group col-md-3">
-							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="Imagen1">
-							  <label class="custom-file-label" for="Imagen1">Imagen1</label>
-							</div>
-					    </div>
-					    <div class="form-group col-md-2">
-							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="Imagen2">
-							  <label class="custom-file-label" for="Imagen2">Imagen2</label>
-							</div>
-					    </div>
-					    <div class="form-group col-md-2">
-							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="Imagen3">
-							  <label class="custom-file-label" for="Imagen3">Imagen3</label>
-							</div>
-					    </div>
-					    <div class="form-group col-md-2">
-							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="Imagen4">
-							  <label class="custom-file-label" for="Imagen4">Imagen4</label>
-							</div>
-					    </div>
-					    <div class="form-group col-md-3">
-							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="Imagen5">
-							  <label class="custom-file-label" for="Imagen5">Imagen5</label>
-							</div>
-					    </div>
-				     </div>
+
 					 	<div class="row">
 					 	  <div class="col-md-12">
 								<button type="submit" id="guardar_datos_gasto" class="btn btn-success">Agregar</button>
@@ -71,7 +36,6 @@
 		        	<div id="adicionados"></div>
 		            <tr>
 		                <th>#ID</th>
-		                 <th>Nombre</th>
 		                <th>Personal/Gasto</th>
 		                <th>Concepto</th>
 		                <th>Cantidad</th>
@@ -92,7 +56,6 @@
 		        <tbody>
 		            <tr>
 		            <td><?php echo $gasto->id?></td>
-	            	<td><?php echo $gasto->nombre ?></td>
 	                <td><?php echo $gasto->personal ?></td>
 	                <td><?php echo $gasto->concepto ?></td>
 	                <td><?php echo $gasto->cantidad ?></td>
