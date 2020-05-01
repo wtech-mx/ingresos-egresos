@@ -1,7 +1,6 @@
 <?php
     $active4="active";
     include "resources/header.php";
-
     if ($_SESSION['gasto']==1){
 ?>
     <!--main content start-->

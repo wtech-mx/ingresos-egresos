@@ -4,7 +4,6 @@
 					      <label for="fecha_carga">Fecha</label>
 					      <input class="form-control" type="date" value="" id="fecha_carga">
 					    </div>
-
 					    <div class="form-group col-md-4">
 					      <label for="nombre">nombre</label>
 				 		  <input type="text" class="form-control" id="nombre">
