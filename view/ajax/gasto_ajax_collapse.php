@@ -1,12 +1,13 @@
-		<form  role="form" method="post" id="update_register" name="update_register">
+		<form  role="form" method="post" id="new_register_datos" name="new_register_datos">
 				    <div class="form-row">
 					    <div class="form-group col-md-4">
 					      <label for="fecha_carga">Fecha</label>
 					      <input class="form-control" type="date" value="" id="fecha_carga">
 					    </div>
-					 	<div class="form-group col-md-4">
-					      <label for="personal">Personal</label>
-					      <input type="text" class="form-control" id="personal">
+
+					    <div class="form-group col-md-4">
+					      <label for="nombre">nombre</label>
+				 		  <input type="text" class="form-control" id="nombre">
 					    </div>
 					 	<div class="form-group col-md-4">
 					      <label for="concepto">Gasto/Concepto</label>
@@ -14,11 +15,15 @@
 					    </div>
 					</div>
 					 <div class="form-row">
-					    <div class="form-group col-md-6">
+					 	<div class="form-group col-md-4">
+					      <label for="personal">Personal</label>
+					      <input type="text" class="form-control" id="personal">
+					    </div>
+					    <div class="form-group col-md-4">
 					      <label for="cantidad">Cantidad</label>
 				 		  <input type="text" class="form-control" id="cantidad">
 					    </div>
-					    <div class="form-group col-md-6">
+					    <div class="form-group col-md-4">
 					      <label for="observaciones">Observacion</label>
 					      <input type="text" class="form-control" id="observaciones">
 					    </div>
@@ -57,9 +62,7 @@
 				     </div>
 					 	<div class="row">
 					 	  <div class="col-md-12">
-					      	<button  id="adicionar" class="btn btn-success" type="button">
-					      		Adicionar a la tabla
-					       </button>
+								<button type="submit" id="guardar_datos_gasto" class="btn btn-success">Agregar</button>
 					      </div>
 					    </div>
 			</form>
@@ -104,11 +107,36 @@
 		                    </button>
 			        </td>
 		        </tbody>
+
 	<?php
 		     }
             }
         ?>
 		    </table>
+<script>
+    $( "#new_register_datos" ).submit(function( event ) {
+      $('#guardar_datos_datos').attr("disabled", true);
+     var parametros = $(this).serialize();
+         $.ajax({
+                type: "POST",
+                url: "view/ajax/agregar/agregar_gasto.php",
+                data: parametros,
+                 beforeSend: function(objeto){
+                    $("#resultados_ajax").html("Enviando...");
+                  },
+                success: function(datos){
+                $("#resultados_ajax").html(datos);
+                $('#guardar_datos').attr("disabled", false);
+                load(1);
+                window.setTimeout(function() {
+                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();});}, 5000);
+                $('#formModal').modal('hide');
+              }
+        });
+      event.preventDefault();
+    })
+</script>
 
 <!-- <script type="text/javascript">
 				$(document).ready(function() {

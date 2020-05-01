@@ -168,6 +168,7 @@
       event.preventDefault();
     })
 </script>
+
 <script>
     $( "#update_register" ).submit(function( event ) {
       $('#actualizar_datos').attr("disabled", true);
