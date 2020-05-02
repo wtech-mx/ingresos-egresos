@@ -10,7 +10,6 @@
 		if ($num==1){
 			$rw=mysqli_fetch_array($query);
         $id=$rw['id'];
-        $nombre=$rw['nombre'];
         $gasto_code=$rw['gasto_code'];
         $personal=$rw['personal'];
         $concepto=$rw['concepto'];
@@ -22,10 +21,6 @@
 ?>
 <input type="hidden" value="<?php echo $id;?>" name="id" id="id">
       <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="nombre">Nombre</label>
-              <input type="text" class="form-control" value="<?php echo $nombre;?>" id="nombre">
-            </div>
             <div class="form-group col-md-6">
               <label for="personal">Personal</label>
               <input type="text" class="form-control" id="personal" name="personal" value="<?php echo $personal;?>">
@@ -39,7 +34,7 @@
               <label for="cantidad">Cantidad</label>
               <input type="text" class="form-control" placeholder="<?php echo $cantidad;?>" value="<?php echo $cantidad;?>" id="cantidad" name="cantidad">
             </div>
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
               <label for="observaciones">Observacion</label>
               <input type="text" class="form-control" value="<?php echo $observaciones;?>" id="observaciones" name="observaciones">
             </div>

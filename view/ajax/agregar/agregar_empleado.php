@@ -42,7 +42,7 @@
 			/*&& !empty($_POST['kind'])*/
         ){
 		require_once ("../../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
-			
+
 			// escaping, additionally removing everything that could be (html/javascript-) code
             $dni = mysqli_real_escape_string($con,(strip_tags($_POST["dni"],ENT_QUOTES)));
             $nombre = mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
@@ -62,10 +62,10 @@
 			$created_at=date("Y-m-d H:i:s");
 			$imagen="view/resources/images/default.png";
 
-			//variable de los permisos 
+			//variable de los permisos
             $permisos = $_POST["permisos"];
 
-			//Write register in to database 
+			//Write register in to database
 			$sql = "INSERT INTO empleado (dni, imagen, nombre, apellido, username, email, password, domicilio, localidad, telefono, celular, registro, status, created_at) VALUES('".$dni."','".$imagen."','".$nombre."','".$apellido."','".$usuario."','".$email."','".$password."','".$domicilio."','".$localidad."','".$telefono."','".$celular."','".$registro."','".$estado."','".$created_at."');";
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
@@ -74,13 +74,11 @@
             		$numeroMaximo="select max(id) as nuevo_empleado from empleado";
             		$idusernew_sql=mysqli_query($con,$numeroMaximo);
             		$idusernew_rw=mysqli_fetch_array($idusernew_sql);
-            		$idusernew=$idusernew_rw['nuevo_empleado'];	
+            		$idusernew=$idusernew_rw['nuevo_empleado'];
             		//agrego los permisos by amner saucedo sosa
             		$num_element=0;
 					$sw=true;
-
-					while ($num_element < count($permisos))
-					{
+					while ($num_element < count($permisos)){
 						$sql_detalle = "INSERT INTO empleado_permisos(idempleado, idpermiso) VALUES($idusernew, $permisos[$num_element])";
 						mysqli_query($con,$sql_detalle) or $sw = false;
 						$num_element=$num_element + 1;
@@ -91,15 +89,15 @@
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
             }
 		} else {
-			$errors[] = "desconocido.";	
+			$errors[] = "desconocido.";
 		}
 
 if (isset($errors)){
-			
+
 			?>
 			<div class="alert alert-danger" role="alert">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
-					<strong>Error!</strong> 
+					<strong>Error!</strong>
 					<?php
 						foreach ($errors as $error) {
 								echo $error;
@@ -109,7 +107,7 @@ if (isset($errors)){
 			<?php
 			}
 			if (isset($messages)){
-				
+
 				?>
 				<div class="alert alert-success" role="alert">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -122,4 +120,4 @@ if (isset($errors)){
 				</div>
 				<?php
 			}
-?>			
+?>
