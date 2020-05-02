@@ -4,10 +4,6 @@
 					      <label for="gasto_code">Id Nombre <?php echo $id ?></label>
 					      <input class="form-control" type="number" value="<?php echo $id ?>" id="gasto_code" name="gasto_code">
 					    </div>
-					 	<div class="form-group col-md-6">
-					      <label for="concepto">Gasto/Concepto</label>
-					      <input type="text" class="form-control" id="concepto" name="concepto">
-					    </div>
 					</div>
 				    <div class="form-row">
 					    <div class="form-group col-md-6">
