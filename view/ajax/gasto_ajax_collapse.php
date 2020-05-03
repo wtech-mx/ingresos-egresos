@@ -105,8 +105,8 @@
 		            </tr>
 		         </thead>
 				<?php
-	      		$rspta = mysqli_query($con, "SELECT * FROM gasto");
-		        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id  ");
+	      		$rspta = mysqli_query($con, "SELECT * FROM gasto ORDER BY  id DESC");
+		        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id ");
 	            $valores=array();
 	            //while($row = mysqli_fetch_array($query)){
 	            while ($gasto = $rspta->fetch_object()){

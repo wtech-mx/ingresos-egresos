@@ -20,8 +20,7 @@
         	&& !empty($_POST['observaciones'])
         	&& !empty($_POST['fecha_carga'])
         ){
-		require_once ("../../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
-			// escaping, additionally removing everything that could be (html/javascript-) code
+		require_once ("../../../config/config.php");//conexipon de DB
 	        $gasto_code = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_code"],ENT_QUOTES)));
 	        $personal = mysqli_real_escape_string($con,(strip_tags($_POST["personal"],ENT_QUOTES)));
 	        $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
@@ -32,7 +31,7 @@
 			$id = $_POST["gasto_code"];
 			$sql="SELECT id from nombre_gasto LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO gasto (gasto_code, personal, concepto, cantidad, observaciones) VALUES( '".$id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."')";
+			$sql = "INSERT INTO gasto (gasto_code, personal, concepto, cantidad, observaciones,fecha_carga) VALUES( '".$id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."', '".$fecha_carga."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

@@ -234,14 +234,22 @@
                                     class="hide-menu">Gastos Corriente
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="./?view=gasto" class="sidebar-link"><span
-                                            class="hide-menu"></span></a></li>
 
-                                <li class="sidebar-item"><a href="./?view=gasto" class="sidebar-link"><span
-                                            class="hide-menu"></span></a></li>
+                            <?php
+                                $query=mysqli_query($con,"SELECT * from meses");
+                                while ($row=mysqli_fetch_array($query)) {
+                                    $mes=$row['mes'];
+                                    $src_gasto=$row['src_gasto'];
+                             ?>
+                                <li class="sidebar-item">
+                                    <a href="<?php echo $src_gasto ?>" class="sidebar-link">
+                                        <span class="hide-menu"><?php echo $mes ?></span>
+                                    </a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </li>
-                         <?php } ?>
+                        <?php  } ?>
 
                         <?php if ($_SESSION['Fideicomiso']==1) { ?>
                        <li class="sidebar-item <?php if(isset($active12)){echo $active12;}?>">
