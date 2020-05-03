@@ -30,21 +30,24 @@
 			$fecha_carga=date("Y-m-d H:i:s");
 
 			$id = $_POST["gasto_code"];
-			$sql="SELECT id from nombre_gasto where id='".$id."'";
+			$sql="SELECT id from nombre_gasto LIMIT 1 where id='".$id."'";
 			//Write register in to database
 			$sql = "INSERT INTO gasto (gasto_code, personal, concepto, cantidad, observaciones) VALUES( '".$id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."')";
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
                 $messages[] = "Los Datos de gasto ha sido agregado con éxito.";
+                header("Location: http://localhost/ingresos-egresos/?view=gasto");
 				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
             } else {
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
-                var_dump($sql);
+                header("Location: http://localhost/ingresos-egresos/?view=gasto");
             }
-		} else {
+		}
+		else {
 			$errors[] = "desconocido.";
 		}
+		header("Location: http://localhost/ingresos-egresos/?view=gasto");
 		if (isset($errors)){
 			?>
 			<div class="alert alert-danger" role="alert">

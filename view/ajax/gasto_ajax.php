@@ -86,6 +86,7 @@ if($action == 'ajax'){
 			    </div>
 		     </div>
 		</div>
+
         <?php }?>
         <tfoot>
             <tr>
@@ -107,3 +108,4 @@ if($action == 'ajax'){
 	}
 }
 ?>
+

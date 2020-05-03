@@ -1,5 +1,29 @@
-		<form  role="form" method="post" id="new_register_datos" name="new_register_datos">
-				    <div class="form-row">
+<!-- <script>
+    $( "#new_register_datos" ).submit(function( event ) {
+      $('#guardar_datos_gasto').attr("disabled", true);
+     var parametros = $(this).serialize();
+         $.ajax({
+                type: "POST",
+                url: "view/ajax/agregar/agregar_gasto.php",
+                data: parametros,
+                 beforeSend: function(objeto){
+                    $("#resultados_ajax").html("Enviando...");
+                  },
+                success: function(datos){
+                $("#resultados_ajax").html(datos);
+                $('#guardar_datos_gasto').attr("disabled", false);
+                load(1);
+                window.setTimeout(function() {
+                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();});}, 5000);
+                $('#formModal').modal('hide');
+              }
+        });
+      event.preventDefault();
+    })
+</script> -->
+		 <form  role="form" method="post" action="view/ajax/agregar/agregar_gasto.php">
+				    <div class="form-row" style="display: none;">
 					    <div class="form-group col-md-6">
 					      <label for="gasto_code">Id Nombre <?php echo $id ?></label>
 					      <input class="form-control" type="number" value="<?php echo $id ?>" id="gasto_code" name="gasto_code">
@@ -63,11 +87,10 @@
 					</div>
 					 	<div class="row">
 					 	  <div class="col-md-12">
-								<button type="submit" id="guardar_datos_gasto" class="btn btn-success">Agregar</button>
+								<button type="submit" id="guardar_datos_gasto" name="guardar_datos_gasto" class="btn btn-success">Agregar</button>
 					      </div>
 					    </div>
-
-			</form>
+		 </form>
 			<table class="table table-bordered table-striped" id="mytable">
 		        <thead>
 		        	<div id="adicionados"></div>
@@ -81,15 +104,15 @@
 		                <th>Acciones</th>
 		            </tr>
 		         </thead>
-			<?php
-      		$rspta = mysqli_query($con, "SELECT * FROM gasto");
-	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id");
-            $valores=array();
-            //while($row = mysqli_fetch_array($query)){
-            while ($gasto = $rspta->fetch_object()){
-                $sw=in_array($gasto->id,$valores);
-	            if ($id == $gasto->gasto_code) {
-                 ?>
+				<?php
+	      		$rspta = mysqli_query($con, "SELECT * FROM gasto");
+		        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id  ");
+	            $valores=array();
+	            //while($row = mysqli_fetch_array($query)){
+	            while ($gasto = $rspta->fetch_object()){
+	                $sw=in_array($gasto->id,$valores);
+		            if ($id == $gasto->gasto_code) {
+	                 ?>
 		        <tbody>
 		            <tr>
 		            <td><?php echo $gasto->id?></td>
@@ -107,69 +130,12 @@
 		                    </button>
 			        </td>
 		        </tbody>
+					<?php
+						     }else{
 
-	<?php
-		     }
-            }
-        ?>
+						     }
+				            }
+
+				        ?>
 		    </table>
-<script>
-    $( "#new_register_datos" ).submit(function( event ) {
-      $('#guardar_datos_datos').attr("disabled", true);
-     var parametros = $(this).serialize();
-         $.ajax({
-                type: "POST",
-                url: "view/ajax/agregar/agregar_gasto.php",
-                data: parametros,
-                 beforeSend: function(objeto){
-                    $("#resultados_ajax").html("Enviando...");
-                  },
-                success: function(datos){
-                $("#resultados_ajax").html(datos);
-                $('#guardar_datos').attr("disabled", false);
-                load(1);
-                window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove();});}, 5000);
-                $('#formModal').modal('hide');
-              }
-        });
-      event.preventDefault();
-    })
-</script>
 
-<!-- <script type="text/javascript">
-				$(document).ready(function() {
-				$('#adicionar').click(function() {
-				  var personal = document.getElementById("personal").value;
-				  var concepto = document.getElementById("concepto").value;
-				  var cantidad = document.getElementById("cantidad").value;
-				  var observaciones = document.getElementById("observaciones").value;
-				  var fecha_carga = document.getElementById("fecha_carga").value;
-				  var i = 1; //contador para asignar id al boton que borrara la fila
-				  var fila = '<tr id="row' + i + '"><td>' + personal + '</td><td>' + concepto + '</td><td>' + cantidad + '</td><td>' + observaciones +'</td><td>' + fecha_carga +'</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Quitar</button></td></tr>'; //esto seria lo que contendria la fila
-
-				  i++;
-
-				  $('#mytable tr:first').after(fila);
-				    $("#adicionados").text(""); //esta instruccion limpia el div adicioandos para que no se vayan acumulando
-				    var nFilas = $("#mytable tr").length;
-				    $("#adicionados").append(nFilas - 1);
-				    //le resto 1 para no contar la fila del header
-				    document.getElementById("fecha_carga").value = "";
-				    document.getElementById("personal").value ="";
-				    document.getElementById("concepto").value = "";
-				    document.getElementById("cantidad").focus();
-				    document.getElementById("observaciones").focus();
-				  });
-				$(document).on('click', '.btn_remove', function() {
-				  var button_id = $(this).attr("id");
-				    //cuando da click obtenemos el id del boton
-				    $('#row' + button_id + '').remove(); //borra la fila
-				    //limpia el para que vuelva a contar las filas de la tabla
-				    $("#adicionados").text("");
-				    var nFilas = $("#mytable tr").length;
-				    $("#adicionados").append(nFilas - 1);
-				  });
-				});
-</script> -->
