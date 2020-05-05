@@ -66,10 +66,10 @@ if($action == 'ajax'){
 			while($row = mysqli_fetch_array($query)){
 				$id=$row['id'];
 				$nombre=$row['nombre'];
-				$id_mes_nomg=$row['id_mes_nomg'];
+				$id_mes_nomfide=$row['id_mes_nomfide'];
 				$finales++;
 
-				if ($id_mes_nomg == 1) {
+				if ($id_mes_nomfide == 1) {
 
 		?>
 		<div class="accordion" id="accordionExample">

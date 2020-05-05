@@ -127,7 +127,7 @@
             var parametros = {"action":"ajax","page":page,"query":query,"per_page":per_page,"id":id};
 
             $.ajax({
-                url:'view/ajax/gasto_ajax.php',
+                url:'view/ajax/enero_egresos_fideicomiso_ajax.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -150,7 +150,7 @@
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/agregar/agregar_nomgasto.php",
+                url: "view/ajax/agregar/agregar_egresos_nombre_fideicomiso.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");

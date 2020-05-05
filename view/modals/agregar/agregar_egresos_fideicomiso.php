@@ -19,9 +19,9 @@
                     </div>
                     <div class="modal-body" style="display: none;">
                         <div class="form-group">
-                            <label for="id_mes_nomg" class="col-sm-2 control-label">id_mes_nomg:</label>
+                            <label for="id_mes_nomfide" class="col-sm-2 control-label">id_mes_nomfide:</label>
                             <div class="col-sm-12">
-                                <input type="text" required class="form-control" value="<?php echo $mes ?>" id="id_mes_nomg" name="id_mes_nomg" placeholder="id_mes_nomg: ">
+                                <input type="text" required class="form-control" value="<?php echo $mes ?>" id="id_mes_nomfide" name="id_mes_nomfide" placeholder="id_mes_nomfide: ">
                             </div>
                         </div>
                     </div>
