@@ -252,20 +252,34 @@
                         <?php  } ?>
 
                         <?php if ($_SESSION['Fideicomiso']==1) { ?>
-                       <li class="sidebar-item <?php if(isset($active12)){echo $active12;}?>">
-                        <a class="sidebar-link has-arrow" href="./?view=Fideicomiso"
+                       <li class="sidebar-item <?php if(isset($active11)){echo $active11;}?>">
+                        <a class="sidebar-link has-arrow" href="./?view=gasto"
                                 aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
-                                    class="hide-menu">Fideicomisos
+                                    class="hide-menu">Fideicomiso
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="./?view=Fideicomiso" class="sidebar-link"><span
-                                            class="hide-menu"></span></a></li>
 
-                                <li class="sidebar-item"><a href="./?view=Fideicomiso" class="sidebar-link"><span
-                                            class="hide-menu"></span></a></li>
+                            <?php
+                                $query=mysqli_query($con,"SELECT * from meses");
+                                while ($row=mysqli_fetch_array($query)) {
+                                    $mes=$row['mes'];
+                                    $src_ingresos=$row['src_ingresos'];
+                                    $src_egresos=$row['src_egresos'];
+                             ?>
+                                <li class="sidebar-item"> <a class="has-arrow sidebar-link" href="javascript:void(0)"
+                                        aria-expanded="false"><span class="hide-menu"><?php echo $mes ?></span></a>
+                                    <ul aria-expanded="false" class="collapse second-level base-level-line">
+                                        <li class="sidebar-item"><a href="<?php echo $src_ingresos ?>" class="sidebar-link"><span
+                                                    class="hide-menu"> Ingresos</span></a></li>
+                                        <li class="sidebar-item"><a href="<?php echo $src_egresos ?>" class="sidebar-link"><span
+                                                    class="hide-menu"> Egresos</span></a></li>
+
+                                    </ul>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </li>
-                         <?php } ?>
+                        <?php  } ?>
 
                         <?php if ($_SESSION['Exedentes']==1) { ?>
                        <li class="sidebar-item <?php if(isset($active13)){echo $active13;}?>">

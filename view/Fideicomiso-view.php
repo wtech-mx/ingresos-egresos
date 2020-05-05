@@ -1,8 +1,8 @@
 <?php
-    $active12="active";
+    $active4="active";
     include "resources/header.php";
-
-    if ($_SESSION['Fideicomiso']==1){
+    if ($_SESSION['gasto']==1){
+    $mes = 1;
 ?>
     <!--main content start-->
     <section class="main-content-wrapper">
@@ -10,12 +10,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-3 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Fideicomiso</h4>
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Gasto</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="./?view=Fideicomiso" class="text-muted">Dashboard</a></li>
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">Fideicomiso</li>
+                                    <li class="breadcrumb-item"><a href="./?view=gasto" class="text-muted">Dashboard</a></li>
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">gasto</li>
                                 </ol>
                             </nav>
                         </div>
@@ -53,8 +53,8 @@
                 <div class="col-md-offset-10">
                     <!-- modals -->
                         <?php
-                            include "modals/agregar/agregar_fideicomiso.php";
-                            include "modals/editar/editar_fideicomiso.php";
+                            include "modals/agregar/agregar_gasto.php";
+                            include "modals/editar/editar_gasto.php";
                         ?>
                     <!-- /end modals -->
                     <input type='hidden' id='per_page' value='15'>
@@ -66,7 +66,7 @@
                 <div class="col-12 p-3">
                     <div class="card panel panel-default p-2">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Datos de los fideicomisos</h3>
+                            <h3 class="panel-title">Datos de los gastos</h3>
                             <div class="actions pull-right">
                                 <i class="fa fa-chevron-down"></i>
                                 <i class="fa fa-times"></i>
@@ -98,7 +98,7 @@
         var parametros = {"action":"ajax","page":page,'query':query,'per_page':per_page};
         $("#loader").fadeIn('slow');
         $.ajax({
-            url:'view/ajax/fideicomiso_ajax.php',
+            url:'view/ajax/gasto_ajax.php',
             data: parametros,
              beforeSend: function(objeto){
             $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -117,16 +117,17 @@
         $("#"+valor).addClass( "active" );
     }
 </script>
+
 <script>
     function eliminar(id){
-        if(confirm('Esta acción  eliminará de forma permanente al fideicomiso \n\n Desea continuar?')){
+        if(confirm('Esta acción  eliminará la informacion de gasto forma permanente al gasto \n\n Desea continuar?')){
             var page=1;
             var query=$("#q").val();
             var per_page=$("#per_page").val();
             var parametros = {"action":"ajax","page":page,"query":query,"per_page":per_page,"id":id};
 
             $.ajax({
-                url:'view/ajax/fideicomiso_ajax.php',
+                url:'view/ajax/gasto_ajax.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -142,13 +143,14 @@
         }
     }
 </script>
+
 <script>
     $( "#new_register" ).submit(function( event ) {
       $('#guardar_datos').attr("disabled", true);
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/agregar/agregar_fideicomiso.php",
+                url: "view/ajax/agregar/agregar_nomgasto.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");
@@ -166,13 +168,14 @@
       event.preventDefault();
     })
 </script>
+
 <script>
     $( "#update_register" ).submit(function( event ) {
       $('#actualizar_datos').attr("disabled", true);
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/editar/editar_fideicomiso.php",
+                url: "view/ajax/editar/editar_gasto.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");
@@ -194,7 +197,7 @@
     function editar(id){
         var parametros = {"action":"ajax","id":id};
         $.ajax({
-                url:'view/modals/editar/fideicomiso.php',
+                url:'view/modals/editar/gasto.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader2").html("<img src='./assets/img/ajax-loader.gif'>");

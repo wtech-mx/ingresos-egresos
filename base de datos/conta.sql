@@ -102,6 +102,51 @@ INSERT IGNORE INTO `empleado_permisos` (`idempleado_permiso`, `idempleado`, `idp
 	(34, 2, 11);
 /*!40000 ALTER TABLE `empleado_permisos` ENABLE KEYS */;
 
+-- Volcando estructura para tabla conta.fideicomisos_egresos
+CREATE TABLE IF NOT EXISTS `fideicomisos_egresos` (
+  `id` int(11) NOT NULL,
+  `gasto_fide_egresos` int(11) DEFAULT NULL,
+  `mes_id` int(11) DEFAULT NULL,
+  `egreso` varchar(50) DEFAULT NULL,
+  `proveedor` varchar(50) DEFAULT NULL,
+  `numfact` int(11) DEFAULT NULL,
+  `foto1` varchar(50) DEFAULT NULL,
+  `foto2` varchar(50) DEFAULT NULL,
+  `foto3` varchar(50) DEFAULT NULL,
+  `foto4` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `gasto_fide_egresos` (`gasto_fide_egresos`),
+  KEY `mes_id` (`mes_id`),
+  CONSTRAINT `FK1_name_fide_egresos` FOREIGN KEY (`gasto_fide_egresos`) REFERENCES `nombre_fideicomisos` (`id`),
+  CONSTRAINT `FK2_mes_fide_egresos` FOREIGN KEY (`mes_id`) REFERENCES `meses` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla conta.fideicomisos_egresos: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `fideicomisos_egresos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fideicomisos_egresos` ENABLE KEYS */;
+
+-- Volcando estructura para tabla conta.fideicomiso_ingresos
+CREATE TABLE IF NOT EXISTS `fideicomiso_ingresos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gasto_fide` int(11) NOT NULL,
+  `mes_id` int(11) NOT NULL,
+  `ingresos` varchar(50) NOT NULL,
+  `servicio` varchar(50) NOT NULL,
+  `apartado` int(11) NOT NULL,
+  `pagodoc` float NOT NULL,
+  `subtotal` float NOT NULL,
+  `total` float NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `gasto_fide` (`gasto_fide`),
+  KEY `mes_id` (`mes_id`),
+  CONSTRAINT `FK1_name_fide` FOREIGN KEY (`gasto_fide`) REFERENCES `nombre_fideicomisos` (`id`),
+  CONSTRAINT `FK2_mes_fide` FOREIGN KEY (`mes_id`) REFERENCES `meses` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla conta.fideicomiso_ingresos: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `fideicomiso_ingresos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fideicomiso_ingresos` ENABLE KEYS */;
+
 -- Volcando estructura para tabla conta.gasto
 CREATE TABLE IF NOT EXISTS `gasto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -122,10 +167,54 @@ CREATE TABLE IF NOT EXISTS `gasto` (
   KEY `mes_id` (`mes_id`),
   CONSTRAINT `FK1_name_datos` FOREIGN KEY (`gasto_code`) REFERENCES `nombre_gasto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK2_mes` FOREIGN KEY (`mes_id`) REFERENCES `meses` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.gasto: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla conta.gasto: ~43 rows (aproximadamente)
 /*!40000 ALTER TABLE `gasto` DISABLE KEYS */;
+INSERT IGNORE INTO `gasto` (`id`, `gasto_code`, `mes_id`, `personal`, `concepto`, `cantidad`, `observaciones`, `fecha_carga`, `foto1`, `foto2`, `foto3`, `foto4`, `foto5`) VALUES
+	(8, 57, 2, 'cheila', 'becas', 2, '1212asa', '2020-05-05 19:03:14', '', '', '', '', ''),
+	(9, 58, 2, 'abril1', 'abril', 2, 'Un exelente Prodfesor', '2020-05-05 19:03:52', '', '', '', '', ''),
+	(10, 52, 1, 'enere', 'enere', 0, 'enere', '2020-05-05 19:05:03', '', '', '', '', ''),
+	(11, 56, 1, 'enere11', 'enere11', 0, 'enere11', '2020-05-05 19:05:35', '', '', '', '', ''),
+	(13, 59, 2, '  pancho', '12123', 56, 'no lava', '2020-05-05 19:27:42', '', '', '', '', ''),
+	(14, 59, 2, '  pancho', '12123', 2, 'no lava', '2020-05-05 19:32:42', '', '', '', '', ''),
+	(15, 59, 2, '  pancho', '12123', 5, '3131', '2020-05-05 19:33:11', '', '', '', '', ''),
+	(16, 67, 2, 'lalo', '12123', 5, '1212asa', '2020-05-05 19:34:31', '', '', '', '', ''),
+	(17, 58, 2, 'alumnos', 'adeudos', 2, 'no estuduia', '2020-05-05 19:38:48', '', '', '', '', ''),
+	(18, 58, 2, 'docentes', 'becas', 56, 'Un exelente Prodfesor', '2020-05-05 19:39:21', '', '', '', '', ''),
+	(19, 58, 2, 'docentes', 'becas', 5, '3131', '2020-05-05 19:41:02', '', '', '', '', ''),
+	(20, 62, 2, 'alumnos', 'adeudos', 12515, '1212asa', '2020-05-05 19:41:36', '', '', '', '', ''),
+	(21, 62, 2, 'alumnos', 'adeudos', 15123, 'no lava', '2020-05-05 19:42:08', '', '', '', '', ''),
+	(22, 62, 2, 'lalo', 'becas', 56, 'no estuduia', '2020-05-05 19:42:37', '', '', '', '', ''),
+	(23, 62, 2, 'docentes', 'enere11', 56, '3131', '2020-05-05 19:43:04', '', '', '', '', ''),
+	(24, 58, 2, 'Adauto Ortiz Romero-2', '12123', 56, 'note el cambio en la tabla', '2020-05-05 19:46:01', '', '', '', '', ''),
+	(25, 55, 2, 'lalo', 'becas', 123, 'note el cambio en la tabla', '2020-05-05 19:46:16', '', '', '', '', ''),
+	(26, 67, 2, '  pancho', '12123', 56, '3131', '2020-05-05 19:47:08', '', '', '', '', ''),
+	(27, 66, 2, '  pancho', 'enere11', 15123, '3131', '2020-05-05 19:47:28', '', '', '', '', ''),
+	(28, 61, 2, 'lalo', '12123', 56, '1212asa', '2020-05-05 19:48:40', '', '', '', '', ''),
+	(29, 52, 1, 'Adauto Ortiz Romero-2', 'enere11', 5, '3131', '2020-05-05 19:49:32', '', '', '', '', ''),
+	(30, 58, 2, 'alumnos', 'salario', 56, '3131', '2020-05-05 19:50:13', '', '', '', '', ''),
+	(31, 59, 2, 'cheila', 'becas', 56, '3131', '2020-05-05 19:51:32', '', '', '', '', ''),
+	(32, 59, 2, 'cheila', 'becas', 56, '3131', '2020-05-05 19:52:09', '', '', '', '', ''),
+	(33, 62, 2, 'cheila', 'adeudos', 15123, 'no estuduia', '2020-05-05 19:52:21', '', '', '', '', ''),
+	(34, 66, 2, 'docentes', 'adeudos', 15123, 'no estuduia', '2020-05-05 19:52:44', '', '', '', '', ''),
+	(35, 66, 2, 'docentes', 'adeudos', 15123, 'no estuduia', '2020-05-05 19:52:54', '', '', '', '', ''),
+	(36, 54, 2, 'docentes', 'enere11', 15123, 'Un exelente Prodfesor', '2020-05-05 19:55:22', '', '', '', '', ''),
+	(37, 52, 1, 'cheila', 'enere11', 56, 'no estuduia', '2020-05-05 19:56:17', '', '', '', '', ''),
+	(38, 60, 2, '  pancho', 'adeudos', 15123, 'note el cambio en la tabla', '2020-05-05 19:56:31', '', '', '', '', ''),
+	(39, 66, 2, 'cheila', 'becas', 56, 'Un exelente Prodfesor', '2020-05-05 19:58:47', '', '', '', '', ''),
+	(40, 56, 1, '  pancho', 'becas', 56, 'no estuduia', '2020-05-05 19:59:25', '', '', '', '', ''),
+	(41, 56, 1, '  pancho', 'becas', 56, 'no estuduia', '2020-05-05 19:59:37', '', '', '', '', ''),
+	(42, 56, 1, '  pancho', 'becas', 56, 'no estuduia', '2020-05-05 19:59:49', '', '', '', '', ''),
+	(43, 56, 1, '  pancho', 'becas', 56, 'no estuduia', '2020-05-05 20:00:07', '', '', '', '', ''),
+	(44, 56, 1, '  pancho', 'becas', 56, 'no estuduia', '2020-05-05 20:00:46', '', '', '', '', ''),
+	(45, 56, 1, '  pancho', 'becas', 56, 'no estuduia', '2020-05-05 20:00:52', '', '', '', '', ''),
+	(46, 66, 2, 'Adauto Ortiz Romero-2', 'becas', 56, 'note el cambio en la tabla', '2020-05-05 20:01:03', '', '', '', '', ''),
+	(47, 66, 2, 'Adauto Ortiz Romero-2', 'becas', 56, 'note el cambio en la tabla', '2020-05-05 20:01:22', '', '', '', '', ''),
+	(48, 66, 2, 'Adauto Ortiz Romero-2', 'becas', 56, 'note el cambio en la tabla', '2020-05-05 20:01:31', '', '', '', '', ''),
+	(49, 58, 2, 'docentes', 'salario', 12515, 'no estuduia', '2020-05-05 20:01:45', '', '', '', '', ''),
+	(50, 60, 2, 'cheila', 'adeudos', 56, 'no estuduia', '2020-05-05 20:02:04', '', '', '', '', ''),
+	(51, 67, 2, 'docentes', 'becas', 56, 'no lava', '2020-05-05 20:02:31', '', '', '', '', '');
 /*!40000 ALTER TABLE `gasto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla conta.meses
@@ -133,25 +222,41 @@ CREATE TABLE IF NOT EXISTS `meses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mes` varchar(50) DEFAULT NULL,
   `src_gasto` varchar(50) DEFAULT NULL,
+  `src_ingresos` varchar(50) DEFAULT NULL,
+  `src_egresos` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla conta.meses: ~12 rows (aproximadamente)
 /*!40000 ALTER TABLE `meses` DISABLE KEYS */;
-INSERT IGNORE INTO `meses` (`id`, `mes`, `src_gasto`) VALUES
-	(1, 'enero', './?view=gasto'),
-	(2, 'febrero', './?view=febrero_gasto'),
-	(3, 'marzo', './?view=marzo_gasto'),
-	(4, 'abril', './?view=abril_gasto'),
-	(5, 'mayo', './?view=mayo_gasto'),
-	(6, 'junio', './?view=junio_gasto'),
-	(7, 'julio', './?view=julio_gasto'),
-	(8, 'agosto', './?view=agostp_gasto'),
-	(9, 'septiembre', './?view=sept_gasto'),
-	(10, 'octubre', './?view=oct_gasto'),
-	(11, 'noviembre', './?view=nov_gasto'),
-	(12, 'diciembre', './?view=diciembre_gasto');
+INSERT IGNORE INTO `meses` (`id`, `mes`, `src_gasto`, `src_ingresos`, `src_egresos`) VALUES
+	(1, 'enero', './?view=gasto', './?view=enero_ingresos_fideicomiso', './?view=enero_egresos_fideicomiso'),
+	(2, 'febrero', './?view=febrero_gasto', './?view=febrero_ingresos_fideicomiso', './?view=febrero_egresos_fideicomiso'),
+	(3, 'marzo', './?view=marzo_gasto', './?view=marzo_ingresos_fideicomiso', './?view=marzo_egresos_fideicomiso'),
+	(4, 'abril', './?view=abril_gasto', './?view=abril_ingresos_fideicomiso', './?view=abril_egresos_fideicomiso'),
+	(5, 'mayo', './?view=mayo_gasto', './?view=mayo_ingresos_fideicomiso', './?view=mayo_egresos_fideicomiso'),
+	(6, 'junio', './?view=junio_gasto', './?view=junio_ingresos_fideicomiso', './?view=junio_egresos_fideicomiso'),
+	(7, 'julio', './?view=julio_gasto', './?view=julio_ingresos_fideicomiso', './?view=julio_egresos_fideicomiso'),
+	(8, 'agosto', './?view=agosto_gasto', './?view=agosto_ingresos_fideicomiso', './?view=agosto_egresos_fideicomiso'),
+	(9, 'septiembre', './?view=sept_gasto', './?view=sept_ingresos_fideicomiso', './?view=sept_egresos_fideicomiso'),
+	(10, 'octubre', './?view=oct_gasto', './?view=oct_ingresos_fideicomiso', './?view=oct_egresos_fideicomiso'),
+	(11, 'noviembre', './?view=nov_gasto', './?view=nov_ingresos_fideicomiso', './?view=nov_egresos_fideicomiso'),
+	(12, 'diciembre', './?view=diciembre_gasto', './?view=diciembre_ingresos_fideicomiso', './?view=diciembre_egresos_fideicomiso');
 /*!40000 ALTER TABLE `meses` ENABLE KEYS */;
+
+-- Volcando estructura para tabla conta.nombre_fideicomisos
+CREATE TABLE IF NOT EXISTS `nombre_fideicomisos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  `id_mes_nomfide` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_mes_nomfide` (`id_mes_nomfide`),
+  CONSTRAINT `FK1_mes_nomfide` FOREIGN KEY (`id_mes_nomfide`) REFERENCES `meses` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla conta.nombre_fideicomisos: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `nombre_fideicomisos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `nombre_fideicomisos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla conta.nombre_gasto
 CREATE TABLE IF NOT EXISTS `nombre_gasto` (
@@ -161,12 +266,25 @@ CREATE TABLE IF NOT EXISTS `nombre_gasto` (
   PRIMARY KEY (`id`),
   KEY `id_mes_nomg` (`id_mes_nomg`),
   CONSTRAINT `FK1_nameg_mes` FOREIGN KEY (`id_mes_nomg`) REFERENCES `meses` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.nombre_gasto: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla conta.nombre_gasto: ~14 rows (aproximadamente)
 /*!40000 ALTER TABLE `nombre_gasto` DISABLE KEYS */;
 INSERT IGNORE INTO `nombre_gasto` (`id`, `nombre`, `id_mes_nomg`) VALUES
-	(52, 'PRUEBA', 1);
+	(52, 'PRUEBA', 1),
+	(54, 'Grupo Televisa', 2),
+	(55, 'PRUEBA', 2),
+	(56, 'caca', 1),
+	(57, 'marzo', 3),
+	(58, 'abril', 4),
+	(59, 'may', 5),
+	(60, 'junio', 6),
+	(61, 'julio', 7),
+	(62, 'agost', 8),
+	(64, 'sept', 9),
+	(66, 'octu', 10),
+	(67, 'nov', 11),
+	(68, 'dici', 12);
 /*!40000 ALTER TABLE `nombre_gasto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla conta.permisos
