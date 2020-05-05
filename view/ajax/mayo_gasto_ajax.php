@@ -68,7 +68,7 @@ if($action == 'ajax'){
 				$nombre=$row['nombre'];
 				$id_mes_nomg=$row['id_mes_nomg'];
 				$finales++;
-				if ($id_mes_nomg == 2) {
+				if ($id_mes_nomg == 5) {
 
 		?>
 		<div class="accordion" id="accordionExample">
@@ -84,7 +84,7 @@ if($action == 'ajax'){
 
 			    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 			        <div class="card-body">
-						<?php include("febrero_gasto_ajax_collapse.php") ?>
+						<?php include("mayo_gasto_ajax_collapse.php") ?>
 				    </div>
 			    </div>
 		     </div>

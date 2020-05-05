@@ -2,7 +2,7 @@
     $active4="active";
     include "resources/header.php";
     if ($_SESSION['gasto']==1){
-    $mes = 1;
+    $mes = 12;
 ?>
     <!--main content start-->
     <section class="main-content-wrapper">
@@ -98,7 +98,7 @@
         var parametros = {"action":"ajax","page":page,'query':query,'per_page':per_page};
         $("#loader").fadeIn('slow');
         $.ajax({
-            url:'view/ajax/gasto_ajax.php',
+            url:'view/ajax/noviembre_gasto_ajax.php',
             data: parametros,
              beforeSend: function(objeto){
             $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -127,7 +127,7 @@
             var parametros = {"action":"ajax","page":page,"query":query,"per_page":per_page,"id":id};
 
             $.ajax({
-                url:'view/ajax/gasto_ajax.php',
+                url:'view/ajax/diciembre_ajax.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");

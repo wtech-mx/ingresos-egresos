@@ -2,6 +2,7 @@
     $active4="active";
     include "resources/header.php";
     if ($_SESSION['gasto']==1){
+    $mes = 2;
 ?>
     <!--main content start-->
     <section class="main-content-wrapper">
