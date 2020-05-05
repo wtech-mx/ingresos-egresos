@@ -6,10 +6,10 @@
 	$id=$_REQUEST["id"];
 	$id=intval($id);
 
-	$query_validate=mysqli_query($con,"SELECT * FROM nombre_gasto WHERE id='".$id."'");
+	$query_validate=mysqli_query($con,"SELECT * FROM nombre_fideicomisos WHERE id='".$id."'");
 	$count=mysqli_num_rows($query_validate);
 	if ($count==0){
-		if($delete=mysqli_query($con, "DELETE FROM gasto WHERE id='$id'")){
+		if($delete=mysqli_query($con, "DELETE FROM fideicomisos_egresos WHERE id='$id'")){
 			$aviso="Bien hecho!";
 			$msj="Datos eliminados satisfactoriamente.";
 			$classM="alert alert-success";
@@ -31,7 +31,7 @@
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if($action == 'ajax'){
 	$query = mysqli_real_escape_string($con,(strip_tags($_REQUEST['query'], ENT_QUOTES)));
-	$tables="nombre_gasto";
+	$tables="nombre_fideicomisos";
 	$campos="*";
 	$sWhere=" nombre LIKE '%".$query."%'";
 	include 'pagination.php'; //include pagination file
@@ -68,7 +68,7 @@ if($action == 'ajax'){
 				$nombre=$row['nombre'];
 				$id_mes_nomg=$row['id_mes_nomg'];
 				$finales++;
-				if ($id_mes_nomg == 12) {
+				if ($id_mes_nomg == 8) {
 
 		?>
 		<div class="accordion" id="accordionExample">

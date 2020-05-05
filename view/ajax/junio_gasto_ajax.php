@@ -76,7 +76,6 @@ if($action == 'ajax'){
 			    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 				    <div class="card-header bg-primary" id="headingOne">
 				      <h2 class="mb-0 text-white">
-				      	  <?php echo $id ?>
 				         <?php echo $nombre ?>
 				      </h2>
 				    </div>
@@ -84,7 +83,7 @@ if($action == 'ajax'){
 
 			    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 			        <div class="card-body">
-						<?php include("junio_gasto_ajax_collapse.php") ?>
+						<?php include("gasto_ajax_collapse.php") ?>
 				    </div>
 			    </div>
 		     </div>
