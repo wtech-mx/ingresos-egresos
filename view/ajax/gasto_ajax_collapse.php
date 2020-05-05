@@ -62,32 +62,32 @@
 				     <div class="form-row">
 					    <div class="form-group col-md-3">
 							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="Imagen1">
-							  <label class="custom-file-label" for="Imagen1">Imagen1</label>
+							<label class="custom-file-label" for="imagefile1">Foto 1</label>
+							<input type="file" name="imagefile1" class="form-control" id="imagefile1" onchange="upload_foto1(<?php echo $id_gasto; ?>);">
 							</div>
 					    </div>
 					    <div class="form-group col-md-2">
 							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="Imagen2">
-							  <label class="custom-file-label" for="Imagen2">Imagen2</label>
+							  <input type="file" class="custom-file-input" id="foto2">
+							  <label class="custom-file-label" for="foto2">foto2</label>
 							</div>
 					    </div>
 					    <div class="form-group col-md-2">
 							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="Imagen3">
-							  <label class="custom-file-label" for="Imagen3">Imagen3</label>
+							  <input type="file" class="custom-file-input" id="foto3">
+							  <label class="custom-file-label" for="foto3">foto3</label>
 							</div>
 					    </div>
 					    <div class="form-group col-md-2">
 							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="Imagen4">
-							  <label class="custom-file-label" for="Imagen4">Imagen4</label>
+							  <input type="file" class="custom-file-input" id="foto4">
+							  <label class="custom-file-label" for="foto4">foto4</label>
 							</div>
 					    </div>
 					    <div class="form-group col-md-3">
 							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="Imagen5">
-							  <label class="custom-file-label" for="Imagen5">Imagen5</label>
+							  <input type="file" class="custom-file-input" id="foto5">
+							  <label class="custom-file-label" for="foto5">foto5</label>
 							</div>
 						</div>
 					</div>
@@ -128,12 +128,17 @@
                 <td><?php echo $gasto->observaciones ?></td>
                 <td><?php echo $gasto->fecha_carga; ?></td>
 		        <td class="text-right">
+
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $gasto->id;?>');">
                     	<i class="fa fa-edit"></i>
                     </button>
-	                    <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $gasto->id;?>')">
-	                    	<i class="fa fas fa-trash"></i>
-	                    </button>
+
+                    <button type="button" class="btn btn-info btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $gasto->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i></button>
+
+                    <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $gasto->id;?>')">
+                    	<i class="fa fas fa-trash"></i>
+                    </button>
+
 		        </td>
 	        </tbody>
 				<?php
@@ -145,3 +150,29 @@
 			        ?>
 	    </table>
 
+<script>
+    function upload_foto1(id_gasto){
+            $("#load_img1").text('Cargando...');
+            var inputFileImage = document.getElementById("imagefile1");
+            var file = inputFileImage.files[0];
+            var data = new FormData();
+            data.append('imagefile1',file);
+            data.append('id',id_gasto);
+
+
+            $.ajax({
+                url: "view/ajax/images/foto1_gasto_ajax.php", // Url to which the request is send
+                type: "POST",             // Type of request to be send, called as method
+                data: data,               // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                contentType: false,       // The content type used when sending data to the server.
+                cache: false,             // To unable request pages to be cached
+                processData:false,        // To send DOMDocument or non processed data file it is set to false
+                success: function(data)   // A function to be called if request succeeds
+                {
+                    $("#load_img1").html(data);
+
+                }
+            });
+
+        }
+</script>
