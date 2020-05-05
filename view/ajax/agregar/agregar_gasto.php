@@ -2,6 +2,8 @@
 	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
 	if (empty($_POST['gasto_code'])) {
             $errors[] = "gasto_code está vacío.";
+        }elseif (empty($_POST['mes_id'])) {
+            $errors[] = "mes_id está vacío.";
         }elseif (empty($_POST['personal'])) {
             $errors[] = "personal está vacío.";
         }elseif (empty($_POST['concepto'])) {
@@ -14,6 +16,7 @@
             $errors[] = "fecha_carga está vacío.";
         }elseif (
         	!empty($_POST['gasto_code'])
+        	&& !empty($_POST['mes_id'])
         	&& !empty($_POST['personal'])
         	&& !empty($_POST['concepto'])
         	&& !empty($_POST['cantidad'])
@@ -22,6 +25,7 @@
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
 	        $gasto_code = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_code"],ENT_QUOTES)));
+	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
 	        $personal = mysqli_real_escape_string($con,(strip_tags($_POST["personal"],ENT_QUOTES)));
 	        $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
 	        $cantidad = mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
@@ -31,7 +35,7 @@
 			$id = $_POST["gasto_code"];
 			$sql="SELECT id from nombre_gasto LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO gasto (gasto_code, personal, concepto, cantidad, observaciones,fecha_carga) VALUES( '".$id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."', '".$fecha_carga."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
+			$sql = "INSERT INTO gasto (gasto_code, mes_id, personal, concepto, cantidad, observaciones,fecha_carga) VALUES( '".$id."', '".$mes_id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."', '".$fecha_carga."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

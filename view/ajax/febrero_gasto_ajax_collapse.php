@@ -1,27 +1,4 @@
-<!-- <script>
-    $( "#new_register_datos" ).submit(function( event ) {
-      $('#guardar_datos_gasto').attr("disabled", true);
-     var parametros = $(this).serialize();
-         $.ajax({
-                type: "POST",
-                url: "view/ajax/agregar/agregar_gasto.php",
-                data: parametros,
-                 beforeSend: function(objeto){
-                    $("#resultados_ajax").html("Enviando...");
-                  },
-                success: function(datos){
-                $("#resultados_ajax").html(datos);
-                $('#guardar_datos_gasto').attr("disabled", false);
-                load(1);
-                window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove();});}, 5000);
-                $('#formModal').modal('hide');
-              }
-        });
-      event.preventDefault();
-    })
-</script> -->
+
 		 <form  role="form" method="post" action="view/ajax/agregar/agregar_gasto.php">
 				    <div class="form-row" style="display: none;">
 					    <div class="form-group col-md-6">
@@ -32,7 +9,7 @@
 				    <div class="form-row" style="display: none;">
 					    <div class="form-group col-md-6">
 					      <label for="mes_id">Id MES </label>
-					      <input class="form-control" type="number" value="1" id="mes_id" name="mes_id">
+					      <input class="form-control" type="number" value="2" id="mes_id" name="mes_id">
 					    </div>
 					</div>
 				    <div class="form-row">

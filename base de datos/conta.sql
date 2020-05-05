@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `empleado` (
 -- Volcando datos para la tabla conta.empleado: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
 INSERT IGNORE INTO `empleado` (`id`, `dni`, `imagen`, `nombre`, `apellido`, `username`, `email`, `password`, `domicilio`, `localidad`, `telefono`, `celular`, `registro`, `status`, `kind`, `created_at`) VALUES
-	(1, '543434', 'view/resources/images/1529887825_user.png', 'tusolutionweb', 'tutos', 'admin', 'admin@admin.com', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', 'AV SAN ANDRES', 'colchester', '9544534', '923344534', '1', 1, 0, '0000-00-00 00:00:00'),
+	(1, '543434', 'view/resources/images/1588531045_Adrian-icon.png', 'Adrian', 'Ramirez', 'admin', 'admin@admin.com', '67a74306b06d0c01624fe0d0249a570f4d093747', 'AV SAN ANDRES', 'colchester', '9544534', '923344534', '1', 1, 0, '0000-00-00 00:00:00'),
 	(2, '456576', 'view/resources/images/default.png', 'Richard', 'Stallman', 'tusolutionweb', 'tusolutionweb@gmail.com', '67a74306b06d0c01624fe0d0249a570f4d093747', 'av san juan', 'silcon valley', '323445', '932344565', '3', 1, 0, '2018-06-25 03:44:17'),
 	(3, '543434', 'view/resources/images/default.png', '2020', 'Ramirez', 'Admin', 'dinopiza@yahoo.com.mx', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', 'AV SAN ANDRES', 'CDMX', '+525513730772', '5513730772', 'Administrativo', 1, 0, '2020-04-28 06:15:09');
 /*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
@@ -106,6 +106,7 @@ INSERT IGNORE INTO `empleado_permisos` (`idempleado_permiso`, `idempleado`, `idp
 CREATE TABLE IF NOT EXISTS `gasto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gasto_code` int(11) NOT NULL,
+  `mes_id` int(11) NOT NULL,
   `personal` varchar(50) NOT NULL,
   `concepto` varchar(50) NOT NULL,
   `cantidad` float NOT NULL,
@@ -118,10 +119,12 @@ CREATE TABLE IF NOT EXISTS `gasto` (
   `foto5` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `gasto_code` (`gasto_code`),
-  CONSTRAINT `FK1_name_datos` FOREIGN KEY (`gasto_code`) REFERENCES `nombre_gasto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=221 DEFAULT CHARSET=latin1;
+  KEY `mes_id` (`mes_id`),
+  CONSTRAINT `FK1_name_datos` FOREIGN KEY (`gasto_code`) REFERENCES `nombre_gasto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK2_mes` FOREIGN KEY (`mes_id`) REFERENCES `meses` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.gasto: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla conta.gasto: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `gasto` DISABLE KEYS */;
 /*!40000 ALTER TABLE `gasto` ENABLE KEYS */;
 
@@ -154,15 +157,16 @@ INSERT IGNORE INTO `meses` (`id`, `mes`, `src_gasto`) VALUES
 CREATE TABLE IF NOT EXISTS `nombre_gasto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+  `id_mes_nomg` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_mes_nomg` (`id_mes_nomg`),
+  CONSTRAINT `FK1_nameg_mes` FOREIGN KEY (`id_mes_nomg`) REFERENCES `meses` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.nombre_gasto: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla conta.nombre_gasto: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `nombre_gasto` DISABLE KEYS */;
-INSERT IGNORE INTO `nombre_gasto` (`id`, `nombre`) VALUES
-	(43, 'PRUEBA'),
-	(44, '2020'),
-	(45, 'caca');
+INSERT IGNORE INTO `nombre_gasto` (`id`, `nombre`, `id_mes_nomg`) VALUES
+	(52, 'PRUEBA', 1);
 /*!40000 ALTER TABLE `nombre_gasto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla conta.permisos

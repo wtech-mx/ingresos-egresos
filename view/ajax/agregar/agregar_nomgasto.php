@@ -2,19 +2,23 @@
 	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
 	if (empty($_POST['nombre'])){
 			$errors[] = "Nombre está vacío.";
-		}  elseif (
+		}elseif (empty($_POST['id_mes_nomg'])) {
+            $errors[] = "id_mes_nomg está vacío.";
+        }  elseif (
         	!empty($_POST['nombre'])
+        	&& !empty($_POST['id_mes_nomg'])
 
         ){
 		require_once ("../../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
 
 			// escaping, additionally removing everything that could be (html/javascript-) code
             $nombre = mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
+            $id_mes_nomg = mysqli_real_escape_string($con,(strip_tags($_POST["id_mes_nomg"],ENT_QUOTES)));
 
 			$fecha_carga=date("Y-m-d H:i:s");
 
 			//Write register in to database
-			$sql = "INSERT INTO nombre_gasto (nombre) VALUES('".$nombre."');";
+			$sql = "INSERT INTO nombre_gasto (nombre, id_mes_nomg)  VALUES( '".$nombre."', '".$id_mes_nomg."')";
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

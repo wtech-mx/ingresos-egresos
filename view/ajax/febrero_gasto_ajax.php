@@ -69,8 +69,7 @@ if($action == 'ajax'){
 				$id_mes_nomg=$row['id_mes_nomg'];
 				$finales++;
 
-				if ($id_mes_nomg == 1) {
-
+				if ($id_mes_nomg == 2) {
 		?>
 		<div class="accordion" id="accordionExample">
 		     <div class="card">
@@ -85,7 +84,7 @@ if($action == 'ajax'){
 
 			    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 			        <div class="card-body">
-						<?php include("gasto_ajax_collapse.php") ?>
+						<?php include("febrero_gasto_ajax_collapse.php") ?>
 				    </div>
 			    </div>
 		     </div>
@@ -106,7 +105,7 @@ if($action == 'ajax'){
 		</tfoot>
 
 <?php
-}
+	}
 	}else{
 		echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <strong>Sin Resultados!</strong> No se encontraron resultados en la base de datos!.</div>';
