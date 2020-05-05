@@ -94,14 +94,14 @@ if($action == 'ajax'){
         <?php }?>
         <tfoot>
             <tr>
-				<td colspan='10'>
+<!-- 				<td colspan='10'>
 					<?php
 						$inicios=$offset+1;
 						$finales+=$inicios -1;
 						echo "Mostrando $inicios al $finales de $numrows registros";
 						echo paginate($reload, $page, $total_pages, $adjacents);
 					?>
-				</td>
+				</td> -->
 			</tr>
 		</tfoot>
 
