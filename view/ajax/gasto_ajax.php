@@ -91,7 +91,7 @@ if($action == 'ajax'){
 		     </div>
 		</div>
 
-        <?php }?>
+        <?php } ?>
         <tfoot>
             <tr>
 <!-- 				<td colspan='10'>
