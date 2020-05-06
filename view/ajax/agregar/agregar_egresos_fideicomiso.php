@@ -10,10 +10,10 @@
             $errors[] = "egreso está vacío.";
         }elseif (empty($_POST['bien'])) {
             $errors[] = "bien está vacío.";
-        }elseif (empty($_POST['numfact'])) {
-            $errors[] = "numfact está vacío.";
         }elseif (empty($_POST['proveedor'])) {
             $errors[] = "proveedor está vacío.";
+        }elseif (empty($_POST['numfact'])) {
+            $errors[] = "numfact está vacío.";
         }elseif (empty($_POST['fecha_carga'])) {
             $errors[] = "fecha_carga está vacío.";
         }elseif (
@@ -21,7 +21,6 @@
         	&& !empty($_POST['mes_id'])
         	&& !empty($_POST['Servicio'])
         	&& !empty($_POST['egreso'])
-        	&& !empty($_POST['concepto'])
         	&& !empty($_POST['bien'])
         	&& !empty($_POST['proveedor'])
         	&& !empty($_POST['numfact'])
@@ -32,9 +31,8 @@
 	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
 	        $Servicio = mysqli_real_escape_string($con,(strip_tags($_POST["Servicio"],ENT_QUOTES)));
 	        $egreso = mysqli_real_escape_string($con,(strip_tags($_POST["egreso"],ENT_QUOTES)));
-	        $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
-	        $proveedor = mysqli_real_escape_string($con,(strip_tags($_POST["proveedor"],ENT_QUOTES)));
 	        $bien = mysqli_real_escape_string($con,(strip_tags($_POST["bien"],ENT_QUOTES)));
+	        $proveedor = mysqli_real_escape_string($con,(strip_tags($_POST["proveedor"],ENT_QUOTES)));
 	        $numfact = mysqli_real_escape_string($con,(strip_tags($_POST["numfact"],ENT_QUOTES)));
 			$fecha_carga=date("Y-m-d H:i:s");
 
@@ -42,7 +40,7 @@
 			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
 			$target_dir="view/resources/images/gastosCorriente/gastoCorriente.jpg";
 			//Write register in to database
-			$sql = "INSERT INTO fideicomisos_egresos (gasto_fide_egresos, mes_id,Servicio, egreso, concepto,  bien,proveedor,numfact,fecha_carga) VALUES( '".$id."', '".$mes_id."',  '".$Servicio."','".$egreso."', '".$concepto."', '".$bien."', '".$proveedor."', '".$numfact."', '".$fecha_carga."')";// cOMANDO DE sQL PARA
+			$sql = "INSERT INTO fideicomisos_egresos (gasto_fide_egresos, mes_id,Servicio, egreso,  bien,proveedor,numfact,fecha_carga) VALUES( '".$id."', '".$mes_id."',  '".$Servicio."','".$egreso."', '".$bien."', '".$proveedor."', '".$numfact."', '".$fecha_carga."')";// cOMANDO DE sQL PARA
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

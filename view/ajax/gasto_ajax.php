@@ -77,6 +77,7 @@ if($action == 'ajax'){
 			    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 				    <div class="card-header bg-primary" id="headingOne">
 				      <h2 class="mb-0 text-white">
+
 				         <?php echo $nombre ?>
 				      </h2>
 				    </div>

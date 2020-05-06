@@ -107,8 +107,8 @@
                 <td><?php echo $fideicomisos_egresos->Servicio ?></td>
                 <td><?php echo $fideicomisos_egresos->egreso ?></td>
                 <td><?php echo $fideicomisos_egresos->bien ?></td>
-                <td><?php echo $fideicomisos_egresos->proveedor ?></td>
                 <td><?php echo $fideicomisos_egresos->numfact ?></td>
+                <td><?php echo $fideicomisos_egresos->proveedor ?></td>
                 <td><?php echo $fideicomisos_egresos->fecha_carga; ?></td>
 		        <td class="text-right">
 

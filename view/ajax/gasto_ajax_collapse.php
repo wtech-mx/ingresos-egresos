@@ -1,27 +1,4 @@
-<!-- <script>
-    $( "#new_register_datos" ).submit(function( event ) {
-      $('#guardar_datos_gasto').attr("disabled", true);
-     var parametros = $(this).serialize();
-         $.ajax({
-                type: "POST",
-                url: "view/ajax/agregar/agregar_gasto.php",
-                data: parametros,
-                 beforeSend: function(objeto){
-                    $("#resultados_ajax").html("Enviando...");
-                  },
-                success: function(datos){
-                $("#resultados_ajax").html(datos);
-                $('#guardar_datos_gasto').attr("disabled", false);
-                load(1);
-                window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove();});}, 5000);
-                $('#formModal').modal('hide');
-              }
-        });
-      event.preventDefault();
-    })
-</script> -->
+
 		 <form  role="form" method="post" action="view/ajax/agregar/agregar_gasto.php">
 				    <div class="form-row" style="display: none;">
 					    <div class="form-group col-md-6">
@@ -63,7 +40,7 @@
 					    <div class="form-group col-md-3">
 							<div class="custom-file">
 							<label class="custom-file-label" for="imagefile1">Foto 1</label>
-							<input type="file" name="imagefile1" class="form-control" id="imagefile1" onchange="upload_foto1(<?php echo $id_gasto; ?>);">
+							<input type="file" name="imagefile1" class="form-control" id="imagefile1">
 							</div>
 					    </div>
 					    <div class="form-group col-md-2">
