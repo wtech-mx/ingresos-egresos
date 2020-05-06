@@ -1,41 +1,51 @@
 <?php
 	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
-	if (empty($_POST['gasto_code'])) {
-            $errors[] = "gasto_code está vacío.";
+	if (empty($_POST['gasto_fide_egresos'])) {
+            $errors[] = "gasto_fide_egresos está vacío.";
         }elseif (empty($_POST['mes_id'])) {
             $errors[] = "mes_id está vacío.";
-        }elseif (empty($_POST['personal'])) {
-            $errors[] = "personal está vacío.";
+        }elseif (empty($_POST['Servicio'])) {
+            $errors[] = "Servicio está vacío.";
+        }elseif (empty($_POST['egreso'])) {
+            $errors[] = "egreso está vacío.";
         }elseif (empty($_POST['concepto'])) {
             $errors[] = "concepto está vacío.";
         }elseif (empty($_POST['cantidad'])) {
             $errors[] = "cantidad está vacío.";
-        }elseif (empty($_POST['observaciones'])) {
-            $errors[] = "observaciones está vacío.";
+        }elseif (empty($_POST['bien'])) {
+            $errors[] = "bien está vacío.";
+        }elseif (empty($_POST['numfact'])) {
+            $errors[] = "numfact está vacío.";
+        }elseif (empty($_POST['proveedor'])) {
+            $errors[] = "proveedor está vacío.";
         }elseif (empty($_POST['fecha_carga'])) {
             $errors[] = "fecha_carga está vacío.";
         }elseif (
-        	!empty($_POST['gasto_code'])
+        	!empty($_POST['gasto_fide_egresos'])
         	&& !empty($_POST['mes_id'])
-        	&& !empty($_POST['personal'])
+        	&& !empty($_POST['egreso'])
         	&& !empty($_POST['concepto'])
         	&& !empty($_POST['cantidad'])
-        	&& !empty($_POST['observaciones'])
+        	&& !empty($_POST['bien'])
+        	&& !empty($_POST['proveedor'])
+        	&& !empty($_POST['numfact'])
         	&& !empty($_POST['fecha_carga'])
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
-	        $gasto_code = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_code"],ENT_QUOTES)));
+	        $gasto_fide_egresos = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_fide_egresos"],ENT_QUOTES)));
 	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
-	        $personal = mysqli_real_escape_string($con,(strip_tags($_POST["personal"],ENT_QUOTES)));
+	        $egreso = mysqli_real_escape_string($con,(strip_tags($_POST["egreso"],ENT_QUOTES)));
 	        $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
 	        $cantidad = mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
-	        $observaciones = mysqli_real_escape_string($con,(strip_tags($_POST["observaciones"],ENT_QUOTES)));
+	        $proveedor = mysqli_real_escape_string($con,(strip_tags($_POST["proveedor"],ENT_QUOTES)));
+	        $bien = mysqli_real_escape_string($con,(strip_tags($_POST["bien"],ENT_QUOTES)));
+	        $numfact = mysqli_real_escape_string($con,(strip_tags($_POST["numfact"],ENT_QUOTES)));
 			$fecha_carga=date("Y-m-d H:i:s");
 
-			$id = $_POST["gasto_code"];
+			$id = $_POST["gasto_fide_egresos"];
 			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO fideicomisos_egresos (gasto_code, mes_id, personal, concepto, cantidad, observaciones,fecha_carga) VALUES( '".$id."', '".$mes_id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."', '".$fecha_carga."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
+			$sql = "INSERT INTO fideicomisos_egresos (gasto_fide_egresos, mes_id, egreso, concepto, cantidad, bien,proveedor) VALUES( '".$id."', '".$mes_id."', '".$egreso."', '".$concepto."', '".$cantidad."', '".$bien."', '".$proveedor."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

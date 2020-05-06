@@ -85,7 +85,7 @@ if($action == 'ajax'){
 
 			    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 			        <div class="card-body">
-						<?php include("gasto_ajax_collapse.php") ?>
+						<?php include("egresos_fideicomiso_collapese.php") ?>
 				    </div>
 			    </div>
 		     </div>
