@@ -1,8 +1,8 @@
 		 <form  role="form" method="post" action="view/ajax/agregar/agregar_egresos_fideicomiso.php">
 				    <div class="form-row" style="display: none;">
 					    <div class="form-group col-md-6">
-					      <label for="gasto_code">Id Nombre <?php echo $id ?></label>
-					      <input class="form-control" type="number" value="<?php echo $id ?>" id="gasto_code" name="gasto_code">
+					      <label for="gasto_fide_egresos">Id Nombre <?php echo $id ?></label>
+					      <input class="form-control" type="number" value="<?php echo $id ?>" id="gasto_fide_egresos" name="gasto_fide_egresos">
 					    </div>
 					</div>
 				    <div class="form-row" style="display: none;">
@@ -17,8 +17,8 @@
 					      <input class="form-control" type="date" value="" id="fecha_carga" name="fecha_carga">
 					    </div>
 					 	<div class="form-group col-md-6">
-					      <label for="servicio">Servicio</label>
-					      <input type="text" class="form-control" id="servicio" name="servicio">
+					      <label for="Servicio">Servicio</label>
+					      <input type="text" class="form-control" id="Servicio" name="Servicio">
 					    </div>
 					</div>
 					 <div class="form-row">
@@ -27,7 +27,7 @@
 					      <input type="text" class="form-control" id="egreso" name="egreso">
 					    </div>
 					    <div class="form-group col-md-4">
-					      <label for="bien">bien/servicio</label>
+					      <label for="bien">bien/Servicio</label>
 				 		  <input type="text" class="form-control" id="bien" name="bien">
 					    </div>
 					    <div class="form-group col-md-2">
@@ -84,7 +84,7 @@
 	                <th>#ID</th>
 	                <th>Servicio</th>
 	                <th>Egreso</th>
-	                <th>bien/servicio</th>
+	                <th>bien/Servicio</th>
 	                <th>numfact</th>
 	                <th>proveedor</th>
 	                <th>Fecha Carga</th>
@@ -98,10 +98,11 @@
             //while($row = mysqli_fetch_array($query)){
             while ($fideicomisos_egresos = $rspta->fetch_object()){
                 $sw=in_array($fideicomisos_egresos->id,$valores);
-	            if ($id == $fideicomisos_egresos->fideicomisos_egresos_code) {
+	            if ($id == $fideicomisos_egresos->gasto_fide_egresos) {
                  ?>
 	        <tbody>
 	            <tr>
+
 	            <td><?php echo $fideicomisos_egresos->id?></td>
                 <td><?php echo $fideicomisos_egresos->Servicio ?></td>
                 <td><?php echo $fideicomisos_egresos->egreso ?></td>
@@ -111,13 +112,13 @@
                 <td><?php echo $fideicomisos_egresos->fecha_carga; ?></td>
 		        <td class="text-right">
 
-                    <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $gasto->id;?>');">
+                    <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomisos_egresos->id;?>');">
                     	<i class="fa fa-edit"></i>
                     </button>
 
-                    <button type="button" class="btn btn-info btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $gasto->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i></button>
+                    <button type="button" class="btn btn-info btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $fideicomisos_egresos->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i></button>
 
-                    <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $gasto->id;?>')">
+                    <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $fideicomisos_egresos->id;?>')">
                     	<i class="fa fas fa-trash"></i>
                     </button>
 
