@@ -45,7 +45,7 @@ if($action == 'ajax'){
 	if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 	else {echo mysqli_error($con);}
 	$total_pages = ceil($numrows/$per_page);
-	$reload = '../gasto-view.php';
+	$reload = '../Fideicomiso-view.php';
 	//main query to fetch the data
 	$query = mysqli_query($con,"SELECT $campos FROM  $tables where $sWhere LIMIT $offset,$per_page");
 	//loop through fetched data
@@ -66,9 +66,9 @@ if($action == 'ajax'){
 			while($row = mysqli_fetch_array($query)){
 				$id=$row['id'];
 				$nombre=$row['nombre'];
-				$id_mes_nomg=$row['id_mes_nomg'];
+				$id_mes_nomfide=$row['id_mes_nomfide'];
 				$finales++;
-				if ($id_mes_nomg == 8) {
+				if ($id_mes_nomfide == 6) {
 
 		?>
 		<div class="accordion" id="accordionExample">
