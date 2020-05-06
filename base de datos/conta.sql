@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `configuracion` (
   `imagen` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.configuracion: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla conta.configuracion: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `configuracion` DISABLE KEYS */;
 INSERT IGNORE INTO `configuracion` (`id`, `nombre`, `dni`, `actividad_economica`, `email`, `telefono`, `imagen`) VALUES
 	(1, 'tusolutionweb tutos', '', '', '', '', 'your_logo.png');
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.empleado: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla conta.empleado: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
 INSERT IGNORE INTO `empleado` (`id`, `dni`, `imagen`, `nombre`, `apellido`, `username`, `email`, `password`, `domicilio`, `localidad`, `telefono`, `celular`, `registro`, `status`, `kind`, `created_at`) VALUES
 	(1, '543434', 'view/resources/images/1588531045_Adrian-icon.png', 'Adrian', 'Ramirez', 'admin', 'admin@admin.com', '67a74306b06d0c01624fe0d0249a570f4d093747', 'AV SAN ANDRES', 'colchester', '9544534', '923344534', '1', 1, 0, '0000-00-00 00:00:00'),
@@ -107,9 +107,12 @@ CREATE TABLE IF NOT EXISTS `fideicomisos_egresos` (
   `id` int(11) NOT NULL,
   `gasto_fide_egresos` int(11) DEFAULT NULL,
   `mes_id` int(11) DEFAULT NULL,
+  `Servicio` varchar(50) DEFAULT NULL,
   `egreso` varchar(50) DEFAULT NULL,
+  `bien` varchar(50) DEFAULT NULL,
   `proveedor` varchar(50) DEFAULT NULL,
   `numfact` int(11) DEFAULT NULL,
+  `fecha_carga` date DEFAULT NULL,
   `foto1` varchar(50) DEFAULT NULL,
   `foto2` varchar(50) DEFAULT NULL,
   `foto3` varchar(50) DEFAULT NULL,
@@ -167,9 +170,9 @@ CREATE TABLE IF NOT EXISTS `gasto` (
   KEY `mes_id` (`mes_id`),
   CONSTRAINT `FK1_name_datos` FOREIGN KEY (`gasto_code`) REFERENCES `nombre_gasto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK2_mes` FOREIGN KEY (`mes_id`) REFERENCES `meses` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.gasto: ~43 rows (aproximadamente)
+-- Volcando datos para la tabla conta.gasto: ~44 rows (aproximadamente)
 /*!40000 ALTER TABLE `gasto` DISABLE KEYS */;
 INSERT IGNORE INTO `gasto` (`id`, `gasto_code`, `mes_id`, `personal`, `concepto`, `cantidad`, `observaciones`, `fecha_carga`, `foto1`, `foto2`, `foto3`, `foto4`, `foto5`) VALUES
 	(8, 57, 2, 'cheila', 'becas', 2, '1212asa', '2020-05-05 19:03:14', '', '', '', '', ''),
@@ -214,7 +217,8 @@ INSERT IGNORE INTO `gasto` (`id`, `gasto_code`, `mes_id`, `personal`, `concepto`
 	(48, 66, 2, 'Adauto Ortiz Romero-2', 'becas', 56, 'note el cambio en la tabla', '2020-05-05 20:01:31', '', '', '', '', ''),
 	(49, 58, 2, 'docentes', 'salario', 12515, 'no estuduia', '2020-05-05 20:01:45', '', '', '', '', ''),
 	(50, 60, 2, 'cheila', 'adeudos', 56, 'no estuduia', '2020-05-05 20:02:04', '', '', '', '', ''),
-	(51, 67, 2, 'docentes', 'becas', 56, 'no lava', '2020-05-05 20:02:31', '', '', '', '', '');
+	(51, 67, 2, 'docentes', 'becas', 56, 'no lava', '2020-05-05 20:02:31', '', '', '', '', ''),
+	(52, 64, 1, 'cheila51548', 'becas', 56, 'no estuduia', '2020-05-05 22:52:56', '', '', '', '', '');
 /*!40000 ALTER TABLE `gasto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla conta.meses
@@ -252,10 +256,13 @@ CREATE TABLE IF NOT EXISTS `nombre_fideicomisos` (
   PRIMARY KEY (`id`),
   KEY `id_mes_nomfide` (`id_mes_nomfide`),
   CONSTRAINT `FK1_mes_nomfide` FOREIGN KEY (`id_mes_nomfide`) REFERENCES `meses` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.nombre_fideicomisos: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla conta.nombre_fideicomisos: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `nombre_fideicomisos` DISABLE KEYS */;
+INSERT IGNORE INTO `nombre_fideicomisos` (`id`, `nombre`, `id_mes_nomfide`) VALUES
+	(1, 'prb', 1),
+	(2, 'caca', 1);
 /*!40000 ALTER TABLE `nombre_fideicomisos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla conta.nombre_gasto
@@ -266,9 +273,9 @@ CREATE TABLE IF NOT EXISTS `nombre_gasto` (
   PRIMARY KEY (`id`),
   KEY `id_mes_nomg` (`id_mes_nomg`),
   CONSTRAINT `FK1_nameg_mes` FOREIGN KEY (`id_mes_nomg`) REFERENCES `meses` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.nombre_gasto: ~14 rows (aproximadamente)
+-- Volcando datos para la tabla conta.nombre_gasto: ~18 rows (aproximadamente)
 /*!40000 ALTER TABLE `nombre_gasto` DISABLE KEYS */;
 INSERT IGNORE INTO `nombre_gasto` (`id`, `nombre`, `id_mes_nomg`) VALUES
 	(52, 'PRUEBA', 1),
@@ -284,7 +291,11 @@ INSERT IGNORE INTO `nombre_gasto` (`id`, `nombre`, `id_mes_nomg`) VALUES
 	(64, 'sept', 9),
 	(66, 'octu', 10),
 	(67, 'nov', 11),
-	(68, 'dici', 12);
+	(68, 'dici', 12),
+	(69, '2020', 9),
+	(70, 'enero egresos', 1),
+	(71, '2020', 1),
+	(72, '2020', 1);
 /*!40000 ALTER TABLE `nombre_gasto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla conta.permisos
@@ -324,7 +335,7 @@ CREATE TABLE IF NOT EXISTS `reparaciones` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.reparaciones: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla conta.reparaciones: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `reparaciones` DISABLE KEYS */;
 INSERT IGNORE INTO `reparaciones` (`id`, `fecha_repa`, `descripcion`, `idvehiculo`, `idtaller`, `fecha_carga`) VALUES
 	(1, '2018-07-10', 'faros fallando', 1, 1, '2018-06-25 03:48:18');
@@ -339,7 +350,7 @@ CREATE TABLE IF NOT EXISTS `sector` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.sector: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla conta.sector: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `sector` DISABLE KEYS */;
 INSERT IGNORE INTO `sector` (`id`, `nombre`, `idempresa`, `fecha_carga`) VALUES
 	(1, 'informatica', 1, '2018-06-25 03:46:32');
@@ -355,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `seguro` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.seguro: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla conta.seguro: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `seguro` DISABLE KEYS */;
 INSERT IGNORE INTO `seguro` (`id`, `nombre`, `poliza`, `vencimiento`, `fecha_carga`) VALUES
 	(1, 'informatica', '12', '2018-06-27', '2018-06-25 03:45:37');
@@ -391,7 +402,7 @@ CREATE TABLE IF NOT EXISTS `tarjeta` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.tarjeta: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla conta.tarjeta: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `tarjeta` DISABLE KEYS */;
 INSERT IGNORE INTO `tarjeta` (`id`, `numero`, `vencimiento`, `idvehiculo`, `fecha_carga`) VALUES
 	(1, 'vcx346', '2018-07-10', 1, '2018-06-25 03:47:49');
@@ -415,7 +426,7 @@ CREATE TABLE IF NOT EXISTS `vehiculo` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla conta.vehiculo: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla conta.vehiculo: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `vehiculo` DISABLE KEYS */;
 INSERT IGNORE INTO `vehiculo` (`id`, `vehiculo_code`, `patente`, `marca`, `modelo`, `nro_chasis`, `nro_motor`, `vto_vtv`, `idseguro`, `color`, `estado`, `imagen`, `fecha_carga`) VALUES
 	(1, '1', '1231', 'hyundai', '21332', 'xcdds23', 'xvcvrerx3', '2018-06-30', 1, 'black', 1, 'view/resources/images/1529891236_ahorcado.jpg', '2018-06-25 03:46:37');
