@@ -2,7 +2,7 @@
     $active4="active";
     include "resources/header.php";
     if ($_SESSION['gasto']==1){
-    $mes = 3;
+    $mes = 5;
 ?>
     <!--main content start-->
     <section class="main-content-wrapper">
@@ -10,12 +10,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-3 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Marzo</h4>
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Mayo</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item"><a href="./?view=gasto" class="text-muted">Dashboard</a></li>
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">Marzo</li>
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">Mayo</li>
                                 </ol>
                             </nav>
                         </div>
@@ -98,7 +98,7 @@
         var parametros = {"action":"ajax","page":page,'query':query,'per_page':per_page};
         $("#loader").fadeIn('slow');
         $.ajax({
-            url:'view/ajax/marzo_egresos_fideicomiso_ajax.php',
+            url:'view/ajax/mayo_egresos_fideicomiso_ajax.php',
             data: parametros,
              beforeSend: function(objeto){
             $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -127,7 +127,7 @@
             var parametros = {"action":"ajax","page":page,"query":query,"per_page":per_page,"id":id};
 
             $.ajax({
-                url:'view/ajax/marzo_egresos_fideicomiso_ajax.php',
+                url:'view/ajax/mayo_egresos_fideicomiso_ajax.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
