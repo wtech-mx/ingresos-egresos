@@ -29,13 +29,13 @@
 	        $apartado = mysqli_real_escape_string($con,(strip_tags($_POST["apartado"],ENT_QUOTES)));
 	        $subtotal = mysqli_real_escape_string($con,(strip_tags($_POST["subtotal"],ENT_QUOTES)));
 	        $total = mysqli_real_escape_string($con,(strip_tags($_POST["total"],ENT_QUOTES)));
-	        $fecha_carga=date("Y-m-d H:i:s");
+	        $fecha_carga=date("Y-m-d");
 
 			$id = $_POST["gasto_fide"];
 			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
 			$target_dir="view/resources/images/gastosCorriente/gastoCorriente.jpg";
 			//Write register in to database
-			$sql = "INSERT INTO fideicomisos_ingresos (gasto_fide, mes_id, servicio, ingresos, pagodoc,  apartado, subtotal, total, fecha_carga) VALUES( '".$id."', '".$mes_id."',  '".$servicio."','".$ingresos."', '".$pagodoc."', '".$apartado."', '".$subtotal."', '".$total."', '".$fecha_carga."')";// cOMANDO DE sQL PARA
+			$sql = "INSERT INTO fideicomisos_ingresos (gasto_fide, mes_id, servicio, ingresos, pagodoc,  apartado, subtotal, total, fecha_carga) VALUES( '".$id."', '".$mes_id."',  '".$servicio."','".$ingresos."', '".$pagodoc."', '".$apartado."', '".$subtotal."', '".$total."', '".$fecha_carga."')";// COMANDO DE SQL PARA
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

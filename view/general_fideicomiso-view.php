@@ -2,7 +2,7 @@
     $active4="active";
     include "resources/header.php";
     if ($_SESSION['gasto']==1){
-    $mes = 1;
+    $mes = 2;
 ?>
     <!--main content start-->
     <section class="main-content-wrapper">
@@ -10,12 +10,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-3 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Fideicomiso</h4>
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Febrero</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item"><a href="./?view=gasto" class="text-muted">Dashboard</a></li>
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">gasto</li>
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">Febrero</li>
                                 </ol>
                             </nav>
                         </div>
@@ -53,8 +53,8 @@
                 <div class="col-md-offset-10">
                     <!-- modals -->
                         <?php
-                            include "modals/agregar/agregar_ingreso_fideicomiso.php";
-                            include "modals/editar/editar_fideicomiso.php";
+                            include "modals/agregar/agregar_egresos_fideicomiso.php";
+                            include "modals/editar/editar_egresos_fideicomiso.php";
                         ?>
                     <!-- /end modals -->
                     <input type='hidden' id='per_page' value='15'>
@@ -98,7 +98,7 @@
         var parametros = {"action":"ajax","page":page,'query':query,'per_page':per_page};
         $("#loader").fadeIn('slow');
         $.ajax({
-            url:'view/ajax/enero_ingresos_fideicomiso_ajax.php',
+            url:'view/ajax/febrero_egresos_fideicomiso_ajax.php',
             data: parametros,
              beforeSend: function(objeto){
             $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -127,7 +127,7 @@
             var parametros = {"action":"ajax","page":page,"query":query,"per_page":per_page,"id":id};
 
             $.ajax({
-                url:'view/ajax/enero_ingresos_fideicomiso_ajax.php',
+                url:'view/ajax/febrero_egresos_fideicomiso_ajax.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -150,7 +150,7 @@
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/agregar/agregar_ingreso_nombre_fideicomiso.php",
+                url: "view/ajax/agregar/agregar_egresos_nombre_fideicomiso.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");
@@ -175,7 +175,7 @@
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/editar/editar_gasto.php",
+                url: "view/ajax/editar/editar_fideicomiso.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");
@@ -197,7 +197,7 @@
     function editar(id){
         var parametros = {"action":"ajax","id":id};
         $.ajax({
-                url:'view/modals/editar/gasto.php',
+                url:'view/modals/editar/fideicomiso.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader2").html("<img src='./assets/img/ajax-loader.gif'>");

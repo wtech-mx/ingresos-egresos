@@ -45,7 +45,7 @@ if($action == 'ajax'){
 	if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 	else {echo mysqli_error($con);}
 	$total_pages = ceil($numrows/$per_page);
-	$reload = '../enero_egresos_fideicomiso';
+	$reload = '../enero_ingresos_fideicomiso';
 	//main query to fetch the data
 	$query = mysqli_query($con,"SELECT $campos FROM  $tables where $sWhere LIMIT $offset,$per_page");
 	//loop through fetched data
@@ -77,7 +77,6 @@ if($action == 'ajax'){
 			    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 				    <div class="card-header bg-primary" id="headingOne">
 				      <h2 class="mb-0 text-white">
-				      	  <?php echo $id ?>
 				         <?php echo $nombre ?>
 				      </h2>
 				    </div>
@@ -85,26 +84,13 @@ if($action == 'ajax'){
 
 			    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 			        <div class="card-body">
-						<?php include("egresos_fideicomiso_collapese.php") ?>
+						<?php include("ingresos_fideicomiso_collapese.php") ?>
 				    </div>
 			    </div>
 		     </div>
 		</div>
 
-        <?php }?>
-        <tfoot>
-            <tr>
-<!-- 				<td colspan='10'>
-					<?php
-						$inicios=$offset+1;
-						$finales+=$inicios -1;
-						echo "Mostrando $inicios al $finales de $numrows registros";
-						echo paginate($reload, $page, $total_pages, $adjacents);
-					?>
-				</td> -->
-			</tr>
-		</tfoot>
-
+    <?php }?>
 <?php
 }
 	}else{
