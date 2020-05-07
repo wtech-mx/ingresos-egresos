@@ -69,10 +69,10 @@ if($action == 'ajax'){
 				$id_mes_nomfide=$row['id_mes_nomfide'];
 				$finales++;
 
-				if ($id_mes_nomfide == 13) {
+				// if ($id_mes_nomfide == 13) {
 
 		?>
-		<div class="accordion" id="accordionExample">
+<!-- 		<div class="accordion" id="accordionExample">
 		     <div class="card">
 			    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 				    <div class="card-header bg-primary" id="headingOne">
@@ -83,16 +83,16 @@ if($action == 'ajax'){
 			    </a>
 
 			    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-			        <div class="card-body">
-						<?php include("general_fideicomiso_ajax_collapse.php") ?>
-				    </div>
+			        <div class="card-body"> -->
+						<?php include("general_gasto_ajax_collapse.php") ?>
+<!-- 				    </div>
 			    </div>
 		     </div>
-		</div>
+		</div> -->
 
         <?php }?>
 <?php
-}
+// }
 	}else{
 		echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <strong>Sin Resultados!</strong> No se encontraron resultados en la base de datos!.</div>';

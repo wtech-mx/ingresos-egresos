@@ -16,6 +16,7 @@
 	        <thead>
 	        	<div id="adicionados"></div>
 	            <tr>
+	            	<th>Nombre</th>
 	                <th>Acumulado</th>
 	                <th>Cantidad</th>
 	                <th>Observaciones</th>
@@ -32,6 +33,7 @@
                  ?>
 	        <tbody>
 	            <tr>
+	            <td><?php echo $nombre ?></td>
                 <td><?php echo $fideicomisos_egresos->acumulado ?></td>
 	            <td><?php echo $fideicomisos_egresos->cantidad ?></td>
                 <td><?php echo $fideicomisos_egresos->observaciones ?></td>
