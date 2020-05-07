@@ -3,6 +3,8 @@
     include "resources/header.php";
     if ($_SESSION['gasto']==1){
     $mes = 1;
+
+
 ?>
     <!--main content start-->
     <section class="main-content-wrapper">

@@ -67,9 +67,10 @@ if($action == 'ajax'){
 				$id=$row['id'];
 				$nombre=$row['nombre'];
 				$id_mes_nomfide=$row['id_mes_nomfide'];
+				$id_ingresos=$row['id_ingresos'];
 				$finales++;
 
-				if ($id_mes_nomfide == 1) {
+				if ($id_mes_nomfide == 1 && $id_ingresos == 0 ) {
 
 		?>
 		<div class="accordion" id="accordionExample">

@@ -25,6 +25,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal-body" style="display: none;">
+                        <div class="form-group">
+                            <label for="id_ingresos" class="col-sm-2 control-label">id_ingresos:</label>
+                            <div class="col-sm-12">
+                                <input type="text" required class="form-control" value="0" id="id_ingresos" name="id_ingresos" placeholder="id_ingresos: ">
+                            </div>
+                        </div>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light"
                             data-dismiss="modal">Close</button>

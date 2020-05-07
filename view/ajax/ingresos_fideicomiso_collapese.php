@@ -11,6 +11,12 @@
 					      <input class="form-control" type="number" value="1" id="mes_id" name="mes_id">
 					    </div>
 					</div>
+				    <div class="form-row" style="display: none;">
+					    <div class="form-group col-md-6">
+					      <label for="ingreso_id">Id MES </label>
+					      <input class="form-control" type="number" value="1" id="ingreso_id" name="ingreso_id">
+					    </div>
+					</div>
 				    <div class="form-row">
 					    <div class="form-group col-md-6">
 					      <label for="fecha_carga">Fecha</label>

@@ -4,9 +4,12 @@
 			$errors[] = "Nombre está vacío.";
 		}elseif (empty($_POST['id_mes_nomfide'])) {
             $errors[] = "id_mes_nomfide está vacío.";
+        }elseif (empty($_POST['id_ingresos'])) {
+            $errors[] = "id_ingresos está vacío.";
         }  elseif (
         	!empty($_POST['nombre'])
         	&& !empty($_POST['id_mes_nomfide'])
+        	&& !empty($_POST['id_ingresos'])
 
         ){
 		require_once ("../../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -14,11 +17,12 @@
 			// escaping, additionally removing everything that could be (html/javascript-) code
             $nombre = mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
             $id_mes_nomfide = mysqli_real_escape_string($con,(strip_tags($_POST["id_mes_nomfide"],ENT_QUOTES)));
+            $id_ingresos = mysqli_real_escape_string($con,(strip_tags($_POST["id_mes_nomfide"],ENT_QUOTES)));
 
 			$fecha_carga=date("Y-m-d");
 
 			//Write register in to database
-			$sql = "INSERT INTO nombre_fideicomisos (nombre, id_mes_nomfide)  VALUES( '".$nombre."', '".$id_mes_nomfide."')";
+			$sql = "INSERT INTO nombre_fideicomisos (nombre, id_mes_nomfide, id_ingresos)  VALUES( '".$nombre."', '".$id_mes_nomfide."', '".$id_ingresos."')";
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
