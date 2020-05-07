@@ -1,7 +1,7 @@
 <?php
 	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
-	if (empty($_POST['gasto_fide_egresos'])) {
-            $errors[] = "gasto_fide_egresos está vacío.";
+	if (empty($_POST['general_id'])) {
+            $errors[] = "general_id está vacío.";
         }elseif (empty($_POST['mes_id'])) {
             $errors[] = "mes_id está vacío.";
         }elseif (empty($_POST['captados'])) {
@@ -15,7 +15,7 @@
         }elseif (empty($_POST['fecha_carga'])) {
             $errors[] = "fecha_carga está vacío.";
         }elseif (
-        	!empty($_POST['gasto_fide_egresos'])
+        	!empty($_POST['general_id'])
         	&& !empty($_POST['mes_id'])
         	&& !empty($_POST['captados'])
         	&& !empty($_POST['regresados'])
@@ -24,7 +24,7 @@
         	&& !empty($_POST['fecha_carga'])
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
-	        $gasto_fide_egresos = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_fide_egresos"],ENT_QUOTES)));
+	        $general_id = mysqli_real_escape_string($con,(strip_tags($_POST["general_id"],ENT_QUOTES)));
 	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
 	        $captados = mysqli_real_escape_string($con,(strip_tags($_POST["captados"],ENT_QUOTES)));
 	        $regresados = mysqli_real_escape_string($con,(strip_tags($_POST["regresados"],ENT_QUOTES)));
@@ -32,11 +32,11 @@
 	        $disponible = mysqli_real_escape_string($con,(strip_tags($_POST["disponible"],ENT_QUOTES)));
 			$fecha_carga=date("Y-m-d");
 
-			$id = $_POST["gasto_fide_egresos"];
-			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
+			$id = $_POST["general_id"];
+			$sql="SELECT id from nombre_gasto LIMIT 1 where id='".$id."'";
 			$target_dir="view/resources/images/gastosCorriente/gastoCorriente.jpg";
 			//Write register in to database
-			$sql = "INSERT INTO general_gasto (gasto_fide_egresos, mes_id, captados, regresados,  utilizado, disponible, fecha_carga) VALUES( '".$id."', '".$mes_id."',  '".$captados."','".$regresados."', '".$utilizado."', '".$disponible."', '".$fecha_carga."')";// COMANDO DE sQL PARA
+		$sql = "INSERT INTO general_gasto (general_id, mes_id, captados, regresados,  utilizado, disponible, fecha_carga) VALUES( '".$id."', '".$mes_id."', '".$captados."','".$regresados."', '".$utilizado."', '".$disponible."', '".$fecha_carga."')";// COMANDO DE sQL PARA
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

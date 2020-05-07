@@ -1,8 +1,8 @@
 		<form  role="form" method="post" action="view/ajax/agregar/agregar_general_gasto.php">
 		    <div class="form-row" style="display: none;">
 			    <div class="form-group col-md-6">
-			      <label for="gasto_fide_egresos">Id Nombre <?php echo $id ?></label>
-			      <input class="form-control" type="number" value="<?php echo $id ?>" id="gasto_fide_egresos" name="gasto_fide_egresos">
+			      <label for="general_id">Id Nombre <?php echo $id ?></label>
+			      <input class="form-control" type="number" value="<?php echo $id ?>" id="general_id" name="general_id">
 			    </div>
 			</div>
 		    <div class="form-row" style="display: none;">
@@ -23,14 +23,15 @@
 	            </tr>
 	         </thead>
 			<?php
-      		$rspta = mysqli_query($con, "SELECT * FROM gasto ORDER BY  id DESC");
-	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE fideicomisos_egresos=$id ");
+      		$rspta = mysqli_query($con, "SELECT * FROM general_gasto ORDER BY  id DESC");
+	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id ");
             $valores=array();
+
             //while($row = mysqli_fetch_array($query)){
-            while ($fideicomisos_egresos = $rspta->fetch_object()){
-                $sw=in_array($fideicomisos_egresos->id,$valores);
-	            if ($id == $fideicomisos_egresos->gasto_fide_egresos) {
-                 ?>
+            while ($gasto = $rspta->fetch_object()){
+                $sw=in_array($gasto->id,$valores);
+	            if ($id == $gasto->general_id) {
+                ?>
 	        <tbody>
 	            <tr>
 	            <td><?php echo $nombre ?></td>

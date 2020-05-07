@@ -6,10 +6,10 @@
 	$id=$_REQUEST["id"];
 	$id=intval($id);
 
-	$query_validate=mysqli_query($con,"SELECT * FROM nombre_fideicomisos WHERE id='".$id."'");
+	$query_validate=mysqli_query($con,"SELECT * FROM nombre_gasto WHERE id='".$id."'");
 	$count=mysqli_num_rows($query_validate);
 	if ($count==0){
-		if($delete=mysqli_query($con, "DELETE FROM fideicomisos_egresos WHERE id='$id'")){
+		if($delete=mysqli_query($con, "DELETE FROM general_gasto WHERE id='$id'")){
 			$aviso="Bien hecho!";
 			$msj="Datos eliminados satisfactoriamente.";
 			$classM="alert alert-success";
@@ -31,7 +31,7 @@
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if($action == 'ajax'){
 	$query = mysqli_real_escape_string($con,(strip_tags($_REQUEST['query'], ENT_QUOTES)));
-	$tables="nombre_fideicomisos";
+	$tables="nombre_gasto";
 	$campos="*";
 	$sWhere=" nombre LIKE '%".$query."%'";
 	include 'pagination.php'; //include pagination file
@@ -45,7 +45,7 @@ if($action == 'ajax'){
 	if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 	else {echo mysqli_error($con);}
 	$total_pages = ceil($numrows/$per_page);
-	$reload = '../general_fideicomiso';
+	$reload = '../general_gasto';
 	//main query to fetch the data
 	$query = mysqli_query($con,"SELECT $campos FROM  $tables where $sWhere LIMIT $offset,$per_page");
 	//loop through fetched data
@@ -66,13 +66,13 @@ if($action == 'ajax'){
 			while($row = mysqli_fetch_array($query)){
 				$id=$row['id'];
 				$nombre=$row['nombre'];
-				$id_mes_nomfide=$row['id_mes_nomfide'];
+				$general_id=$row['id'];
 				$finales++;
 
-				// if ($id_mes_nomfide == 13) {
+				 if ($general_id == 1) {
 
 		?>
-<!-- 		<div class="accordion" id="accordionExample">
+		<div class="accordion" id="accordionExample">
 		     <div class="card">
 			    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 				    <div class="card-header bg-primary" id="headingOne">
@@ -83,16 +83,16 @@ if($action == 'ajax'){
 			    </a>
 
 			    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-			        <div class="card-body"> -->
+			        <div class="card-body">
 						<?php include("general_gasto_ajax_collapse.php") ?>
-<!-- 				    </div>
+ 				    </div>
 			    </div>
 		     </div>
-		</div> -->
+		</div>
 
-        <?php }?>
+        <?php } ?>
 <?php
-// }
+}
 	}else{
 		echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <strong>Sin Resultados!</strong> No se encontraron resultados en la base de datos!.</div>';

@@ -2,7 +2,7 @@
     $active4="active";
     include "resources/header.php";
     if ($_SESSION['gasto']==1){
-    $mes = 13;
+    $mes = 1;
 ?>
     <!--main content start-->
     <section class="main-content-wrapper">
@@ -26,9 +26,9 @@
                         </div><!-- /input-group -->
                     </div>
 
-                    <div class="col-auto">
+                  <!--  <div class="col-auto">
                        <button class="btn btn-success " data-toggle="modal" data-target="#formModal"><i class='fa fa-plus'></i> Nuevo</button>
-                    </div>
+                    </div>-->
 
                    <div class="col-auto align-self-end">
                         <div class="customize-input float-right">
@@ -53,8 +53,8 @@
                 <div class="col-md-offset-10">
                     <!-- modals -->
                         <?php
-                            include "modals/agregar/agregar_egresos_fideicomiso.php";
-                            include "modals/editar/editar_egresos_fideicomiso.php";
+                           /* include "modals/agregar/agregar_egresos_fideicomiso.php";
+                            include "modals/editar/editar_egresos_fideicomiso.php";*/
                         ?>
                     <!-- /end modals -->
                     <input type='hidden' id='per_page' value='15'>
@@ -150,7 +150,7 @@
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/agregar/agregar_egresos_nombre_fideicomiso.php",
+                url: "view/ajax/agregar/agregar_general_gasto.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");
