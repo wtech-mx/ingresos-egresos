@@ -10,12 +10,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-3 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Febrero</h4>
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Gasto</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item"><a href="./?view=gasto" class="text-muted">Dashboard</a></li>
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">Febrero</li>
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">gasto</li>
                                 </ol>
                             </nav>
                         </div>
@@ -26,9 +26,9 @@
                         </div><!-- /input-group -->
                     </div>
 
-                  <!--  <div class="col-auto">
+                    <div class="col-auto">
                        <button class="btn btn-success " data-toggle="modal" data-target="#formModal"><i class='fa fa-plus'></i> Nuevo</button>
-                    </div>-->
+                    </div>
 
                    <div class="col-auto align-self-end">
                         <div class="customize-input float-right">
@@ -53,8 +53,9 @@
                 <div class="col-md-offset-10">
                     <!-- modals -->
                         <?php
-                           /* include "modals/agregar/agregar_egresos_fideicomiso.php";
-                            include "modals/editar/editar_egresos_fideicomiso.php";*/
+                            include "modals/agregar/agregar_gasto.php";
+                            include "modals/editar/editar_gasto.php";
+                            include "modals/mostrar/mostrar_gasto.php";
                         ?>
                     <!-- /end modals -->
                     <input type='hidden' id='per_page' value='15'>
@@ -66,7 +67,7 @@
                 <div class="col-12 p-3">
                     <div class="card panel panel-default p-2">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Datos de los gastos</h3>
+                            <h3 class="panel-title">Datos de gasto General</h3>
                             <div class="actions pull-right">
                                 <i class="fa fa-chevron-down"></i>
                                 <i class="fa fa-times"></i>
@@ -127,7 +128,7 @@
             var parametros = {"action":"ajax","page":page,"query":query,"per_page":per_page,"id":id};
 
             $.ajax({
-                url:'view/ajax/general_fideicomiso_ajax.php',
+                url:'view/ajax/gasto_ajax.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -150,7 +151,7 @@
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/agregar/agregar_general_gasto.php",
+                url: "view/ajax/agregar/agregar_nomgasto.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");
@@ -175,7 +176,7 @@
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/editar/editar_fideicomiso.php",
+                url: "view/ajax/editar/editar_gasto.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");
@@ -197,7 +198,7 @@
     function editar(id){
         var parametros = {"action":"ajax","id":id};
         $.ajax({
-                url:'view/modals/editar/fideicomiso.php',
+                url:'view/modals/editar/gasto.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader2").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -205,6 +206,20 @@
                 success:function(data){
                     $(".outer_div2").html(data).fadeIn('slow');
                     $("#loader2").html("");
+                }
+            })
+    }
+    function mostrar(id){
+        var parametros = {"action":"ajax","id":id};
+        $.ajax({
+                url:'view/modals/mostrar/gasto.php',
+                data: parametros,
+                 beforeSend: function(objeto){
+                $("#loader3").html("<img src='./assets/img/ajax-loader.gif'>");
+              },
+                success:function(data){
+                    $(".outer_div3").html(data).fadeIn('slow');
+                    $("#loader3").html("");
                 }
             })
     }

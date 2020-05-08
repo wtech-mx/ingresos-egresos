@@ -9,7 +9,7 @@
 	$query_validate=mysqli_query($con,"SELECT * FROM nombre_gasto WHERE id='".$id."'");
 	$count=mysqli_num_rows($query_validate);
 	if ($count==0){
-		if($delete=mysqli_query($con, "DELETE FROM general_gasto WHERE id='$id'")){
+		if($delete=mysqli_query($con, "DELETE FROM gasto WHERE id='$id'")){
 			$aviso="Bien hecho!";
 			$msj="Datos eliminados satisfactoriamente.";
 			$classM="alert alert-success";
@@ -45,7 +45,7 @@ if($action == 'ajax'){
 	if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 	else {echo mysqli_error($con);}
 	$total_pages = ceil($numrows/$per_page);
-	$reload = '../general_gasto';
+	$reload = '../gasto-view.php';
 	//main query to fetch the data
 	$query = mysqli_query($con,"SELECT $campos FROM  $tables where $sWhere LIMIT $offset,$per_page");
 	//loop through fetched data
@@ -66,33 +66,47 @@ if($action == 'ajax'){
 			while($row = mysqli_fetch_array($query)){
 				$id=$row['id'];
 				$nombre=$row['nombre'];
-				$general_id=$row['id'];
+				$id_mes_nomg=$row['id_mes_nomg'];
 				$finales++;
-
-				 if ($general_id == 1) {
-
 		?>
-		<div class="accordion" id="accordionExample">
-		     <div class="card">
-			    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-				    <div class="card-header bg-primary" id="headingOne">
-				      <h2 class="mb-0 text-white">
-				         <?php echo $nombre ?>
-				      </h2>
-				    </div>
-			    </a>
 
-			    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-			        <div class="card-body">
-						<?php include("general_gasto_ajax_collapse.php") ?>
- 				    </div>
-			    </div>
-		     </div>
-		</div>
+		<table class="table table-bordered table-striped" id="mytable">
+	        <thead>
+	        	<div id="adicionados"></div>
+	            <tr>
+	            	<th>Mes</th>
+	            	<th>Nombre</th>
+	                <th>Cantidad</th>
 
-        <?php } ?>
-<?php
-}
+	            </tr>
+	         </thead>
+			<?php
+      		$rspta = mysqli_query($con, "SELECT * FROM gasto  ORDER BY  id ASC");
+	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id ");
+            $valores=array();
+            //while($row = mysqli_fetch_array($query)){
+            while ($gasto = $rspta->fetch_object()){
+                $sw=in_array($gasto->id,$valores);
+	            if ($id == $gasto->gasto_code) {
+
+                 ?>
+	        <tbody>
+	            <tr>
+	            <td><?php echo $id_mes_nomg ?></td>
+	            <td><?php echo $nombre ?></td>
+				<td><?php echo $gasto->cantidad ?></td>
+
+	        </tbody>
+				<?php
+					     }else{
+
+					     }
+			            }
+
+			        ?>
+	    </table>
+        <?php }
+
 	}else{
 		echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <strong>Sin Resultados!</strong> No se encontraron resultados en la base de datos!.</div>';
