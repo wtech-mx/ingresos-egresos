@@ -67,6 +67,7 @@ if($action == 'ajax'){
 				$id=$row['id'];
 				$nombre=$row['nombre'];
 				$id_mes_nomg=$row['id_mes_nomg'];
+
 				$finales++;
 
 				if ($id_mes_nomg == 1) {

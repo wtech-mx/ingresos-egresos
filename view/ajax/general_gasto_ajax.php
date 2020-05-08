@@ -80,6 +80,7 @@ if($action == 'ajax'){
 <!-- 					<th>Total Cantidad</th> -->
 	            </tr>
 	         </thead>
+
 			<?php
 
 			// $result = mysqli_query($con,"SELECT SUM(cantidad) as cantidad_sum FROM gasto");
@@ -88,17 +89,20 @@ if($action == 'ajax'){
       		$rspta = mysqli_query($con, "SELECT * FROM gasto  ORDER BY  id ASC");
 	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id ");
             $valores=array();
+
             //while($row = mysqli_fetch_array($query)){
             while ($gasto = $rspta->fetch_object()){
                 $sw=in_array($gasto->id,$valores);
 	            if ($id == $gasto->gasto_code) {
                  ?>
+
+
 	        <tbody>
 	            <tr>
 <!-- 	            <td><?php echo $id_mes_nomg ?></td> -->
 	            <td><?php echo $nombre ?></td>
 				<td><?php echo $gasto->cantidad ?></td>
-<!-- 	            <td><?php echo $total->cantidad_sum; ?></td> -->
+<!--	            <td><?php echo $gasto->cantidad_sum; ?></td> -->
 	        </tbody>
 				<?php
 					     }else{
