@@ -9,7 +9,7 @@
 	$query_validate=mysqli_query($con,"SELECT * FROM nombre_fideicomisos WHERE id='".$id."'");
 	$count=mysqli_num_rows($query_validate);
 	if ($count==0){
-		if($delete=mysqli_query($con, "DELETE FROM fideicomisos_egresos WHERE id='$id'")){
+		if($delete=mysqli_query($con, "DELETE FROM fideicomiso_ingresos WHERE id='$id'")){
 			$aviso="Bien hecho!";
 			$msj="Datos eliminados satisfactoriamente.";
 			$classM="alert alert-success";

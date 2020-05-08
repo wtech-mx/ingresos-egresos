@@ -6,19 +6,10 @@
             $errors[] = "mes_id está vacío.";
         }elseif (empty($_POST['servicio'])) {
             $errors[] = "Servicio está vacío.";
-        }elseif (empty($_POST['ingresos'])) {
-            $errors[] = "ingresos está vacío.";
-        }elseif (empty($_POST['apartado'])) {
-            $errors[] = "apartado está vacío.";
-        }elseif (empty($_POST['fecha_carga'])) {
-            $errors[] = "fecha_carga está vacío.";
         }elseif (
         	!empty($_POST['gasto_fide'])
         	&& !empty($_POST['mes_id'])
         	&& !empty($_POST['servicio'])
-        	&& !empty($_POST['ingresos'])
-        	&& !empty($_POST['apartado'])
-        	&& !empty($_POST['fecha_carga'])
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
 	        $gasto_fide = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_fide"],ENT_QUOTES)));
@@ -35,7 +26,7 @@
 			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
 			$target_dir="view/resources/images/gastosCorriente/gastoCorriente.jpg";
 			//Write register in to database
-			$sql = "INSERT INTO fideicomisos_ingresos (gasto_fide, mes_id, servicio, ingresos, pagodoc,  apartado, subtotal, total, fecha_carga) VALUES( '".$id."', '".$mes_id."',  '".$servicio."','".$ingresos."', '".$pagodoc."', '".$apartado."', '".$subtotal."', '".$total."', '".$fecha_carga."')";// COMANDO DE SQL PARA
+			$sql = "INSERT INTO fideicomiso_ingresos (gasto_fide, mes_id, servicio, ingresos, pagodoc,  apartado, subtotal, total, fecha_carga) VALUES( '".$id."', '".$mes_id."',  '".$servicio."','".$ingresos."', '".$pagodoc."', '".$apartado."', '".$subtotal."', '".$total."', '".$fecha_carga."')";// COMANDO DE SQL PARA
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
@@ -44,7 +35,7 @@
 				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
             } else {
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
-                header("Location: http://localhost/ingresos-egresos/?view=gasto");
+                var_dump($sql);
             }
 		}
 		else {
