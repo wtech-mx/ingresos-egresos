@@ -68,6 +68,13 @@
                     <div class="card panel panel-default p-2">
                         <div class="panel-heading">
                             <h3 class="panel-title">Datos de gasto General</h3>
+
+                        <?php
+                        $result = mysqli_query($con,"SELECT SUM(cantidad) as cantidad_sum FROM gasto");
+                        while ($total = $result->fetch_object()){ ?>
+                            <h1><?php echo $total->cantidad_sum; ?></h1>
+                        <?php } ?>
+
                             <div class="actions pull-right">
                                 <i class="fa fa-chevron-down"></i>
                                 <i class="fa fa-times"></i>
