@@ -63,18 +63,18 @@
 	        <tbody>
 	            <tr>
 
-	            <td><?php echo $fideicomisos_ingresos->id?></td>
-                <td><?php echo $fideicomisos_ingresos->servicio ?></td>
-                <td><?php echo $fideicomisos_ingresos->ingreso ?></td>
+	            <td><?php echo $fideicomiso_ingresos->id?></td>
+                <td><?php echo $fideicomiso_ingresos->servicio ?></td>
+                <td><?php echo $fideicomiso_ingresos->ingresos ?></td>
 		        <td class="text-right">
 
-                    <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomisos_ingresos->id;?>');">
+                    <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomiso_ingresos->id;?>');">
                     	<i class="fa fa-edit"></i>
                     </button>
 
-                    <button type="button" class="btn btn-info btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $fideicomisos_ingresos->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i></button>
+                    <button type="button" class="btn btn-info btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $fideicomiso_ingresos->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i></button>
 
-                    <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $fideicomisos_ingresos->id;?>')">
+                    <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $fideicomiso_ingresos->id;?>')">
                     	<i class="fa fas fa-trash"></i>
                     </button>
 
