@@ -77,18 +77,14 @@ if($action == 'ajax'){
 	            	<th>Mes</th>
 	            	<th>Nombre</th>
 	                <th>Cantidad</th>
-
+					<th>Total Cantidad</th>
 	            </tr>
 	         </thead>
 			<?php
 
-
-
-
 			$result = mysqli_query($con,"SELECT SUM(cantidad) as cantidad_sum FROM gasto");
 			while ($total = $result->fetch_object()){
-				$total->cantidad ['cantidad_sum'];
-			}
+
 
 
       		$rspta = mysqli_query($con, "SELECT * FROM gasto  ORDER BY  id ASC");
@@ -104,7 +100,7 @@ if($action == 'ajax'){
 	            <td><?php echo $id_mes_nomg ?></td>
 	            <td><?php echo $nombre ?></td>
 				<td><?php echo $gasto->cantidad ?></td>
-
+	            <td><?php echo $total->cantidad_sum; ?></td>
 	        </tbody>
 				<?php
 					     }else{
@@ -115,7 +111,7 @@ if($action == 'ajax'){
 			        ?>
 	    </table>
         <?php }
-
+			}
 	}else{
 		echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <strong>Sin Resultados!</strong> No se encontraron resultados en la base de datos!.</div>';
