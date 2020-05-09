@@ -1,4 +1,4 @@
-<?php 
+<?php
     $active12="active";
     include "resources/header.php";
 
@@ -29,7 +29,7 @@
                     <h1 class="h1">Configuración</h1>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-md-3">
                     <!-- Profile Image -->
@@ -63,7 +63,7 @@
                                     </div>
                                     <label for="actividad_economica" class="col-sm-2 control-label">Actividad : </label>
                                     <div class="col-sm-4">
-                                        <textarea type="text" required name="actividad_economica" class="form-control" id="actividad_economica" placeholder="Actividad Economica: "><?php echo $actividad_economica ?></textarea> 
+                                        <textarea type="text" required name="actividad_economica" class="form-control" id="actividad_economica" placeholder="Actividad Economica: "><?php echo $actividad_economica ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -95,11 +95,11 @@
                         </div>
                     </div>
                 </div>
-            </div>       
+            </div>
 
         </section>
     </section><!--main content end-->
-<?php  
+<?php
     include "resources/footer.php";
 ?>
 <script>
@@ -121,11 +121,12 @@
             success: function(data)   // A function to be called if request succeeds
             {
                 $("#load_img").html(data);
-                
+
             }
         });
     }
 </script>
+
 <script>
     $( "#update_register" ).submit(function( event ) {
         $('.actualizar_datos').attr("disabled", true);
@@ -143,15 +144,16 @@
             window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
             $(this).remove();});}, 5000);
-            
+
           }
-        });     
+        });
         event.preventDefault();
     });
 </script>
-<?php     
+
+<?php
     }else{
       require 'resources/acceso_prohibido.php';
     }
-    ob_end_flush(); 
+    ob_end_flush();
 ?>
