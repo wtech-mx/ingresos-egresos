@@ -45,13 +45,13 @@
 		    </div>
 		</div>
 		<div class="form-row">
-		    <div class="form-group col-md-2">
+		    <div class="form-group col-md-6">
 				<div class="custom-file">
 			    <input type="file" name="imagefile1" class="form-control" id="imagefile1">
 				<label class="custom-file-label" for="imagefile1">Archivo 1</label>
 				</div>
 		    </div>
-		    <div class="form-group col-md-2">
+		    <div class="form-group col-md-6">
 				<div class="custom-file">
 				  <input type="file" class="custom-file-input" id="imagefile2">
 				  <label class="custom-file-label" for="imagefile2">Archivo 2</label>
@@ -88,9 +88,11 @@
 	            	if($fideicomiso_ingresos->servicio == '1'){
 	            		$fideicomiso_ingresos->servicio = 'Analisis';
 	            	}
+
 	            	if($fideicomiso_ingresos->servicio == '2'){
 	            		$fideicomiso_ingresos->servicio= 'Seminario';
 	            	}
+
 	            	if($fideicomiso_ingresos->servicio == '3'){
 	            		$fideicomiso_ingresos->servicio= 'Odontologia';
 	            	}
@@ -154,3 +156,4 @@
 
 			        ?>
 	    </table>
+
