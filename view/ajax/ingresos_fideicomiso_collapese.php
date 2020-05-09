@@ -19,8 +19,8 @@
 		</div>
 	    <div class="form-row">
             <div class="col-sm-4">
-				<label class="mr-sm-2" name="servicio" id="servicio" for="servicio">Select</label>
-				<select class="custom-select mr-sm-2" id="servicio">
+				<label class="mr-sm-2" for="servicio">Seleccionar</label>
+				<select class="custom-select mr-sm-2" id="servicio" name="servicio">
                 <option selected>Selecciona...</option>
                     <option value="1">Analisis</option>
                     <option value="2">Seminario</option>
@@ -60,6 +60,15 @@
             while ($fideicomiso_ingresos = $rspta->fetch_object()){
                 $sw=in_array($fideicomiso_ingresos->id,$valores);
 	            if ($id == $fideicomiso_ingresos->gasto_fide) {
+	            	if($fideicomiso_ingresos->servicio == '1'){
+	            		$fideicomiso_ingresos->servicio= 'Analisis';
+	            	}
+	            	if($fideicomiso_ingresos->servicio == '2'){
+	            		$fideicomiso_ingresos->servicio= 'Seminario';
+	            	}
+	            	if($fideicomiso_ingresos->servicio == '3'){
+	            		$fideicomiso_ingresos->servicio= 'Odontologia';
+	            	}
                  ?>
 	        <tbody>
 	            <tr>
