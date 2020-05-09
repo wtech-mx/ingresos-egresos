@@ -32,8 +32,19 @@
 		      <label for="ingresos">Ingresos</label>
 		      <input type="number" class="form-control" id="ingresos" name="ingresos">
 		    </div>
-
 		</div>
+		 <div class="form-row">
+            <div class="form-group col-md-4">
+		      <label for="pagodoc">Pago Docente</label>
+		      <input type="number" class="form-control" id="pagodoc" name="pagodoc">
+		    </div>
+
+		    <div class="form-group col-md-4">
+		      <label for="total">Total</label>
+		      <input type="number" class="form-control" id="total" name="total">
+		    </div>
+		</div>
+
 		 	<div class="row">
 		 	  <div class="col-md-12">
 					<button type="submit" id="guardar_datos_gasto" name="guardar_datos_gasto" class="btn btn-success">Agregar</button>
@@ -76,6 +87,8 @@
 	            <td><?php echo $fideicomiso_ingresos->id?></td>
                 <td><?php echo $fideicomiso_ingresos->servicio ?></td>
                 <td><?php echo $fideicomiso_ingresos->ingresos ?></td>
+                <td><?php echo $fideicomiso_ingresos->pagodoc ?></td>
+                <td><?php echo $fideicomiso_ingresos->total ?></td>
 		        <td class="text-right">
 
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomiso_ingresos->id;?>');">

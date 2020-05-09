@@ -35,7 +35,6 @@
 				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
             } else {
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
-                var_dump($sql);
             }
 		}
 		else {
