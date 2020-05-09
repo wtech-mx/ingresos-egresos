@@ -18,7 +18,7 @@
 		    </div>
 		</div>
 	    <div class="form-row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
 				<label class="mr-sm-2" for="servicio">Seleccionar</label>
 				<select class="custom-select mr-sm-2" id="servicio" name="servicio">
                 <option selected>Selecciona...</option>
@@ -28,18 +28,18 @@
                 </select>
             </div>
 
-		    <div class="form-group col-md-4">
+		    <div class="form-group col-md-6">
 		      <label for="ingresos">Ingresos</label>
 		      <input type="number" class="form-control" id="ingresos" name="ingresos">
 		    </div>
 		</div>
-		 <div class="form-row">
+		 <div class="form-row"style="display: none;">
             <div class="form-group col-md-4">
 		      <label for="pagodoc">Pago Docente</label>
 		      <input type="number" class="form-control" id="pagodoc" name="pagodoc">
 		    </div>
 
-		    <div class="form-group col-md-4">
+		    <div class="form-group col-md-4"style="display: none;">
 		      <label for="total">Total</label>
 		      <input type="number" class="form-control" id="total" name="total">
 		    </div>
@@ -72,7 +72,7 @@
                 $sw=in_array($fideicomiso_ingresos->id,$valores);
 	            if ($id == $fideicomiso_ingresos->gasto_fide) {
 	            	if($fideicomiso_ingresos->servicio == '1'){
-	            		$fideicomiso_ingresos->servicio= 'Analisis';
+	            		$fideicomiso_ingresos->servicio = 'Analisis';
 	            	}
 	            	if($fideicomiso_ingresos->servicio == '2'){
 	            		$fideicomiso_ingresos->servicio= 'Seminario';
@@ -83,17 +83,45 @@
                  ?>
 	        <tbody>
 	            <tr>
-
 	            <td><?php echo $fideicomiso_ingresos->id?></td>
                 <td><?php echo $fideicomiso_ingresos->servicio ?></td>
-                <td><?php echo $fideicomiso_ingresos->ingresos ?></td>
-                <td><?php echo $fideicomiso_ingresos->pagodoc ?></td>
-                <td><?php echo $fideicomiso_ingresos->total ?></td>
+                <td>$<?php echo $fideicomiso_ingresos->ingresos ?></td>
+                <td>$
+                	<?php
+
+	            	if($fideicomiso_ingresos->servicio == 'Analisis' || $fideicomiso_ingresos->servicio == 'Odontologia'){
+	            		$Porcentaje = $fideicomiso_ingresos->ingresos * 0.15;
+	            		$Total = $fideicomiso_ingresos->ingresos - $Porcentaje;
+	            		echo "";
+	            	}else if($fideicomiso_ingresos->servicio == 'Seminario'){
+	            		$Porcentaje = $fideicomiso_ingresos->ingresos * 0.15;
+	            		$Total = $fideicomiso_ingresos->ingresos - $Porcentaje;
+	            		$Divison = $Total /3;
+	            		echo $Divison;
+	            	}
+
+                	?>
+                </td>
+                <td>$
+                	<?php
+	            	if($fideicomiso_ingresos->servicio == 'Analisis' || $fideicomiso_ingresos->servicio == 'Odontologia'){
+                		echo $Total;
+	            	}else if($fideicomiso_ingresos->servicio == 'Seminario'){
+	            		$Porcentaje = $fideicomiso_ingresos->ingresos * 0.15;
+	            		$Total = $fideicomiso_ingresos->ingresos - $Porcentaje;
+	            		$Divison = $Total /3;
+	            		$RestanteTotal = $Divison *2;
+	            		echo $RestanteTotal;
+	            	}
+                	?>
+
+                </td>
+
 		        <td class="text-right">
 
-                    <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomiso_ingresos->id;?>');">
+<!--                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomiso_ingresos->id;?>');">
                     	<i class="fa fa-edit"></i>
-                    </button>
+                    </button> -->
 
                     <button type="button" class="btn btn-info btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $fideicomiso_ingresos->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i></button>
 
