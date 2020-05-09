@@ -21,7 +21,7 @@
             <div class="col-sm-6">
 				<label class="mr-sm-2" for="servicio">Seleccionar</label>
 				<select class="custom-select mr-sm-2" id="servicio" name="servicio">
-                <option selected>Selecciona...</option>
+                <option selected>Selecciona Servicio</option>
                     <option value="1">Analisis</option>
                     <option value="2">Seminario</option>
                     <option value="3">Odontologia</option>
@@ -33,7 +33,7 @@
 		      <input type="number" class="form-control" id="ingresos" name="ingresos">
 		    </div>
 		</div>
-		 <div class="form-row"style="display: none;">
+		<div class="form-row"style="display: none;">
             <div class="form-group col-md-4">
 		      <label for="pagodoc">Pago Docente</label>
 		      <input type="number" class="form-control" id="pagodoc" name="pagodoc">
@@ -42,6 +42,20 @@
 		    <div class="form-group col-md-4"style="display: none;">
 		      <label for="total">Total</label>
 		      <input type="number" class="form-control" id="total" name="total">
+		    </div>
+		</div>
+		<div class="form-row">
+		    <div class="form-group col-md-2">
+				<div class="custom-file">
+			    <input type="file" name="imagefile1" class="form-control" id="imagefile1">
+				<label class="custom-file-label" for="imagefile1">Archivo 1</label>
+				</div>
+		    </div>
+		    <div class="form-group col-md-2">
+				<div class="custom-file">
+				  <input type="file" class="custom-file-input" id="imagefile2">
+				  <label class="custom-file-label" for="imagefile2">Archivo 2</label>
+				</div>
 		    </div>
 		</div>
 
@@ -119,9 +133,9 @@
 
 		        <td class="text-right">
 
-<!--                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomiso_ingresos->id;?>');">
+                    <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomiso_ingresos->id;?>');">
                     	<i class="fa fa-edit"></i>
-                    </button> -->
+                    </button>
 
                     <button type="button" class="btn btn-info btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $fideicomiso_ingresos->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i></button>
 
@@ -131,6 +145,7 @@
 
 		        </td>
 	        </tbody>
+
 				<?php
 					     }else{
 
