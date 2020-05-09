@@ -19,8 +19,9 @@
 		</div>
 	    <div class="form-row">
             <div class="col-sm-4">
-                <select class="form-control" name="servicio" id="servicio">
-                <option value="0">Seleccionar Servicio</option>
+				<label class="mr-sm-2" name="servicio" id="servicio" for="servicio">Select</label>
+				<select class="custom-select mr-sm-2" id="servicio">
+                <option selected>Selecciona...</option>
                     <option value="1">Analisis</option>
                     <option value="2">Seminario</option>
                     <option value="3">Odontologia</option>
@@ -29,7 +30,7 @@
 
 		    <div class="form-group col-md-4">
 		      <label for="ingresos">Ingresos</label>
-		      <input type="text" class="form-control" id="ingresos" name="ingresos">
+		      <input type="number" class="form-control" id="ingresos" name="ingresos">
 		    </div>
 
 		</div>
