@@ -269,10 +269,30 @@
                                 <li class="sidebar-item"> <a class="has-arrow sidebar-link" href="javascript:void(0)"
                                         aria-expanded="false"><span class="hide-menu"><?php echo $mes ?></span></a>
                                     <ul aria-expanded="false" class="collapse second-level base-level-line">
-                                        <li class="sidebar-item"><a href="<?php echo $src_ingresos ?>" class="sidebar-link"><span
-                                                    class="hide-menu"> Ingresos</span></a></li>
-                                        <li class="sidebar-item"><a href="<?php echo $src_egresos ?>" class="sidebar-link"><span
-                                                    class="hide-menu"> Egresos</span></a></li>
+                                        <?php
+                                        if ($mes=$row['mes'] != 'General') {
+                                            ?>
+                                        <li class="sidebar-item">
+                                            <a href="<?php echo $src_ingresos ?>" class="sidebar-link">
+                                                <span class="hide-menu"> Ingresos</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
+                                            <a href="<?php echo $src_egresos ?>" class="sidebar-link">
+                                                <span class="hide-menu"> Egresos</span>
+                                            </a>
+                                        </li>
+                                        <?php
+                                        }else{
+                                            ?>
+                                        <li class="sidebar-item">
+                                            <a href="?view=general_fideicomiso" class="sidebar-link">
+                                                <span class="hide-menu"> Click aqui</span>
+                                            </a>
+                                        </li>    <?php
+                                             }
+                                         ?>
 
                                     </ul>
                                 </li>
@@ -328,8 +348,6 @@
                             </a>
                          </li>
                           <?php } ?>
-
-
 
                         <?php if ($_SESSION['configuracion']==1) { ?>
                         <li class="sidebar-item <?php if(isset($active12)){echo $active12;}?>">
