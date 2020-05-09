@@ -6,7 +6,7 @@
 	$id=$_REQUEST["id"];
 	$id=intval($id);
 
-	$query_validate=mysqli_query($con,"SELECT * FROM nombre_gasto WHERE id='".$id."'");
+	$query_validate=mysqli_query($con,"SELECT * FROM nombre_fideicomisos WHERE id='".$id."'");
 	$count=mysqli_num_rows($query_validate);
 	if ($count==0){
 		if($delete=mysqli_query($con, "DELETE FROM gasto WHERE id='$id'")){
@@ -31,7 +31,7 @@
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if($action == 'ajax'){
 	$query = mysqli_real_escape_string($con,(strip_tags($_REQUEST['query'], ENT_QUOTES)));
-	$tables="nombre_gasto";
+	$tables="nombre_fideicomisos";
 	$campos="*";
 	$sWhere=" nombre LIKE '%".$query."%'";
 	include 'pagination.php'; //include pagination file
@@ -45,7 +45,7 @@ if($action == 'ajax'){
 	if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 	else {echo mysqli_error($con);}
 	$total_pages = ceil($numrows/$per_page);
-	$reload = '../gasto-view.php';
+	$reload = '../general_fideicomiso-view.php';
 	//main query to fetch the data
 	$query = mysqli_query($con,"SELECT $campos FROM  $tables where $sWhere LIMIT $offset,$per_page");
 	//loop through fetched data
@@ -66,7 +66,7 @@ if($action == 'ajax'){
 			while($row = mysqli_fetch_array($query)){
 				$id=$row['id'];
 				$nombre=$row['nombre'];
-				$id_mes_nomg=$row['id_mes_nomg'];
+				$id_mes_nomfide=$row['id_mes_nomfide'];
 				$finales++;
 		?>
 
@@ -76,7 +76,7 @@ if($action == 'ajax'){
 	            <tr>
 <!-- 	            	<th>Mes</th> -->
 	            	<th>Nombre</th>
-	                <th>Cantidad</th>
+	                <th>Servicios</th>
 <!-- 					<th>Total Cantidad</th> -->
 	            </tr>
 	         </thead>
@@ -86,14 +86,14 @@ if($action == 'ajax'){
 			// $result = mysqli_query($con,"SELECT SUM(cantidad) as cantidad_sum FROM gasto");
 			// while ($total = $result->fetch_object()){
 
-      		$rspta = mysqli_query($con, "SELECT * FROM gasto  ORDER BY  id ASC");
+      		$rspta = mysqli_query($con, "SELECT * FROM fideicomiso_ingresos  ORDER BY  id ASC");
 	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id ");
             $valores=array();
 
             //while($row = mysqli_fetch_array($query)){
             while ($gasto = $rspta->fetch_object()){
                 $sw=in_array($gasto->id,$valores);
-	            if ($id == $gasto->gasto_code) {
+	            if ($id == $gasto->gasto_fide) {
                  ?>
 
 

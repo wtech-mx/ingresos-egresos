@@ -12,30 +12,27 @@
 					    </div>
 					</div>
 				    <div class="form-row">
-					    <div class="form-group col-md-6">
+					    <div class="form-group col-md-4">
 					      <label for="fecha_carga">Fecha</label>
 					      <input class="form-control" type="date" value="" id="fecha_carga" name="fecha_carga">
 					    </div>
-					 	<div class="form-group col-md-6">
-					      <label for="Servicio">Servicio</label>
-					      <input type="text" class="form-control" id="Servicio" name="Servicio">
-					    </div>
-					</div>
-					 <div class="form-row">
-					 	<div class="form-group col-md-4">
-					      <label for="egreso">egreso</label>
+					    <div class="form-group col-md-4">
+					      <label for="egreso">Egreso</label>
 					      <input type="text" class="form-control" id="egreso" name="egreso">
 					    </div>
 					    <div class="form-group col-md-4">
-					      <label for="bien">bien/Servicio</label>
+					      <label for="bien">Bien/Servicio</label>
 				 		  <input type="text" class="form-control" id="bien" name="bien">
 					    </div>
+					</div>
+					 <div class="form-row">
+
 					    <div class="form-group col-md-2">
 					      <label for="numfact">Numfac</label>
 					      <input type="NUMBER" class="form-control" id="numfact" name="numfact">
 					    </div>
 					    <div class="form-group col-md-2">
-					      <label for="proveedor">proveedor</label>
+					      <label for="proveedor">Proveedor</label>
 					      <input type="text" class="form-control" id="proveedor" name="proveedor">
 					    </div>
 				     </div>
@@ -52,24 +49,6 @@
 							  <label class="custom-file-label" for="foto2">foto2</label>
 							</div>
 					    </div>
-					    <div class="form-group col-md-2">
-							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="foto3">
-							  <label class="custom-file-label" for="foto3">foto3</label>
-							</div>
-					    </div>
-					    <div class="form-group col-md-2">
-							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="foto4">
-							  <label class="custom-file-label" for="foto4">foto4</label>
-							</div>
-					    </div>
-					    <div class="form-group col-md-3">
-							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="foto5">
-							  <label class="custom-file-label" for="foto5">foto5</label>
-							</div>
-						</div>
 					</div>
 					 	<div class="row">
 					 	  <div class="col-md-12">
@@ -82,11 +61,10 @@
 	        	<div id="adicionados"></div>
 	            <tr>
 	                <th>#ID</th>
-	                <th>Servicio</th>
 	                <th>Egreso</th>
-	                <th>bien/Servicio</th>
-	                <th>numfact</th>
-	                <th>proveedor</th>
+	                <th>Bien/Servicio</th>
+	                <th>Numfact</th>
+	                <th>Proveedor</th>
 	                <th>Fecha Carga</th>
 	                <th>Acciones</th>
 	            </tr>
@@ -104,7 +82,6 @@
 	            <tr>
 
 	            <td><?php echo $fideicomisos_egresos->id?></td>
-                <td><?php echo $fideicomisos_egresos->Servicio ?></td>
                 <td><?php echo $fideicomisos_egresos->egreso ?></td>
                 <td><?php echo $fideicomisos_egresos->bien ?></td>
                 <td><?php echo $fideicomisos_egresos->numfact ?></td>

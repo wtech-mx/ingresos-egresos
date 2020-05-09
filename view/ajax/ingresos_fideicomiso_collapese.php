@@ -128,7 +128,6 @@
 	            		echo $RestanteTotal;
 	            	}
                 	?>
-
                 </td>
 
 		        <td class="text-right">
@@ -137,7 +136,8 @@
                     	<i class="fa fa-edit"></i>
                     </button>
 
-                    <button type="button" class="btn btn-info btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $fideicomiso_ingresos->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i></button>
+                    <button type="button" class="btn btn-info btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $fideicomiso_ingresos->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i>
+                    </button>
 
                     <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $fideicomiso_ingresos->id;?>')">
                     	<i class="fa fas fa-trash"></i>
