@@ -11,7 +11,6 @@
 			$rw=mysqli_fetch_array($query);
         $id=$rw['id'];
         $gasto_fide_egresos=$rw['gasto_fide_egresos'];
-        $Servicio=$rw['Servicio'];
         $numfact=$rw['numfact'];
         $egreso=$rw['egreso'];
         $bien=$rw['bien'];
@@ -24,25 +23,20 @@
 <input type="hidden" value="<?php echo $id;?>" name="id" id="id">
       <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="Servicio">Servicio <?php echo $Servicio;?></label>
-              <input type="text" class="form-control" id="Servicio" name="Servicio" value="<?php echo $Servicio;?>">
-            </div>
-
-            <div class="form-group col-md-6">
               <label for="gasto">Egreso</label>
               <input type="text" class="form-control" value="<?php echo $egreso;?>" id="egreso" name="egreso">
             </div>
             <div class="form-group col-md-4">
-              <label for="bien">numfact</label>
-              <input type="text" class="form-control" placeholder="<?php echo $bien;?>" value="<?php echo $bien;?>" id="bien" name="bien">
-            </div>
-            <div class="form-group col-md-2">
-              <label for="numfact">numfact</label>
-              <input type="number" class="form-control" placeholder="<?php echo $numfact;?>" value="<?php echo $numfact;?>" id="numfact" name="numfact">
+              <label for="bien">Bien/Servicio</label>
+              <input type="text" class="form-control" value="<?php echo $bien;?>" id="bien" name="bien">
             </div>
             <div class="form-group col-md-6">
-              <label for="proveedor">Observacion</label>
+              <label for="proveedor">proveedor</label>
               <input type="text" class="form-control" value="<?php echo $proveedor;?>" id="proveedor" name="proveedor">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="numfact">Num factura</label>
+              <input type="number" class="form-control" value="<?php echo $numfact;?>" id="numfact" name="numfact">
             </div>
       </div>
 
@@ -60,25 +54,6 @@
                   <label class="custom-file-label" for="Imagen2">Imagen2</label>
                 </div>
             </div>
-            <div class="form-group col-sm-6">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="Imagen3">
-                  <label class="custom-file-label" for="Imagen3">Imagen3</label>
-                </div>
-            </div>
-            <div class="form-group col-sm-6">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="Imagen4">
-                  <label class="custom-file-label" for="Imagen4">Imagen4</label>
-                </div>
-            </div>
-            <div class="form-group col-sm-6">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="Imagen5">
-                  <label class="custom-file-label" for="Imagen5">Imagen5</label>
-                </div>
-            </div>
-
       </div>
 
 <script>

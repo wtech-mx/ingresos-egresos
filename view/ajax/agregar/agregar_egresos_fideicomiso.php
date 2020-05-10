@@ -4,8 +4,6 @@
             $errors[] = "gasto_fide_egresos está vacío.";
         }elseif (empty($_POST['mes_id'])) {
             $errors[] = "mes_id está vacío.";
-        }elseif (empty($_POST['Servicio'])) {
-            $errors[] = "Servicio está vacío.";
         }elseif (empty($_POST['egreso'])) {
             $errors[] = "egreso está vacío.";
         }elseif (empty($_POST['bien'])) {
@@ -19,7 +17,6 @@
         }elseif (
         	!empty($_POST['gasto_fide_egresos'])
         	&& !empty($_POST['mes_id'])
-        	&& !empty($_POST['Servicio'])
         	&& !empty($_POST['egreso'])
         	&& !empty($_POST['bien'])
         	&& !empty($_POST['proveedor'])
@@ -29,7 +26,6 @@
 		require_once ("../../../config/config.php");//conexipon de DB
 	        $gasto_fide_egresos = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_fide_egresos"],ENT_QUOTES)));
 	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
-	        $Servicio = mysqli_real_escape_string($con,(strip_tags($_POST["Servicio"],ENT_QUOTES)));
 	        $egreso = mysqli_real_escape_string($con,(strip_tags($_POST["egreso"],ENT_QUOTES)));
 	        $bien = mysqli_real_escape_string($con,(strip_tags($_POST["bien"],ENT_QUOTES)));
 	        $proveedor = mysqli_real_escape_string($con,(strip_tags($_POST["proveedor"],ENT_QUOTES)));
@@ -40,7 +36,7 @@
 			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
 			$target_dir="view/resources/images/gastosCorriente/gastoCorriente.jpg";
 			//Write register in to database
-			$sql = "INSERT INTO fideicomisos_egresos (gasto_fide_egresos, mes_id,Servicio, egreso,  bien,proveedor,numfact,fecha_carga) VALUES( '".$id."', '".$mes_id."',  '".$Servicio."','".$egreso."', '".$bien."', '".$proveedor."', '".$numfact."', '".$fecha_carga."')";// cOMANDO DE sQL PARA
+			$sql = "INSERT INTO fideicomisos_egresos (gasto_fide_egresos, mes_id, egreso, bien, proveedor, numfact, fecha_carga) VALUES( '".$id."', '".$mes_id."','".$egreso."', '".$bien."', '".$proveedor."', '".$numfact."', '".$fecha_carga."')";// cOMANDO DE sQL PARA
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

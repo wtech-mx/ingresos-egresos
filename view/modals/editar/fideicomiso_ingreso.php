@@ -16,7 +16,7 @@
 	}
 	else{exit;}
 ?>
-
+<input type="hidden" value="<?php echo $id;?>" name="id" id="id">
       <div class="form-row">
             <div class="form-group col-md-12">
               <label for="ingresos">Ingreso</label>

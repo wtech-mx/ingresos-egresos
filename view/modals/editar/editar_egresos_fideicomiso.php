@@ -4,7 +4,7 @@
     <form class="form-horizontal" role="form" method="post" id="update_register" name="update_register">
         <div class="modal-content">
             <div class="modal-header modal-colored-header bg-warning">
-                <h4 class="modal-title" id="myModalLabel">Editar Gasto</h4>
+                <h4 class="modal-title" id="myModalLabel">Editar Fideicomiso</h4>
                 <button type="button" class="close" data-dismiss="modal"
                     aria-hidden="true">×</button>
             </div>
