@@ -175,7 +175,7 @@
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/editar/editar_fideicomiso.php",
+                url: "view/ajax/editar/editar_fideicomiso_egreso.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");

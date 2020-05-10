@@ -70,9 +70,9 @@
                             <h3 class="panel-title">Datos de gasto General</h3>
 
                         <?php
-                        $result = mysqli_query($con,"SELECT fecha, SUM(cantidad) as cantidad_sum FROM gasto group by fecha ");
+                        $result = mysqli_query($con,"SELECT fecha, SUM(egreso) as egresos_sum FROM fideicomisos_egresos group by fecha ");
                         while ($total = $result->fetch_object()){ ?>
-                            <h1><?php echo $total->cantidad_sum; ?></h1>
+                            <h1><?php echo $total->egresos_sum; ?></h1>
                         <?php } ?>
 
                             <div class="actions pull-right">
