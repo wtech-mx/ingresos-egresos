@@ -7,8 +7,6 @@
         }elseif (
         	!empty($_POST['gasto_fide'])
         	&& !empty($_POST['mes_id'])
-        	&& !empty($_POST['servicio'])
-
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
 	        $gasto_fide = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_fide"],ENT_QUOTES)));
@@ -17,7 +15,7 @@
 
 
 			$id = $_POST["gasto_fide"];
-			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
+			$sql ="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
 			//Write register in to database
 			$sql = "INSERT INTO fideicomiso_ingresos (gasto_fide, mes_id) VALUES( '".$id."', '".$mes_id."')";// COMANDO DE SQL PARA
 			$query_new = mysqli_query($con,$sql);
@@ -29,16 +27,15 @@
             } else {
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
             }
-		}
-		else {
+		}else {
 			$errors[] = "desconocido.";
 			echo $sql;
 		}
 ?>
-<!-- <script type="text/javascript">
+ <script type="text/javascript">
 window.history.go(-1);
 window.history.back();
-</script> -->
+</script>
 
 
 <?php
