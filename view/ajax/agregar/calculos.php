@@ -1,45 +1,32 @@
 <?php
-	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
-	if (empty($_POST['gasto_fide'])) {
-            $errors[] = "gasto fide está vacío.";
-        }elseif (empty($_POST['mes_id'])) {
-            $errors[] = "mes_id está vacío.";
-        }elseif (
-        	!empty($_POST['gasto_fide'])
-        	&& !empty($_POST['mes_id'])
+    include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
+    if (empty($_POST['Total'])){
+            $errors[] = "Total está vacío.";
+        }  elseif (
+            !empty($_POST['Total'])
+
         ){
-		require_once ("../../../config/config.php");//conexipon de DB
-	        $gasto_fide = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_fide"],ENT_QUOTES)));
-	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
+		require_once ("../../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
 
+       // escaping, additionally removing everything that could be (html/javascript-) code
+        $Total = mysqli_real_escape_string($con,(strip_tags($_POST["Total"],ENT_QUOTES)));
 
+      	$id=intval($_POST['id']);
+		// UPDATE data into database
+	    $sql = "UPDATE fideicomiso_Total SET Total='".$Total."' WHERE id='".$id."' ";
+	    $query = mysqli_query($con,$sql);
 
-			$id = $_POST["gasto_fide"];
-			$sql ="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
-			//Write register in to database
-			$sql = "INSERT INTO fideicomiso_ingresos (gasto_fide, mes_id) VALUES( '".$id."', '".$mes_id."')";// COMANDO DE SQL PARA
-			$query_new = mysqli_query($con,$sql);
-            // if has been added successfully
-            if ($query_new) {
-                // $messages[] = "Los Datos de gasto ha sido agregado con éxito.";
+    if ($query) {
+        $messages[] = "La Tarjeta ha sido actualizado con éxito.";
+    } else {
+        $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
+    }
 
-				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
-            } else {
-                $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
-            }
-		}else {
-			$errors[] = "desconocido.";
-			echo $sql;
-		}
-?>
- <script type="text/javascript">
-window.history.go(-1);
-window.history.back();
-</script>
+	} else {
+		$errors[] = "desconocido.";
+	}
+if (isset($errors)){
 
-
-<?php
-		if (isset($errors)){
 			?>
 			<div class="alert alert-danger" role="alert">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
