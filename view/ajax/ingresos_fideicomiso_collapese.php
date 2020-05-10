@@ -65,6 +65,27 @@
 		      </div>
 		    </div>
 </form>
+
+<form  role="form" method="post" action="view/ajax/agregar/calculos.php">
+
+	    <div class="form-row" style="display: none;">
+		    <div class="form-group col-md-6">
+		      <label for="gasto_fide">Id Nombre <?php echo $id ?></label>
+		      <input class="form-control" type="number" value="<?php echo $id ?>" id="gasto_fide" name="gasto_fide">
+		    </div>
+		</div>
+	    <div class="form-row" style="display: none;">
+		    <div class="form-group col-md-6">
+		      <label for="mes_id">Id MES </label>
+		      <input class="form-control" type="number" value="1" id="mes_id" name="mes_id">
+		    </div>
+		</div>
+	    <div class="form-row" style="display: none;">
+		    <div class="form-group col-md-6">
+		      <label for="ingreso_id">Id MES </label>
+		      <input class="form-control" type="number" value="1" id="ingreso_id" name="ingreso_id">
+		    </div>
+		</div>
 		<table class="table table-bordered table-striped" id="mytable">
 	        <thead>
 	        	<div id="adicionados"></div>
@@ -102,7 +123,7 @@
 	            <td><?php echo $fideicomiso_ingresos->id?></td>
                 <td><?php echo $fideicomiso_ingresos->servicio ?></td>
                 <td>$<?php echo $fideicomiso_ingresos->ingresos ?></td>
-                <td>$
+                <td>
                 	<?php
 
 	            	if($fideicomiso_ingresos->servicio == 'Analisis' || $fideicomiso_ingresos->servicio == 'Odontologia'){
@@ -113,26 +134,33 @@
 	            		$Porcentaje = $fideicomiso_ingresos->ingresos * 0.15;
 	            		$Total = $fideicomiso_ingresos->ingresos - $Porcentaje;
 	            		$Divison = $Total /3;
-	            		echo $Divison;
-	            	}
-
+                	?>
+					<input disabled value="<?php echo $Divison; ?>" id="Divison" name="Divison" style="background-color: #F4F8FB;border: 0px #F4F8FB">
+					<?php
+					}
                 	?>
                 </td>
                 <td>$
                 	<?php
-	            	if($fideicomiso_ingresos->servicio == 'Analisis' || $fideicomiso_ingresos->servicio == 'Odontologia'){
-                		echo $Total;
+	            	if($fideicomiso_ingresos->servicio == 'Analisis' || $fideicomiso_ingresos->servicio == 'Odontologia'){ ?>
+
+					<input disabled value="<?php echo $Total; ?>" id="Total" name="Total" style="background-color: #F4F8FB;border: 0px #F4F8FB">
+					 <?php
 	            	}else if($fideicomiso_ingresos->servicio == 'Seminario'){
 	            		$Porcentaje = $fideicomiso_ingresos->ingresos * 0.15;
 	            		$Total = $fideicomiso_ingresos->ingresos - $Porcentaje;
 	            		$Divison = $Total /3;
 	            		$RestanteTotal = $Divison *2;
-	            		echo $RestanteTotal;
-	            	}
+                	?>
+					<input disabled value="<?php echo $RestanteTotal; ?>" id="Total" name="RestanteTotal" style="background-color: #F4F8FB;border: 0px #F4F8FB">
+					<?php
+					}
                 	?>
                 </td>
 
 		        <td class="text-right">
+
+					<button type="submit" id="guardar_datos_gasto" name="guardar_datos_gasto" class="btn btn-success btn-circle btn-square btn-xs"><i class="fa fa-car"></i></button>
 
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomiso_ingresos->id;?>');">
                     	<i class="fa fa-edit"></i>
@@ -140,6 +168,7 @@
 
                     <button type="button" class="btn btn-info btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $fideicomiso_ingresos->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i>
                     </button>
+
 
                     <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $fideicomiso_ingresos->id;?>')">
                     	<i class="fa fas fa-trash"></i>
@@ -156,4 +185,4 @@
 
 			        ?>
 	    </table>
-
+</form>
