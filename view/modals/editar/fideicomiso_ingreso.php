@@ -12,8 +12,8 @@
         $id=$rw['id'];
         $ingresos=$rw['ingresos'];
         $servicio=$rw['servicio'];
-         $pagodoc=$rw['pagodoc'];
-         $total=$rw['total'];
+        $pagodoc=$rw['pagodoc'];
+        $total=$rw['total'];
 
 		}
 	}
@@ -35,12 +35,12 @@
 
  <?php
                 if($servicio == 1 || $servicio == 3){
-                  $Porcentaje = $servicio * 0.15;
-                  $Total = $servicio - $Porcentaje;
+                  $Porcentaje = $ingresos * 0.15;
+                  $Total = $ingresos - $Porcentaje;
                   echo "";
                 }else if($servicio == 2){
-                  $Porcentaje = $servicio * 0.15;
-                  $Total = $servicio - $Porcentaje;
+                  $Porcentaje = $ingresos * 0.15;
+                  $Total = $ingresos - $Porcentaje;
                   $Divison = $Total /3;
                   ?>
 
@@ -59,8 +59,8 @@
         </div>
 <?php
                  }else if($servicio == 2){
-                  $Porcentaje = $servicio * 0.15;
-                  $Total = $servicio - $Porcentaje;
+                  $Porcentaje = $ingresos * 0.15;
+                  $Total = $ingresos - $Porcentaje;
                   $Divison = $Total /3;
                   $RestanteTotal = $Divison *2;
                   ?>

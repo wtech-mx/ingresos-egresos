@@ -119,8 +119,7 @@
 					}
                 	?>
                 </td>
-                <td>$
-                	<?php
+                <td>$<?php
 	            	if($fideicomiso_ingresos->servicio == 'Analisis' || $fideicomiso_ingresos->servicio == 'Odontologia'){ ?>
 
 					<input disabled value="<?php echo $Total; ?>" id="total" name="total" style="background-color: #F4F8FB;border: 0px #F4F8FB">
@@ -137,7 +136,7 @@
                 	?>
                 </td>
 
-		        <td class="text-right col-12">
+		        <td class="text-right col-4">
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomiso_ingresos->id;?>');">
                     	<i class="fa fa-edit"></i>
                     </button>

@@ -16,6 +16,7 @@
 	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
 	        $servicio = mysqli_real_escape_string($con,(strip_tags($_POST["servicio"],ENT_QUOTES)));
 	        $ingresos = mysqli_real_escape_string($con,(strip_tags($_POST["ingresos"],ENT_QUOTES)));
+	        $pagodoc = mysqli_real_escape_string($con,(strip_tags($_POST["pagodoc"],ENT_QUOTES)));
 	        $total = mysqli_real_escape_string($con,(strip_tags($_POST["total"],ENT_QUOTES)));
 	        $foto1 = mysqli_real_escape_string($con,(strip_tags($_POST["foto1"],ENT_QUOTES)));
 	        $foto2 = mysqli_real_escape_string($con,(strip_tags($_POST["foto2"],ENT_QUOTES)));
@@ -24,7 +25,7 @@
 			$id = $_POST["gasto_fide"];
 			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO fideicomiso_ingresos (gasto_fide, mes_id, servicio, ingresos, total, foto1, foto2, fecha_carga) VALUES( '".$id."', '".$mes_id."',  '".$servicio."','".$ingresos."','".$total."', '".$foto1."', '".$foto2."', '".$fecha_carga."')";// COMANDO DE SQL PARA
+			$sql = "INSERT INTO fideicomiso_ingresos (gasto_fide, mes_id, servicio, ingresos, total, pagodoc, foto1, foto2, fecha_carga) VALUES( '".$id."', '".$mes_id."',  '".$servicio."','".$ingresos."','".$total."','".$pagodoc."', '".$foto1."', '".$foto2."', '".$fecha_carga."')";// COMANDO DE SQL PARA
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

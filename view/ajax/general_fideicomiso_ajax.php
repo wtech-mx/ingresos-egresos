@@ -76,19 +76,22 @@ if($action == 'ajax'){
 	            <tr>
 <!-- 	            	<th>Mes</th> -->
 	            	<th>Nombre</th>
-	                <th>Servicios</th>
+	                <th>Ingresos Reales</th>
+	                <th>Ingresos Utilizados</th>
+	                <th>Ingresos Disponibles</th>
 <!-- 					<th>Total Cantidad</th> -->
 	            </tr>
 	         </thead>
 
 			<?php
 
-			// $result = mysqli_query($con,"SELECT SUM(cantidad) as cantidad_sum FROM gasto");
+			// $result = mysqli_query($con,"SELECT SUM(total) as total_sum FROM fideicomiso_ingresos");
 			// while ($total = $result->fetch_object()){
 
       		$rspta = mysqli_query($con, "SELECT * FROM fideicomiso_ingresos  ORDER BY  id ASC");
 	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id ");
             $valores=array();
+
 
             //while($row = mysqli_fetch_array($query)){
             while ($gasto = $rspta->fetch_object()){
@@ -101,7 +104,7 @@ if($action == 'ajax'){
 	            <tr>
 <!-- 	            <td><?php echo $id_mes_nomg ?></td> -->
 	            <td><?php echo $nombre ?></td>
-				<td><?php echo $gasto->cantidad ?></td>
+				<td><?php $Porcentaje += $fideicomiso_ingresos->total; echo?></td>
 <!--	            <td><?php echo $gasto->cantidad_sum; ?></td> -->
 	        </tbody>
 				<?php
