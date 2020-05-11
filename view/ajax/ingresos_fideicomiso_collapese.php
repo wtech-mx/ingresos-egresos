@@ -103,7 +103,7 @@
 	            <td><?php echo $fideicomiso_ingresos->id?></td>
                 <td><?php echo $fideicomiso_ingresos->servicio ?></td>
                 <td>$<?php echo $fideicomiso_ingresos->ingresos ?></td>
-                <td>
+                <td>$
                 	<?php
 	            	if($fideicomiso_ingresos->servicio == 'Analisis' || $fideicomiso_ingresos->servicio == 'Odontologia'){
 	            		$Porcentaje = $fideicomiso_ingresos->ingresos * 0.15;
@@ -137,10 +137,7 @@
                 	?>
                 </td>
 
-		        <td class="text-right">
-
-					<button type="submit" id="guardar_datos_gasto" name="guardar_datos_gasto" class="btn btn-success btn-circle btn-square btn-xs"><i class="fa fa-car"></i></button>
-
+		        <td class="text-right col-12">
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomiso_ingresos->id;?>');">
                     	<i class="fa fa-edit"></i>
                     </button>

@@ -11,6 +11,7 @@
 			$rw=mysqli_fetch_array($query);
         $id=$rw['id'];
         $ingresos=$rw['ingresos'];
+        $servicio=$rw['servicio'];
          $pagodoc=$rw['pagodoc'];
          $total=$rw['total'];
 
@@ -18,44 +19,59 @@
 	}
 	else{exit;}
 
-if($fideicomiso_ingresos->servicio == 'Analisis' || $fideicomiso_ingresos->servicio == 'Odontologia'){
-                  $Porcentaje = $fideicomiso_ingresos->ingresos * 0.15;
-                  $Total = $fideicomiso_ingresos->ingresos - $Porcentaje;
-                  echo "";
-                }else if($fideicomiso_ingresos->servicio == 'Seminario'){
-                  $Porcentaje = $fideicomiso_ingresos->ingresos * 0.15;
-                  $Total = $fideicomiso_ingresos->ingresos - $Porcentaje;
-                  $Divison = $Total /3;
-          }
-          if($fideicomiso_ingresos->servicio == 'Analisis' || $fideicomiso_ingresos->servicio == 'Odontologia'){ ?>
-
-          <input disabled value="<?php echo $Total; ?>" id="total" name="total" style="background-color: #F4F8FB;border: 0px #F4F8FB">
-           <?php
-                }else if($fideicomiso_ingresos->servicio == 'Seminario'){
-                  $Porcentaje = $fideicomiso_ingresos->ingresos * 0.15;
-                  $Total = $fideicomiso_ingresos->ingresos - $Porcentaje;
-                  $Divison = $Total /3;
-                  $RestanteTotal = $Divison *2;
-                  ?>
-          <input disabled value="<?php echo $RestanteTotal; ?>" id="total" name="RestanteTotal" style="background-color: #F4F8FB;border: 0px #F4F8FB">
-          <?php
-          }
 ?>
 <input type="hidden" value="<?php echo $id;?>" name="id" id="id">
       <div class="form-row">
+
+            <div class="form-group col-md-12" style="display: none;">
+              <label for="servicio">servicio</label>
+              <input type="number" class="form-control" id="servicio" name="servicio" value="<?php echo $servicio;?>">
+            </div>
+
             <div class="form-group col-md-12">
               <label for="ingresos">Ingreso</label>
               <input type="number" class="form-control" id="ingresos" name="ingresos" value="<?php echo $ingresos;?>">
             </div>
+
+ <?php
+                if($servicio == 1 || $servicio == 3){
+                  $Porcentaje = $servicio * 0.15;
+                  $Total = $servicio - $Porcentaje;
+                  echo "";
+                }else if($servicio == 2){
+                  $Porcentaje = $servicio * 0.15;
+                  $Total = $servicio - $Porcentaje;
+                  $Divison = $Total /3;
+                  ?>
+
             <div class="form-group col-md-6">
-          <label for="pagodoc">Pago Docente</label>
-          <input type="number" class="form-control" id="pagodoc" name="pagodoc" value="<?php echo $pagodoc;?>">
-        </div>
+              <label for="pagodoc">Pago Docente</label>
+              <input type="number" class="form-control" id="pagodoc" name="pagodoc" value="<?php echo $Divison;?>">
+          </div>
+          <?php
+          }
+
+        if($servicio == 1 || $servicio == 3){ ?>
 
         <div class="form-group col-md-6">
           <label for="total">Total</label>
-          <input type="number" class="form-control" id="total" name="total" value="<?php echo $total;?>">
+          <input type="number" class="form-control" id="total" name="total" value="<?php echo $Total; ?>">
         </div>
+<?php
+                 }else if($servicio == 2){
+                  $Porcentaje = $servicio * 0.15;
+                  $Total = $servicio - $Porcentaje;
+                  $Divison = $Total /3;
+                  $RestanteTotal = $Divison *2;
+                  ?>
+        <div class="form-group col-md-6">
+          <label for="total">Total</label>
+          <input type="number" class="form-control" id="total" name="total" value="<?php echo $RestanteTotal; ?>">
+        </div>
+          <?php
+          }
+           ?>
+
       </div>
 
       <div class="form-row">
