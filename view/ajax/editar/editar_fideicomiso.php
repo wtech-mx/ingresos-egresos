@@ -10,10 +10,12 @@
 
        // escaping, additionally removing everything that could be (html/javascript-) code
         $ingresos = mysqli_real_escape_string($con,(strip_tags($_POST["ingresos"],ENT_QUOTES)));
+        $total = mysqli_real_escape_string($con,(strip_tags($_POST["total"],ENT_QUOTES)));
+        $pagodoc = mysqli_real_escape_string($con,(strip_tags($_POST["pagodoc"],ENT_QUOTES)));
 
       	$id=intval($_POST['id']);
 		// UPDATE data into database
-	    $sql = "UPDATE fideicomiso_ingresos SET ingresos='".$ingresos."' WHERE id='".$id."' ";
+	    $sql = "UPDATE fideicomiso_ingresos SET ingresos='".$ingresos."', total='".$total."', pagodoc='".$pagodoc."' WHERE id='".$id."' ";
 	    $query = mysqli_query($con,$sql);
 
     if ($query) {
