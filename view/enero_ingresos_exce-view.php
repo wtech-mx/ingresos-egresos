@@ -54,8 +54,8 @@
                 <div class="col-md-offset-10">
                     <!-- modals -->
                         <?php
-                            include "modals/agregar/agregar_ingreso_fideicomiso.php";
-                            include "modals/editar/editar_fideicomiso.php";
+                            include "modals/agregar/agregar_ingreso_exedentes.php";
+                            include "modals/editar/editar_exedentes.php";
                         ?>
                     <!-- /end modals -->
                     <input type='hidden' id='per_page' value='15'>
@@ -99,7 +99,7 @@
         var parametros = {"action":"ajax","page":page,'query':query,'per_page':per_page};
         $("#loader").fadeIn('slow');
         $.ajax({
-            url:'view/ajax/enero_ingresos_fideicomiso_ajax.php',
+            url:'view/ajax/enero_ingresos_exedentes_ajax.php',
             data: parametros,
              beforeSend: function(objeto){
             $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -128,7 +128,7 @@
             var parametros = {"action":"ajax","page":page,"query":query,"per_page":per_page,"id":id};
 
             $.ajax({
-                url:'view/ajax/enero_ingresos_fideicomiso_ajax.php',
+                url:'view/ajax/enero_ingresos_exedentes_ajax.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -151,7 +151,7 @@
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/agregar/agregar_ingreso_nombre_exedentes.php",
+                url: "view/ajax/agregar/agregar_ingreso_nombre_fideicomiso.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");
@@ -176,7 +176,7 @@
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/editar/editar_exedent.php",
+                url: "view/ajax/editar/editar_fideicomiso.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");
@@ -198,7 +198,7 @@
     function editar(id){
         var parametros = {"action":"ajax","id":id};
         $.ajax({
-                url:'view/modals/editar/exedentes_ingreso.php',
+                url:'view/modals/editar/fideicomiso_ingreso.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader2").html("<img src='./assets/img/ajax-loader.gif'>");
