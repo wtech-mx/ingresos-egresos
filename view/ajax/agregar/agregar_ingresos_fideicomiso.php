@@ -21,6 +21,7 @@
 	        $foto1 = mysqli_real_escape_string($con,(strip_tags($_POST["foto1"],ENT_QUOTES)));
 	        $foto2 = mysqli_real_escape_string($con,(strip_tags($_POST["foto2"],ENT_QUOTES)));
 	        $fecha_carga=date("Y-m-d");
+	        $fecha=date("Y-01-01");
 
 			$id = $_POST["gasto_fide"];
 			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";

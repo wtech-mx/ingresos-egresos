@@ -61,7 +61,7 @@ if($action == 'ajax'){
 			}
 			if ($numrows>0){
 		?>
-        <?php
+         <?php
 			$finales=0;
 			while($row = mysqli_fetch_array($query)){
 				$id=$row['id'];
@@ -76,22 +76,21 @@ if($action == 'ajax'){
 	            <tr>
 <!-- 	            	<th>Mes</th> -->
 	            	<th>Nombre</th>
-	                <th>Ingresos Reales</th>
-	                <th>Ingresos Utilizados</th>
-	                <th>Ingresos Disponibles</th>
+	                <th>Intereses Reales</th>
+	                <th>Intereses Utilizado</th>
+	                <th>Intereses Disponible</th>
 <!-- 					<th>Total Cantidad</th> -->
 	            </tr>
 	         </thead>
 
 			<?php
 
-			// $result = mysqli_query($con,"SELECT SUM(total) as total_sum FROM fideicomiso_ingresos");
+			// $result = mysqli_query($con,"SELECT SUM(total) as total_sum FROM gasto");
 			// while ($total = $result->fetch_object()){
 
       		$rspta = mysqli_query($con, "SELECT * FROM fideicomiso_ingresos  ORDER BY  id ASC");
-	        $marcados = mysqli_query($con, "SELECT * FROM nombre_gasto WHERE gasto=$id ");
+	        $marcados = mysqli_query($con, "SELECT * FROM nombre_fideicomisos WHERE fideicomiso_ingresos=$id ");
             $valores=array();
-
 
             //while($row = mysqli_fetch_array($query)){
             while ($gasto = $rspta->fetch_object()){
@@ -104,8 +103,25 @@ if($action == 'ajax'){
 	            <tr>
 <!-- 	            <td><?php echo $id_mes_nomg ?></td> -->
 	            <td><?php echo $nombre ?></td>
-				<td><?php $Porcentaje += $fideicomiso_ingresos->total; echo?></td>
-<!--	            <td><?php echo $gasto->cantidad_sum; ?></td> -->
+
+				<td>$<?php
+                $result = mysqli_query($con,"SELECT fecha, SUM(total) as total_sum FROM fideicomiso_ingresos group by fecha ");
+                while ($total = $result->fetch_object()){ ?>
+                    <h1><?php echo $total->total_sum; ?></h1>
+            	</td>
+
+				<td>$<?php
+                    $result = mysqli_query($con,"SELECT fecha, SUM(egreso) as egreso_sum FROM fideicomisos_egresos group by fecha ");
+                    while ($egreso = $result->fetch_object()){ ?>
+                        <h1><?php echo $egreso->egreso_sum; ?></h1>
+                </td>
+
+                $interesDisp= $total->total_sum - $egreso->egreso_sum;
+
+				<td>$<?php echo ''; ?></td>
+
+				<?php } }?>
+
 	        </tbody>
 				<?php
 					     }else{
@@ -123,4 +139,3 @@ if($action == 'ajax'){
 	}
 }
 ?>
-
