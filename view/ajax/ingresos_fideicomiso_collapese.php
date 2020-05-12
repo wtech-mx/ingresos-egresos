@@ -86,7 +86,17 @@
             while ($fideicomiso_ingresos = $rspta->fetch_object()){
                 $sw=in_array($fideicomiso_ingresos->id,$valores);
 	            if ($id == $fideicomiso_ingresos->gasto_fide) {
+	            	if($fideicomiso_ingresos->servicio == '1'){
+	            		$fideicomiso_ingresos->servicio = 'Analisis';
+	            	}
 
+	            	if($fideicomiso_ingresos->servicio == '2'){
+	            		$fideicomiso_ingresos->servicio= 'Seminario';
+	            	}
+
+	            	if($fideicomiso_ingresos->servicio == '3'){
+	            		$fideicomiso_ingresos->servicio= 'Odontologia';
+	            	}
                  ?>
 	        <tbody>
 	            <tr>
@@ -94,9 +104,9 @@
                 <td><?php echo $fideicomiso_ingresos->servicio ?></td>
                 <td>$<?php echo $fideicomiso_ingresos->ingresos ?></td>
                 <td>$<?php echo $fideicomiso_ingresos->pagodoc ?></td>
-                <td>$<?php echo $fideicomiso_ingresos->total ?> </td>
+                <td>$<?php echo $fideicomiso_ingresos->total ?></td>
 
-		        <td class="text-right col-4">
+		        <td class="text-right col-auto">
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $fideicomiso_ingresos->id;?>');">
                     	<i class="fa fa-edit"></i>
                     </button>
