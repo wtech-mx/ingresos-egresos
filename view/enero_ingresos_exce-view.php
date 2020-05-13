@@ -11,12 +11,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-3 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Fideicomiso</h4>
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Excedentes</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item"><a href="./?view=gasto" class="text-muted">Dashboard</a></li>
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">gasto</li>
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">Excedentes</li>
                                 </ol>
                             </nav>
                         </div>
@@ -67,7 +67,7 @@
                 <div class="col-12 p-3">
                     <div class="card panel panel-default p-2">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Datos de los gastos</h3>
+                            <h3 class="panel-title">Datos de los excedentes</h3>
                             <div class="actions pull-right">
                                 <i class="fa fa-chevron-down"></i>
                                 <i class="fa fa-times"></i>
@@ -99,7 +99,7 @@
         var parametros = {"action":"ajax","page":page,'query':query,'per_page':per_page};
         $("#loader").fadeIn('slow');
         $.ajax({
-            url:'view/ajax/enero_ingresos_exedentes_ajax.php',
+            url:'view/ajax/enero_ingresos_excedentes_ajax.php',
             data: parametros,
              beforeSend: function(objeto){
             $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -128,7 +128,7 @@
             var parametros = {"action":"ajax","page":page,"query":query,"per_page":per_page,"id":id};
 
             $.ajax({
-                url:'view/ajax/enero_ingresos_exedentes_ajax.php',
+                url:'view/ajax/enero_ingresos_excedentes_ajax.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -151,7 +151,7 @@
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/agregar/agregar_ingreso_nombre_fideicomiso.php",
+                url: "view/ajax/agregar/agregar_ingreso_nombre_excedentes.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");
@@ -176,7 +176,7 @@
      var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "view/ajax/editar/editar_fideicomiso.php",
+                url: "view/ajax/editar/editar_excedentes.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#resultados_ajax").html("Enviando...");
@@ -198,7 +198,7 @@
     function editar(id){
         var parametros = {"action":"ajax","id":id};
         $.ajax({
-                url:'view/modals/editar/fideicomiso_ingreso.php',
+                url:'view/modals/editar_excedentes.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader2").html("<img src='./assets/img/ajax-loader.gif'>");

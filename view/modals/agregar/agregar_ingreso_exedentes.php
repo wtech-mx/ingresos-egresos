@@ -23,15 +23,15 @@
                     </div>
                     <div class="modal-body" style="display: none;">
                         <div class="form-group">
-                            <label for="id_mes_nomfide" class="col-sm-2 control-label">id_mes_nomfide:</label>
+                            <label for="id_mes_exc" class="col-sm-2 control-label">id_mes_exc:</label>
                             <div class="col-sm-12">
-                                <input type="text" required class="form-control" value="<?php echo $mes ?>" id="id_mes_nomfide" name="id_mes_nomfide" placeholder="id_mes_nomfide: ">
+                                <input type="text" required class="form-control" value="<?php echo $mes ?>" id="id_mes_exc" name="id_mes_exc" placeholder="id_mes_exc: ">
                             </div>
                         </div>
                     </div>
 
 
-                    <?php if ($url == "/ingresos-egresos/?view=enero_ingresos_fideicomiso"): ?>
+                    <?php if ($url == "/ingresos-egresos/?view=enero_ingresos_exce"): ?>
                     <div class="modal-body" style="display: none;">
                         <div class="form-group">
                             <label for="id_ingresos" class="col-sm-2 control-label">id_ingresos:</label>

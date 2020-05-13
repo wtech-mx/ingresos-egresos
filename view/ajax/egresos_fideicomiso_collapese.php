@@ -31,7 +31,6 @@
 					      <label for="numfact">Numfac</label>
 					      <input type="NUMBER" class="form-control" id="numfact" name="numfact">
 					    </div>
-
 					    <div class="form-group col-md-4">
 					      <label for="proveedor">Proveedor</label>
 					      <input type="text" class="form-control" id="proveedor" name="proveedor">

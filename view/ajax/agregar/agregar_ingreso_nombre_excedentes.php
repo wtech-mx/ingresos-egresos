@@ -2,13 +2,13 @@
 	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
 	if (empty($_POST['nombre'])){
 			$errors[] = "Nombre está vacío.";
-		}elseif (empty($_POST['id_mes_nomfide'])) {
-            $errors[] = "id_mes_nomfide está vacío.";
+		}elseif (empty($_POST['id_mes_exc'])) {
+            $errors[] = "id_mes_exc está vacío.";
         }elseif (empty($_POST['id_ingresos'])) {
             $errors[] = "id_ingresos está vacío.";
         }  elseif (
         	!empty($_POST['nombre'])
-        	&& !empty($_POST['id_mes_nomfide'])
+        	&& !empty($_POST['id_mes_exc'])
         	&& !empty($_POST['id_ingresos'])
 
         ){
@@ -16,17 +16,15 @@
 
 			// escaping, additionally removing everything that could be (html/javascript-) code
             $nombre = mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
-            $id_mes_nomfide = mysqli_real_escape_string($con,(strip_tags($_POST["id_mes_nomfide"],ENT_QUOTES)));
-            $id_ingresos = mysqli_real_escape_string($con,(strip_tags($_POST["id_mes_nomfide"],ENT_QUOTES)));
+            $id_mes_exc = mysqli_real_escape_string($con,(strip_tags($_POST["id_mes_exc"],ENT_QUOTES)));
+            $id_ingresos = mysqli_real_escape_string($con,(strip_tags($_POST["id_mes_exc"],ENT_QUOTES)));
 
-			$fecha_carga=date("Y-m-d");
-
-			//Write register in to database
-			$sql = "INSERT INTO nombre_fideicomisos (nombre, id_mes_nomfide, id_ingresos)  VALUES( '".$nombre."', '".$id_mes_nomfide."', '".$id_ingresos."')";
+			//Write register in to id_mes_exc
+			$sql = "INSERT INTO nombre_excedentes (nombre, id_mes_exc, id_ingresos)  VALUES( '".$nombre."', '".$id_mes_exc."', '".$id_ingresos."')";
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
-                $messages[] = "El gasto ha sido agregado con éxito.";
+                $messages[] = "El excedente ha sido agregado con éxito.";
 				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
             } else {
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";

@@ -6,10 +6,10 @@
 	$id=$_REQUEST["id"];
 	$id=intval($id);
 
-	$query_validate=mysqli_query($con,"SELECT * FROM nombre_fideicomisos WHERE id='".$id."'");
+	$query_validate=mysqli_query($con,"SELECT * FROM nombre_excedentes WHERE id='".$id."'");
 	$count=mysqli_num_rows($query_validate);
 	if ($count==0){
-		if($delete=mysqli_query($con, "DELETE FROM fideicomiso_ingresos WHERE id='$id'")){
+		if($delete=mysqli_query($con, "DELETE FROM excedentes_egresos WHERE id='$id'")){
 			$aviso="Bien hecho!";
 			$msj="Datos eliminados satisfactoriamente.";
 			$classM="alert alert-success";
@@ -31,7 +31,7 @@
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if($action == 'ajax'){
 	$query = mysqli_real_escape_string($con,(strip_tags($_REQUEST['query'], ENT_QUOTES)));
-	$tables="nombre_fideicomisos";
+	$tables="nombre_excedentes";
 	$campos="*";
 	$sWhere=" nombre LIKE '%".$query."%'";
 	include 'pagination.php'; //include pagination file
@@ -45,7 +45,7 @@ if($action == 'ajax'){
 	if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 	else {echo mysqli_error($con);}
 	$total_pages = ceil($numrows/$per_page);
-	$reload = '../enero_ingresos_fideicomiso';
+	$reload = '../enero_egresos_exce';
 	//main query to fetch the data
 	$query = mysqli_query($con,"SELECT $campos FROM  $tables where $sWhere LIMIT $offset,$per_page");
 	//loop through fetched data
@@ -54,7 +54,7 @@ if($action == 'ajax'){
 ?>
 		<div class="<?php echo $classM;?>">
 			<button type="button" class="close" data-dismiss="alert"><?php echo $times;?></button>
-			<strong><?php echo $aviso?> </strong>
+			<strong><?php echo $aviso?></strong>
 			<?php echo $msj;?>
 		</div>
 		<?php
@@ -66,12 +66,11 @@ if($action == 'ajax'){
 			while($row = mysqli_fetch_array($query)){
 				$id=$row['id'];
 				$nombre=$row['nombre'];
-				$id_mes_nomfide=$row['id_mes_nomfide'];
+				$id_mes_exc=$row['id_mes_exc'];
 				$id_ingresos=$row['id_ingresos'];
 				$finales++;
 
-
-				if ($id_mes_nomfide == 1 && $id_ingresos == 1 ) {
+				if ($id_mes_exc == 1 && $id_ingresos == 0 ) {
 
 		?>
 		<div class="accordion" id="accordionExample">
@@ -86,7 +85,7 @@ if($action == 'ajax'){
 
 			    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 			        <div class="card-body">
-						<?php include("ingresos_exedentes_collapese.php") ?>
+						<?php include("egresos_excedentes_collapese_ajax.php") ?>
 				    </div>
 			    </div>
 		     </div>
@@ -98,6 +97,7 @@ if($action == 'ajax'){
 	}else{
 		echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <strong>Sin Resultados!</strong> No se encontraron resultados en la base de datos!.</div>';
+
 	}
 }
 ?>
