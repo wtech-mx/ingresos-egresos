@@ -12,6 +12,8 @@
             $errors[] = "area está vacío.";
         }elseif (empty($_POST['monto'])) {
             $errors[] = "monto está vacío.";
+        }elseif (empty($_POST['servicios'])) {
+            $errors[] = "servicios está vacío.";
         }elseif (
         	!empty($_POST['gasto_code'])
         	&& !empty($_POST['mes_id'])
@@ -19,6 +21,7 @@
         	&& !empty($_POST['concepto'])
         	&& !empty($_POST['area'])
         	&& !empty($_POST['monto'])
+        	&& !empty($_POST['servicios'])
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
 	        $gasto_code = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_code"],ENT_QUOTES)));
@@ -29,11 +32,12 @@
 	        $area = mysqli_real_escape_string($con,(strip_tags($_POST["area"],ENT_QUOTES)));
 	        $monto = mysqli_real_escape_string($con,(strip_tags($_POST["monto"],ENT_QUOTES)));
 			$fecha=date("Y-01-01");
+			$servicios = mysqli_real_escape_string($con,(strip_tags($_POST["servicios"],ENT_QUOTES)));
 
 			$id = $_POST["gasto_code"];
 			$sql="SELECT id from nombre_excedentes LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO excedentes_ingresos (gasto_code, mes_id, partida, porcentaje, concepto, area, monto, fecha) VALUES( '".$id."', '".$mes_id."', '".$partida."', '".$porcentaje."', '".$concepto."', '".$area."', '".$monto."', '".$fecha."')";//
+			$sql = "INSERT INTO excedentes_ingresos (gasto_code, mes_id, partida, porcentaje, concepto, area, monto, fecha, servicios) VALUES( '".$id."', '".$mes_id."', '".$partida."', '".$porcentaje."', '".$concepto."', '".$area."', '".$monto."', '".$fecha."', '".$servicios."')";//
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
