@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2020 a las 04:19:48
+-- Tiempo de generación: 13-05-2020 a las 05:25:18
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -127,17 +127,16 @@ INSERT INTO `empleado_permisos` (`idempleado_permiso`, `idempleado`, `idpermiso`
 
 CREATE TABLE `excedentes_egresos` (
   `id` int(11) NOT NULL,
-  `exce_code` int(11) NOT NULL,
+  `gasto_code` int(11) NOT NULL,
   `mes_id` int(11) NOT NULL,
-  `egresos` varchar(50) NOT NULL,
+  `egreso` varchar(50) NOT NULL,
   `bien` varchar(50) NOT NULL,
   `proveedor` varchar(50) NOT NULL,
   `factura` varchar(50) NOT NULL,
+  `fecha_carga` date NOT NULL,
+  `fecha` date NOT NULL,
   `foto1` varchar(250) NOT NULL,
-  `foto2` varchar(250) NOT NULL,
-  `foto3` varchar(250) NOT NULL,
-  `foto4` varchar(250) NOT NULL,
-  `foto5` varchar(250) NOT NULL
+  `foto2` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -149,12 +148,21 @@ CREATE TABLE `excedentes_egresos` (
 CREATE TABLE `excedentes_ingresos` (
   `id` int(11) NOT NULL,
   `gasto_code` int(11) NOT NULL DEFAULT 0,
+  `porcentaje` int(11) NOT NULL DEFAULT 0,
   `mes_id` int(11) NOT NULL DEFAULT 0,
   `partida` varchar(50) NOT NULL,
   `concepto` varchar(50) NOT NULL,
   `area` varchar(50) NOT NULL,
-  `monto` double NOT NULL
+  `monto` double NOT NULL,
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `excedentes_ingresos`
+--
+
+INSERT INTO `excedentes_ingresos` (`id`, `gasto_code`, `porcentaje`, `mes_id`, `partida`, `concepto`, `area`, `monto`, `fecha`) VALUES
+(1, 1, 1, 1, 'jh', 'hj', 'hj', 3000, '2020-01-01');
 
 -- --------------------------------------------------------
 
@@ -166,7 +174,6 @@ CREATE TABLE `fideicomisos_egresos` (
   `id` int(11) NOT NULL,
   `gasto_fide_egresos` int(11),
   `mes_id` int(11),
-  `Servicio` varchar(50),
   `egreso` varchar(50),
   `bien` varchar(50),
   `proveedor` varchar(50),
@@ -174,16 +181,17 @@ CREATE TABLE `fideicomisos_egresos` (
   `fecha_carga` date,
   `foto1` varchar(50),
   `foto2` varchar(50),
-  `foto3` varchar(50),
-  `foto4` varchar(50)
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `fideicomisos_egresos`
 --
 
-INSERT INTO `fideicomisos_egresos` (`id`, `gasto_fide_egresos`, `mes_id`, `Servicio`, `egreso`, `bien`, `proveedor`, `numfact`, `fecha_carga`, `foto1`, `foto2`, `foto3`, `foto4`) VALUES
-(4, 16, 1, 'pp', '225', 'yk', 'obv', 55, '2020-05-06', NULL, NULL, NULL, NULL);
+INSERT INTO `fideicomisos_egresos` (`id`, `gasto_fide_egresos`, `mes_id`, `egreso`, `bien`, `proveedor`, `numfact`, `fecha_carga`, `foto1`, `foto2`, `fecha`) VALUES
+(6, 24, 1, '100', 'taza2', 'dd', 222, '2020-05-10', '', '', '2020-01-01'),
+(7, 3, 1, '225', 'Egreso', 'dd', 33, '2020-05-10', NULL, NULL, '2020-01-01'),
+(8, 3, 1, '100', 'Egresos', 'dd', 66, '2020-05-10', NULL, NULL, '2020-01-01');
 
 -- --------------------------------------------------------
 
@@ -195,14 +203,26 @@ CREATE TABLE `fideicomiso_ingresos` (
   `id` int(11) NOT NULL,
   `gasto_fide` int(11) NOT NULL,
   `mes_id` int(11) NOT NULL,
-  `ingresos` varchar(50) NOT NULL,
-  `servicio` varchar(50) NOT NULL,
-  `apartado` int(11) NOT NULL,
-  `pagodoc` float NOT NULL,
-  `subtotal` float NOT NULL,
-  `total` float NOT NULL,
-  `fecha_carga` date NOT NULL
+  `ingresos` double NOT NULL DEFAULT 0,
+  `servicio` int(11) NOT NULL,
+  `total` double NOT NULL DEFAULT 0,
+  `pagodoc` double NOT NULL DEFAULT 0,
+  `foto1` varchar(250) NOT NULL DEFAULT '',
+  `foto2` varchar(250) NOT NULL DEFAULT '',
+  `fecha_carga` date NOT NULL,
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `fideicomiso_ingresos`
+--
+
+INSERT INTO `fideicomiso_ingresos` (`id`, `gasto_fide`, `mes_id`, `ingresos`, `servicio`, `total`, `pagodoc`, `foto1`, `foto2`, `fecha_carga`, `fecha`) VALUES
+(6, 22, 1, 1000, 3, 0, 0, '', '', '2020-05-09', '0000-00-00'),
+(7, 22, 1, 5000, 2, 2833.3333333333, 1416.6666666667, '', '', '2020-05-09', '0000-00-00'),
+(28, 22, 1, 2000, 1, 1700, 0, '', '', '2020-05-11', '0000-00-00'),
+(29, 22, 1, 300, 1, 0, 0, '', '', '2020-05-12', '0000-00-00'),
+(30, 22, 1, 2000, 2, 0, 0, '', '', '2020-05-12', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -216,25 +236,24 @@ CREATE TABLE `gasto` (
   `mes_id` int(11) NOT NULL,
   `personal` varchar(50) NOT NULL,
   `concepto` varchar(50) NOT NULL,
-  `cantidad` float NOT NULL,
+  `cantidad` double NOT NULL DEFAULT 0,
   `observaciones` varchar(50) NOT NULL,
   `fecha_carga` datetime NOT NULL,
   `foto1` varchar(255) NOT NULL,
   `foto2` varchar(255) NOT NULL,
   `foto3` varchar(255) NOT NULL,
   `foto4` varchar(255) NOT NULL,
-  `foto5` varchar(255) NOT NULL
+  `foto5` varchar(255) NOT NULL,
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `gasto`
 --
 
-INSERT INTO `gasto` (`id`, `gasto_code`, `mes_id`, `personal`, `concepto`, `cantidad`, `observaciones`, `fecha_carga`, `foto1`, `foto2`, `foto3`, `foto4`, `foto5`) VALUES
-(4, 1, 1, 'Hola', 'taza', 1000, 'Observaciones', '2020-05-07 00:00:00', 'view/resources/images/gastosCorriente/gastoCorriente.jpg', '', '', '', ''),
-(5, 1, 1, 'Hola', 'popo', 101010, 'Observacionesv', '2020-05-07 00:00:00', 'view/resources/images/gastosCorriente/gastoCorriente.jpg', '', '', '', ''),
-(6, 1, 1, 'Hola', 'popo', 1000, 'Observacionesv', '2020-05-07 00:00:00', 'view/resources/images/gastosCorriente/gastoCorriente.jpg', '', '', '', ''),
-(7, 1, 1, 'Hola', 'taza', 1000, 'Observaciones', '2020-05-07 00:00:00', 'view/resources/images/gastosCorriente/gastoCorriente.jpg', '', '', '', '');
+INSERT INTO `gasto` (`id`, `gasto_code`, `mes_id`, `personal`, `concepto`, `cantidad`, `observaciones`, `fecha_carga`, `foto1`, `foto2`, `foto3`, `foto4`, `foto5`, `fecha`) VALUES
+(10, 1, 1, 'charls', 'papel', 200, 'ff', '2020-05-08 00:00:00', 'view/resources/images/gastosCorriente/gastoCorriente.jpg', '', '', '', '', '2020-01-01'),
+(16, 1, 1, 'charls', 'taza', 200, 'Observacionesv', '2020-05-08 00:00:00', 'view/resources/images/gastosCorriente/gastoCorriente.jpg', '', '', '', '', '2020-01-01');
 
 -- --------------------------------------------------------
 
@@ -253,29 +272,15 @@ CREATE TABLE `general_excedentes` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `general_fideicomiso`
---
-
-CREATE TABLE `general_fideicomiso` (
-  `id` int(11) NOT NULL,
-  `gasto_fide` int(11) DEFAULT NULL,
-  `mes_id` int(11) DEFAULT NULL,
-  `captados` double NOT NULL DEFAULT 0,
-  `regresados` double NOT NULL DEFAULT 0,
-  `utilizado` double NOT NULL DEFAULT 0,
-  `disponible` double NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `general_gasto`
 --
 
 CREATE TABLE `general_gasto` (
   `id` int(11) NOT NULL,
-  `mes_id` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
+  `general_id` int(11) NOT NULL DEFAULT 0,
+  `mes_id` int(11) NOT NULL DEFAULT 0,
+  `acumulado` int(11) NOT NULL,
+  `cantidadGeneral` int(11) NOT NULL,
   `obvservaciones` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -313,7 +318,7 @@ INSERT INTO `meses` (`id`, `mes`, `src_gasto`, `src_ingresos`, `src_egresos`, `s
 (10, 'Octubre', './?view=oct_gasto', './?view=oct_ingresos_fideicomiso', './?view=oct_egresos_fideicomiso', './?view=oct_egresos_exce', './?view=oct_ingresos_exce', './?view=oct_presupuesto'),
 (11, 'Noviembre', './?view=nov_gasto', './?view=nov_ingresos_fideicomiso', './?view=nov_egresos_fideicomiso', './?view=nov_egresos_exce', './?view=nov_ingresos_exce', './?view=nov_presupuesto'),
 (12, 'Diciembre', './?view=diciembre_gasto', './?view=diciembre_ingresos_fideicomiso', './?view=diciembre_egresos_fideicomiso', './?view=diciembre_egresos_exce', './?view=diciembre_ingresos_exce', './?view=diciembre_presupuesto'),
-(13, 'General', './?view=general_gasto', './?view=general_ingreso_fideicomiso', './?view=general_egresos_fideicomiso', './?view=general_egresos_exce', './?view=general_ingresos_exce', './?view=general_presupuesto');
+(13, 'General', './?view=general_gasto', './?view=general_fideicomiso', './?view=general_egresos_fideicomiso', './?view=general_egresos_exce', './?view=general_ingresos_exce', './?view=general_presupuesto');
 
 -- --------------------------------------------------------
 
@@ -324,8 +329,16 @@ INSERT INTO `meses` (`id`, `mes`, `src_gasto`, `src_ingresos`, `src_egresos`, `s
 CREATE TABLE `nombre_excedentes` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `id_mes_exc` int(11) NOT NULL
+  `id_mes_exc` int(11) NOT NULL,
+  `id_ingresos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `nombre_excedentes`
+--
+
+INSERT INTO `nombre_excedentes` (`id`, `nombre`, `id_mes_exc`, `id_ingresos`) VALUES
+(1, '2020', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -335,6 +348,7 @@ CREATE TABLE `nombre_excedentes` (
 
 CREATE TABLE `nombre_fideicomisos` (
   `id` int(11) NOT NULL,
+  `id_ingresos` int(11) NOT NULL DEFAULT 0,
   `nombre` varchar(50) NOT NULL,
   `id_mes_nomfide` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -343,15 +357,11 @@ CREATE TABLE `nombre_fideicomisos` (
 -- Volcado de datos para la tabla `nombre_fideicomisos`
 --
 
-INSERT INTO `nombre_fideicomisos` (`id`, `nombre`, `id_mes_nomfide`) VALUES
-(3, 'Enero', 1),
-(4, 'febrero', 2),
-(6, 'marzo', 3),
-(7, '2121', 4),
-(15, '44', 7),
-(16, 'Diciembre', 12),
-(17, 'ingreso', 1),
-(18, '265', 1);
+INSERT INTO `nombre_fideicomisos` (`id`, `id_ingresos`, `nombre`, `id_mes_nomfide`) VALUES
+(3, 0, 'Enero', 1),
+(4, 0, '2021', 1),
+(22, 1, '2020', 1),
+(24, 0, '2020', 12);
 
 -- --------------------------------------------------------
 
@@ -370,7 +380,10 @@ CREATE TABLE `nombre_gasto` (
 --
 
 INSERT INTO `nombre_gasto` (`id`, `nombre`, `id_mes_nomg`) VALUES
-(1, '2020', 1);
+(1, '2020', 1),
+(4, '2021', 1),
+(5, 'Escuderia', 2),
+(6, '2020', 5);
 
 -- --------------------------------------------------------
 
@@ -451,26 +464,6 @@ CREATE TABLE `reparaciones` (
 
 INSERT INTO `reparaciones` (`id`, `fecha_repa`, `descripcion`, `idvehiculo`, `idtaller`, `fecha_carga`) VALUES
 (1, '2018-07-10', 'faros fallando', 1, 1, '2018-06-25 03:48:18');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `sector`
---
-
-CREATE TABLE `sector` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `idempresa` int(11) NOT NULL,
-  `fecha_carga` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `sector`
---
-
-INSERT INTO `sector` (`id`, `nombre`, `idempresa`, `fecha_carga`) VALUES
-(1, 'informatica', 1, '2018-06-25 03:46:32');
 
 -- --------------------------------------------------------
 
@@ -591,7 +584,7 @@ ALTER TABLE `empleado_permisos`
 --
 ALTER TABLE `excedentes_egresos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `exce_code` (`exce_code`),
+  ADD KEY `exce_code` (`gasto_code`),
   ADD KEY `mes_id` (`mes_id`);
 
 --
@@ -627,18 +620,12 @@ ALTER TABLE `gasto`
   ADD KEY `mes_id` (`mes_id`);
 
 --
--- Indices de la tabla `general_fideicomiso`
---
-ALTER TABLE `general_fideicomiso`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `gasto_fide` (`gasto_fide`),
-  ADD KEY `mes_id` (`mes_id`);
-
---
 -- Indices de la tabla `general_gasto`
 --
 ALTER TABLE `general_gasto`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `general_id` (`general_id`),
+  ADD KEY `mes_id` (`mes_id`);
 
 --
 -- Indices de la tabla `meses`
@@ -693,12 +680,6 @@ ALTER TABLE `reparaciones`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `sector`
---
-ALTER TABLE `sector`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `seguro`
 --
 ALTER TABLE `seguro`
@@ -748,31 +729,25 @@ ALTER TABLE `excedentes_egresos`
 -- AUTO_INCREMENT de la tabla `excedentes_ingresos`
 --
 ALTER TABLE `excedentes_ingresos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `fideicomisos_egresos`
 --
 ALTER TABLE `fideicomisos_egresos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `fideicomiso_ingresos`
 --
 ALTER TABLE `fideicomiso_ingresos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `gasto`
 --
 ALTER TABLE `gasto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `general_fideicomiso`
---
-ALTER TABLE `general_fideicomiso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `general_gasto`
@@ -790,19 +765,19 @@ ALTER TABLE `meses`
 -- AUTO_INCREMENT de la tabla `nombre_excedentes`
 --
 ALTER TABLE `nombre_excedentes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `nombre_fideicomisos`
 --
 ALTER TABLE `nombre_fideicomisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `nombre_gasto`
 --
 ALTER TABLE `nombre_gasto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `nombre_presupuesto`
@@ -820,12 +795,6 @@ ALTER TABLE `permisos`
 -- AUTO_INCREMENT de la tabla `reparaciones`
 --
 ALTER TABLE `reparaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `sector`
---
-ALTER TABLE `sector`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -867,7 +836,7 @@ ALTER TABLE `empleado_permisos`
 -- Filtros para la tabla `excedentes_egresos`
 --
 ALTER TABLE `excedentes_egresos`
-  ADD CONSTRAINT `FK1_name_exce` FOREIGN KEY (`exce_code`) REFERENCES `nombre_excedentes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK1_name_exce` FOREIGN KEY (`gasto_code`) REFERENCES `nombre_excedentes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `FK2_mes_exce` FOREIGN KEY (`mes_id`) REFERENCES `meses` (`id`);
 
 --
@@ -899,11 +868,11 @@ ALTER TABLE `gasto`
   ADD CONSTRAINT `FK2_mes` FOREIGN KEY (`mes_id`) REFERENCES `meses` (`id`);
 
 --
--- Filtros para la tabla `general_fideicomiso`
+-- Filtros para la tabla `general_gasto`
 --
-ALTER TABLE `general_fideicomiso`
-  ADD CONSTRAINT `FK1_name_fide_gasto` FOREIGN KEY (`gasto_fide`) REFERENCES `nombre_fideicomisos` (`id`),
-  ADD CONSTRAINT `FK2_mes_general` FOREIGN KEY (`mes_id`) REFERENCES `meses` (`id`);
+ALTER TABLE `general_gasto`
+  ADD CONSTRAINT `FK1_name_gasto_general` FOREIGN KEY (`general_id`) REFERENCES `nombre_gasto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK2_mes_general_gasto` FOREIGN KEY (`mes_id`) REFERENCES `meses` (`id`);
 
 --
 -- Filtros para la tabla `nombre_excedentes`
