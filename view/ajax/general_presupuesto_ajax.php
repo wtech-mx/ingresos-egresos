@@ -6,6 +6,16 @@
 	$query=mysqli_query($con,"SELECT * FROM presupuesto");
 ?>
 
+        <?php
+			$tables="nombre_presupuesto";
+			$campos="*";
+			$sWhere="nombre";
+        	$query2 = mysqli_query($con,"SELECT $campos FROM  $tables where $sWhere");
+			while($row = mysqli_fetch_array($query2)){
+				$id=$row['id'];
+				$nombre=$row['nombre'];
+				$id_mes_pre=$row['id_mes_pre'];
+		?>
 	<table class="table table-bordered table-striped" id="mytable">
 
 	        <thead>
@@ -29,43 +39,51 @@
 	    <tbody>
 
     	<?php
-    	if($partida == 1){
-        	$result = mysqli_query($con,"SELECT partida, SUM(utilizar) as utilizar_sum  FROM presupuesto group by partida=1");
+	$AdquiDirecta = 1;
+	$Restringido = 2;
+	$Consolidada = 3;
 
-    	?>
+    if($partida == 1){
+     $result = mysqli_query($con,"SELECT partida, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$AdquiDirecta ");
+
+        	while ($total = $result->fetch_object()){ ?>
 	            <tr>
-		            <td><?php echo $id ?></td>
-					<td><?php echo 'Adquisición Directa' ?></td>
-		            <td><?php echo $utilizar_sum; ?></td>
+		            <td><?php echo $nombre ?></td>
+					<td>Adquisición Directa</td>
+		           	<td><?php echo  $total->utilizar_sum;  ?></td>
 				</tr>
-		<?php  }?>
+<?php
+				}
+			 }
 
-		<?php if($partida == 2){
-        	$result = mysqli_query($con,"SELECT partida, SUM(utilizar) as utilizar_sum  FROM presupuesto group by partida=2");
-        	while ($total = $result->fetch_object()){
-    	?>
+		if($partida == 2){
+	 $result2 = mysqli_query($con,"SELECT partida, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$Restringido");
+        	while ($total = $result2->fetch_object()){  ?>
 				<tr>
-		            <td><?php echo $id ?></td>
-					<td><?php echo 'Restringido' ?></td>
+		            <td><?php echo $nombre ?></td>
+					<td>Restringido</td>
 					<td><?php echo  $total->utilizar_sum;  ?></td>
 				</tr>
-		<?php } }?>
+<?php
+				}
+			 }
 
-		<?php if($partida == 3){
-        	$result = mysqli_query($con,"SELECT partida, SUM(utilizar) as utilizar_sum  FROM presupuesto group by partida=3");
-        	while ($total = $result->fetch_object()){
-    	?>
+		if($partida == 3){
+	 $result3 = mysqli_query($con,"SELECT partida, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$Consolidada");
+        	while ($total = $result3->fetch_object()){ ?>
 				<tr>
-		            <td><?php echo $id ?></td>
-					<td><?php echo 'Consolidada' ?></td>
+		            <td><?php echo $nombre ?></td>
+					<td>Consolidada</td>
 					<td><?php echo $total->utilizar_sum; ?></td>
 				</tr>
-		<?php } }?>
+<?php
+					}
+			 }
+			}
+		}
+?>
 
 	    </tbody>
-			<?php
-				    }
 
-		    ?>
 	    </table>
 

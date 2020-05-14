@@ -57,6 +57,7 @@ if($action == 'ajax'){
 			<strong><?php echo $aviso?></strong>
 			<?php echo $msj;?>
 		</div>
+
 		<?php
 			}
 			if ($numrows>0){
@@ -73,6 +74,7 @@ if($action == 'ajax'){
 				if ($id_mes_exc == 1 && $id_ingresos == 1 ) {
 
 		?>
+
 		<div class="accordion" id="accordionExample">
 		     <div class="card">
 			    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -85,6 +87,7 @@ if($action == 'ajax'){
 
 			    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 			        <div class="card-body">
+
 						<?php include("ingresos_excedentes_collapese.php") ?>
 				    </div>
 			    </div>

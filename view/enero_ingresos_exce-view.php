@@ -68,11 +68,14 @@
                     <div class="card panel panel-default p-2">
                         <div class="panel-heading">
                             <h3 class="panel-title">Datos de los excedentes</h3>
+
                             <div class="actions pull-right">
                                 <i class="fa fa-chevron-down"></i>
                                 <i class="fa fa-times"></i>
                             </div>
+
                         </div>
+
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <div class="outer_div"></div><!-- Datos ajax Final -->
