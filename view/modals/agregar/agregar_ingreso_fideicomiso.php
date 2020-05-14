@@ -31,16 +31,16 @@
                     </div>
 
 
-                    <?php if ($url == "/ingresos-egresos/?view=enero_ingresos_fideicomiso"): ?>
+
                     <div class="modal-body" style="display: none;">
                         <div class="form-group">
                             <label for="id_ingresos" class="col-sm-2 control-label">id_ingresos:</label>
                             <div class="col-sm-12">
-                                <input type="text" required class="form-control" value="10" id="id_ingresos" name="id_ingresos" placeholder="id_ingresos: ">
+                                <input type="text" required class="form-control" value="1" id="id_ingresos" name="id_ingresos" placeholder="id_ingresos: ">
                             </div>
                         </div>
                     </div>
-                    <?php endif ?>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light"

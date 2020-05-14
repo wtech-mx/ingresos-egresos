@@ -31,7 +31,6 @@
                     </div>
 
 
-                    <?php if ($url == "/ingresos-egresos/?view=enero_ingresos_exce"): ?>
                     <div class="modal-body" style="display: none;">
                         <div class="form-group">
                             <label for="id_ingresos" class="col-sm-2 control-label">id_ingresos:</label>
@@ -40,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php endif ?>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light"

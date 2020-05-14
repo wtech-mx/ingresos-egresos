@@ -17,7 +17,7 @@
 			// escaping, additionally removing everything that could be (html/javascript-) code
             $nombre = mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
             $id_mes_exc = mysqli_real_escape_string($con,(strip_tags($_POST["id_mes_exc"],ENT_QUOTES)));
-            $id_ingresos = mysqli_real_escape_string($con,(strip_tags($_POST["id_mes_exc"],ENT_QUOTES)));
+            $id_ingresos = mysqli_real_escape_string($con,(strip_tags($_POST["id_ingresos"],ENT_QUOTES)));
 
 			//Write register in to id_mes_exc
 			$sql = "INSERT INTO nombre_excedentes (nombre, id_mes_exc, id_ingresos)  VALUES( '".$nombre."', '".$id_mes_exc."', '".$id_ingresos."')";

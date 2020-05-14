@@ -67,7 +67,7 @@
                 <div class="col-12 p-3">
                     <div class="card panel panel-default p-2">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Datos de los excedentes</h3>
+                            <h3 class="panel-title">Datos de los excedentes enero</h3>
 
                             <div class="actions pull-right">
                                 <i class="fa fa-chevron-down"></i>

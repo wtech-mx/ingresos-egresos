@@ -17,7 +17,7 @@
 			// escaping, additionally removing everything that could be (html/javascript-) code
             $nombre = mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
             $id_mes_nomfide = mysqli_real_escape_string($con,(strip_tags($_POST["id_mes_nomfide"],ENT_QUOTES)));
-            $id_ingresos = mysqli_real_escape_string($con,(strip_tags($_POST["id_mes_nomfide"],ENT_QUOTES)));
+            $id_ingresos = mysqli_real_escape_string($con,(strip_tags($_POST["id_ingresos"],ENT_QUOTES)));
 
 			$fecha_carga=date("Y-m-d");
 
