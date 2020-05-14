@@ -4,36 +4,32 @@
             $errors[] = "gasto_code está vacío.";
         }elseif (empty($_POST['mes_id'])) {
             $errors[] = "mes_id está vacío.";
-        }elseif (empty($_POST['egreso'])) {
-            $errors[] = "egreso está vacío.";
-        }elseif (empty($_POST['bien'])) {
-            $errors[] = "bien está vacío.";
-        }elseif (empty($_POST['proveedor'])) {
-            $errors[] = "proveedor está vacío.";
-        }elseif (empty($_POST['factura'])) {
-            $errors[] = "factura está vacío.";
+        }elseif (empty($_POST['monto'])) {
+            $errors[] = "monto está vacío.";
+        }elseif (empty($_POST['partida'])) {
+            $errors[] = "partida está vacío.";
+        }elseif (empty($_POST['utilizado'])) {
+            $errors[] = "utilizado está vacío.";
         }elseif (
         	!empty($_POST['gasto_code'])
         	&& !empty($_POST['mes_id'])
-        	&& !empty($_POST['egreso'])
-        	&& !empty($_POST['bien'])
-        	&& !empty($_POST['proveedor'])
-        	&& !empty($_POST['factura'])
+        	&& !empty($_POST['monto'])
+        	&& !empty($_POST['partida'])
+        	&& !empty($_POST['utilizado'])
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
 	        $gasto_code = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_code"],ENT_QUOTES)));
 	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
-	        $egreso = mysqli_real_escape_string($con,(strip_tags($_POST["egreso"],ENT_QUOTES)));
-	        $bien = mysqli_real_escape_string($con,(strip_tags($_POST["bien"],ENT_QUOTES)));
-	        $proveedor = mysqli_real_escape_string($con,(strip_tags($_POST["proveedor"],ENT_QUOTES)));
-	        $factura = mysqli_real_escape_string($con,(strip_tags($_POST["factura"],ENT_QUOTES)));
-	        $fecha_carga = mysqli_real_escape_string($con,(strip_tags($_POST["fecha_carga"],ENT_QUOTES)));
+	        $monto = mysqli_real_escape_string($con,(strip_tags($_POST["monto"],ENT_QUOTES)));
+	        $partida = mysqli_real_escape_string($con,(strip_tags($_POST["partida"],ENT_QUOTES)));
+	        $utilizado = mysqli_real_escape_string($con,(strip_tags($_POST["utilizado"],ENT_QUOTES)));
+	        $utilizar = mysqli_real_escape_string($con,(strip_tags($_POST["utilizar"],ENT_QUOTES)));
 			$fecha=date("Y-01-01");
 
 			$id = $_POST["gasto_code"];
-			$sql="SELECT id from nombre_excedentes LIMIT 1 where id='".$id."'";
+			$sql="SELECT id from nombre_presupuesto LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO excedentes_egresos (gasto_code, mes_id, egreso, bien, proveedor, factura, fecha_carga, fecha) VALUES( '".$id."', '".$mes_id."', '".$egreso."', '".$bien."', '".$proveedor."', '".$factura."', '".$fecha_carga."', '".$fecha."')";//
+			$sql = "INSERT INTO presupuesto (gasto_code, mes_id, monto, partida, utilizado, utilizar, fecha) VALUES( '".$id."', '".$mes_id."', '".$monto."', '".$partida."', '".$utilizado."', '".$utilizar."', '".$fecha."')";//
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

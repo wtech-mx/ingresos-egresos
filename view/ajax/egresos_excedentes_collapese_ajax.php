@@ -1,8 +1,8 @@
 <form  role="form" method="post" action="view/ajax/agregar/agregar_egreso_excedente.php">
 	    <div class="form-row" style="display: none;">
 		    <div class="form-group col-md-6">
-		      <label for="gasto_fide">Id Nombre <?php echo $id ?></label>
-		      <input class="form-control" type="number" value="<?php echo $id ?>" id="gasto_fide" name="gasto_fide">
+		      <label for="gasto_code">Id Nombre <?php echo $id ?></label>
+		      <input class="form-control" type="number" value="<?php echo $id ?>" id="gasto_code" name="gasto_code">
 		    </div>
 		</div>
 	    <div class="form-row" style="display: none;">
@@ -17,8 +17,8 @@
 		      <input type="date" class="form-control" id="fecha_carga" name="fecha_carga">
 		    </div>
 		     <div class="form-group col-md-6">
-		      <label for="egresos">Egresos</label>
-		      <input type="text" class="form-control" id="egresos" name="egresos">
+		      <label for="egreso">Egresos</label>
+		      <input type="text" class="form-control" id="egreso" name="egreso">
 		    </div>
 		</div>
 		<div class="form-row">
@@ -78,7 +78,7 @@
             //while($row = mysqli_fetch_array($query)){
             while ($excedentes_egresos = $rspta->fetch_object()){
                 $sw=in_array($excedentes_egresos->id,$valores);
-	            if ($id == $excedentes_egresos->gasto_fide) {
+	            if ($id == $excedentes_egresos->gasto_code) {
                  ?>
 	        <tbody>
 	            <tr>
@@ -87,7 +87,7 @@
                 <td>$<?php echo $excedentes_egresos->egreso ?></td>
                 <td>$<?php echo $excedentes_egresos->bien ?></td>
                 <td>$<?php echo $excedentes_egresos->proveedor ?></td>
-                <td>$<?php echo $excedentes_egresos->numfact ?></td>
+                <td>$<?php echo $excedentes_egresos->factura ?></td>
 
 		        <td class="text-right col-auto">
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $excedentes_egresos->id;?>');">

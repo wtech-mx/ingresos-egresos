@@ -355,14 +355,23 @@
                        <li class="sidebar-item <?php if(isset($active14)){echo $active14;}?>">
                         <a class="sidebar-link has-arrow" href="./?view=Presupuesto-general"
                                 aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
-                                    class="hide-menu">Presupuesto-general
+                                    class="hide-menu">Presupuesto General
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                <li class="sidebar-item"><a href="./?view=Presupuesto-general" class="sidebar-link"><span
-                                            class="hide-menu"></span></a></li>
 
-                                <li class="sidebar-item"><a href="./?view=Presupuesto-general" class="sidebar-link"><span
-                                            class="hide-menu"></span></a></li>
+                                <?php
+                                $query=mysqli_query($con,"SELECT * from meses");
+                                while ($row=mysqli_fetch_array($query)) {
+                                    $mes=$row['mes'];
+                                    $src_presupuesto=$row['src_presupuesto'];
+                             ?>
+
+                                <li class="sidebar-item">
+                                    <a href="<?php echo $src_presupuesto ?>" class="sidebar-link">
+                                        <span class="hide-menu"><?php echo $mes ?></span>
+                                    </a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </li>
                          <?php } ?>
