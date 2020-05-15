@@ -5,9 +5,7 @@
 
 	$query=mysqli_query($con,"SELECT * FROM nombre_gasto WHERE id_mes_nomg=1");
 
-	 while  ($row = $query->fetch_object()){
-	 	echo "string";
-	 	?>
+	 while  ($row = $query->fetch_object()){?>
 
 		<table class="table table-bordered table-striped" id="mytable">
 	        <thead>
@@ -26,7 +24,6 @@
 	        <tbody>
 	            <tr>
 	            <td><?php echo $id = $results['fecha']; ?></td>
-
 				<td><?php echo $cantidad_sum = $results['cantidad_sum']; ?></td>
 	        </tbody>
 			<?php endforeach ?>
