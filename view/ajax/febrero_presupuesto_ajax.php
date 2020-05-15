@@ -75,7 +75,7 @@ if($action == 'ajax'){
 		?>
 		<div class="accordion" id="accordionExample">
 		     <div class="card">
-			    <a class="btn btn-link"  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			    <a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 				    <div class="card-header bg-primary" id="headingOne">
 				      <h2 class="mb-0 text-white">
 
@@ -93,18 +93,7 @@ if($action == 'ajax'){
 		</div>
 
         <?php } ?>
-        <tfoot>
-            <tr>
-<!-- 				<td colspan='10'>
-					<?php
-						$inicios=$offset+1;
-						$finales+=$inicios -1;
-						echo "Mostrando $inicios al $finales de $numrows registros";
-						echo paginate($reload, $page, $total_pages, $adjacents);
-					?>
-				</td> -->
-			</tr>
-		</tfoot>
+
 
 <?php
 }
