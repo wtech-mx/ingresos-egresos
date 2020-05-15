@@ -5,7 +5,9 @@
 
 	$query=mysqli_query($con,"SELECT * FROM nombre_gasto WHERE id_mes_nomg=1");
 
-	 while  ($row = $query->fetch_object()){?>
+	 while  ($row = $query->fetch_object()){
+	 	echo "string";
+	 	?>
 
 		<table class="table table-bordered table-striped" id="mytable">
 	        <thead>
@@ -29,7 +31,7 @@
 	        </tbody>
 			<?php endforeach ?>
 <?php
-
+	break;
 	}
 
 ?>
