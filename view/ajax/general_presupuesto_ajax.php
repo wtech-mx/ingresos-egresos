@@ -58,7 +58,7 @@
 
 				</tr>
 <?php
-				}
+				}break;
 			 }
 
 		if($partida == 2){
@@ -73,7 +73,7 @@
 
 				</tr>
 <?php
-				}
+				}break;
 			 }
 
 		if($partida == 3){
@@ -88,7 +88,7 @@
 
 				</tr>
 <?php
-			   }
+			   }break;
 			 }
 			}
 		   }
