@@ -19,6 +19,7 @@
                             </nav>
                         </div>
                     </div>
+
                     <div class="col-auto">
                         <div class="input-group">
                           <input type="text" class="form-control" placeholder="Buscar por nombre" id='q' onkeyup="load(1);">
@@ -27,6 +28,7 @@
                           </span>
                         </div><!-- /input-group -->
                     </div>
+
                     <div class="col-auto">
                        <button class="btn btn-success " data-toggle="modal" data-target="#formModal"><i class='fa fa-plus'></i> Nuevo</button>
                     </div>

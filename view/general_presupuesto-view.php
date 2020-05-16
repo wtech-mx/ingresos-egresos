@@ -14,15 +14,19 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="./?view=gasto" class="text-muted">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="./?view=dashboar" class="text-muted">Dashboard</a></li>
                                     <li class="breadcrumb-item text-muted active" aria-current="page">Presupuesto General</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-auto">
+
+                  <div class="col-auto">
                         <div class="input-group">
                           <input type="text" class="form-control" placeholder="Buscar por nombre" id='q' onkeyup="load(1);">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" onclick='load(1);'><i class='fa fa-search'></i></button>
+                          </span>
                         </div><!-- /input-group -->
                     </div>
 
