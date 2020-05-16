@@ -29,17 +29,20 @@ $query2 = mysqli_query($con,"SELECT * FROM  nombre_excedentes where id_mes_exc=1
 
 <?php
 
-$result = mysqli_query($con,"SELECT fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=1 group by fecha");
-$result2 = mysqli_query($con,"SELECT fecha, SUM(monto) as utilizar_sum2  FROM excedentes_ingresos WHERE servicios=2 group by fecha");
-        	 foreach ($result && $result2 as $results ):
+			$result = mysqli_query($con,"SELECT fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=1 group by fecha");
+			$result2 = mysqli_query($con,"SELECT fecha, SUM(monto) as utilizar_sum2  FROM excedentes_ingresos WHERE servicios=2 group by fecha");?>
 
-?>
+        	  <?php foreach ($result2 as $results) : ?>
+        	  <?php  foreach ($result as $results) :?>
+        	  	<?php $sqls = array($results , $result2); ?>
         	 	<tr>
 	            	<td><?php echo $id = $results['fecha']; ?></td>
 		            <td><?php echo $utilizar_sum = $results['utilizar_sum']; ?></td>
-		            <td><?php echo $utilizar_sum2 = $results['utilizar_sum2']; ?></td>
+		            <td><?php var_dump($sqls[0]); ?></td>
+		            <td><?php var_dump($sqls[1]); ?></td>
 
-<?php endforeach ?>
+			<?php endforeach ?>
+			<?php endforeach ?>
 <?php
 	break;
 }

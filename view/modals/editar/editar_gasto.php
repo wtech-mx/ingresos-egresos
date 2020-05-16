@@ -1,7 +1,7 @@
 <!-- Form Modal -->
 <div class="modal fade" id="modal_update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-    <form class="form-horizontal" role="form" method="post" id="update_register" name="update_register">
+    <form class="form-horizontal" role="form" method="post" id="update_register" name="update_register"  enctype="multipart/form-data">
         <div class="modal-content">
             <div class="modal-header modal-colored-header bg-warning">
                 <h4 class="modal-title" id="myModalLabel">Editar Gasto</h4>

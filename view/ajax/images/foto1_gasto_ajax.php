@@ -5,6 +5,7 @@
 
 	$id=intval($_REQUEST['id']);
 	$target_dir="../../resources/images/gastosCorriente/";
+
 	$image_name = time()."_".basename($_FILES["imagefile1"]["name"]);
 	$target_file = $target_dir .$image_name ;
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);

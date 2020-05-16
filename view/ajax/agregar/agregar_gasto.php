@@ -21,6 +21,8 @@
         	&& !empty($_POST['concepto'])
         	&& !empty($_POST['cantidad'])
         	&& !empty($_POST['observaciones'])
+        	&& !empty($_POST['foto1'])
+        	&& !empty($_POST['foto2'])
         	&& !empty($_POST['fecha_carga'])
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
@@ -31,13 +33,15 @@
 	        $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
 	        $cantidad = mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
 	        $observaciones = mysqli_real_escape_string($con,(strip_tags($_POST["observaciones"],ENT_QUOTES)));
+	        $foto1 = mysqli_real_escape_string($con,(strip_tags($_POST["foto1"],ENT_QUOTES)));
+	        $foto2 = mysqli_real_escape_string($con,(strip_tags($_POST["foto2"],ENT_QUOTES)));
 			$fecha=date("Y-01-01");
 
 			$id = $_POST["gasto_code"];
 			$sql="SELECT id from nombre_gasto LIMIT 1 where id='".$id."'";
 			$target_dir="view/resources/images/gastosCorriente/gastoCorriente.jpg";
 			//Write register in to database
-			$sql = "INSERT INTO gasto (gasto_code, mes_id, personal, concepto, cantidad, observaciones, foto1, fecha_carga, fecha) VALUES( '".$id."', '".$mes_id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."', '".$target_dir."', '".$fecha_carga."', '".$fecha."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
+			$sql = "INSERT INTO gasto (gasto_code, mes_id, personal, concepto, cantidad, observaciones, foto1, foto2, fecha_carga, fecha) VALUES( '".$id."', '".$mes_id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."', '".$foto1."', '".$foto2."', '".$target_dir."', '".$fecha_carga."', '".$fecha."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

@@ -1,5 +1,5 @@
 
-		 <form  role="form" method="post" action="view/ajax/agregar/agregar_gasto.php">
+		 <form  role="form" method="post" action="view/ajax/agregar/agregar_gasto.php"  enctype="multipart/form-data">
 				    <div class="form-row" style="display: none;">
 					    <div class="form-group col-md-6">
 					      <label for="gasto_code">Id Nombre <?php echo $id ?></label>
@@ -36,37 +36,22 @@
 					      <input type="text" class="form-control" id="observaciones" name="observaciones">
 					    </div>
 				     </div>
+
 				     <div class="form-row">
-					    <div class="form-group col-md-3">
+					    <div class="form-group col-md-6">
 							<div class="custom-file">
-							<label class="custom-file-label" for="imagefile1">Foto 1</label>
-							<input type="file" name="imagefile1" class="form-control" id="imagefile1">
+							<label class="custom-file-label" for="foto1">Foto 1</label>
+							<input type="file" name="foto1" class="form-control" id="foto1">
 							</div>
 					    </div>
-					    <div class="form-group col-md-2">
+
+					    <div class="form-group col-md-6">
 							<div class="custom-file">
 							  <input type="file" class="custom-file-input" id="foto2">
 							  <label class="custom-file-label" for="foto2">foto2</label>
 							</div>
 					    </div>
-					    <div class="form-group col-md-2">
-							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="foto3">
-							  <label class="custom-file-label" for="foto3">foto3</label>
-							</div>
-					    </div>
-					    <div class="form-group col-md-2">
-							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="foto4">
-							  <label class="custom-file-label" for="foto4">foto4</label>
-							</div>
-					    </div>
-					    <div class="form-group col-md-3">
-							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="foto5">
-							  <label class="custom-file-label" for="foto5">foto5</label>
-							</div>
-						</div>
+
 					</div>
 					 	<div class="row">
 					 	  <div class="col-md-12">

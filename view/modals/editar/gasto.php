@@ -77,24 +77,7 @@
                   <label class="custom-file-label" for="Imagen2">Imagen2</label>
                 </div>
             </div>
-            <div class="form-group col-sm-6">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="Imagen3">
-                  <label class="custom-file-label" for="Imagen3">Imagen3</label>
-                </div>
-            </div>
-            <div class="form-group col-sm-6">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="Imagen4">
-                  <label class="custom-file-label" for="Imagen4">Imagen4</label>
-                </div>
-            </div>
-            <div class="form-group col-sm-6">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="Imagen5">
-                  <label class="custom-file-label" for="Imagen5">Imagen5</label>
-                </div>
-            </div>
+
 
       </div>
 

@@ -12,10 +12,12 @@
         $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
         $cantidad = mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
         $observaciones = mysqli_real_escape_string($con,(strip_tags($_POST["observaciones"],ENT_QUOTES)));
+        $foto1 = mysqli_real_escape_string($con,(strip_tags($_POST["foto1"],ENT_QUOTES)));
+        $foto2 = mysqli_real_escape_string($con,(strip_tags($_POST["foto2"],ENT_QUOTES)));
 
         $id=intval($_POST['id']);
 	// UPDATE data into database
-    $sql = "UPDATE gasto SET personal='".$personal."', concepto='".$concepto."', cantidad='".$cantidad."', observaciones='".$observaciones."' WHERE id='".$id."' ";
+    $sql = "UPDATE gasto SET personal='".$personal."', concepto='".$concepto."', cantidad='".$cantidad."', observaciones='".$observaciones."', foto1='".$foto1."', foto2='".$foto2."' WHERE id='".$id."' ";
     $query = mysqli_query($con,$sql);
 
     if ($query) {

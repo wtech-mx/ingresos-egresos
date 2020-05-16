@@ -17,8 +17,6 @@
 	        <thead>
 	        	<div id="adicionados"></div>
 	            <tr>
-
-
 	                <th>Partida</th>
 	                <th>Por Utilizar</th>
 	                <th>Año</th>
@@ -44,6 +42,7 @@
 
 	 $result2 = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar) as utilizar_sum2  FROM presupuesto WHERE partida=$Restringido group by fecha ORDER BY fecha DESC");
         	while ($total2 = $result2->fetch_object()){  ?>
+
 				<tr>
 					<td>Restringido</td>
 					<td>$ <?php echo  $total2->utilizar_sum2;  ?></td>
