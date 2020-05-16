@@ -106,6 +106,7 @@ if($action == 'ajax'){
 			}
 ?>
 
+
 	    </tbody>
 
 	    </table>
