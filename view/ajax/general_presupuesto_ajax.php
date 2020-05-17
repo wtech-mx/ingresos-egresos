@@ -39,7 +39,7 @@ if($action == 'ajax'){
 	$reload = './general_presupuesto.php';
 	//main query to fetch the data
 	//
-	$query = mysqli_query($con,"SELECT  $campos FROM  $tables where $sWhere ORDER BY partida, $tables.fecha ASC  ");
+	$query = mysqli_query($con,"SELECT  $campos FROM  $tables where $sWhere group by partida  ");
 	//loop through fetched data
 
 	if (isset($_REQUEST["id"])){
@@ -59,19 +59,20 @@ if($action == 'ajax'){
 		    <table class="table table-bordered mb-0">
 		        <thead class="bg-dark text-white">
 		            <tr>
-		                <th>#ID</th>
+<!-- 		                <th>#ID</th>
 		                <th>gasto_code</th>
 		                <th>mes_id</th>
 		                <th>monto</th>
-		                <th>Utilizado</th>
+		                <th>Utilizado</th> -->
 		                <th>partida</th>
-		                <th>Por Utilizar</th>
-		                <th>fecha</th>
+		                <th>Por Utilizar <br> 2020</th>
+		                <th>fecha <br> 2021 </th>
 		            </tr>
 		        </thead>
 
 
 			<?php echo $numrows = $row['numrows']; ?>
+
 		        <?php
 					$finales=0;
 					while($row = mysqli_fetch_array($query)){
@@ -83,40 +84,58 @@ if($action == 'ajax'){
 						$utilizado=$row['utilizado'];
 						$utilizar=$row['utilizar'];
 						$fecha=$row['fecha'];
-						/*$kind=$row['kind'];*/
 						$finales++;
 				?>
 		        <tbody>
 		            <tr>
-		                <td><?php echo $id ?></td>
+<!-- 		                <td><?php echo $id ?></td>
 		                <td><?php echo $gasto_code ?></td>
 		                <td><?php echo $mes_id ?></td>
 		                <td>$ <?php echo $monto ?></td>
 
-		                <td>$ <?php echo $utilizado ?></td>
+		                <td>$ <?php echo $utilizado ?></td> -->
 
-						<?php if ($partida == 1): ?>
-						<?php $partida = 'Adquisición Directa' ?>
+						<?php if ($partida == 1):
+
+	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$partida group by fecha ");
+	                	    $partida = 'Adquisición Directa' ?>
 			                <td><?php echo $partida ?></td>
-			                <td>$ <?php echo $utilizar ?></td>
-						<?php endif ?>
+    						 <?php	while ($total = $result->fetch_object()){ ?>
+			                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
+
+							<?php } ?>
+							<?php endif ?>
 
 						<?php if ($partida == 2): ?>
-						<?php $partida = 'Restringido' ?>
+		                <?php
+	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$partida group by fecha ");
+	                	    $partida = 'restringuidos' ?>
 			                <td><?php echo $partida ?></td>
-			                <td>$ <?php echo $utilizar ?></td>
+    						 <?php	while ($total = $result->fetch_object()){
+
+		                 ?>
+			                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
+
+						<?php } ?>
 						<?php endif ?>
 
 						<?php if ($partida == 3): ?>
-						<?php $partida = 'Consolidada' ?>
+		                <?php
+	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$partida group by fecha ");
+	                	    $partida = 'consolidadosa' ?>
 			                <td><?php echo $partida ?></td>
-			                <td>$ <?php echo $utilizar ?></td>
+    						 <?php	while ($total = $result->fetch_object()){
+
+		                 ?>
+			                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
+
+						<?php }; ?>
 						<?php endif ?>
 
-		                <td><?php echo $fecha ?></td>
 		            </tr>
+
 		        </tbody>
-		        <?php }?>
+		        <?php  }?>
 		        <tfoot>
 		            <tr>
 						<td colspan='10'>
