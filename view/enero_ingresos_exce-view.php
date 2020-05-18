@@ -197,11 +197,12 @@
       event.preventDefault();
     });
 </script>
+
 <script>
     function editar(id){
         var parametros = {"action":"ajax","id":id};
         $.ajax({
-                url:'view/modals/editar_excedentes.php',
+                url:'view/modals/editar/exedentes.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader2").html("<img src='./assets/img/ajax-loader.gif'>");
@@ -209,6 +210,20 @@
                 success:function(data){
                     $(".outer_div2").html(data).fadeIn('slow');
                     $("#loader2").html("");
+                }
+            })
+    }
+    function mostrar(id){
+        var parametros = {"action":"ajax","id":id};
+        $.ajax({
+                url:'view/modals/mostrar/exedentes.php',
+                data: parametros,
+                 beforeSend: function(objeto){
+                $("#loader3").html("<img src='./assets/img/ajax-loader.gif'>");
+              },
+                success:function(data){
+                    $(".outer_div3").html(data).fadeIn('slow');
+                    $("#loader3").html("");
                 }
             })
     }

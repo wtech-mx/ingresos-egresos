@@ -59,7 +59,6 @@
 </form>
 
 		<table class="table table-bordered table-striped" id="mytable">
-			<h1>Productos</h1>
 	        <thead>
 	        	<div id="adicionados"></div>
 	            <tr>
@@ -83,10 +82,10 @@
 	            if ($id == $excedentes_ingresos->gasto_code) {
 	            	if ($excedentes_ingresos->servicios ==  1) {
 
-	            	if($excedentes_ingresos->porcentaje == '1'){
+	            	if($excedentes_ingresos->porcentaje == 1){
 	            		$excedentes_ingresos->porcentaje = '70%';
 	            	}
-	            	if($excedentes_ingresos->porcentaje == '2'){
+	            	if($excedentes_ingresos->porcentaje == 2){
 	            		$excedentes_ingresos->porcentaje = '30%';
 	            	}
                  ?>
@@ -97,6 +96,7 @@
                 <td>$<?php echo $excedentes_ingresos->area ?></td>
                 <td>$<?php echo $excedentes_ingresos->monto ?></td>
                 <td><?php echo $excedentes_ingresos->porcentaje ?></td>
+
 
 		        <td class="text-right col-auto">
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $excedentes_ingresos->id;?>');">
@@ -182,7 +182,7 @@
 		    </div>
 </form>
 		<table class="table table-bordered table-striped" id="mytable">
-			<h1>Derechos</h1>
+
 	        <thead>
 	        	<div id="adicionados"></div>
 	            <tr>
@@ -304,7 +304,7 @@
 </form>
 
 		<table class="table table-bordered table-striped" id="mytable">
-			<h1>Aprovechamiento</h1>
+
 	        <thead>
 	        	<div id="adicionados"></div>
 	            <tr>
