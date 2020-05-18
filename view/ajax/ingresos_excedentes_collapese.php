@@ -99,6 +99,7 @@
 
 
 		        <td class="text-right col-auto">
+
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $excedentes_ingresos->id;?>');">
                     	<i class="fa fa-edit"></i>
                     </button>
