@@ -47,8 +47,8 @@
 
 					    <div class="form-group col-md-6">
 							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="foto2">
 							  <label class="custom-file-label" for="foto2">foto2</label>
+							  <input type="file" class="custom-file-input" id="foto2" name="foto2">
 							</div>
 					    </div>
 

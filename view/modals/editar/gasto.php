@@ -16,6 +16,7 @@
         $cantidad=$rw['cantidad'];
         $observaciones=$rw['observaciones'];
         $foto1=$rw['foto1'];
+        $foto2=$rw['foto2'];
 		}
 	}
 	else{exit;}
@@ -44,66 +45,58 @@
       <div class="form-row">
             <div class="form-group col-sm-6">
                 <div class="custom-file">
-                  <label class="custom-file-label" for="imagefile1">foto 1</label>
-                  <input type="file" name="imagefile1" class="form-control" id="imagefile1" onchange="upload_image(<?php echo $id_gasto; ?>);">
+                  <input type="file" class="custom-file-input" id="foto1" name="foto1">
+                  <label class="custom-file-label" for="foto1">Archivo 1</label>
                 </div>
+                <a href="" class="img-responsive" data-toggle="modal" data-target="#myModal1" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
+                    <iframe  class="img-responsive" type="application/pdf" src="<?php echo  $foto1;?>" style="width: 100%"></iframe >
+                </a>
 
-                <div class="box box-primary"><!-- Profile Image 1-->
-                    <div class="box-body box-profile">
-                        <div id="load_img">
-                            <img class=" img-responsive" src="<?php echo  $foto1;?>" data-toggle="modal" data-target="#myModal1" style='cursor:pointer' width="50%" height="50%">
-                            </div>
-                      <br>
-                        <div id="myModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title">&nbsp;</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img src="<?php echo $foto1;?>" class="img-responsive">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- END Profile Image 1-->
             </div>
 
             <div class="form-group col-sm-6">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="Imagen2">
-                  <label class="custom-file-label" for="Imagen2">Imagen2</label>
+                  <input type="file" class="custom-file-input" id="foto2" name="foto2">
+                  <label class="custom-file-label" for="foto2">Archivo 2</label>
                 </div>
+                <a href="" class="img-responsive" data-toggle="modal" data-target="#myModal2" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
+                    <iframe  class="img-responsive" type="application/pdf" src="<?php echo  $foto2;?>" style="width: 100%"></iframe >
+                </a>
             </div>
 
 
       </div>
 
-<script>
-    function upload_foto1(id_gasto){
-            $("#load_img1").text('Cargando...');
-            var inputFileImage = document.getElementById("imagefile1");
-            var file = inputFileImage.files[0];
-            var data = new FormData();
-            data.append('imagefile1',file);
-            data.append('id',id_gasto);
+      <div id="myModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">&nbsp;</h4>
+                    </div>
+                    <div class="modal-body">
 
+            <a href="" class="img-responsive" alt="Archivo 1" data-toggle="modal" data-target="#myModal1" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
+                    <iframe type="application/pdf"  src="<?php echo  $foto1;?>" style="width: 150%;height: 750px"></iframe>
+            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            $.ajax({
-                url: "view/ajax/images/foto1_gasto_ajax.php", // Url to which the request is send
-                type: "POST",             // Type of request to be send, called as method
-                data: data,               // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-                contentType: false,       // The content type used when sending data to the server.
-                cache: false,             // To unable request pages to be cached
-                processData:false,        // To send DOMDocument or non processed data file it is set to false
-                success: function(data)   // A function to be called if request succeeds
-                {
-                    $("#load_img1").html(data);
+      <div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">&nbsp;</h4>
+                    </div>
+                    <div class="modal-body">
 
-                }
-            });
-
-        }
-</script>
+            <a href="" class="img-responsive" alt="Archivo 2" data-toggle="modal" data-target="#myModal2" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
+                    <iframe type="application/pdf"  src="<?php echo  $foto2;?>" style="width: 150%;height: 750px"></iframe>
+            </a>
+                    </div>
+                </div>
+            </div>
+        </div>

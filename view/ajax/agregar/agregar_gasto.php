@@ -7,12 +7,23 @@
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		$imageFileZise=$_FILES["foto1"]["size"];
 
+		/* Fin Validacion*/
 		move_uploaded_file($_FILES["foto1"]["tmp_name"], $target_file);
 		$imagen=basename($_FILES["foto1"]["name"]);
-		$img_update="foto1='view/resources/images/gastosCorriente/$image_name' ";
+		$img_update="view/resources/images/gastosCorriente/$image_name";
 
-		var_dump($image_name);
-		var_dump($target_file);
+		$target_dir2="../../resources/images/gastosCorriente/";
+		$image_name2 = time()."_".basename($_FILES["foto2"]["name"]);
+		$target_file2 = $target_dir2 .$image_name2 ;
+		$imageFileType2 = pathinfo($target_file2,PATHINFO_EXTENSION);
+		$imageFileZise2=$_FILES["foto2"]["size"];
+
+		/* Fin Validacion*/
+		move_uploaded_file($_FILES["foto2"]["tmp_name"], $target_file2);
+		$imagen2=basename($_FILES["foto2"]["name"]);
+		$img_update2="view/resources/images/gastosCorriente/$image_name2";
+
+
 
 	if (empty($_POST['gasto_code'])) {
             $errors[] = "gasto_code está vacío.";
@@ -36,7 +47,6 @@
         	&& !empty($_POST['cantidad'])
         	&& !empty($_POST['observaciones'])
         	&& !empty($_POST['fecha_carga'])
-        	&& !empty($_POST[$target_file])
         ){
 
 		require_once ("../../../config/config.php");//conexipon de DB
@@ -50,16 +60,17 @@
 	        $cantidad = mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
 	        $observaciones = mysqli_real_escape_string($con,(strip_tags($_POST["observaciones"],ENT_QUOTES)));
 	        $fecha_carga = mysqli_real_escape_string($con,(strip_tags($_POST["fecha_carga"],ENT_QUOTES)));
+	        $fecha=date("Y-01-01");
 
 			$id = $_POST["gasto_code"];
 			$sql="SELECT id from nombre_gasto LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO gasto (gasto_code, mes_id, personal, concepto, cantidad, observaciones,  fecha_carga, foto1) VALUES( '".$id."', '".$mes_id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."', '".$fecha_carga."', '".$fecha_carga."', '".$img_update."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
+			$sql = "INSERT INTO gasto (gasto_code, mes_id, personal, concepto, cantidad, observaciones,  fecha_carga, fecha, foto1, foto2) VALUES( '".$id."', '".$mes_id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."', '".$fecha_carga."', '".$fecha."', '".$img_update."', '".$img_update2."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
                 $messages[] = "Los Datos de gasto ha sido agregado con éxito.";
-
+                	var_dump($sql);
 				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
             } else {
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
@@ -70,8 +81,8 @@
 		else {
 			$errors[] = "desconocido.";
 		}
-?>
-<!-- <script type="text/javascript">
+	?>
+<!--<script type="text/javascript">
 window.history.go(-1);
 window.history.back();
 </script> -->
