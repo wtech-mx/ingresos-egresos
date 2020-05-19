@@ -9,9 +9,9 @@
 
 	/* Inicio Validacion*/
 	// Allow certain file formats
-	if(($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) and $imageFileZise>0) {
-	$errors[]= "<p>Lo sentimos, sólo se permiten archivos JPG , JPEG, PNG y GIF.</p>";
-	} else if ($imageFileZise > 10000000) {//1048576 byte=1MB
+	if(($imageFileType != "pdf" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) and $imageFileZise>0) {
+	$errors[]= "<p>Lo sentimos, sólo se permiten archivos PDF, JPEG, PNG y GIF.</p>";
+	} else if ($imageFileZise > 50000000) {//1048576 byte=1MB
 	$errors[]= "<p>Lo sentimos, pero el archivo es demasiado grande. Selecciona logo de menos de 10MB</p>";
 	} else{
 
@@ -31,7 +31,7 @@
 		$imagen2=basename($_FILES["foto2"]["name"]);
 		$img_update2="view/resources/images/gastosCorriente/$image_name2";
 
-
+var_dump($_FILES);
 
 	if (empty($_POST['gasto_code'])) {
             $errors[] = "gasto_code está vacío.";
@@ -79,7 +79,6 @@
             // if has been added successfully
             if ($query_new) {
                 $messages[] = "Los Datos de gasto ha sido agregado con éxito.";
-                	var_dump($sql);
 				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
             } else {
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
