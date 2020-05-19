@@ -1,3 +1,4 @@
+
 <form  role="form" method="post" action="view/ajax/agregar/agregar_ingreso_excedente.php">
 		<h1>Productos</h1>
 	    <div class="form-row" style="display: none;">
@@ -86,6 +87,7 @@
 	            		$excedentes_ingresos->porcentaje = '70%';
 	            	}
 	            	if($excedentes_ingresos->porcentaje == 2){
+	            		$excedentes_ingresos->porcentaje2 = '30%';
 	            		$excedentes_ingresos->porcentaje = '30%';
 	            	}
                  ?>
@@ -95,9 +97,17 @@
                 <td>$<?php echo $excedentes_ingresos->concepto ?></td>
                 <td>$<?php echo $excedentes_ingresos->area ?></td>
                 <td>$<?php echo $excedentes_ingresos->monto ?></td>
-                <td><?php echo $excedentes_ingresos->porcentaje ?></td>
 
+                <?php if ($excedentes_ingresos->porcentaje == 0){ ?>
+                	<?php   $excedentes_ingresos->porcentaje = $excedentes_ingresos->porcentaje2 ;
+                			$excedentes_ingresos->porcentaje = '30%';
+                	?>
 
+                	<td><?php echo $excedentes_ingresos->porcentaje ?></td>
+                <?php }else{ ?>
+                	<td><?php echo $excedentes_ingresos->porcentaje ?></td>
+
+             <?php    } ?>
 		        <td class="text-right col-auto">
 
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $excedentes_ingresos->id;?>');">

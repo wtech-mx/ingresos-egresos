@@ -7,6 +7,14 @@
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		$imageFileZise=$_FILES["foto1"]["size"];
 
+	/* Inicio Validacion*/
+	// Allow certain file formats
+	if(($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) and $imageFileZise>0) {
+	$errors[]= "<p>Lo sentimos, sólo se permiten archivos JPG , JPEG, PNG y GIF.</p>";
+	} else if ($imageFileZise > 10000000) {//1048576 byte=1MB
+	$errors[]= "<p>Lo sentimos, pero el archivo es demasiado grande. Selecciona logo de menos de 10MB</p>";
+	} else{
+
 		/* Fin Validacion*/
 		move_uploaded_file($_FILES["foto1"]["tmp_name"], $target_file);
 		$imagen=basename($_FILES["foto1"]["name"]);
@@ -66,6 +74,7 @@
 			$sql="SELECT id from nombre_gasto LIMIT 1 where id='".$id."'";
 			//Write register in to database
 			$sql = "INSERT INTO gasto (gasto_code, mes_id, personal, concepto, cantidad, observaciones,  fecha_carga, fecha, foto1, foto2) VALUES( '".$id."', '".$mes_id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."', '".$fecha_carga."', '".$fecha."', '".$img_update."', '".$img_update2."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
+
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
@@ -78,9 +87,12 @@
             }
 		}
 
+
+
 		else {
 			$errors[] = "desconocido.";
 		}
+			}
 	?>
 <!--<script type="text/javascript">
 window.history.go(-1);

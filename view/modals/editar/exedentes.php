@@ -16,6 +16,7 @@
         $monto=$rw['monto'];
         $area=$rw['area'];
         $porcentaje=$rw['porcentaje'];
+        $porcentaje2=$rw['porcentaje2'];
 
 		}
 	}
@@ -51,15 +52,16 @@
                             <option value=" <?php $porcentaje ?> "> <?php echo $porcentaje ?> </option>
                             <option value="2">30%</option>
                           <?php }else{  ?>
-                            <?php $porcentaje = '30%'?>
-                            <option value=" <?php $porcentaje ?> "> <?php echo $porcentaje ?> </option>
+                            <?php $porcentaje2 = '30%'?>
+                            <option value=" <?php $porcentaje2 ?> "> <?php echo $porcentaje2 ?> </option>
                             <option value="1">70%</option>
                           <?php
                           }
                           ?>
-
-
                       </select>
                   </div>
+
+
+
             </div>
 
