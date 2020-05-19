@@ -32,7 +32,7 @@
 	        $gasto_code = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_code"],ENT_QUOTES)));
 	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
 	        $partida = mysqli_real_escape_string($con,(strip_tags($_POST["partida"],ENT_QUOTES)));
-
+	        $estado = mysqli_real_escape_string($con,(strip_tags($_POST["estado"],ENT_QUOTES)));
 	        $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
 	        $area = mysqli_real_escape_string($con,(strip_tags($_POST["area"],ENT_QUOTES)));
 	        $monto = mysqli_real_escape_string($con,(strip_tags($_POST["monto"],ENT_QUOTES)));
@@ -44,7 +44,7 @@
 			$id = $_POST["gasto_code"];
 			$sql="SELECT id from nombre_excedentes LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO excedentes_ingresos (gasto_code, mes_id, partida, porcentaje, concepto, area, monto, fecha, servicios) VALUES( '".$id."', '".$mes_id."', '".$partida."', '".$porcentaje."', '".$concepto."', '".$area."', '".$monto."', '".$fecha."', '".$servicios."')";
+			$sql = "INSERT INTO excedentes_ingresos (gasto_code, mes_id, partida, porcentaje, concepto, area, monto, fecha, estado, servicios) VALUES( '".$id."', '".$mes_id."', '".$partida."', '".$porcentaje."', '".$concepto."', '".$area."', '".$monto."', '".$fecha."', '".$estado."', '".$servicios."')";
 
 			}else{
 			$porcentaje2 = mysqli_real_escape_string($con,(strip_tags($_POST["porcentaje"],ENT_QUOTES)));

@@ -77,6 +77,7 @@ if($action == 'ajax'){
 						$servicios=$row['servicios'];
 						$concepto=$row['concepto'];
 						$area=$row['area'];
+						$estado=$row['estado'];
 						$monto=$row['monto'];
 						$fecha=$row['fecha'];
 						$finales++;
@@ -91,19 +92,18 @@ if($action == 'ajax'){
 	                <td><?php echo $fecha ?></td> -->
 
 					<?php if ($servicios == 1):
-                	    $result = mysqli_query($con,"SELECT servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios group by fecha ");
+						$result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1  group by fecha");
                 	    $servicios = 'Productos' ?>
 		                <td><?php echo $servicios ?></td>
+							<?php	while ($total = $result->fetch_object()){?>
 
-						<?php	while ($total = $result->fetch_object()){ ?>
-
-		                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
+		                <td>$ <?php echo $total->utilizar_sum  ?></td>
 
 						<?php } ?>
 						<?php endif ?>
 
 					<?php if ($servicios == 2):
-                	    $result = mysqli_query($con,"SELECT servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios group by fecha ");
+                	    $result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1 group by fecha, estado=1 ");
                 	    $servicios = 'Derechos' ?>
 		                <td><?php echo $servicios ?></td>
 							<?php	while ($total = $result->fetch_object()){ ?>
@@ -115,7 +115,7 @@ if($action == 'ajax'){
 
 
 					<?php if ($servicios == 3):
-                	    $result = mysqli_query($con,"SELECT servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios group by fecha ");
+                	    $result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1 group by fecha, estado=1");
                 	    $servicios = 'Aprovechamiento' ?>
 		                <td><?php echo $servicios ?></td>
 

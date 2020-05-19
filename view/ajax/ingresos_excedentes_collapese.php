@@ -50,6 +50,13 @@
                     <option value="2">30%</option>
                 </select>
             </div>
+            <div class="form-group col-md-4">
+             <label class="mr-sm-2" for="estado">Seleccionar Estado</label>
+				<select class="custom-select mr-sm-2" id="estado" name="estado">
+                    <option value="2" selected>No sumar</option>
+                    <option value="1">Sumar</option>
+                </select>
+            </div>
 		</div>
 
 		 	<div class="row">
@@ -69,6 +76,7 @@
 	                <th>Departamento/Area</th>
 	                <th>Monto</th>
 	                <th>Porcentaje</th>
+	                <th>Estado</th>
 	                <th>Acciones</th>
 	            </tr>
 	         </thead>
@@ -79,17 +87,22 @@
             //while($row = mysqli_fetch_array($query)){
             while ($excedentes_ingresos = $rspta->fetch_object()){
                 $sw=in_array($excedentes_ingresos->id,$valores);
-
-	            if ($id == $excedentes_ingresos->gasto_code) {
+                if ($id == $excedentes_ingresos->gasto_code) {
 	            	if ($excedentes_ingresos->servicios ==  1) {
-
-	            	if($excedentes_ingresos->porcentaje == 1){
+	            	if($excedentes_ingresos->porcentaje == '1'){
 	            		$excedentes_ingresos->porcentaje = '70%';
 	            	}
-	            	if($excedentes_ingresos->porcentaje == 2){
-	            		$excedentes_ingresos->porcentaje2 = '30%';
+	            	if($excedentes_ingresos->porcentaje == '2'){
 	            		$excedentes_ingresos->porcentaje = '30%';
 	            	}
+
+	            	if ($excedentes_ingresos->estado==2){
+						$excedentes_ingresos->lbl_status="No sumar";
+						$excedentes_ingresos->lbl_class='label label-danger';
+					}else {
+						$excedentes_ingresos->lbl_status="Sumar";
+						$excedentes_ingresos->lbl_class='label label-success';
+					}
                  ?>
 	        <tbody>
 	            <td><?php echo $excedentes_ingresos->id?></td>
@@ -97,17 +110,23 @@
                 <td>$<?php echo $excedentes_ingresos->concepto ?></td>
                 <td>$<?php echo $excedentes_ingresos->area ?></td>
                 <td>$<?php echo $excedentes_ingresos->monto ?></td>
+                <td><?php echo $excedentes_ingresos->porcentaje ?></td>
+            <td>
+            	<form action="view/ajax/calulos_suma.php" method="post" role="form">
+		            <div class="form-group col-md-4">
+		            <label class="mr-sm-2" for="estado">Seleccionar Estado</label>
+						<select class="custom-select mr-sm-2" id="estado" name="estado">
+		                    <option value="2" selected>No sumar</option>
+		                    <option value="1">Sumar</option>
+		                </select>
+		            </div>
 
-                <?php if ($excedentes_ingresos->porcentaje == 0){ ?>
-                	<?php   $excedentes_ingresos->porcentaje = $excedentes_ingresos->porcentaje2 ;
-                			$excedentes_ingresos->porcentaje = '30%';
-                	?>
+                	<input class="btn btn-success  btn-circle btn-square btn-xs" type="submit" value="<?php echo $excedentes_ingresos->id;?>" name="id">
 
-                	<td><?php echo $excedentes_ingresos->porcentaje ?></td>
-                <?php }else{ ?>
-                	<td><?php echo $excedentes_ingresos->porcentaje ?></td>
 
-             <?php    } ?>
+            	</form>
+        	</td>
+
 	        <td class="text-right col-auto">
 
                 <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $excedentes_ingresos->id;?>');">
@@ -117,10 +136,6 @@
 
                 <button type="button" class="btn btn-info btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $excedentes_ingresos->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i>
                 </button>
-
-				 <form action="view/ajax/calulos_suma.php" method="POST" accept-charset="utf-8">
-                	<input class="btn btn-success  btn-circle btn-square btn-xs" type="submit" value="<?php echo $excedentes_ingresos->id;?>" name="id">
-				 </form>
 
                 <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $excedentes_ingresos->id;?>')">
                 	<i class="fa fas fa-trash"></i>
