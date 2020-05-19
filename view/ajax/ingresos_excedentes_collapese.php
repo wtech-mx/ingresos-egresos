@@ -108,19 +108,24 @@
                 	<td><?php echo $excedentes_ingresos->porcentaje ?></td>
 
              <?php    } ?>
-		        <td class="text-right col-auto">
+	        <td class="text-right col-auto">
 
-                    <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $excedentes_ingresos->id;?>');">
-                    	<i class="fa fa-edit"></i>
-                    </button>
+                <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $excedentes_ingresos->id;?>');">
+                	<i class="fa fa-edit"></i>
+                </button>
 
-                    <button type="button" class="btn btn-info btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $excedentes_ingresos->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i>
-                    </button>
 
-                    <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $excedentes_ingresos->id;?>')">
-                    	<i class="fa fas fa-trash"></i>
-                    </button>
-		        </td>
+                <button type="button" class="btn btn-info btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $excedentes_ingresos->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del gasto"></i>
+                </button>
+
+				 <form action="view/ajax/calulos_suma.php" method="POST" accept-charset="utf-8">
+                	<input class="btn btn-success  btn-circle btn-square btn-xs" type="submit" value="<?php echo $excedentes_ingresos->id;?>" name="id">
+				 </form>
+
+                <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $excedentes_ingresos->id;?>')">
+                	<i class="fa fas fa-trash"></i>
+                </button>
+	        </td>
 
 	        </tbody>
 

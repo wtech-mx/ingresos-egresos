@@ -5,8 +5,11 @@
 	if(isset($_POST['id']))
 	{
 
-
 	var_dump($_POST['id']);
-	require_once ("../../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
+
+// Para copiar los datos de una columna a otra dentro de otra tabla, debes ejecutar la siguiente sentencia:
+//
+// UPDATE `la_tabla` SET `columna_destino`=`columna_origen`
+	require_once ("../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
 }
 ?>
