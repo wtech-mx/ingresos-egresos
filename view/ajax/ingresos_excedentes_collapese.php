@@ -50,13 +50,7 @@
                     <option value="2">30%</option>
                 </select>
             </div>
-            <div class="form-group col-md-4">
-             <label class="mr-sm-2" for="estado">Seleccionar Estado</label>
-				<select class="custom-select mr-sm-2" id="estado" name="estado">
-                    <option value="2" selected>No sumar</option>
-                    <option value="1">Sumar</option>
-                </select>
-            </div>
+
 		</div>
 
 		 	<div class="row">
@@ -89,10 +83,10 @@
                 $sw=in_array($excedentes_ingresos->id,$valores);
                 if ($id == $excedentes_ingresos->gasto_code) {
 	            	if ($excedentes_ingresos->servicios ==  1) {
-	            	if($excedentes_ingresos->porcentaje == '1'){
+	            	if($excedentes_ingresos->porcentaje == 1){
 	            		$excedentes_ingresos->porcentaje = '70%';
 	            	}
-	            	if($excedentes_ingresos->porcentaje == '2'){
+	            	if($excedentes_ingresos->porcentaje == 2){
 	            		$excedentes_ingresos->porcentaje = '30%';
 	            	}
 
@@ -111,25 +105,26 @@
                 <td>$<?php echo $excedentes_ingresos->area ?></td>
                 <td>$<?php echo $excedentes_ingresos->monto ?></td>
                 <td><?php echo $excedentes_ingresos->porcentaje ?></td>
-            <?php
-            	if($excedentes_ingresos->porcentaje == '2'){
-            ?>
-	            <td>
+            <td>
+            	<?php
+	            	if($excedentes_ingresos->porcentaje == '30%'){  ?>
+
 	            	<form action="view/ajax/calulos_suma.php" method="post" role="form">
-			            <div class="form-group col-md-4">
+			            <div class="form-group col-md-auto">
+
 			            <label class="mr-sm-2" for="estado">Seleccionar Estado</label>
 							<select class="custom-select mr-sm-2" id="estado" name="estado">
 			                    <option value="2" selected>No sumar</option>
 			                    <option value="1">Sumar</option>
 			                </select>
 			            </div>
-
 	                	<input class="btn btn-success  btn-circle btn-square btn-xs" type="submit" value="<?php echo $excedentes_ingresos->id;?>" name="id">
-
-
 	            	</form>
-	        	</td>
-        	<?php } ?>
+
+	            <?php 	}
+            	 ?>
+
+        	</td>
 
 	        <td class="text-right col-auto">
 
@@ -228,6 +223,7 @@
 	                <th>Monto</th>
 	                <th>Porcentaje</th>
 	                <th>Acciones</th>
+	                <th>Estados</th>
 	            </tr>
 	         </thead>
 			<?php
