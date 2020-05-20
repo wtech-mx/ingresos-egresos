@@ -1,7 +1,7 @@
 <?php
     $active4="active";
     include "resources/header.php";
-    if ($_SESSION['gasto']==1){
+    if ($_SESSION['Fideicomiso']==1){
     $mes = 1;
 ?>
     <!--main content start-->
