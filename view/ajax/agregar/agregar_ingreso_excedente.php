@@ -27,8 +27,6 @@
 
 		require_once ("../../../config/config.php");//conexipon de DB
 
-
-
 	        $gasto_code = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_code"],ENT_QUOTES)));
 	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
 	        $partida = mysqli_real_escape_string($con,(strip_tags($_POST["partida"],ENT_QUOTES)));
@@ -38,23 +36,12 @@
 	        $monto = mysqli_real_escape_string($con,(strip_tags($_POST["monto"],ENT_QUOTES)));
 			$fecha=date("Y-01-01");
 			$servicios = mysqli_real_escape_string($con,(strip_tags($_POST["servicios"],ENT_QUOTES)));
+			$porcentaje = mysqli_real_escape_string($con,(strip_tags($_POST["porcentaje"],ENT_QUOTES)));
 
-			if ($_POST['porcentaje'] == 1 ) {
-				 $porcentaje = mysqli_real_escape_string($con,(strip_tags($_POST["porcentaje"],ENT_QUOTES)));
 			$id = $_POST["gasto_code"];
 			$sql="SELECT id from nombre_excedentes LIMIT 1 where id='".$id."'";
 			//Write register in to database
 			$sql = "INSERT INTO excedentes_ingresos (gasto_code, mes_id, partida, porcentaje, concepto, area, monto, fecha, estado, servicios) VALUES( '".$id."', '".$mes_id."', '".$partida."', '".$porcentaje."', '".$concepto."', '".$area."', '".$monto."', '".$fecha."', '".$estado."', '".$servicios."')";
-
-			}else{
-			$porcentaje2 = mysqli_real_escape_string($con,(strip_tags($_POST["porcentaje"],ENT_QUOTES)));
-			$id = $_POST["gasto_code"];
-			$sql="SELECT id from nombre_excedentes LIMIT 1 where id='".$id."'";
-			//Write register in to database
-			$sql = "INSERT INTO excedentes_ingresos (gasto_code, mes_id, partida, porcentaje2, concepto, area, monto, fecha, servicios) VALUES( '".$id."', '".$mes_id."', '".$partida."', '".$porcentaje2."', '".$concepto."', '".$area."', '".$monto."', '".$fecha."', '".$servicios."')";
-			}
-
-
 
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully

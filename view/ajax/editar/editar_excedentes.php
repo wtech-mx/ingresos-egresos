@@ -13,23 +13,11 @@
 	        $area = mysqli_real_escape_string($con,(strip_tags($_POST["area"],ENT_QUOTES)));
 	        $monto = mysqli_real_escape_string($con,(strip_tags($_POST["monto"],ENT_QUOTES)));
 			$fecha=date("Y-01-01");
-
-			if ($_POST['porcentaje'] == 1 ) {
-				 $porcentaje = mysqli_real_escape_string($con,(strip_tags($_POST["porcentaje"],ENT_QUOTES)));
-		      	$id=intval($_POST['id']);
+			$porcentaje = mysqli_real_escape_string($con,(strip_tags($_POST["porcentaje"],ENT_QUOTES)));
+		     $id=intval($_POST['id']);
 				// UPDATE data into database
-			    $sql = "UPDATE excedentes_ingresos SET partida='".$partida."', porcentaje='".$porcentaje."', concepto='".$concepto."', area='".$area."', monto='".$monto."' WHERE id='".$id."' ";
-			    $query = mysqli_query($con,$sql);
-
-			}else{
-				$porcentaje2 = mysqli_real_escape_string($con,(strip_tags($_POST["porcentaje"],ENT_QUOTES)));
-		      	$id=intval($_POST['id']);
-				// UPDATE data into database
-			    $sql = "UPDATE excedentes_ingresos SET partida='".$partida."', porcentaje2='".$porcentaje2."', concepto='".$concepto."', area='".$area."', monto='".$monto."' WHERE id='".$id."' ";
-			    $query = mysqli_query($con,$sql);
-			}
-
-
+			$sql = "UPDATE excedentes_ingresos SET partida='".$partida."', porcentaje='".$porcentaje."', concepto='".$concepto."', area='".$area."', monto='".$monto."' WHERE id='".$id."' ";
+			 $query = mysqli_query($con,$sql);
 
 	    if ($query) {
 	        $messages[] = "El excedentes ha sido actualizado con éxito.";

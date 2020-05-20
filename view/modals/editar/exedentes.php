@@ -47,19 +47,19 @@
             <div class="form-group col-md-12">
               <label class="mr-sm-2" for="porcentaje"></label>
               <select class="custom-select mr-sm-2" id="porcentaje" name="porcentaje">
-                            <?php if ($porcentaje == 1){ ?>
-                            <?php $porcentaje = '70%'?>
-                            <option value=" <?php $porcentaje ?> "> <?php echo $porcentaje ?> </option>
-                            <option value="2">30%</option>
-                          <?php }else{  ?>
-                            <?php $porcentaje2 = '30%'?>
-                            <option value=" <?php $porcentaje2 ?> "> <?php echo $porcentaje2 ?> </option>
-                            <option value="1">70%</option>
-                          <?php
-                          }
-                          ?>
-                      </select>
-                  </div>
+                    <?php if ($porcentaje == 1){ ?>
+                    <?php $porcentaje = '70%'?>
+                    <option value=" <?php $porcentaje ?> "> <?php echo $porcentaje ?> </option>
+                    <option value="2">30%</option>
+                  <?php }else{  ?>
+                    <?php $porcentaje = '30%'?>
+                    <option value=" <?php $porcentaje ?> "> <?php echo $porcentaje ?> </option>
+                    <option value="1">70%</option>
+                  <?php
+                  }
+                  ?>
+              </select>
+             </div>
 
 
 
