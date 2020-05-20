@@ -7,15 +7,6 @@
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		$imageFileZise=$_FILES["foto1"]["size"];
 
-	/* Inicio Validacion*/
-	// Allow certain file formats
-	if(($imageFileType != "pdf" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) and $imageFileZise>0) {
-	$errors[]= "<p>Lo sentimos, sólo se permiten archivos PDF, JPEG, PNG y GIF.</p>";
-	} else if ($imageFileZise > 50000000) {//1048576 byte=1MB
-	$errors[]= "<p>Lo sentimos, pero el archivo es demasiado grande. Selecciona logo de menos de 10MB</p>";
-	} else{
-
-		/* Fin Validacion*/
 		move_uploaded_file($_FILES["foto1"]["tmp_name"], $target_file);
 		$imagen=basename($_FILES["foto1"]["name"]);
 		$img_update="view/resources/images/gastosCorriente/$image_name";
@@ -91,7 +82,7 @@ var_dump($_FILES);
 		else {
 			$errors[] = "desconocido.";
 		}
-			}
+
 	?>
 <!--<script type="text/javascript">
 window.history.go(-1);

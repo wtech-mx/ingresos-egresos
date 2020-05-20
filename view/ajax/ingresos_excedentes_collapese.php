@@ -111,21 +111,25 @@
                 <td>$<?php echo $excedentes_ingresos->area ?></td>
                 <td>$<?php echo $excedentes_ingresos->monto ?></td>
                 <td><?php echo $excedentes_ingresos->porcentaje ?></td>
-            <td>
-            	<form action="view/ajax/calulos_suma.php" method="post" role="form">
-		            <div class="form-group col-md-4">
-		            <label class="mr-sm-2" for="estado">Seleccionar Estado</label>
-						<select class="custom-select mr-sm-2" id="estado" name="estado">
-		                    <option value="2" selected>No sumar</option>
-		                    <option value="1">Sumar</option>
-		                </select>
-		            </div>
+            <?php
+            	if($excedentes_ingresos->porcentaje == '2'){
+            ?>
+	            <td>
+	            	<form action="view/ajax/calulos_suma.php" method="post" role="form">
+			            <div class="form-group col-md-4">
+			            <label class="mr-sm-2" for="estado">Seleccionar Estado</label>
+							<select class="custom-select mr-sm-2" id="estado" name="estado">
+			                    <option value="2" selected>No sumar</option>
+			                    <option value="1">Sumar</option>
+			                </select>
+			            </div>
 
-                	<input class="btn btn-success  btn-circle btn-square btn-xs" type="submit" value="<?php echo $excedentes_ingresos->id;?>" name="id">
+	                	<input class="btn btn-success  btn-circle btn-square btn-xs" type="submit" value="<?php echo $excedentes_ingresos->id;?>" name="id">
 
 
-            	</form>
-        	</td>
+	            	</form>
+	        	</td>
+        	<?php } ?>
 
 	        <td class="text-right col-auto">
 
