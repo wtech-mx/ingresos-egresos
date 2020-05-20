@@ -1,5 +1,27 @@
 <?php
 	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
+
+		$target_dir="../../resources/images/gastosCorriente/";
+		$image_name = time()."_".basename($_FILES["foto1"]["name"]);
+		$target_file = $target_dir .$image_name ;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		$imageFileZise=$_FILES["foto1"]["size"];
+
+		move_uploaded_file($_FILES["foto1"]["tmp_name"], $target_file);
+		$imagen=basename($_FILES["foto1"]["name"]);
+		$img_update="view/resources/images/gastosCorriente/$image_name";
+
+		$target_dir2="../../resources/images/gastosCorriente/";
+		$image_name2 = time()."_".basename($_FILES["foto2"]["name"]);
+		$target_file2 = $target_dir2 .$image_name2 ;
+		$imageFileType2 = pathinfo($target_file2,PATHINFO_EXTENSION);
+		$imageFileZise2=$_FILES["foto2"]["size"];
+
+		/* Fin Validacion*/
+		move_uploaded_file($_FILES["foto2"]["tmp_name"], $target_file2);
+		$imagen2=basename($_FILES["foto2"]["name"]);
+		$img_update2="view/resources/images/gastosCorriente/$image_name2";
+
 	if (empty($_POST['gasto_fide_egresos'])) {
             $errors[] = "gasto_fide_egresos está vacío.";
         }elseif (empty($_POST['mes_id'])) {
@@ -36,7 +58,7 @@
 			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
 			$target_dir="view/resources/images/gastosCorriente/gastoCorriente.jpg";
 			//Write register in to database
-			$sql = "INSERT INTO fideicomisos_egresos (gasto_fide_egresos, mes_id, egreso, bien, proveedor, numfact, fecha_carga) VALUES( '".$id."', '".$mes_id."','".$egreso."', '".$bien."', '".$proveedor."', '".$numfact."', '".$fecha_carga."')";// cOMANDO DE sQL PARA
+			$sql = "INSERT INTO fideicomisos_egresos (gasto_fide_egresos, mes_id, egreso, bien, proveedor, numfact, fecha_carga, foto1, foto2,) VALUES( '".$id."', '".$mes_id."','".$egreso."', '".$bien."', '".$proveedor."', '".$numfact."', '".$fecha_carga."', '".$img_update."', '".$img_update2."')";// cOMANDO DE sQL PARA
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
