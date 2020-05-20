@@ -22,9 +22,6 @@
 		$imagen2=basename($_FILES["foto2"]["name"]);
 		$img_update2="view/resources/images/gastosCorriente/$image_name2";
 
-		var_dump($_FILES);
-
-
 	if (empty($_POST['personal'])) {
             $errors[] = "personal está vacío.";
         }  elseif (
@@ -53,6 +50,7 @@
 	} else {
 		$errors[] = "desconocido.";
 	}
+
 if (isset($errors)){
 
 			?>

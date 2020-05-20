@@ -43,25 +43,21 @@ $rutaServ = "http://localhost/ingresos-egresos/";
               <label for="observaciones">Observacion</label>
               <input disabled type="text" class="form-control" value="<?php echo $observaciones;?>" id="observaciones" name="observaciones">
             </div>
+
+            <div class="form-group col-md-6">
+              <label for="personal">Documento 1</label>
+                 <a href="<?php echo  $foto1;?>" class="img-responsive" alt="Archivo 1" target="_blank" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
+                        <iframe type="application/pdf"  src="<?php echo  $foto1;?>" style="width: 100%;height: auto"></iframe>
+                </a>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="gasto">Documento 2</label>
+                <a href="<?php echo  $foto2;?>" class="img-responsive" alt="Archivo 1" target="_blank" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
+                        <iframe type="application/pdf"  src="<?php echo  $foto2;?>" style="width: 100%;height: auto"></iframe>
+                </a>
+            </div>
+
       </div>
 
-<div class="col-md-12">
-        <div class="box box-primary"><!-- Profile Image -->
-            <div class="box-body box-profile">
-                <div id="load_img">
-                    <img class=" img-responsive" src="<?php echo  $foto1;?>" alt="Foto del servicio" data-toggle="modal" data-target="#myModalq" style='cursor:pointer' width="50%" height="50%">
-                </div>
 
-                <div id="myModalq" class="modal fade" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="<?php echo $foto1;?>" class="img-responsive">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>

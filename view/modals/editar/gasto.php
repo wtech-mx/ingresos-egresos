@@ -15,6 +15,7 @@
         $concepto=$rw['concepto'];
         $cantidad=$rw['cantidad'];
         $observaciones=$rw['observaciones'];
+
         $foto1=$rw['foto1'];
         $foto2=$rw['foto2'];
 		}
@@ -47,9 +48,9 @@
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="foto1" name="foto1">
                   <label class="custom-file-label" for="foto1">Archivo 1</label>
-                </div>
-                <a href="" class="img-responsive" data-toggle="modal" data-target="#myModal1" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
-                    <iframe  class="img-responsive" type="application/pdf" src="<?php echo  $foto1;?>" style="width: 100%"></iframe >
+                </div> <hr>
+                 <a href="<?php echo  $foto1;?>" class="img-responsive" alt="Archivo 1" target="_blank" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
+                        <iframe type="application/pdf"  src="<?php echo  $foto1;?>" style="width: 100%;height: auto"></iframe>
                 </a>
 
             </div>
@@ -58,45 +59,12 @@
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="foto2" name="foto2">
                   <label class="custom-file-label" for="foto2">Archivo 2</label>
-                </div>
-                <a href="" class="img-responsive" data-toggle="modal" data-target="#myModal2" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
-                    <iframe  class="img-responsive" type="application/pdf" src="<?php echo  $foto2;?>" style="width: 100%"></iframe >
+                </div> <hr>
+                <a href="<?php echo  $foto2;?>" class="img-responsive" alt="Archivo 1" target="_blank" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
+                        <iframe type="application/pdf"  src="<?php echo  $foto2;?>" style="width: 100%;height: auto"></iframe>
                 </a>
             </div>
 
 
       </div>
 
-      <div id="myModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">&nbsp;</h4>
-                    </div>
-                    <div class="modal-body">
-
-            <a href="" class="img-responsive" alt="Archivo 1" data-toggle="modal" data-target="#myModal1" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
-                    <iframe type="application/pdf"  src="<?php echo  $foto1;?>" style="width: 150%;height: 750px"></iframe>
-            </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-      <div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">&nbsp;</h4>
-                    </div>
-                    <div class="modal-body">
-
-            <a href="" class="img-responsive" alt="Archivo 2" data-toggle="modal" data-target="#myModal2" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
-                    <iframe type="application/pdf"  src="<?php echo  $foto2;?>" style="width: 150%;height: 750px"></iframe>
-            </a>
-                    </div>
-                </div>
-            </div>
-        </div>
