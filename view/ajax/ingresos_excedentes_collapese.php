@@ -53,19 +53,7 @@
 
 		</div>
 
-	         <div class="form-group col-md-auto" style="display: none;">
-	            <label class="mr-sm-2" for="estado">Seleccionar</label>
-					<select class="custom-select mr-sm-2" id="estado" name="estado">
-	                    <option value="2" selected>No sumar</option>
-	                </select>
-
-
-				    <button type="submit" class="btn btn-success  btn-square btn-xs">
-				    	<i class="fa fa-check"></i>
-				    </button>
-			</div>
-
-		 	<div class="row">
+			<div class="row">
 		 	  <div class="col-md-12">
 					<button type="submit" id="guardar_datos_gasto" name="guardar_datos_gasto" class="btn btn-success">Agregar</button>
 		      </div>
@@ -115,15 +103,15 @@
 	        <tbody>
 	            <td><?php echo $excedentes_ingresos->id?></td>
                 <td><?php echo $excedentes_ingresos->partida ?></td>
-                <td>$<?php echo $excedentes_ingresos->concepto ?></td>
-                <td>$<?php echo $excedentes_ingresos->area ?></td>
+                <td><?php echo $excedentes_ingresos->concepto ?></td>
+                <td><?php echo $excedentes_ingresos->area ?></td>
                 <td>$<?php echo $excedentes_ingresos->monto ?></td>
                 <td><?php echo $excedentes_ingresos->porcentaje ?></td>
             <td>
 
 	<?php if ($excedentes_ingresos->porcentaje == '30%'): ?>
 
-	<?php if ($excedentes_ingresos->estado == 1){ ?>
+	<?php if ($excedentes_ingresos->estado == 2){ ?>
 
         	<form action="view/ajax/calulos_suma.php" method="post" role="form">
 			   	<input class="btn btn-success   btn-square btn-xs" value="<?php echo $excedentes_ingresos->id;?>" name="id" style="display: none;" >
@@ -141,23 +129,7 @@
 				</div>
             </form>
 
-    	<?php }elseif ($excedentes_ingresos->estado == 2) {  ?>
-        	<form action="view/ajax/calulos_suma.php" method="post" role="form">
-			   	<input class="btn btn-success   btn-square btn-xs" value="<?php echo $excedentes_ingresos->id;?>" name="id" style="display: none;" >
-	            <div class="form-group col-md-auto">
-	            <label class="mr-sm-2" for="estado">Seleccionar</label>
-					<select class="custom-select mr-sm-2" id="estado" name="estado">
-	                    <option value="2" selected>No sumar</option>
-	                    <option value="1">Sumar</option>
-	                </select>
-
-
-				    <button type="submit" class="btn btn-success  btn-square btn-xs">
-				    	<i class="fa fa-check"></i>
-				    </button>
-				</div>
-            </form>
-    <?php	}else{ ?>
+    	<?php }else{ ?>
 
 				<p>Se ha sumado con Exito <i class="fa fa-check"></i></p>
 
@@ -244,6 +216,7 @@
             </div>
 		</div>
 
+
 		 	<div class="row">
 		 	  <div class="col-md-12">
 					<button type="submit" id="guardar_datos_gasto" name="guardar_datos_gasto" class="btn btn-info">Agregar</button>
@@ -280,20 +253,28 @@
 	            	if($excedentes_ingresos->porcentaje == '2'){
 	            		$excedentes_ingresos->porcentaje = '30%';
 	            	}
+
+	            	if ($excedentes_ingresos->estado==2){
+						$excedentes_ingresos->lbl_status="No sumar";
+						$excedentes_ingresos->lbl_class='label label-danger';
+					}else {
+						$excedentes_ingresos->lbl_status="Sumar";
+						$excedentes_ingresos->lbl_class='label label-success';
+					}
                  ?>
 	        <tbody>
 	            <tr>
 	            <td><?php echo $excedentes_ingresos->id?></td>
                 <td><?php echo $excedentes_ingresos->partida ?></td>
-                <td>$<?php echo $excedentes_ingresos->concepto ?></td>
-                <td>$<?php echo $excedentes_ingresos->area ?></td>
+                <td><?php echo $excedentes_ingresos->concepto ?></td>
+                <td><?php echo $excedentes_ingresos->area ?></td>
                 <td>$<?php echo $excedentes_ingresos->monto ?></td>
                 <td><?php echo $excedentes_ingresos->porcentaje ?></td>
             <td>
 
 	<?php if ($excedentes_ingresos->porcentaje == '30%'): ?>
 
-	<?php if ($excedentes_ingresos->estado == 1){ ?>
+	<?php if ($excedentes_ingresos->estado == 2){ ?>
 
         	<form action="view/ajax/calulos_suma.php" method="post" role="form">
 			   	<input class="btn btn-success   btn-square btn-xs" value="<?php echo $excedentes_ingresos->id;?>" name="id" style="display: none;" >
@@ -311,23 +292,7 @@
 				</div>
             </form>
 
-    	<?php }elseif ($excedentes_ingresos->estado == 2) {  ?>
-        	<form action="view/ajax/calulos_suma.php" method="post" role="form">
-			   	<input class="btn btn-success   btn-square btn-xs" value="<?php echo $excedentes_ingresos->id;?>" name="id" style="display: none;" >
-	            <div class="form-group col-md-auto">
-	            <label class="mr-sm-2" for="estado">Seleccionar</label>
-					<select class="custom-select mr-sm-2" id="estado" name="estado">
-	                    <option value="2" selected>No sumar</option>
-	                    <option value="1">Sumar</option>
-	                </select>
-
-
-				    <button type="submit" class="btn btn-success  btn-square btn-xs">
-				    	<i class="fa fa-check"></i>
-				    </button>
-				</div>
-            </form>
-    <?php	}else{ ?>
+    	<?php }else{ ?>
 
 				<p>Se ha sumado con Exito <i class="fa fa-check"></i></p>
 
@@ -448,20 +413,28 @@
 	            	if($excedentes_ingresos->porcentaje == '2'){
 	            		$excedentes_ingresos->porcentaje = '30%';
 	            	}
+
+	            	if ($excedentes_ingresos->estado==2){
+						$excedentes_ingresos->lbl_status="No sumar";
+						$excedentes_ingresos->lbl_class='label label-danger';
+					}else {
+						$excedentes_ingresos->lbl_status="Sumar";
+						$excedentes_ingresos->lbl_class='label label-success';
+					}
                  ?>
 	        <tbody>
 	            <tr>
 	            <td><?php echo $excedentes_ingresos->id?></td>
                 <td><?php echo $excedentes_ingresos->partida ?></td>
-                <td>$<?php echo $excedentes_ingresos->concepto ?></td>
-                <td>$<?php echo $excedentes_ingresos->area ?></td>
+                <td><?php echo $excedentes_ingresos->concepto ?></td>
+                <td><?php echo $excedentes_ingresos->area ?></td>
                 <td>$<?php echo $excedentes_ingresos->monto ?></td>
                 <td><?php echo $excedentes_ingresos->porcentaje ?></td>
             <td>
 
 	<?php if ($excedentes_ingresos->porcentaje == '30%'): ?>
 
-	<?php if ($excedentes_ingresos->estado == 1){ ?>
+	<?php if ($excedentes_ingresos->estado == 2){ ?>
 
         	<form action="view/ajax/calulos_suma.php" method="post" role="form">
 			   	<input class="btn btn-success   btn-square btn-xs" value="<?php echo $excedentes_ingresos->id;?>" name="id" style="display: none;" >
@@ -479,23 +452,7 @@
 				</div>
             </form>
 
-    	<?php }elseif ($excedentes_ingresos->estado == 2) {  ?>
-        	<form action="view/ajax/calulos_suma.php" method="post" role="form">
-			   	<input class="btn btn-success   btn-square btn-xs" value="<?php echo $excedentes_ingresos->id;?>" name="id" style="display: none;" >
-	            <div class="form-group col-md-auto">
-	            <label class="mr-sm-2" for="estado">Seleccionar</label>
-					<select class="custom-select mr-sm-2" id="estado" name="estado">
-	                    <option value="2" selected>No sumar</option>
-	                    <option value="1">Sumar</option>
-	                </select>
-
-
-				    <button type="submit" class="btn btn-success  btn-square btn-xs">
-				    	<i class="fa fa-check"></i>
-				    </button>
-				</div>
-            </form>
-    <?php	}else{ ?>
+    	<?php }else{ ?>
 
 				<p>Se ha sumado con Exito <i class="fa fa-check"></i></p>
 
