@@ -51,6 +51,14 @@
 		$errors[] = "desconocido.";
 	}
 
+?>
+<script type="text/javascript">
+window.history.go(-1);
+window.history.back();
+</script>
+
+
+<?php
 if (isset($errors)){
 
 			?>

@@ -33,6 +33,7 @@
               <label for="gasto">Gasto/Concepto</label>
               <input type="text" class="form-control" value="<?php echo $concepto;?>" id="concepto" name="concepto">
             </div>
+
             <div class="form-group col-md-6">
               <label for="cantidad">Cantidad</label>
               <input type="text" class="form-control" placeholder="<?php echo $cantidad;?>" value="<?php echo $cantidad;?>" id="cantidad" name="cantidad">

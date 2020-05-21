@@ -40,7 +40,7 @@
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
-                // $messages[] = "Los Datos de gasto ha sido agregado con éxito.";
+                $messages[] = "Los Datos de gasto ha sido agregado con éxito.";
 
 				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
             } else {

@@ -1,6 +1,7 @@
 <?php
 	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
 
+		echo $_FILES["foto1"]["size"];
 		$target_dir="../../resources/images/gastosCorriente/";
 		$image_name = time()."_".basename($_FILES["foto1"]["name"]);
 		$target_file = $target_dir .$image_name ;
@@ -84,10 +85,10 @@ var_dump($_FILES);
 		}
 
 	?>
-<!--<script type="text/javascript">
+<script type="text/javascript">
 window.history.go(-1);
 window.history.back();
-</script> -->
+</script>
 
 
 <?php
