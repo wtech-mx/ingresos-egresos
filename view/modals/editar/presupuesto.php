@@ -14,6 +14,8 @@
         $utilizado=$rw['utilizado'];
         $partida=$rw['partida'];
         $utilizar=$rw['utilizar'];
+        $utilizar2=$rw['utilizar2'];
+        $utilizar3=$rw['utilizar3'];
 		}
 	}
 	else{exit;}
@@ -33,11 +35,35 @@
               <input type="text" class="form-control" value="<?php echo $utilizado;?>" id="utilizado" name="utilizado">
             </div>
 
-            <?php $utilizar = $monto - $utilizado; ?>
+            <?php
+            if($partida == 1){
+            $utilizar = $monto - $utilizado;
+            ?>
             <div class="form-group col-md-6">
               <label for="utilizar">Por utilizar</label>
               <input type="text" class="form-control" value="<?php echo $utilizar;?>" id="utilizar" name="utilizar">
             </div>
+            <?php } ?>
+
+            <?php
+            if($partida == 2){
+            $utilizar2 = $monto - $utilizado;
+            ?>
+            <div class="form-group col-md-6">
+              <label for="utilizar2">Por utilizar</label>
+              <input type="text" class="form-control" value="<?php echo $utilizar2;?>" id="utilizar2" name="utilizar2">
+            </div>
+            <?php } ?>
+
+            <?php
+            if($partida == 3){
+            $utilizar3 = $monto - $utilizado;
+            ?>
+            <div class="form-group col-md-6">
+              <label for="utilizar3">Por utilizar</label>
+              <input type="text" class="form-control" value="<?php echo $utilizar3;?>" id="utilizar3" name="utilizar3">
+            </div>
+            <?php } ?>
 
 
       </div>

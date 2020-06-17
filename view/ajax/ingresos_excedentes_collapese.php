@@ -1,4 +1,3 @@
-
 <form  role="form" method="post" action="view/ajax/agregar/agregar_ingreso_excedente.php">
 		<h1>Productos</h1>
 	    <div class="form-row" style="display: none;">

@@ -63,14 +63,14 @@
                                     </div>
                                     <label for="actividad_economica" class="col-sm-2 control-label">Actividad : </label>
                                     <div class="col-sm-4">
-                                        <textarea type="text" required name="actividad_economica" class="form-control" id="actividad_economica" placeholder="Actividad Economica: "><?php echo $actividad_economica ?></textarea>
+                                        <textarea type="text" name="actividad_economica" class="form-control" id="actividad_economica" placeholder="Puesto: "><?php echo $actividad_economica ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="dni" class="col-sm-2 control-label">Dni: </label>
+                                    <!--<label for="dni" class="col-sm-2 control-label">Dni: </label>
                                     <div class="col-sm-4">
                                         <input type="text" required name="dni" class="form-control" id="dni" placeholder="Dni: " value="<?php echo $dni ?>">
-                                    </div>
+                                    </div>-->
                                     <label for="email" class="col-sm-2 control-label">E-Mail: </label>
                                     <div class="col-sm-4">
                                         <input type="text" required name="email" class="form-control" id="email" placeholder="Correo Electrónico: " value="<?php echo $email ?>">

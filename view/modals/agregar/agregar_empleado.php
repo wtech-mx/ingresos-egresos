@@ -13,69 +13,39 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="dni" class="col-sm-2 control-label">DNI: </label>
-                        <div class="col-sm-10">
-                            <input type="text" required class="form-control" id="dni" name="dni" placeholder="DNI: ">
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label for="nombre" class="col-sm-2 control-label">Nombre: </label>
                         <div class="col-sm-10">
-                            <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Nombre: ">
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre: ">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="apellido" class="col-sm-2 control-label">Apellido: </label>
                         <div class="col-sm-10">
-                            <input type="text" required class="form-control" id="apellido" name="apellido" placeholder="Apellido: ">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="usuario" class="col-sm-2 control-label">Usuario: </label>
-                        <div class="col-sm-10">
-                            <input type="text" required class="form-control" id="usuario" name="usuario" placeholder="Usuario: ">
+                            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido: ">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-sm-2 control-label">Correo Electrónico: </label>
                         <div class="col-sm-10">
-                            <input type="email" required class="form-control" id="email" name="email" placeholder="Correo Electrónico: ">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico: ">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-sm-2 control-label">Contraseña: </label>
                         <div class="col-sm-10">
-                            <input type="password" required class="form-control" id="password" name="password" placeholder="*******">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="domicilio" class="col-sm-2 control-label">Domicilio: </label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Domicilio: ">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="localidad" class="col-sm-2 control-label">Localidad: </label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="localidad" name="localidad" placeholder="Localidad: ">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="*******">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="telefono" class="col-sm-2 control-label">Telefóno</label>
                         <div class="col-sm-10">
-                            <input type="text" required class="form-control" id="telefono" name="telefono" placeholder="Telefóno">
+                            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefóno">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="celular" class="col-sm-2 control-label">Celular: </label>
                         <div class="col-sm-10">
-                            <input type="text" required class="form-control" id="celular" name="celular" placeholder="Celular: ">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="registro" class="col-sm-2 control-label">Registro: </label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="registro" name="registro" placeholder="Registro: ">
+                            <input type="text" class="form-control" id="celular" name="celular" placeholder="Celular: ">
                         </div>
                     </div>
                     <div class="form-group">

@@ -38,6 +38,7 @@
               <label for="cantidad">Cantidad</label>
               <input type="text" class="form-control" placeholder="<?php echo $cantidad;?>" value="<?php echo $cantidad;?>" id="cantidad" name="cantidad">
             </div>
+
             <div class="form-group col-md-6">
               <label for="observaciones">Observacion</label>
               <input type="text" class="form-control" value="<?php echo $observaciones;?>" id="observaciones" name="observaciones">
@@ -45,25 +46,35 @@
       </div>
 
       <div class="form-row">
+
             <div class="form-group col-sm-6">
+
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="foto1" name="foto1">
-                  <label class="custom-file-label" for="foto1">Archivo 1</label>
-                </div> <hr>
-                 <a href="<?php echo  $foto1;?>" class="img-responsive" alt="Archivo 1" target="_blank" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
-                        <iframe type="application/pdf"  src="<?php echo  $foto1;?>" style="width: 100%;height: auto"></iframe>
+                  <input type="file" class="custom-file-input" id="foto1" name="foto1" value="<?php echo  $foto1;?>">
+                  <label class="custom-file-label" for="foto1"><?php echo  $foto1;?></label>
+                </div>
+
+                <hr>
+
+                <a href="<?php echo  $foto1;?>" class="img-responsive" alt="Archivo 1" target="_blank" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
+                  <iframe type="application/pdf" value="<?php echo  $foto1;?>" src="<?php echo  $foto1;?>" style="width: 100%;height: auto"></iframe>
                 </a>
 
             </div>
 
             <div class="form-group col-sm-6">
+
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="foto2" name="foto2">
+                  <input type="file" class="custom-file-input" id="foto2" name="foto2" value="<?php echo  $foto2;?>">
                   <label class="custom-file-label" for="foto2">Archivo 2</label>
-                </div> <hr>
-                <a href="<?php echo  $foto2;?>" class="img-responsive" alt="Archivo 1" target="_blank" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
-                        <iframe type="application/pdf"  src="<?php echo  $foto2;?>" style="width: 100%;height: auto"></iframe>
+                </div>
+
+                <hr>
+
+                <a href="<?php echo  $foto2;?>" class="img-responsive" alt="Archivo 2" target="_blank" style="cursor:pointer;padding: 10px;background: #337AB7;overflow-y: hidden;overflow-x: hidden;">
+                  <iframe type="application/pdf" value="<?php echo  $foto2;?>" src="<?php echo  $foto2;?>" style="width: 100%;height: auto"></iframe>
                 </a>
+
             </div>
 
 
