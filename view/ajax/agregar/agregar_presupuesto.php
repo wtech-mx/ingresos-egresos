@@ -10,12 +10,15 @@
             $errors[] = "partida está vacío.";
         }elseif (empty($_POST['utilizado'])) {
             $errors[] = "utilizado está vacío.";
+        }elseif (empty($_POST['utilizado2'])) {
+            $errors[] = "utilizado 2 está vacío.";
         }elseif (
         	!empty($_POST['gasto_code'])
         	&& !empty($_POST['mes_id'])
         	&& !empty($_POST['monto'])
         	&& !empty($_POST['partida'])
         	&& !empty($_POST['utilizado'])
+        	&& !empty($_POST['utilizado2'])
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
 	        $gasto_code = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_code"],ENT_QUOTES)));
@@ -26,12 +29,13 @@
 	        $utilizar = mysqli_real_escape_string($con,(strip_tags($_POST["utilizar"],ENT_QUOTES)));
 	        $utilizar2 = mysqli_real_escape_string($con,(strip_tags($_POST["utilizar2"],ENT_QUOTES)));
 	        $utilizar3 = mysqli_real_escape_string($con,(strip_tags($_POST["utilizar3"],ENT_QUOTES)));
+	        $mes = mysqli_real_escape_string($con,(strip_tags($_POST["mes"],ENT_QUOTES)));
 			$fecha=date("Y-01-01");
 
 			$id = $_POST["gasto_code"];
 			$sql="SELECT id from nombre_presupuesto LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO presupuesto (gasto_code, mes_id, monto, partida, utilizado, utilizar, utilizar2, utilizar3, fecha) VALUES( '".$id."', '".$mes_id."', '".$monto."', '".$partida."', '".$utilizado."', '".$utilizar."', '".$utilizar2."', '".$utilizar3."', '".$fecha."')";//
+			$sql = "INSERT INTO presupuesto (gasto_code, mes_id, monto, partida, utilizado, utilizar, utilizar2, utilizar3, mes, fecha) VALUES( '".$id."', '".$mes_id."', '".$monto."', '".$partida."', '".$utilizado."', '".$utilizar."', '".$utilizar2."', '".$utilizar3."', '".$mes."', '".$fecha."')";//
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

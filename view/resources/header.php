@@ -267,20 +267,19 @@
                                     class="hide-menu text-white">Presupuesto General
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
-
-                                <?php
-                                $query=mysqli_query($con,"SELECT * from meses");
-                                while ($row=mysqli_fetch_array($query)) {
-                                    $mes=$row['mes'];
-                                    $src_presupuesto=$row['src_presupuesto'];
-                             ?>
-
                                 <li class="sidebar-item">
+
                                     <a href="<?php echo $src_presupuesto ?>" class="sidebar-link">
                                         <span class="hide-menu text-white"><?php echo $mes ?></span>
+
+                                    <a href="./?view=enero_presupuesto" class="sidebar-link">
+                                        <span class="hide-menu">Presupuesto Federal</span>
+                                    </a>
+                                    <a href="./?view=general_presupuesto" class="sidebar-link">
+                                        <span class="hide-menu">General</span>
+
                                     </a>
                                 </li>
-                                <?php } ?>
                             </ul>
                         </li>
                          <?php } ?>

@@ -38,6 +38,26 @@ if ($num == 0){
 			      <label for="utilizado">Utilizado</label>
 			      <input type="number" class="form-control" id="utilizado" name="utilizado">
 			    </div>
+			 </div>
+			<div class="form-row">
+			    <div class="form-group col-md-6">
+					<label class="mr-sm-2" for="mes">Selecciona Mes</label>
+					<select class="custom-select mr-sm-2" id="mes" name="mes">
+	                <option selected>Selecciona Mes</option>
+	                    <option value="1">Enero</option>
+	                    <option value="2">Febrero</option>
+	                    <option value="3">Marzo</option>
+	                    <option value="4">Abril</option>
+	                    <option value="5">Mayo</option>
+	                    <option value="6">Junio</option>
+	                    <option value="7">Julio</option>
+	                    <option value="8">Agosto</option>
+	                    <option value="9">Septiembre</option>
+	                    <option value="10">Octubre</option>
+	                    <option value="11">Noviembre</option>
+	                    <option value="12">Diciembre</option>
+	                </select>
+	            </div>
 			    <div class="form-group col-md-4" style="display: none;">
 			      <label for="utilizar">Por Utilizar</label>
 		 		  <input type="number" class="form-control" id="utilizar" name="utilizar">
@@ -53,14 +73,14 @@ if ($num == 0){
 <?php
 }else{
 
-      		$rspta = mysqli_query($con, "SELECT * FROM presupuesto ORDER BY  id DESC");
-	   		$marcados = mysqli_query($con, "SELECT * FROM nombre_presupuesto WHERE presupuesto=$id ");
-            $valores=array();
+  		$rspta = mysqli_query($con, "SELECT * FROM presupuesto ORDER BY  id DESC");
+   		$marcados = mysqli_query($con, "SELECT * FROM nombre_presupuesto WHERE presupuesto=$id ");
+        $valores=array();
 
-            while ($presupuesto = $rspta->fetch_object()){
-                $sw=in_array($presupuesto->id,$valores);
-	            if ($id == $presupuesto->gasto_code) {
-	            	if ($presupuesto->partida ==  1) {
+        while ($presupuesto = $rspta->fetch_object()){
+            $sw=in_array($presupuesto->id,$valores);
+            if ($id == $presupuesto->gasto_code) {
+            	if ($presupuesto->partida ==  1) {
 
 ?>
 <form  role="form" method="post" action="view/ajax/agregar/agregar_presupuesto.php">
@@ -95,6 +115,27 @@ if ($num == 0){
 			      <label for="utilizado">Utilizado</label>
 			      <input type="number" class="form-control" id="utilizado" name="utilizado">
 			    </div>
+			</div>
+
+			<div class="form-row">
+			    <div class="form-group col-md-6">
+					<label class="mr-sm-2" for="mes">Selecciona Mes</label>
+					<select class="custom-select mr-sm-2" id="mes" name="mes">
+	                <option selected>Selecciona Mes</option>
+	                    <option value="1">Enero</option>
+	                    <option value="2">Febrero</option>
+	                    <option value="3">Marzo</option>
+	                    <option value="4">Abril</option>
+	                    <option value="5">Mayo</option>
+	                    <option value="6">Junio</option>
+	                    <option value="7">Julio</option>
+	                    <option value="8">Agosto</option>
+	                    <option value="9">Septiembre</option>
+	                    <option value="10">Octubre</option>
+	                    <option value="11">Noviembre</option>
+	                    <option value="12">Diciembre</option>
+	                </select>
+	            </div>
 			    <div class="form-group col-md-4" style="display: none;">
 			      <label for="utilizar">Por Utilizar</label>
 		 		  <input type="number" class="form-control" id="utilizar" name="utilizar">
@@ -112,7 +153,8 @@ if ($num == 0){
 	        <thead>
 	        	<div id="adicionados"></div>
 	            <tr>
-	                <th>#ID</th>
+	                <th>Año</th>
+	                <th>Mes</th>
 	                <th>Monto</th>
 	                <th>Utilizado</th>
 	                <th>Por Utilizar</th>
@@ -129,10 +171,47 @@ if ($num == 0){
 	            if ($id == $presupuesto->gasto_code) {
 	            	if ($presupuesto->partida ==  1) {
 
+	            		if($presupuesto->mes == '1'){
+	            		$presupuesto->mes = 'Enero';
+		            	}
+		            	if($presupuesto->mes == '2'){
+		            		$presupuesto->mes= 'Febrero';
+		            	}
+		            	if($presupuesto->mes == '3'){
+		            		$presupuesto->mes= 'Marzo';
+		            	}
+		            	if($presupuesto->mes == '4'){
+		            		$presupuesto->mes= 'Abril';
+		            	}
+		            	if($presupuesto->mes == '5'){
+		            		$presupuesto->mes= 'Mayo';
+		            	}
+		            	if($presupuesto->mes == '6'){
+		            		$presupuesto->mes= 'Junio';
+		            	}
+		            	if($presupuesto->mes == '7'){
+		            		$presupuesto->mes= 'Julio';
+		            	}
+		            	if($presupuesto->mes == '8'){
+		            		$presupuesto->mes= 'Agosto';
+		            	}
+		            	if($presupuesto->mes == '9'){
+		            		$presupuesto->mes= 'Septiembre';
+		            	}
+		            	if($presupuesto->mes == '10'){
+		            		$presupuesto->mes= 'Octubre';
+		            	}
+		            	if($presupuesto->mes == '11'){
+		            		$presupuesto->mes= 'Noviembre';
+		            	}
+		            	if($presupuesto->mes == '12'){
+		            		$presupuesto->mes= 'Diciembre';
+		            	}
 ?>
 	        <tbody>
 	            <tr>
-	            <td><?php echo $presupuesto->id?></td>
+	            <td><?php echo $presupuesto->fecha?></td>
+	            <td><?php echo $presupuesto->mes?></td>
                 <td><?php echo $presupuesto->monto ?></td>
                 <td><?php echo $presupuesto->utilizado ?></td>
                 <td><?php echo $presupuesto->utilizar ?></td>
@@ -215,6 +294,27 @@ if ($num == 0){
 			      <label for="utilizado">Utilizado</label>
 			      <input type="number" class="form-control" id="utilizado" name="utilizado">
 			    </div>
+			</div>
+
+			<div class="form-row">
+			    <div class="form-group col-md-6">
+					<label class="mr-sm-2" for="mes">Selecciona Mes</label>
+					<select class="custom-select mr-sm-2" id="mes" name="mes">
+	                <option selected>Selecciona Mes</option>
+	                    <option value="1">Enero</option>
+	                    <option value="2">Febrero</option>
+	                    <option value="3">Marzo</option>
+	                    <option value="4">Abril</option>
+	                    <option value="5">Mayo</option>
+	                    <option value="6">Junio</option>
+	                    <option value="7">Julio</option>
+	                    <option value="8">Agosto</option>
+	                    <option value="9">Septiembre</option>
+	                    <option value="10">Octubre</option>
+	                    <option value="11">Noviembre</option>
+	                    <option value="12">Diciembre</option>
+	                </select>
+	            </div>
 			    <div class="form-group col-md-4" style="display: none;">
 			      <label for="utilizar">Por Utilizar</label>
 		 		  <input type="number" class="form-control" id="utilizar" name="utilizar">
@@ -232,11 +332,12 @@ if ($num == 0){
         <thead>
         	<div id="adicionados"></div>
             <tr>
-                <th>#ID</th>
-                <th>Monto</th>
-                <th>Utilizado</th>
-                <th>Por Utilizar</th>
-                <th>Acciones</th>
+                <th>Año</th>
+	            <th>Mes</th>
+	            <th>Monto</th>
+	            <th>Utilizado</th>
+	            <th>Por Utilizar</th>
+	            <th>Acciones</th>
             </tr>
         </thead>
 
@@ -249,10 +350,48 @@ if ($num == 0){
             $sw=in_array($presupuesto->id,$valores);
             if ($id == $presupuesto->gasto_code) {
             	if ($presupuesto->partida ==  2) {
+
+            		if($presupuesto->mes == '1'){
+            		$presupuesto->mes = 'Enero';
+	            	}
+	            	if($presupuesto->mes == '2'){
+	            		$presupuesto->mes= 'Febrero';
+	            	}
+	            	if($presupuesto->mes == '3'){
+	            		$presupuesto->mes= 'Marzo';
+	            	}
+	            	if($presupuesto->mes == '4'){
+	            		$presupuesto->mes= 'Abril';
+	            	}
+	            	if($presupuesto->mes == '5'){
+	            		$presupuesto->mes= 'Mayo';
+	            	}
+	            	if($presupuesto->mes == '6'){
+	            		$presupuesto->mes= 'Junio';
+	            	}
+	            	if($presupuesto->mes == '7'){
+	            		$presupuesto->mes= 'Julio';
+	            	}
+	            	if($presupuesto->mes == '8'){
+	            		$presupuesto->mes= 'Agosto';
+	            	}
+	            	if($presupuesto->mes == '9'){
+	            		$presupuesto->mes= 'Septiembre';
+	            	}
+	            	if($presupuesto->mes == '10'){
+	            		$presupuesto->mes= 'Octubre';
+	            	}
+	            	if($presupuesto->mes == '11'){
+	            		$presupuesto->mes= 'Noviembre';
+	            	}
+	            	if($presupuesto->mes == '12'){
+	            		$presupuesto->mes= 'Diciembre';
+	            	}
 ?>
         <tbody>
             <tr>
-            <td><?php echo $presupuesto->id ?></td>
+            <td><?php echo $presupuesto->fecha?></td>
+	        <td><?php echo $presupuesto->mes?></td>
             <td><?php echo $presupuesto->monto ?></td>
             <td><?php echo $presupuesto->utilizado ?></td>
             <td><?php echo $presupuesto->utilizar2 ?></td>
@@ -322,20 +461,41 @@ if ($num == 0){
 					    </div>
 					</div>
 
-					 <div class="form-row">
-					 	<div class="form-group col-md-6">
-					      <label for="monto">Monto</label>
-					      <input type="text" class="form-control" id="monto" name="monto" value="<?php echo $presupuesto->utilizar3?>">
-					    </div>
-					 	<div class="form-group col-md-4">
-					      <label for="utilizado">Utilizado</label>
-					      <input type="number" class="form-control" id="utilizado" name="utilizado">
-					    </div>
-					    <div class="form-group col-md-4" style="display: none;">
-					      <label for="utilizar">Por Utilizar</label>
-				 		  <input type="number" class="form-control" id="utilizar" name="utilizar">
-					    </div>
-				     </div>
+				<div class="form-row">
+				 	<div class="form-group col-md-6">
+				      <label for="monto">Monto</label>
+				      <input type="text" class="form-control" id="monto" name="monto" value="<?php echo $presupuesto->utilizar3?>">
+				    </div>
+				 	<div class="form-group col-md-4">
+				      <label for="utilizado">Utilizado</label>
+				      <input type="number" class="form-control" id="utilizado" name="utilizado">
+				    </div>
+				</div>
+
+				<div class="form-row">
+				    <div class="form-group col-md-6">
+						<label class="mr-sm-2" for="mes">Selecciona Mes</label>
+						<select class="custom-select mr-sm-2" id="mes" name="mes">
+		                <option selected>Selecciona Mes</option>
+		                    <option value="1">Enero</option>
+		                    <option value="2">Febrero</option>
+		                    <option value="3">Marzo</option>
+		                    <option value="4">Abril</option>
+		                    <option value="5">Mayo</option>
+		                    <option value="6">Junio</option>
+		                    <option value="7">Julio</option>
+		                    <option value="8">Agosto</option>
+		                    <option value="9">Septiembre</option>
+		                    <option value="10">Octubre</option>
+		                    <option value="11">Noviembre</option>
+		                    <option value="12">Diciembre</option>
+		                </select>
+		            </div>
+				    <div class="form-group col-md-4" style="display: none;">
+				      <label for="utilizar">Por Utilizar</label>
+			 		  <input type="number" class="form-control" id="utilizar" name="utilizar">
+				    </div>
+			    </div>
 
 				 	<div class="row">
 				 	  	<div class="col-md-12">
@@ -348,7 +508,8 @@ if ($num == 0){
 	        <thead>
 	        	<div id="adicionados"></div>
 	            <tr>
-	                <th>#ID</th>
+	                <th>Año</th>
+	                <th>Mes</th>
 	                <th>Monto</th>
 	                <th>Utilizado</th>
 	                <th>Por Utilizar</th>
@@ -365,11 +526,50 @@ if ($num == 0){
                 $sw=in_array($presupuesto->id,$valores);
 	            if ($id == $presupuesto->gasto_code) {
 	            	if ($presupuesto->partida ==  3) {
+
+	            		if($presupuesto->mes == '1'){
+	            		$presupuesto->mes = 'Enero';
+		            	}
+		            	if($presupuesto->mes == '2'){
+		            		$presupuesto->mes= 'Febrero';
+		            	}
+		            	if($presupuesto->mes == '3'){
+		            		$presupuesto->mes= 'Marzo';
+		            	}
+		            	if($presupuesto->mes == '4'){
+		            		$presupuesto->mes= 'Abril';
+		            	}
+		            	if($presupuesto->mes == '5'){
+		            		$presupuesto->mes= 'Mayo';
+		            	}
+		            	if($presupuesto->mes == '6'){
+		            		$presupuesto->mes= 'Junio';
+		            	}
+		            	if($presupuesto->mes == '7'){
+		            		$presupuesto->mes= 'Julio';
+		            	}
+		            	if($presupuesto->mes == '8'){
+		            		$presupuesto->mes= 'Agosto';
+		            	}
+		            	if($presupuesto->mes == '9'){
+		            		$presupuesto->mes= 'Septiembre';
+		            	}
+		            	if($presupuesto->mes == '10'){
+		            		$presupuesto->mes= 'Octubre';
+		            	}
+		            	if($presupuesto->mes == '11'){
+		            		$presupuesto->mes= 'Noviembre';
+		            	}
+		            	if($presupuesto->mes == '12'){
+		            		$presupuesto->mes= 'Diciembre';
+		            	}
         ?>
 
 	        <tbody>
 
 	            <tr>
+	            <td><?php echo $presupuesto->fecha?></td>
+	            <td><?php echo $presupuesto->mes?></td>
 	            <td><?php echo $presupuesto->id?></td>
                 <td><?php echo $presupuesto->monto ?></td>
                 <td><?php echo $presupuesto->utilizado ?></td>
