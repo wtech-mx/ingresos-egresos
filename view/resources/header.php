@@ -298,7 +298,7 @@
             </div>
         </aside>
 
-        <div class="page-wrapper" style="background-color: #707B7C;">
+        <div class="page-wrapper" style="background-image: url('assets/images/conta.jpg');>
 
 
 

@@ -10,15 +10,13 @@
             $errors[] = "partida está vacío.";
         }elseif (empty($_POST['utilizado'])) {
             $errors[] = "utilizado está vacío.";
-        }elseif (empty($_POST['utilizado2'])) {
-            $errors[] = "utilizado 2 está vacío.";
         }elseif (
         	!empty($_POST['gasto_code'])
         	&& !empty($_POST['mes_id'])
         	&& !empty($_POST['monto'])
         	&& !empty($_POST['partida'])
         	&& !empty($_POST['utilizado'])
-        	&& !empty($_POST['utilizado2'])
+
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
 	        $gasto_code = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_code"],ENT_QUOTES)));
