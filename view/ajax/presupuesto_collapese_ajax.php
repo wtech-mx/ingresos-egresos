@@ -29,7 +29,7 @@
 					</div>
 
 					 <div class="form-row">
-					 	<div class="form-group col-md-6">
+					 	<div class="form-group col-md-4">
 					      <label for="utilizado">Utilizado</label>
 					      <input type="number" class="form-control" id="utilizado" name="utilizado">
 					    </div>
@@ -37,14 +37,6 @@
 					      <label for="utilizar">Por Utilizar</label>
 				 		  <input type="number" class="form-control" id="utilizar" name="utilizar">
 					    </div>
-				    	<div class="form-group col-sm-6">
-							<label class="mr-sm-2" for="anual">¿Es un monto inicial anual de la partida?</label>
-							<select class="custom-select mr-sm-2" id="anual" name="anual">
-			                <option selected>Selecciona monto inicial anual por Partida</option>
-			                    <option value="1">si</option>
-			                    <option value="2">no</option>
-			                </select>
-			            </div>
 				     </div>
 
 					 	<div class="row">
@@ -62,7 +54,6 @@
 	                <th>Monto</th>
 	                <th>Utilizado</th>
 	                <th>Por Utilizar</th>
-	                <th>Monto Inicial Anual</th>
 	                <th>Acciones</th>
 	            </tr>
 	        </thead>
@@ -74,15 +65,15 @@
             while ($presupuesto = $rspta->fetch_object()){
                 $sw=in_array($presupuesto->id,$valores);
 	            if ($id == $presupuesto->gasto_code) {
-	            	if($presupuesto->partida == 1){
+	            	if($presupuesto->partida == '1'){
 	            		$presupuesto->partida = 'Adquisición Directa';
 	            	}
 
-	            	if($presupuesto->partida == 2){
+	            	if($presupuesto->partida == '2'){
 	            		$presupuesto->partida= 'Restringida';
 	            	}
 
-	            	if($presupuesto->partida == 3){
+	            	if($presupuesto->partida == '3'){
 	            		$presupuesto->partida= 'Consolidada';
 	            	}
                 ?>
@@ -90,28 +81,16 @@
 	            <tr>
 	            <td><?php echo $presupuesto->id?></td>
 	            <td><?php echo $presupuesto->partida ?></td>
-                <td>$ <?php echo $presupuesto->monto ?></td>
-                <td>$ <?php echo $presupuesto->utilizado ?></td>
-                <td>$ <?php echo $presupuesto->utilizar ?></td>
-                <td>
-                <?php
-	            	if($presupuesto->anual == 1){
-	            		$presupuesto->anual= 'si';
-	            		echo $presupuesto->anual;
-	            	}else{
-	            		$presupuesto->anual= 'no';
-	            		echo $presupuesto->anual;
-	            	}
-
-                 ?>
-                </td>
+                <td><?php echo $presupuesto->monto ?></td>
+                <td><?php echo $presupuesto->utilizado ?></td>
+                <td><?php echo $presupuesto->utilizar ?></td>
 		        <td class="text-right">
 
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $presupuesto->id;?>');">
                     	<i class="fa fa-edit"></i>
                     </button>
 
-<!--                     <button type="button" class="btn btn-info btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $presupuesto->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del presupuesto"></i></button> -->
+                    <button type="button" class="btn btn-info btn-square btn-xs" data-toggle="modal" data-target="#modal_show" onclick="mostrar('<?php echo $presupuesto->id;?>')"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Selecciona para ver los datos del presupuesto"></i></button>
 
                     <button type="button" class="btn btn-danger btn-circle btn-square btn-xs" onclick="eliminar('<?php echo $presupuesto->id;?>')">
                     	<i class="fa fas fa-trash"></i>
