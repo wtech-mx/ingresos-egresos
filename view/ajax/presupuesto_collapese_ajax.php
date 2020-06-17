@@ -53,12 +53,14 @@ if ($num == 0){
 <?php
 }else{
 
-	$rspta = mysqli_query($con, "SELECT * FROM presupuesto");
-	$valores=array();
-	//while($row = mysqli_fetch_array($query)){
-	while ($presupuesto = $rspta->fetch_object()){
-	    $sw=in_array($presupuesto->id,$valores);
-	    if ($id == $presupuesto->gasto_code) {
+      		$rspta = mysqli_query($con, "SELECT * FROM presupuesto ORDER BY  id DESC");
+	   		$marcados = mysqli_query($con, "SELECT * FROM nombre_presupuesto WHERE presupuesto=$id ");
+            $valores=array();
+
+            while ($presupuesto = $rspta->fetch_object()){
+                $sw=in_array($presupuesto->id,$valores);
+	            if ($id == $presupuesto->gasto_code) {
+	            	if ($presupuesto->partida ==  1) {
 
 ?>
 <form  role="form" method="post" action="view/ajax/agregar/agregar_presupuesto.php">
@@ -155,11 +157,12 @@ if ($num == 0){
 					 }
 					}
 			}
+		}
 
     	}else{
      		 }
     }
-    }
+
 ?>
 
 
@@ -169,12 +172,14 @@ if ($num == 0){
  		===================================================================================================================================================================================================================-->
 
 <?php
-	$rspta = mysqli_query($con, "SELECT * FROM presupuesto");
-	$valores=array();
+  		$rspta = mysqli_query($con, "SELECT * FROM presupuesto ORDER BY  id DESC");
+   		$marcados = mysqli_query($con, "SELECT * FROM nombre_presupuesto WHERE presupuesto=$id ");
+        $valores=array();
 
-	while ($presupuesto = $rspta->fetch_object()){
-	    $sw=in_array($presupuesto->id,$valores);
-	    if ($id == $presupuesto->gasto_code) {
+        while ($presupuesto = $rspta->fetch_object()){
+            $sw=in_array($presupuesto->id,$valores);
+            if ($id == $presupuesto->gasto_code) {
+
 
 ?>
 
@@ -244,7 +249,6 @@ if ($num == 0){
             $sw=in_array($presupuesto->id,$valores);
             if ($id == $presupuesto->gasto_code) {
             	if ($presupuesto->partida ==  2) {
-
 ?>
         <tbody>
             <tr>
@@ -267,18 +271,14 @@ if ($num == 0){
 	        </td>
         </tbody>
 <?php
-			}else{
-
-				 }
-				}
+			}
 		}
+	}
 
 ?>
     </table>
 <?php
-     	}else{
-
-     		 }
+     	}
     }
 
 ?>
@@ -289,12 +289,13 @@ if ($num == 0){
  		===================================================================================================================================================================================================================-->
 
 <?php
-	$rspta = mysqli_query($con, "SELECT * FROM presupuesto");
-	$valores=array();
+  		$rspta = mysqli_query($con, "SELECT * FROM presupuesto ORDER BY  id DESC");
+   		$marcados = mysqli_query($con, "SELECT * FROM nombre_presupuesto WHERE presupuesto=$id ");
+        $valores=array();
 
-	while ($presupuesto = $rspta->fetch_object()){
-	    $sw=in_array($presupuesto->id,$valores);
-	    if ($id == $presupuesto->gasto_code) {
+        while ($presupuesto = $rspta->fetch_object()){
+            $sw=in_array($presupuesto->id,$valores);
+            if ($id == $presupuesto->gasto_code) {
 
 ?>
 
@@ -401,6 +402,8 @@ if ($num == 0){
      	}else{
 
      		 }
+    }
+
     }
 
 ?>
