@@ -108,7 +108,7 @@ if($action == 'ajax'){
 
 						<?php if ($partida == 2): ?>
 		                <?php
-	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$partida group by fecha ");
+	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar2) as utilizar_sum  FROM presupuesto WHERE partida=$partida group by fecha ");
 	                	    $partida = 'restringuidos' ?>
 			                <td><?php echo $partida ?></td>
     						 <?php	while ($total = $result->fetch_object()){
@@ -121,7 +121,7 @@ if($action == 'ajax'){
 
 						<?php if ($partida == 3): ?>
 		                <?php
-	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$partida group by fecha ");
+	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar3) as utilizar_sum  FROM presupuesto WHERE partida=$partida group by fecha ");
 	                	    $partida = 'consolidadosa' ?>
 			                <td><?php echo $partida ?></td>
     						 <?php	while ($total = $result->fetch_object()){

@@ -64,6 +64,4 @@
               <input type="text" class="form-control" value="<?php echo $utilizar3;?>" id="utilizar3" name="utilizar3">
             </div>
             <?php } ?>
-
-
       </div>
