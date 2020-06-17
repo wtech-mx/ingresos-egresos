@@ -1,4 +1,4 @@
-            <footer class="footer text-center text-muted">
+            <footer class="footer text-center text-muted" style="background-color: #707B7C">
                 All Rights Reserved by Adminmart. Designed and Developed by <a
                     href="">Power By Web Tech</a>.
             </footer>

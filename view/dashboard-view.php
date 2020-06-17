@@ -28,77 +28,69 @@
 
 ?>
         <!--main content start-->
-        <section class="main-content-wrapper">
-            <section id="main-content">
-                <!--tiles start-->
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="dashboard-tile detail tile-red">
-                            <div class="content">
-                                <h1 class="text-left timer" data-from="0" data-to="<?php echo mysqli_num_rows($empleados) ?>" data-speed="2500"> </h1>
-                                <p>Empleados</p>
-                            </div>
-                            <div class="icon"><i class="fa fa-users"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="dashboard-tile detail tile-turquoise">
-                            <div class="content">
-                                <h1 class="text-left timer" data-from="0" data-to="<?php echo mysqli_num_rows($talleres) ?>" data-speed="2500"> </h1>
-                                <p>Talleres</p>
-                            </div>
-                            <div class="icon"><i class="fa fa-indent"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="dashboard-tile detail tile-blue">
-                            <div class="content">
-                                <h1 class="text-left timer" data-from="0" data-to="<?php echo mysqli_num_rows($empresas) ?>" data-speed="2500"> </h1>
-                                <p>Empresas</p>
-                            </div>
-                            <div class="icon"><i class="fa fa-building-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="dashboard-tile detail tile-purple">
-                            <div class="content">
-                                <h1 class="text-left timer" data-to="<?php echo mysqli_num_rows($vehiculos) ?>" data-speed="2500"> </h1>
-                                <p>Vehiculos</p>
-                            </div>
-                            <div class="icon"><i class="fa fa-truck"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--tiles end-->
-                <!--dashboard charts and map start-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Datos Estadisticos</h3>
-                                <div class="actions pull-right">
-                                    <i class="fa fa-chevron-down"></i>
-                                    <i class="fa fa-times"></i>
-                                </div>
-                            </div>
-                            <div class="panel-body text-center">
-                                <p class="text-center">
-                                    <strong><span class="text-muted">Taller</span> & <span class="text-info">Mecánico</span> <b><?php echo date('Y');?></b></strong>
-                                </p>
-                                <canvas id="bar" height="300" width="1050px"></canvas><!-- datos estadisticos finales -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--dashboard charts and map end-->
-            </section>
-        </section>
+<div class="col">
+        <div class="row p-3">
+
+          <div class="col-sm-6">
+            <div class="card text-white bg-primary mb-3">
+              <div class="card-body">
+                <h5 class="card-title text-white"><strong>Gasto Corriente</strong></h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-success">ir</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="card text-white bg-secondary mb-3">
+              <div class="card-body">
+                <h5 class="card-title text-white"><strong>Fideicomiso</strong></h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-danger">ir</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+
+          <div class="col-sm-6">
+            <div class="card text-white bg-success mb-3">
+              <div class="card-body">
+                <h5 class="card-title text-white">Exedentes</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-dark">ir</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="card text-white bg-danger mb-3">
+              <div class="card-body">
+                <h5 class="card-title text-white">Presupuesto Federal</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-secondary">ir</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+
+          <div class="col-sm-12">
+            <div class="card text-white bg-dark mb-3">
+              <div class="card-body">
+                <h5 class="card-title text-white">Configuracion</h5>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-success">ir</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+</div>
         <!--main content end-->
-    </section>
+
 <?php
     include "resources/footer.php";
 ?>

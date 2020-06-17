@@ -45,7 +45,7 @@
 
 </head>
 
-<body>
+<body style="background-color: #707B7C;">
         <div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
@@ -56,14 +56,14 @@
         <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
 
-        <header class="topbar" data-navbarbg="skin6">
+        <header style="background-color: #707B7C;" class="topbar" data-navbarbg="skin6">
             <nav class="navbar top-navbar navbar-expand-md">
                 <div class="navbar-header" data-logobg="skin6">
                     <!-- This is for the sidebar toggle which is visible on mobile only -->
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
                             class="ti-menu ti-close"></i></a>
 
-                    <div class="navbar-brand">
+                    <div class="navbar-brand" style="background-color: #707B7C;">
                         <!-- Logo icon -->
                         <a href="index.html">
                             <b class="logo-icon">
@@ -73,13 +73,7 @@
                                 <img src="assets/images/logo-icon.png" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
-                            <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo text -->
-                                <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                            </span>
+
                         </a>
                     </div>
 
@@ -102,7 +96,7 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <img src="<?php echo $imagen_empleado ?>" alt="user" class="rounded-circle"
                                     width="40">
-                                <span class="ml-2 d-none d-lg-inline-block"><span>Hola,</span> <span
+                                <span class="ml-2 d-none d-lg-inline-block text-white"><span>Hola,</span> <span
                                         class="text-dark"> <?php echo $nombre_empleado." ".$apellido_empleado; ?></span> <i data-feather="chevron-down"
                                         class="svg-icon"></i></span>
                             </a>
@@ -124,29 +118,29 @@
             </nav>
         </header>
 
-        <aside class="left-sidebar" data-sidebarbg="skin6">
+        <aside style="background-color: #34495E;" class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar" data-sidebarbg="skin6">
                 <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
+                <nav class="sidebar-nav text-white">
+                    <ul id="sidebarnav" class="text-white">
                         <?php if ($_SESSION['dashboard']==1) { ?>
                         <li class="sidebar-item <?php if(isset($active1)){echo $active1;}?>">
-                            <a class="sidebar-link sidebar-link" href="./?view=dashboard"
+                            <a class="sidebar-link sidebar-link text-white " href="./?view=dashboard"
                                 aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                                    class="hide-menu">Dashboard</span>
+                                    class="hide-menu text-white">Dashboard</span>
                             </a>
                         </li>
                         <?php } ?>
                         <li class="list-divider"></li>
-                        <li class="nav-small-cap"><span class="hide-menu">MODULOS</span></li>
+                        <li class="nav-small-cap"><span class="hide-menu text-white text-white">MODULOS</span></li>
 
 
                         <?php if ($_SESSION['gasto']==1) { ?>
                        <li class="sidebar-item <?php if(isset($active11)){echo $active11;}?>">
                         <a class="sidebar-link has-arrow" href="./?view=gasto"
                                 aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
-                                    class="hide-menu">Gastos Corriente
+                                    class="hide-menu text-white">Gastos Corriente
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
 
@@ -158,7 +152,7 @@
                              ?>
                                 <li class="sidebar-item">
                                     <a href="<?php echo $src_gasto ?>" class="sidebar-link">
-                                        <span class="hide-menu"><?php echo $mes ?></span>
+                                        <span class="hide-menu text-white"><?php echo $mes ?></span>
                                     </a>
                                 </li>
                                 <?php } ?>
@@ -170,7 +164,7 @@
                        <li class="sidebar-item <?php if(isset($active11)){echo $active11;}?>">
                         <a class="sidebar-link has-arrow" href="./?view=gasto"
                                 aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
-                                    class="hide-menu">Fideicomiso
+                                    class="hide-menu text-white">Fideicomiso
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
 
@@ -182,20 +176,20 @@
                                     $src_egresos=$row['src_egresos'];
                              ?>
                                 <li class="sidebar-item"> <a class="has-arrow sidebar-link" href="javascript:void(0)"
-                                        aria-expanded="false"><span class="hide-menu"><?php echo $mes ?></span></a>
+                                        aria-expanded="false"><span class="hide-menu text-white"><?php echo $mes ?></span></a>
                                     <ul aria-expanded="false" class="collapse second-level base-level-line">
                                         <?php
                                         if ($mes=$row['mes'] != 'General') {
                                             ?>
                                         <li class="sidebar-item">
                                             <a href="<?php echo $src_ingresos ?>" class="sidebar-link">
-                                                <span class="hide-menu"> Ingresos</span>
+                                                <span class="hide-menu text-white"> Ingresos</span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
                                             <a href="<?php echo $src_egresos ?>" class="sidebar-link">
-                                                <span class="hide-menu"> Egresos</span>
+                                                <span class="hide-menu text-white"> Egresos</span>
                                             </a>
                                         </li>
                                         <?php
@@ -203,7 +197,7 @@
                                             ?>
                                         <li class="sidebar-item">
                                             <a href="?view=general_fideicomiso" class="sidebar-link">
-                                                <span class="hide-menu"> Click aqui</span>
+                                                <span class="hide-menu text-white"> Click aqui</span>
                                             </a>
                                         </li>    <?php
                                              }
@@ -220,7 +214,7 @@
                        <li class="sidebar-item <?php if(isset($active11)){echo $active11;}?>">
                         <a class="sidebar-link has-arrow" href="./?view=gasto"
                                 aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
-                                    class="hide-menu">Exedentes
+                                    class="hide-menu text-white">Exedentes
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
 
@@ -232,20 +226,20 @@
                                     $src_exce_egresos=$row['src_exce_egresos'];
                              ?>
                                 <li class="sidebar-item"> <a class="has-arrow sidebar-link" href="javascript:void(0)"
-                                        aria-expanded="false"><span class="hide-menu"><?php echo $mes ?></span></a>
+                                        aria-expanded="false"><span class="hide-menu text-white"><?php echo $mes ?></span></a>
                                     <ul aria-expanded="false" class="collapse second-level base-level-line">
                                         <?php
                                         if ($mes=$row['mes'] != 'General') {
                                             ?>
                                         <li class="sidebar-item">
                                             <a href="<?php echo $src_exce_ingreso ?>" class="sidebar-link">
-                                                <span class="hide-menu"> Ingresos</span>
+                                                <span class="hide-menu text-white"> Ingresos</span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
                                             <a href="<?php echo $src_exce_egresos ?>" class="sidebar-link">
-                                                <span class="hide-menu"> Egresos</span>
+                                                <span class="hide-menu text-white"> Egresos</span>
                                             </a>
                                         </li>
                                         <?php
@@ -253,7 +247,7 @@
                                             ?>
                                         <li class="sidebar-item">
                                             <a href="?view=general_Exedentes" class="sidebar-link">
-                                                <span class="hide-menu"> Click aqui</span>
+                                                <span class="hide-menu text-white"> Click aqui</span>
                                             </a>
                                         </li>    <?php
                                              }
@@ -270,7 +264,7 @@
                        <li class="sidebar-item <?php if(isset($active14)){echo $active14;}?>">
                         <a class="sidebar-link has-arrow" href="./?view=Presupuesto-general"
                                 aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
-                                    class="hide-menu">Presupuesto General
+                                    class="hide-menu text-white">Presupuesto General
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
 
@@ -283,7 +277,7 @@
 
                                 <li class="sidebar-item">
                                     <a href="<?php echo $src_presupuesto ?>" class="sidebar-link">
-                                        <span class="hide-menu"><?php echo $mes ?></span>
+                                        <span class="hide-menu text-white"><?php echo $mes ?></span>
                                     </a>
                                 </li>
                                 <?php } ?>
@@ -296,8 +290,8 @@
 
                         <?php if ($_SESSION['configuracion']==1) { ?>
                         <li class="sidebar-item <?php if(isset($active12)){echo $active12;}?>">
-                            <a class="sidebar-link sidebar-link" href="./?view=configuracion"aria-expanded="false">
-                                <i data-feather="message-square" class="feather-icon"></i><span class="hide-menu">configuracion</span>
+                            <a class="sidebar-link sidebar-link text-white" href="./?view=configuracion"aria-expanded="false">
+                                <i data-feather="message-square" class="feather-icon"></i><span class="hide-menu text-white">configuracion</span>
                             </a>
                          </li>
                           <?php } ?>
@@ -309,7 +303,7 @@
             </div>
         </aside>
 
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="background-color: #707B7C;">
 
 
 
