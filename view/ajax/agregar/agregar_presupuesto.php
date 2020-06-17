@@ -16,6 +16,7 @@
         	&& !empty($_POST['monto'])
         	&& !empty($_POST['partida'])
         	&& !empty($_POST['utilizado'])
+        	&& !empty($_POST['anual'])
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
 	        $gasto_code = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_code"],ENT_QUOTES)));
@@ -24,12 +25,13 @@
 	        $partida = mysqli_real_escape_string($con,(strip_tags($_POST["partida"],ENT_QUOTES)));
 	        $utilizado = mysqli_real_escape_string($con,(strip_tags($_POST["utilizado"],ENT_QUOTES)));
 	        $utilizar = mysqli_real_escape_string($con,(strip_tags($_POST["utilizar"],ENT_QUOTES)));
+	        $anual = mysqli_real_escape_string($con,(strip_tags($_POST["anual"],ENT_QUOTES)));
 			$fecha=date("Y-01-01");
 
 			$id = $_POST["gasto_code"];
 			$sql="SELECT id from nombre_presupuesto LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO presupuesto (gasto_code, mes_id, monto, partida, utilizado, utilizar, fecha) VALUES( '".$id."', '".$mes_id."', '".$monto."', '".$partida."', '".$utilizado."', '".$utilizar."', '".$fecha."')";//
+			$sql = "INSERT INTO presupuesto (gasto_code, mes_id, monto, partida, utilizado, utilizar,anual, fecha) VALUES( '".$id."', '".$mes_id."', '".$monto."', '".$partida."', '".$utilizado."', '".$utilizar."','".$anual."', '".$fecha."')";//
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
