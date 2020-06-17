@@ -65,7 +65,7 @@
 
                     <div class="navbar-brand" style="background-color: #707B7C;">
                         <!-- Logo icon -->
-                        <a href="index.html">
+                        <a href="?view=dashboard">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
                                 <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
@@ -264,19 +264,15 @@
                        <li class="sidebar-item <?php if(isset($active14)){echo $active14;}?>">
                         <a class="sidebar-link has-arrow" href="./?view=Presupuesto-general"
                                 aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
-                                    class="hide-menu text-white">Presupuesto General
+                                    class="hide-menu text-white">Presupuesto Federal
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
                                 <li class="sidebar-item">
-
-                                    <a href="<?php echo $src_presupuesto ?>" class="sidebar-link">
-                                        <span class="hide-menu text-white"><?php echo $mes ?></span>
-
                                     <a href="./?view=enero_presupuesto" class="sidebar-link">
-                                        <span class="hide-menu">Presupuesto Federal</span>
+                                        <span class="hide-menu text-white">Presupuesto Federal</span>
                                     </a>
                                     <a href="./?view=general_presupuesto" class="sidebar-link">
-                                        <span class="hide-menu">General</span>
+                                        <span class="hide-menu text-white">General</span>
 
                                     </a>
                                 </li>

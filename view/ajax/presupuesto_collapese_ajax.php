@@ -1,14 +1,13 @@
 <?php
-
 $consul = "select * from presupuesto";
 $resul = mysqli_query($con,$consul);
 $num = mysqli_num_rows($resul);
 //si la tabla esta vacia
-if ($num == 0){
-	?>
-<form  role="form" method="post" action="view/ajax/agregar/agregar_presupuesto.php">
+if ($num == 0 or $num >= 0){
+	 ?>
+<form  role="form" method="post" action="view/ajax/agregar/agregar_presupuesto.php" style="background-color: #ccc;padding: 50px;border-radius: 10px;">
 
-		<h1>Adquisición Directa</h1>
+		<h2>Adquisición Directa: solo ingresar el monto una ves</h2>
 
 		    <div class="form-row" style="display: none;">
 			    <div class="form-group col-md-6">
@@ -32,32 +31,12 @@ if ($num == 0){
 			 <div class="form-row">
 			 	<div class="form-group col-md-6">
 			      <label for="monto">Monto</label>
-			      <input type="text" class="form-control" id="monto" name="monto">
+			      <input type="text" class="form-control" id="monto" name="monto" >
 			    </div>
 			 	<div class="form-group col-md-4">
 			      <label for="utilizado">Utilizado</label>
 			      <input type="number" class="form-control" id="utilizado" name="utilizado">
 			    </div>
-			 </div>
-			<div class="form-row">
-			    <div class="form-group col-md-6">
-					<label class="mr-sm-2" for="mes">Selecciona Mes</label>
-					<select class="custom-select mr-sm-2" id="mes" name="mes">
-	                <option selected>Selecciona Mes</option>
-	                    <option value="1">Enero</option>
-	                    <option value="2">Febrero</option>
-	                    <option value="3">Marzo</option>
-	                    <option value="4">Abril</option>
-	                    <option value="5">Mayo</option>
-	                    <option value="6">Junio</option>
-	                    <option value="7">Julio</option>
-	                    <option value="8">Agosto</option>
-	                    <option value="9">Septiembre</option>
-	                    <option value="10">Octubre</option>
-	                    <option value="11">Noviembre</option>
-	                    <option value="12">Diciembre</option>
-	                </select>
-	            </div>
 			    <div class="form-group col-md-4" style="display: none;">
 			      <label for="utilizar">Por Utilizar</label>
 		 		  <input type="number" class="form-control" id="utilizar" name="utilizar">
@@ -66,12 +45,17 @@ if ($num == 0){
 
 		 	<div class="row">
 			 	<div class="col-md-12">
-					<button type="submit" id="guardar_datos_gasto" name="guardar_datos_gasto" class="btn btn-success">Agregar</button>
+					<button type="submit" id="guardar_datos_gasto" name="guardar_datos_gasto" class="btn btn-dark">Agregar</button>
 			    </div>
 		    </div>
 </form>
 <?php
-}else{
+}else{}
+
+ ?>
+
+<!-- --------------------------- -->
+<?php
 
   		$rspta = mysqli_query($con, "SELECT * FROM presupuesto ORDER BY  id DESC");
    		$marcados = mysqli_query($con, "SELECT * FROM nombre_presupuesto WHERE presupuesto=$id ");
@@ -594,7 +578,7 @@ if ($num == 0){
 
 	     		}
 	     		}
-        	}
+}
 
 ?>
 	    </table>
@@ -602,8 +586,9 @@ if ($num == 0){
      	}else{
 
      		 }
-    }
+
 
     }
 
 ?>
+
