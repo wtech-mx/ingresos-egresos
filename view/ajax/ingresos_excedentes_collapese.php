@@ -131,6 +131,21 @@
     	<?php }else{ ?>
 
 				<p>Se ha sumado con Exito <i class="fa fa-check"></i></p>
+        	<form action="view/ajax/calulos_suma.php" method="post" role="form">
+			   	<input class="btn btn-success   btn-square btn-xs" value="<?php echo $excedentes_ingresos->id;?>" name="id" style="display: none;" >
+	            <div class="form-group col-md-auto">
+	            <label class="mr-sm-2" for="estado">Seleccionar</label>
+					<select class="custom-select mr-sm-2" id="estado" name="estado">
+	                    <option value="2" selected>No sumar</option>
+	                    <option value="1">Sumar</option>
+	                </select>
+
+
+				    <button type="submit" class="btn btn-success  btn-square btn-xs">
+				    	<i class="fa fa-check"></i>
+				    </button>
+				</div>
+            </form>
 
 		<?php }  endif ?>
 
@@ -294,7 +309,21 @@
     	<?php }else{ ?>
 
 				<p>Se ha sumado con Exito <i class="fa fa-check"></i></p>
+        	<form action="view/ajax/calulos_suma.php" method="post" role="form">
+			   	<input class="btn btn-success   btn-square btn-xs" value="<?php echo $excedentes_ingresos->id;?>" name="id" style="display: none;" >
+	            <div class="form-group col-md-auto">
+	            <label class="mr-sm-2" for="estado">Seleccionar</label>
+					<select class="custom-select mr-sm-2" id="estado" name="estado">
+	                    <option value="2" selected>No sumar</option>
+	                    <option value="1">Sumar</option>
+	                </select>
 
+
+				    <button type="submit" class="btn btn-success  btn-square btn-xs">
+				    	<i class="fa fa-check"></i>
+				    </button>
+				</div>
+            </form>
 		<?php }  endif ?>
 
         	</td>
