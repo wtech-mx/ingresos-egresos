@@ -56,6 +56,7 @@
                         <?php
                             include "modals/agregar/agregar_presupuesto.php";
                             include "modals/editar/editar_presupuesto.php";
+                            include "modals/mostrar/mostrar_presupuesto.php";
                         ?>
                     <!-- /end modals -->
                     <input type='hidden' id='per_page' value='15'>
@@ -208,6 +209,20 @@
                     $("#loader2").html("");
                 }
             })
+    }
+    function mostrar(id){
+    var parametros = {"action":"ajax","id":id};
+    $.ajax({
+            url:'view/modals/mostrar/presupuesto.php',
+            data: parametros,
+             beforeSend: function(objeto){
+            $("#loader3").html("<img src='./assets/img/ajax-loader.gif'>");
+          },
+            success:function(data){
+                $(".outer_div3").html(data).fadeIn('slow');
+                $("#loader3").html("");
+            }
+        })
     }
 </script>
 

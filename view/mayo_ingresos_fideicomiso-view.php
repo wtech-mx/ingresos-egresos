@@ -56,6 +56,7 @@
                         <?php
                             include "modals/agregar/agregar_ingreso_fideicomiso.php";
                             include "modals/editar/editar_fideicomiso.php";
+                            include "modals/mostrar/mostrar_Ingreosfide.php";
                         ?>
                     <!-- /end modals -->
                     <input type='hidden' id='per_page' value='15'>
@@ -206,6 +207,20 @@
                 success:function(data){
                     $(".outer_div2").html(data).fadeIn('slow');
                     $("#loader2").html("");
+                }
+            })
+    }
+        function mostrar(id){
+        var parametros = {"action":"ajax","id":id};
+        $.ajax({
+                url:'view/modals/mostrar/ingresos_fide.php',
+                data: parametros,
+                 beforeSend: function(objeto){
+                $("#loader3").html("<img src='./assets/img/ajax-loader.gif'>");
+              },
+                success:function(data){
+                    $(".outer_div3").html(data).fadeIn('slow');
+                    $("#loader3").html("");
                 }
             })
     }

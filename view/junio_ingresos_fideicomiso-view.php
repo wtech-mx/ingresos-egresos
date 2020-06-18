@@ -56,6 +56,7 @@
                         <?php
                             include "modals/agregar/agregar_ingreso_fideicomiso.php";
                             include "modals/editar/editar_fideicomiso.php";
+                            include "modals/mostrar/mostrar_Ingreosfide.php";
                         ?>
                     <!-- /end modals -->
                     <input type='hidden' id='per_page' value='15'>
