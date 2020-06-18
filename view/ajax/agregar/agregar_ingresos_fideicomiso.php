@@ -1,6 +1,7 @@
 <?php
 	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
 
+		echo $_FILES["foto1"]["size"];
 		$target_dir="../../resources/images/gastosCorriente/";
 		$image_name = time()."_".basename($_FILES["foto1"]["name"]);
 		$target_file = $target_dir .$image_name ;
@@ -21,6 +22,8 @@
 		move_uploaded_file($_FILES["foto2"]["tmp_name"], $target_file2);
 		$imagen2=basename($_FILES["foto2"]["name"]);
 		$img_update2="view/resources/images/gastosCorriente/$image_name2";
+
+var_dump($_FILES);
 
 	if (empty($_POST['gasto_fide'])) {
             $errors[] = "gasto fide está vacío.";
@@ -46,11 +49,11 @@
 			$id = $_POST["gasto_fide"];
 			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO fideicomiso_ingresos (gasto_fide, mes_id, servicio, ingresos, total, pagodoc, foto1, foto2, fecha_carga) VALUES( '".$id."', '".$mes_id."',  '".$servicio."','".$ingresos."','".$total."','".$pagodoc."', '".$fecha_carga."', '".$img_update."', '".$img_update2."')";// COMANDO DE SQL PARA
+			$sql = "INSERT INTO fideicomiso_ingresos (gasto_fide, mes_id, servicio, ingresos, total, pagodoc, fecha_carga, foto1, foto2) VALUES( '".$id."', '".$mes_id."',  '".$servicio."','".$ingresos."','".$total."','".$pagodoc."', '".$fecha_carga."',  '".$img_update."', '".$img_update2."')";// COMANDO DE SQL PARA
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
-                // $messages[] = "Los Datos de gasto ha sido agregado con éxito.";
+                $messages[] = "Los Datos de gasto ha sido agregado con éxito.";
 
 				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
             } else {

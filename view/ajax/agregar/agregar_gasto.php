@@ -63,7 +63,7 @@ var_dump($_FILES);
 			$id = $_POST["gasto_code"];
 			$sql="SELECT id from nombre_gasto LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO gasto (gasto_code, mes_id, personal, concepto, cantidad, observaciones,  fecha_carga, fecha, foto1, foto2) VALUES( '".$id."', '".$mes_id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."', '".$fecha_carga."', '".$fecha."', '".$img_update."', '".$img_update2."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
+$sql = "INSERT INTO gasto (gasto_code, mes_id, personal, concepto, cantidad, observaciones,  fecha_carga, fecha, foto1, foto2) VALUES( '".$id."', '".$mes_id."', '".$personal."', '".$concepto."', '".$cantidad."', '".$observaciones."', '".$fecha_carga."', '".$fecha."', '".$img_update."', '".$img_update2."')";// cOMANDO DE sQL PARA INSERTAR LSO DATOS A LA tABLA DE dB
 
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully

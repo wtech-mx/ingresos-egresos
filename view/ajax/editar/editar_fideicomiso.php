@@ -1,5 +1,31 @@
 <?php
     include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
+		$target_dir="../../resources/images/gastosCorriente/";
+		$image_name = time()."_".basename($_FILES["foto1"]["name"]);
+		$target_file = $target_dir .$image_name ;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		$imageFileZise=$_FILES["foto1"]["size"];
+
+		$target_dir2="../../resources/images/gastosCorriente/";
+		$image_name2 = time()."_".basename($_FILES["foto2"]["name"]);
+		$target_file2 = $target_dir2 .$image_name2 ;
+		$imageFileType2 = pathinfo($target_file2,PATHINFO_EXTENSION);
+		$imageFileZise2=$_FILES["foto2"]["size"];
+
+
+		if ($imageFileZise>0 || $imageFileZise2>0){
+
+		move_uploaded_file($_FILES["foto1"]["tmp_name"], $target_file);
+		$imagen=basename($_FILES["foto1"]["name"]);
+		$img_update="foto1='view/resources/images/gastosCorriente/$image_name'";
+
+		move_uploaded_file($_FILES["foto2"]["tmp_name"], $target_file2);
+		$imagen2=basename($_FILES["foto2"]["name"]);
+		$img_update2="foto2='view/resources/images/gastosCorriente/$image_name2'";
+
+		}else { $img_update="";
+				$img_update2="";}
+
     if (empty($_POST['ingresos'])){
             $errors[] = "Ingresos está vacío.";
         }  elseif (
@@ -15,7 +41,7 @@
 
       	$id=intval($_POST['id']);
 		// UPDATE data into database
-	    $sql = "UPDATE fideicomiso_ingresos SET ingresos='".$ingresos."', total='".$total."', pagodoc='".$pagodoc."' WHERE id='".$id."' ";
+	    $sql = "UPDATE fideicomiso_ingresos SET ingresos='".$ingresos."', total='".$total."', pagodoc='".$pagodoc."', $img_update, $img_update2 WHERE id='".$id."' ";
 	    $query = mysqli_query($con,$sql);
 
     if ($query) {
@@ -27,6 +53,14 @@
 	} else {
 		$errors[] = "desconocido.";
 	}
+?>
+<script type="text/javascript">
+window.history.go(-1);
+window.history.back();
+</script>
+
+
+<?php
 if (isset($errors)){
 
 			?>

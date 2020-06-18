@@ -1,4 +1,4 @@
-<form  role="form" method="post" action="view/ajax/agregar/agregar_ingresos_fideicomiso.php">
+<form  role="form" method="post" action="view/ajax/agregar/agregar_ingresos_fideicomiso.php" enctype="multipart/form-data">
 	    <div class="form-row" style="display: none;">
 		    <div class="form-group col-md-6">
 		      <label for="gasto_fide">Id Nombre <?php echo $id ?></label>
@@ -44,19 +44,21 @@
 		      <input type="number" class="form-control" id="total" name="total">
 		    </div>
 		</div>
-		<div class="form-row">
+	     <div class="form-row">
 		    <div class="form-group col-md-6">
 				<div class="custom-file">
-			    <input type="file" name="imagefile1" class="form-control" id="imagefile1">
-				<label class="custom-file-label" for="imagefile1">Archivo 1</label>
+				<label class="custom-file-label" for="foto1">Foto 1</label>
+				<input type="file" name="foto1" class="form-control" id="foto1">
 				</div>
 		    </div>
+
 		    <div class="form-group col-md-6">
 				<div class="custom-file">
-				  <input type="file" class="custom-file-input" id="imagefile2">
-				  <label class="custom-file-label" for="imagefile2">Archivo 2</label>
+				  <label class="custom-file-label" for="foto2">foto2</label>
+				  <input type="file" class="custom-file-input" id="foto2" name="foto2">
 				</div>
 		    </div>
+
 		</div>
 
 		 	<div class="row">
