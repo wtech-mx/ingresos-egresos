@@ -56,6 +56,7 @@
                         <?php
                             include "modals/agregar/agregar_ingreso_exedentes.php";
                             include "modals/editar/editar_exedentes.php";
+                            include "modals/mostrar/mostrar_IngreosExce.php";
                         ?>
                     <!-- /end modals -->
                     <input type='hidden' id='per_page' value='15'>
@@ -230,10 +231,10 @@
     }
 
 
-    function mostrar(id){
+      function mostrar(id){
         var parametros = {"action":"ajax","id":id};
         $.ajax({
-                url:'view/modals/mostrar/exedentes.php',
+                url:'view/modals/mostrar/ingresos_exce.php',
                 data: parametros,
                  beforeSend: function(objeto){
                 $("#loader3").html("<img src='./assets/img/ajax-loader.gif'>");

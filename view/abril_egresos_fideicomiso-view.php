@@ -208,6 +208,20 @@
                 }
             })
     }
+       function mostrar(id){
+        var parametros = {"action":"ajax","id":id};
+        $.ajax({
+                url:'view/modals/mostrar/egresos_fide.php',
+                data: parametros,
+                 beforeSend: function(objeto){
+                $("#loader3").html("<img src='./assets/img/ajax-loader.gif'>");
+              },
+                success:function(data){
+                    $(".outer_div3").html(data).fadeIn('slow');
+                    $("#loader3").html("");
+                }
+            })
+    }
 </script>
 
 <?php
