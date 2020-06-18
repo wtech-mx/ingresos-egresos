@@ -1,26 +1,29 @@
 <?php
 	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
 
-		// $target_dir="../../resources/images/gastosCorriente/";
-		// $image_name = time()."_".basename($_FILES["foto1"]["name"]);
-		// $target_file = $target_dir .$image_name ;
-		// $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-		// $imageFileZise=$_FILES["foto1"]["size"];
+		echo $_FILES["foto1"]["size"];
+		$target_dir="../../resources/images/gastosCorriente/";
+		$image_name = time()."_".basename($_FILES["foto1"]["name"]);
+		$target_file = $target_dir .$image_name ;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		$imageFileZise=$_FILES["foto1"]["size"];
 
-		// move_uploaded_file($_FILES["foto1"]["tmp_name"], $target_file);
-		// $imagen=basename($_FILES["foto1"]["name"]);
-		// $img_update="view/resources/images/gastosCorriente/$image_name";
+		move_uploaded_file($_FILES["foto1"]["tmp_name"], $target_file);
+		$imagen=basename($_FILES["foto1"]["name"]);
+		$img_update="view/resources/images/gastosCorriente/$image_name";
 
-		// $target_dir2="../../resources/images/gastosCorriente/";
-		// $image_name2 = time()."_".basename($_FILES["foto2"]["name"]);
-		// $target_file2 = $target_dir2 .$image_name2 ;
-		// $imageFileType2 = pathinfo($target_file2,PATHINFO_EXTENSION);
-		// $imageFileZise2=$_FILES["foto2"]["size"];
+		$target_dir2="../../resources/images/gastosCorriente/";
+		$image_name2 = time()."_".basename($_FILES["foto2"]["name"]);
+		$target_file2 = $target_dir2 .$image_name2 ;
+		$imageFileType2 = pathinfo($target_file2,PATHINFO_EXTENSION);
+		$imageFileZise2=$_FILES["foto2"]["size"];
 
-		// /* Fin Validacion*/
-		// move_uploaded_file($_FILES["foto2"]["tmp_name"], $target_file2);
-		// $imagen2=basename($_FILES["foto2"]["name"]);
-		// $img_update2="view/resources/images/gastosCorriente/$image_name2";
+		/* Fin Validacion*/
+		move_uploaded_file($_FILES["foto2"]["tmp_name"], $target_file2);
+		$imagen2=basename($_FILES["foto2"]["name"]);
+		$img_update2="view/resources/images/gastosCorriente/$image_name2";
+
+var_dump($_FILES);
 
 	if (empty($_POST['gasto_fide_egresos'])) {
             $errors[] = "gasto_fide_egresos está vacío.";
@@ -46,6 +49,7 @@
         	&& !empty($_POST['fecha_carga'])
         ){
 		require_once ("../../../config/config.php");//conexipon de DB
+
 	        $gasto_fide_egresos = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_fide_egresos"],ENT_QUOTES)));
 	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
 	        $egreso = mysqli_real_escape_string($con,(strip_tags($_POST["egreso"],ENT_QUOTES)));
@@ -56,18 +60,20 @@
 
 			$id = $_POST["gasto_fide_egresos"];
 			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
-			$target_dir="view/resources/images/gastosCorriente/gastoCorriente.jpg";
+			// $target_dir="view/resources/images/gastosCorriente/gastoCorriente.jpg";
 			//Write register in to database
-			$sql = "INSERT INTO fideicomisos_egresos (gasto_fide_egresos, mes_id, egreso, bien, proveedor, numfact, fecha_carga, foto1, foto2,) VALUES( '".$id."', '".$mes_id."','".$egreso."', '".$bien."', '".$proveedor."', '".$numfact."', '".$fecha_carga."', '".$img_update."', '".$img_update2."')";// cOMANDO DE sQL PARA
+			$sql = "INSERT INTO fideicomisos_egresos (gasto_fide_egresos, mes_id, egreso, bien, proveedor, numfact, fecha_carga, foto1, foto2) VALUES( '".$id."', '".$mes_id."','".$egreso."', '".$bien."', '".$proveedor."', '".$numfact."', '".$fecha_carga."', '".$img_update."', '".$img_update2."')";
+			// cOMANDO DE sQL PARA
+
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {
-                // $messages[] = "Los Datos de gasto ha sido agregado con éxito.";
+                $messages[] = "Los Datos de gasto ha sido agregado con éxito.";
 
 				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
             } else {
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
-                header("Location: http://localhost/ingresos-egresos/?view=gasto");
+                // header("Location: http://localhost/ingresos-egresos/?view=gasto");
             }
 		}
 		else {

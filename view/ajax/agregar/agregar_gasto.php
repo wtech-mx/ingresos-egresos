@@ -51,8 +51,6 @@ var_dump($_FILES);
 
 		require_once ("../../../config/config.php");//conexipon de DB
 
-
-
 	        $gasto_code = mysqli_real_escape_string($con,(strip_tags($_POST["gasto_code"],ENT_QUOTES)));
 	        $mes_id = mysqli_real_escape_string($con,(strip_tags($_POST["mes_id"],ENT_QUOTES)));
 	        $personal = mysqli_real_escape_string($con,(strip_tags($_POST["personal"],ENT_QUOTES)));
@@ -71,15 +69,13 @@ var_dump($_FILES);
             // if has been added successfully
             if ($query_new) {
                 $messages[] = "Los Datos de gasto ha sido agregado con éxito.";
+
 				//save_log('Categorías','Registro de categoría',$_SESSION['user_id']);
             } else {
                 $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
 
             }
 		}
-
-
-
 		else {
 			$errors[] = "desconocido.";
 		}

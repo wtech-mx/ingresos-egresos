@@ -1,5 +1,33 @@
 <?php
     include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
+
+		$target_dir="../../resources/images/gastosCorriente/";
+		$image_name = time()."_".basename($_FILES["foto1"]["name"]);
+		$target_file = $target_dir .$image_name ;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		$imageFileZise=$_FILES["foto1"]["size"];
+
+		$target_dir2="../../resources/images/gastosCorriente/";
+		$image_name2 = time()."_".basename($_FILES["foto2"]["name"]);
+		$target_file2 = $target_dir2 .$image_name2 ;
+		$imageFileType2 = pathinfo($target_file2,PATHINFO_EXTENSION);
+		$imageFileZise2=$_FILES["foto2"]["size"];
+
+
+		if ($imageFileZise>0 || $imageFileZise2>0){
+
+		move_uploaded_file($_FILES["foto1"]["tmp_name"], $target_file);
+		$imagen=basename($_FILES["foto1"]["name"]);
+		$img_update="foto1='view/resources/images/gastosCorriente/$image_name'";
+
+		move_uploaded_file($_FILES["foto2"]["tmp_name"], $target_file2);
+		$imagen2=basename($_FILES["foto2"]["name"]);
+		$img_update2="foto2='view/resources/images/gastosCorriente/$image_name2'";
+
+		}else { $img_update="";
+				$img_update2="";}
+
+
     if (empty($_POST['egreso'])){
             $errors[] = "egreso está vacío.";
         }  elseif (
@@ -13,12 +41,11 @@
         $bien = mysqli_real_escape_string($con,(strip_tags($_POST["bien"],ENT_QUOTES)));
         $proveedor = mysqli_real_escape_string($con,(strip_tags($_POST["proveedor"],ENT_QUOTES)));
         $numfact = mysqli_real_escape_string($con,(strip_tags($_POST["numfact"],ENT_QUOTES)));
-        $foto1 = mysqli_real_escape_string($con,(strip_tags($_POST["foto1"],ENT_QUOTES)));
-        $foto2 = mysqli_real_escape_string($con,(strip_tags($_POST["foto2"],ENT_QUOTES)));
+
 
       	$id=intval($_POST['id']);
 		// UPDATE data into database
-	    $sql = "UPDATE fideicomisos_egresos SET egreso='".$egreso."', bien='".$bien."', proveedor='".$proveedor."', numfact='".$numfact."', foto1='".$foto1."', foto2='".$foto2."' WHERE id='".$id."' ";
+	    $sql = "UPDATE fideicomisos_egresos SET egreso='".$egreso."', bien='".$bien."', proveedor='".$proveedor."', numfact='".$numfact."', $img_update, $img_update2 WHERE id='".$id."' ";
 	    $query = mysqli_query($con,$sql);
 
     if ($query) {
@@ -30,6 +57,14 @@
 	} else {
 		$errors[] = "desconocido.";
 	}
+?>
+<script type="text/javascript">
+window.history.go(-1);
+window.history.back();
+</script>
+
+
+<?php
 if (isset($errors)){
 
 			?>
