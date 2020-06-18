@@ -64,9 +64,10 @@ if($action == 'ajax'){
 		                <th>mes_id</th>
 		                <th>monto</th>
 		                <th>Utilizado</th> -->
-		                <th>partida</th>
-		                <th>Por Utilizar <br> 2020</th>
-		                <th>fecha <br> 2021 </th>
+		                <th>Concepto</th>
+		                <th>Ingreso Asignado</th>
+		                <th>Utilizado</th>
+		                <th>Utilizar</th>
 		            </tr>
 		        </thead>
 
@@ -95,7 +96,7 @@ if($action == 'ajax'){
 
 		                <td>$ <?php echo $utilizado ?></td> -->
 
-						<?php if ($partida == 1):
+					 	<?php if ($partida == 1):
 
 	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$partida group by fecha ");
 	                	    $partida = 'Adquisición Directa' ?>
