@@ -24,38 +24,45 @@
 		$imagen2=basename($_FILES["foto2"]["name"]);
 		$img_update2="foto2='view/resources/images/gastosCorriente/$image_name2'";
 
-		}else { $img_update="";
-				$img_update2="";}
+		}else {
+			$img_update="";
+			$img_update2="";
+		}
 
-
-	if (empty($_POST['personal'])) {
+	if (empty($_POST['personal'])){
             $errors[] = "personal está vacío.";
-        }  elseif (
+        } elseif (
         	!empty($_POST['personal'])
         ){
-		require_once ("../../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
+			require_once ("../../../config/config.php");//Contiene las variables de configuracion para conectar a la base de datos
 
-       // escaping, additionally removing everything that could be (html/javascript-) code
-        $personal = mysqli_real_escape_string($con,(strip_tags($_POST["personal"],ENT_QUOTES)));
-        $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
-        $cantidad = mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
-        $observaciones = mysqli_real_escape_string($con,(strip_tags($_POST["observaciones"],ENT_QUOTES)));
+	       // escaping, additionally removing everything that could be (html/javascript-) code
+	        $personal = mysqli_real_escape_string($con,(strip_tags($_POST["personal"],ENT_QUOTES)));
+	        $concepto = mysqli_real_escape_string($con,(strip_tags($_POST["concepto"],ENT_QUOTES)));
+	        $cantidad = mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
+	        $observaciones = mysqli_real_escape_string($con,(strip_tags($_POST["observaciones"],ENT_QUOTES)));
 
+	        $id=intval($_POST['id']);
+			// UPDATE data into database
 
-        $id=intval($_POST['id']);
-	// UPDATE data into database
-    $sql = "UPDATE gasto SET personal='".$personal."', concepto='".$concepto."', cantidad='".$cantidad."', observaciones='".$observaciones."', $img_update, $img_update2 WHERE id='".$id."' ";
-    $query = mysqli_query($con,$sql);
+		    if ($img_update == null and $img_update2 == null) {
+		    	$sql = "UPDATE gasto SET personal='".$personal."', concepto='".$concepto."', cantidad='".$cantidad."', observaciones='".$observaciones."' WHERE id='".$id."' ";
+			    }else{
+				$sql = "UPDATE gasto SET personal='".$personal."', concepto='".$concepto."', cantidad='".$cantidad."', observaciones='".$observaciones."', $img_update, $img_update2 WHERE id='".$id."' ";
+				}
 
-    if ($query) {
-        $messages[] = "El Gasto ha sido actualizado con éxito.";
-    } else {
-        $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
-    }
+			    $query = mysqli_query($con,$sql);
 
-	} else {
-		$errors[] = "desconocido.";
-	}
+			    if ($query) {
+			        $messages[] = "El Gasto ha sido actualizado con éxito.";
+			    } else {
+			        $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
+				}
+
+				} else {
+					$errors[] = "desconocido.";
+				}
+
 
 ?>
 <script type="text/javascript">

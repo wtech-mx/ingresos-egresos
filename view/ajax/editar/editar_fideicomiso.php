@@ -41,7 +41,12 @@
 
       	$id=intval($_POST['id']);
 		// UPDATE data into database
-	    $sql = "UPDATE fideicomiso_ingresos SET ingresos='".$ingresos."', total='".$total."', pagodoc='".$pagodoc."', $img_update, $img_update2 WHERE id='".$id."' ";
+		if ($img_update == null and $img_update2 == null) {
+			$sql = "UPDATE fideicomiso_ingresos SET ingresos='".$ingresos."', total='".$total."', pagodoc='".$pagodoc."' WHERE id='".$id."' ";
+
+	    }else{
+	    	$sql = "UPDATE fideicomiso_ingresos SET ingresos='".$ingresos."', total='".$total."', pagodoc='".$pagodoc."', $img_update, $img_update2 WHERE id='".$id."' ";
+	    }
 	    $query = mysqli_query($con,$sql);
 
     if ($query) {
