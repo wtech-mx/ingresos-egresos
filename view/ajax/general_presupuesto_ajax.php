@@ -106,7 +106,7 @@ if($action == 'ajax'){
 
 
 							<?php
-	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto  group by fecha ");?>
+	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=1 group by fecha ");?>
     						 <?php	while ($total2 = $result2->fetch_object()){?>
 
 				                <td>$ <?php echo $total2->utilizado_sum  ?>  </td>
