@@ -30,7 +30,7 @@
 
 		    <div class="form-group col-md-6">
 		      <label for="ingresos">Ingresos</label>
-		      <input type="number" class="form-control" id="ingresos" name="ingresos">
+		      <input type="number" class="form-control" id="ingresos" name="ingresos" placeholder="$">
 		    </div>
 		</div>
 		<div class="form-row"style="display: none;">

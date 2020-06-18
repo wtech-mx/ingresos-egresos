@@ -8,11 +8,12 @@
 	        <thead>
 	            <tr>
 <!-- 	            	<th>Mes</th> -->
+					<th>Año</th>
 	            	<th>Nombre</th>
-	                <th>Intereses Reales</th>
-	                <th>Intereses Utilizado</th>
-	                <th>Intereses Disponible</th>
-	                <th>Año</th>
+	                <th>Ingresos Reales</th>
+	                <th>Ingreso Utilizado</th>
+	                <th>Ingreso Disponible</th>
+
 <!-- 					<th>Total Cantidad</th> -->
 	            </tr>
 	         </thead>
@@ -60,12 +61,13 @@
 
 	        <tbody>
 	            <tr>
+	            	<td><?php echo $total->fecha; ?></td>
 		            <td><?php echo $nombre ?></td>
 					<td>$<?php echo round($total->total_sum, 2, PHP_ROUND_HALF_UP); ?></td>
 					<td>$<?php echo $egreso->egreso_sum; ?></td>
 	               		<?php  $interesDisp= $total->total_sum - $egreso->egreso_sum; ?>
 					<td>$<?php echo round($interesDisp, 2, PHP_ROUND_HALF_UP); ?></td>
-					<td><?php echo $total->fecha; ?></td>
+
 				</tr>
 	        </tbody>
 

@@ -24,7 +24,7 @@
 	        <tbody>
 	            <tr>
 	            <td><?php echo $id = $results['fecha']; ?></td>
-				<td><?php echo $cantidad_sum = $results['cantidad_sum']; ?></td>
+				<td>$<?php echo $cantidad_sum = $results['cantidad_sum']; ?></td>
 	        </tbody>
 			<?php endforeach ?>
 <?php

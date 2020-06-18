@@ -102,7 +102,7 @@ if($action == 'ajax'){
 	                	    $partida = 'Adquisición Directa' ?>
 			                <td><?php echo $partida ?></td>
     						 <?php	while ($total = $result->fetch_object()){ ?>
-			                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
+			                <td>$<?php echo $monto?>  </td>
 
 							<?php } ?>
 							<?php endif ?>

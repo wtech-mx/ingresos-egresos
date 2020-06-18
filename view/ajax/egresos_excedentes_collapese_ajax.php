@@ -18,7 +18,7 @@
 		    </div>
 		     <div class="form-group col-md-6">
 		      <label for="egreso">Egresos</label>
-		      <input type="text" class="form-control" id="egreso" name="egreso">
+		      <input type="number" class="form-control" id="egreso" name="egreso" placeholder="$">
 		    </div>
 		</div>
 		<div class="form-row">
@@ -32,21 +32,21 @@
 		    </div>
 		    <div class="form-group col-md-4">
 		      <label for="factura">Factura</label>
-		      <input type="number" class="form-control" id="factura" name="factura">
+		      <input type="text" class="form-control" id="factura" name="factura">
 		    </div>
 		</div>
 
 		<div class="form-row">
 		    <div class="form-group col-md-6">
 				<div class="custom-file">
-			    <input type="file" name="imagefile1" class="form-control" id="imagefile1">
-				<label class="custom-file-label" for="imagefile1">Archivo 1</label>
+			    <input type="file" class="form-control" name="foto1" id="foto1">
+				<label class="custom-file-label" for="foto1">Archivo 1</label>
 				</div>
 		    </div>
 		    <div class="form-group col-md-6">
 				<div class="custom-file">
-				  <input type="file" class="custom-file-input" id="imagefile2">
-				  <label class="custom-file-label" for="imagefile2">Archivo 2</label>
+				  <input type="file" class="custom-file-input"  name="foto2" id="foto2">
+				  <label class="custom-file-label" for="foto2">Archivo 2</label>
 				</div>
 		    </div>
 		</div>
@@ -85,9 +85,9 @@
 	            <td><?php echo $excedentes_egresos->id?></td>
                 <td><?php echo $excedentes_egresos->fecha_carga ?></td>
                 <td>$<?php echo $excedentes_egresos->egreso ?></td>
-                <td>$<?php echo $excedentes_egresos->bien ?></td>
-                <td>$<?php echo $excedentes_egresos->proveedor ?></td>
-                <td>$<?php echo $excedentes_egresos->factura ?></td>
+                <td><?php echo $excedentes_egresos->bien ?></td>
+                <td><?php echo $excedentes_egresos->proveedor ?></td>
+                <td><?php echo $excedentes_egresos->factura ?></td>
 
 		        <td class="text-right col-auto">
                     <button type="button" class="btn btn-warning  btn-circle btn-square btn-xs" data-toggle="modal" data-target="#modal_update" onclick="editar('<?php echo $excedentes_egresos->id;?>');">

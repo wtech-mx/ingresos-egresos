@@ -60,8 +60,9 @@ if($action == 'ajax'){
 		        <thead class="bg-dark text-white">
 	            <tr>
 	            	<th>servicios</th>
-	                <th>fecha <br> 2020 </th>
-					<th>fecha <br> 2021 </th>
+	                <th>Ingresos </th>
+					<th>Egresos </th>
+					<th>Total </th>
 	            </tr>
 		        </thead>
 
@@ -127,9 +128,25 @@ if($action == 'ajax'){
 
 						<?php } ?>
 						<?php endif ?>
+
 		            </tr>
 		        </tbody>
 		        <?php  }?>
+
+		        <?php  $result = mysqli_query($con,"SELECT fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE estado=1 group by fecha");
+					while ($total = $result->fetch_object()){ ?>
+						<th>Subtotal </th>
+		                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
+
+
+				<?php  $result2 = mysqli_query($con,"SELECT fecha, SUM(egreso) as utilizar_sum2  FROM excedentes_egresos group by fecha");
+					while ($total2 = $result2->fetch_object()){ ?>
+		                <td>$ <?php echo $total2->utilizar_sum2  ?>  </td>
+
+
+				<?php  $resta = $total->utilizar_sum - $total2->utilizar_sum2;?>
+		                <td><?php echo $resta  ?>  </td>
+						<?php } }?>
 
 		        <tfoot>
 		            <tr>

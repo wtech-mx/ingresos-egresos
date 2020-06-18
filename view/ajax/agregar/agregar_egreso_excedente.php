@@ -55,7 +55,7 @@
 			$id = $_POST["gasto_code"];
 			$sql="SELECT id from nombre_excedentes LIMIT 1 where id='".$id."'";
 			//Write register in to database
-			$sql = "INSERT INTO excedentes_egresos (gasto_code, mes_id, egreso, bien, proveedor, factura, fecha_carga, foto1, foto2, fecha) VALUES( '".$id."', '".$mes_id."', '".$egreso."', '".$bien."', '".$proveedor."', '".$factura."', '".$fecha_carga."', '".$fecha."', '".$img_update."', '".$img_update2."')";//
+			$sql = "INSERT INTO excedentes_egresos (gasto_code, mes_id, egreso, bien, proveedor, factura, fecha_carga, fecha, foto1, foto2) VALUES( '".$id."', '".$mes_id."', '".$egreso."', '".$bien."', '".$proveedor."', '".$factura."', '".$fecha_carga."', '".$fecha."', '".$img_update."', '".$img_update2."')";//
 			$query_new = mysqli_query($con,$sql);
             // if has been added successfully
             if ($query_new) {

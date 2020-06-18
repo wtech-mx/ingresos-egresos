@@ -29,7 +29,7 @@
 					    </div>
 					    <div class="form-group col-md-4">
 					      <label for="cantidad">Cantidad</label>
-				 		  <input type="text" class="form-control" id="cantidad" name="cantidad">
+				 		  <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="$">
 					    </div>
 					    <div class="form-group col-md-4">
 					      <label for="observaciones">Observacion</label>
@@ -86,7 +86,7 @@
 	            <td><?php echo $gasto->id?></td>
                 <td><?php echo $gasto->personal ?></td>
                 <td><?php echo $gasto->concepto ?></td>
-                <td><?php echo $gasto->cantidad ?></td>
+                <td>$<?php echo $gasto->cantidad ?></td>
                 <td><?php echo $gasto->observaciones ?></td>
                 <td><?php echo $gasto->fecha_carga; ?></td>
 		        <td class="text-right">
