@@ -104,33 +104,65 @@ if($action == 'ajax'){
     						 <?php	while ($total = $result->fetch_object()){ ?>
 			                <td>$<?php echo $monto?>  </td>
 
-							<?php } ?>
+
+							<?php
+	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto  group by fecha ");?>
+    						 <?php	while ($total2 = $result2->fetch_object()){?>
+
+				                <td>$ <?php echo $total2->utilizado_sum  ?>  </td>
+
+				            <?php  $resta = $monto - $total2->utilizado_sum;?>
+
+		               		 	<td><?php echo $resta  ?>  </td>
+							<?php } }?>
 							<?php endif ?>
+
+
+
 
 						<?php if ($partida == 2): ?>
 		                <?php
-	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar2) as utilizar_sum  FROM presupuesto WHERE partida=$partida group by fecha ");
+	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=$partida group by fecha ");
 	                	    $partida = 'restringuidos' ?>
 			                <td><?php echo $partida ?></td>
-    						 <?php	while ($total = $result->fetch_object()){
+    						 <?php	while ($total = $result->fetch_object()){?>
+			            			                <td>$<?php echo $monto?>  </td>
 
-		                 ?>
-			                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
 
-						<?php } ?>
+							<?php
+	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=2  group by fecha ");?>
+    						 <?php	while ($total2 = $result2->fetch_object()){?>
+
+				                <td>$ <?php echo $total2->utilizado_sum  ?>  </td>
+
+				            <?php  $resta = $monto - $total2->utilizado_sum;?>
+
+		               		 	<td><?php echo $resta  ?>  </td>
+							<?php } }?>
 						<?php endif ?>
+
+
+
 
 						<?php if ($partida == 3): ?>
 		                <?php
 	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar3) as utilizar_sum  FROM presupuesto WHERE partida=$partida group by fecha ");
 	                	    $partida = 'consolidadosa' ?>
 			                <td><?php echo $partida ?></td>
-    						 <?php	while ($total = $result->fetch_object()){
+    						 <?php	while ($total = $result->fetch_object()){?>
+			            			                <td>$<?php echo $monto?>  </td>
 
-		                 ?>
-			                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
 
-						<?php }; ?>
+							<?php
+	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=3  group by fecha ");?>
+    						 <?php	while ($total2 = $result2->fetch_object()){?>
+
+				                <td>$ <?php echo $total2->utilizado_sum  ?>  </td>
+
+				            <?php  $resta = $monto - $total2->utilizado_sum;?>
+
+		               		 	<td><?php echo $resta  ?>  </td>
+							<?php } }?>
 						<?php endif ?>
 
 		            </tr>
