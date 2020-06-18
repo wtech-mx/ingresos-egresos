@@ -39,8 +39,8 @@ if ($num == 0 or $num >= 0){
 			    </div>
 			    <div class="form-group col-md-4">
 					<label class="mr-sm-2" for="mes">Selecciona Mes</label>
-					<select class="custom-select mr-sm-2" id="mes" name="mes">
-	                <option selected>Selecciona Mes</option>
+					<select style="background-color: #fff" class="custom-select mr-sm-2" id="mes" name="mes">
+	                <option style="background-color: #fff" selected>Selecciona Mes</option>
 	                    <option value="1">Enero</option>
 	                    <option value="2">Febrero</option>
 	                    <option value="3">Marzo</option>
@@ -98,7 +98,7 @@ if ($num == 0 or $num >= 0){
 			    </div>
 			    <div class="form-group col-md-4">
 					<label class="mr-sm-2" for="mes">Selecciona Mes</label>
-					<select class="custom-select mr-sm-2" id="mes" name="mes">
+					<select style="background-color: #fff" class="custom-select mr-sm-2" id="mes" name="mes">
 	                <option selected>Selecciona Mes</option>
 	                    <option value="1">Enero</option>
 	                    <option value="2">Febrero</option>
@@ -156,7 +156,7 @@ if ($num == 0 or $num >= 0){
 			    </div>
 			    <div class="form-group col-md-4">
 					<label class="mr-sm-2" for="mes">Selecciona Mes</label>
-					<select class="custom-select mr-sm-2" id="mes" name="mes">
+					<select style="background-color: #fff" class="custom-select mr-sm-2" id="mes" name="mes">
 	                <option selected>Selecciona Mes</option>
 	                    <option value="1">Enero</option>
 	                    <option value="2">Febrero</option>
