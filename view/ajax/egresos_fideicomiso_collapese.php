@@ -36,19 +36,17 @@
 					      <input type="text" class="form-control" id="proveedor" name="proveedor">
 					    </div>
 
-					    <div class="form-group col-md-3">
-					    	 <label for="proveedor">Foto 1</label>
+						<div class="form-group col-md-6">
 							<div class="custom-file">
-							<label class="custom-file-label" for="imagefile1">Foto 1</label>
-							<input type="file" name="imagefile1" class="form-control" id="imagefile1" onchange="">
+							<label class="custom-file-label" for="foto1">Foto 1</label>
+							<input type="file" name="foto1" class="form-control" id="foto1">
 							</div>
 					    </div>
 
-					    <div class="form-group col-md-3">
-					    	 <label for="proveedor">Foto 2</label>
+					    <div class="form-group col-md-6">
 							<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="foto2">
 							  <label class="custom-file-label" for="foto2">foto2</label>
+							  <input type="file" class="custom-file-input" id="foto2" name="foto2">
 							</div>
 					    </div>
 				     </div>

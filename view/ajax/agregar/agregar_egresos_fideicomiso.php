@@ -1,7 +1,7 @@
 <?php
 	include("../is_logged.php");//Archivo comprueba si el usuario esta logueado
 
-		echo $_FILES["foto1"]["size"];
+
 		$target_dir="../../resources/images/gastosCorriente/";
 		$image_name = time()."_".basename($_FILES["foto1"]["name"]);
 		$target_file = $target_dir .$image_name ;
@@ -60,9 +60,9 @@ var_dump($_FILES);
 
 			$id = $_POST["gasto_fide_egresos"];
 			$sql="SELECT id from nombre_fideicomisos LIMIT 1 where id='".$id."'";
-			// $target_dir="view/resources/images/gastosCorriente/gastoCorriente.jpg";
+			// $target_dir="view/resources/images/fideicomiso/egresos/gastoCorriente.jpg";
 			//Write register in to database
-			$sql = "INSERT INTO fideicomisos_egresos (gasto_fide_egresos, mes_id, egreso, bien, proveedor, numfact, fecha_carga, foto1, foto2) VALUES( '".$id."', '".$mes_id."','".$egreso."', '".$bien."', '".$proveedor."', '".$numfact."', '".$fecha_carga."', '".$img_update."', '".$img_update2."')";
+			$sql = "INSERT INTO fideicomisos_egresos (gasto_fide_egresos, mes_id, egreso, bien, proveedor, numfact, fecha_carga, foto1, foto2) VALUES( '".$id."', '".$mes_id."','".$egreso."', '".$bien."', '".$proveedor."', '".$numfact."', '".$fecha_carga."',  '".$img_update."', '".$img_update2."')";
 			// cOMANDO DE sQL PARA
 
 			$query_new = mysqli_query($con,$sql);
