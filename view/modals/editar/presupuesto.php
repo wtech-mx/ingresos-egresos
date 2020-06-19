@@ -17,67 +17,27 @@
         $utilizar=$rw['utilizar'];
         $utilizar2=$rw['utilizar2'];
         $utilizar3=$rw['utilizar3'];
-
-                  if($partida == '1'){
-                  $partida = 'Adquisición Directa';
-                  }
-                  if($partida == '2'){
-                    $partida= 'Restringida';
-                  }
-                  if($partida == '3'){
-                    $partida= 'Consolidada';
-                  }
-                  if($mes == '1'){
-                  $mes = 'Enero';
-                  }
-                  if($mes == '2'){
-                    $mes= 'Febrero';
-                  }
-                  if($mes == '3'){
-                    $mes= 'Marzo';
-                  }
-                  if($mes == '4'){
-                    $mes= 'Abril';
-                  }
-                  if($mes == '5'){
-                    $mes= 'Mayo';
-                  }
-                  if($mes == '6'){
-                    $mes= 'Junio';
-                  }
-                  if($mes == '7'){
-                    $mes= 'Julio';
-                  }
-                  if($mes == '8'){
-                    $mes= 'Agosto';
-                  }
-                  if($mes == '9'){
-                    $mes= 'Septiembre';
-                  }
-                  if($mes == '10'){
-                    $mes= 'Octubre';
-                  }
-                  if($mes == '11'){
-                    $mes= 'Noviembre';
-                  }
-                  if($mes == '12'){
-                    $mes= 'Diciembre';
-                  }
 		}
 	}
 	else{exit;}
 ?>
 <input type="hidden" value="<?php echo $id;?>" name="id" id="id">
       <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="partida">Partida</label>
-              <input type="text" class="form-control" value="<?php echo $partida;?>" id="partida" name="partida">
-            </div>
+
+        <div class="form-group col-md-6">
+          <label class="mr-sm-2" for="partida">Selecciona Concepto</label>
+          <select style="background-color: #fff" class="custom-select mr-sm-2" id="partida" name="partida">
+            <option value="<?php echo $partida;?>"><?php echo $partida;?></option>
+                <option value="1">Adquisición Directa</option>
+                <option value="2">Restringida</option>
+                <option value="3">Consolidada</option>
+          </select>
+        </div>
 
             <div class="form-group col-md-4">
           <label class="mr-sm-2" for="mes">Selecciona Mes</label>
-          <select style="background-color: #fff" class="custom-select mr-sm-2" id="mes" name="mes" value="<?php echo $mes;?>">
-                  <option style="background-color: #fff" selected><?php echo $mes;?></option>
+          <select style="background-color: #fff" class="custom-select mr-sm-2" id="mes" name="mes">
+            <option value="<?php echo $mes;?>"><?php echo $mes;?></option>
                       <option value="1">Enero</option>
                       <option value="2">Febrero</option>
                       <option value="3">Marzo</option>
@@ -103,7 +63,7 @@
             </div>
 
             <?php
-            if($partida == 'Adquisición Directa'){
+            if($partida == 1){
             $utilizar = $monto - $utilizado;
             ?>
             <div class="form-group col-md-6">
@@ -113,7 +73,7 @@
             <?php } ?>
 
             <?php
-            if($partida == 'Restringida'){
+            if($partida == 2){
             $utilizar2 = $monto - $utilizado;
             ?>
             <div class="form-group col-md-6">
@@ -123,7 +83,7 @@
             <?php } ?>
 
             <?php
-            if($partida == 'Consolidada'){
+            if($partida == 3){
             $utilizar3 = $monto - $utilizado;
             ?>
             <div class="form-group col-md-6">

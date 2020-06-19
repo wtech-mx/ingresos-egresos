@@ -58,9 +58,7 @@ if($action == 'ajax'){
 		$query2 = mysqli_query($con,"SELECT  * FROM  presupuesto GROUP BY fecha");
 		while($row = mysqli_fetch_array($query2)){
 			$fecha=$row['fecha'];
-			if ($fecha == 2020) {
-
-
+	if ($fecha == 2020) {
 ?>
 
 		<h1><?php echo $fecha; ?></h1>
@@ -93,9 +91,9 @@ if($action == 'ajax'){
 
 		            <tr>
 
-					 	<?php if ($partida == 1):
+					 	<?php if ($partida == 1){
 
-	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$partida");
+	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$partida HAVING fecha = 2020");
 	                	    $partida = 'Adquisición Directa' ?>
 			                <td><?php echo $partida ?></td>
     						 <?php	while ($total = $result->fetch_object()){ ?>
@@ -103,7 +101,7 @@ if($action == 'ajax'){
 
 
 							<?php
-	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=1");?>
+	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=1 GROUP BY fecha HAVING fecha = 2020");?>
     						 <?php	while ($total2 = $result2->fetch_object()){?>
 
 				                <td>$ <?php echo $total2->utilizado_sum  ?>  </td>
@@ -111,8 +109,7 @@ if($action == 'ajax'){
 				            <?php  $resta = $monto - $total2->utilizado_sum;?>
 
 		               		 	<td><?php echo $resta  ?>  </td>
-							<?php } }?>
-						<?php endif ?>
+							<?php } } }?>
 
 
 
@@ -127,7 +124,7 @@ if($action == 'ajax'){
 
 
 								<?php
-		                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=2 ");?>
+		                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=2 GROUP BY fecha HAVING fecha = 2020");?>
 	    						 <?php	while ($total2 = $result2->fetch_object()){?>
 
 					                <td>$ <?php echo $total2->utilizado_sum  ?>  </td>
@@ -141,7 +138,7 @@ if($action == 'ajax'){
 
 						<?php if ($partida == 3): ?>
 		                <?php
-	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar3) as utilizar_sum  FROM presupuesto WHERE partida=$partida");
+	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar3) as utilizar_sum  FROM presupuesto WHERE partida=$partida HAVING fecha = 2020");
 	                	    $partida = 'consolidadosa' ?>
 			                <td><?php echo $partida ?></td>
     						 <?php	while ($total = $result->fetch_object()){?>
@@ -149,7 +146,7 @@ if($action == 'ajax'){
 
 
 							<?php
-	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=3 ");?>
+	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=3 GROUP BY fecha HAVING fecha = 2020");?>
     						 <?php	while ($total2 = $result2->fetch_object()){?>
 
 				                <td>$ <?php echo $total2->utilizado_sum  ?>  </td>
@@ -167,7 +164,9 @@ if($action == 'ajax'){
 		    </table>
 		</div>
 <?php
-				}else if ($fecha == 2021) { ?>
+
+
+	}else if ($fecha == 2021) { ?>
 		<h1><?php echo $fecha; ?></h1>
 		<div class="table-responsive">
 		    <table class="table table-bordered mb-0">
@@ -178,12 +177,14 @@ if($action == 'ajax'){
 		                <th>Ingreso Asignado</th>
 		                <th>Utilizado</th>
 		                <th>Utilizar</th>
+		                <th>Fecha</th>
 
 		            </tr>
 		        </thead>
 
 		        <?php
-					while($row = mysqli_fetch_array($query)){
+		        $query3 = mysqli_query($con,"SELECT  * FROM  presupuesto HAVING fecha = 2021");
+					while($row = mysqli_fetch_array($query3)){
 						$id=$row['id'];
 						$gasto_code=$row['gasto_code'];
 						$mes_id=$row['mes_id'];
@@ -200,7 +201,7 @@ if($action == 'ajax'){
 
 					 	<?php if ($partida == 1):
 
-	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$partida  GROUP BY fecha");
+	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar) as utilizar_sum  FROM presupuesto WHERE partida=$partida GROUP BY fecha HAVING fecha = 2021 ");
 	                	    $partida = 'Adquisición Directa' ?>
 			                <td><?php echo $partida ?></td>
     						 <?php	while ($total = $result->fetch_object()){ ?>
@@ -208,23 +209,24 @@ if($action == 'ajax'){
 
 
 							<?php
-	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=1  GROUP BY fecha");?>
+	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=1 GROUP BY fecha HAVING fecha = 2021");?>
     						 <?php	while ($total2 = $result2->fetch_object()){?>
 
 				                <td>$ <?php echo $total2->utilizado_sum  ?>  </td>
 
 				            <?php  $resta = $monto - $total2->utilizado_sum;?>
-
 		               		 	<td><?php echo $resta  ?>  </td>
 							<?php } }?>
+							<td><?php echo $fecha  ?>  </td>
 						<?php endif ?>
+
 
 
 
 
 						<?php if ($partida == 2): ?>
 			                <?php
-		                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=$partida  GROUP BY fecha");
+		                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=$partida GROUP BY fecha HAVING fecha = 2021");
 		                	    $partida = 'restringuidos' ?>
 				                <td><?php echo $partida ?></td>
 	    						 <?php	while ($total = $result->fetch_object()){?>
@@ -232,7 +234,7 @@ if($action == 'ajax'){
 
 
 								<?php
-		                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=2   GROUP BY fecha");?>
+		                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=2 GROUP BY fecha HAVING fecha = 2021");?>
 	    						 <?php	while ($total2 = $result2->fetch_object()){?>
 
 					                <td>$ <?php echo $total2->utilizado_sum  ?>  </td>
@@ -241,12 +243,13 @@ if($action == 'ajax'){
 
 			               		 	<td><?php echo $resta  ?>  </td>
 								<?php } }?>
+								<td><?php echo $fecha  ?>  </td>
 						<?php endif ?>
 
 
 						<?php if ($partida == 3): ?>
 		                <?php
-	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar3) as utilizar_sum  FROM presupuesto WHERE partida=$partida  GROUP BY fecha");
+	                	    $result = mysqli_query($con,"SELECT partida, fecha, SUM(utilizar3) as utilizar_sum  FROM presupuesto WHERE partida=$partida GROUP BY fecha HAVING fecha = 2021");
 	                	    $partida = 'consolidadosa' ?>
 			                <td><?php echo $partida ?></td>
     						 <?php	while ($total = $result->fetch_object()){?>
@@ -254,7 +257,7 @@ if($action == 'ajax'){
 
 
 							<?php
-	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=3   GROUP BY fecha");?>
+	                	     $result2 = mysqli_query($con,"SELECT  fecha, SUM(utilizado) as utilizado_sum  FROM presupuesto WHERE partida=3 GROUP BY fecha HAVING fecha = 2021");?>
     						 <?php	while ($total2 = $result2->fetch_object()){?>
 
 				                <td>$ <?php echo $total2->utilizado_sum  ?>  </td>
@@ -263,15 +266,16 @@ if($action == 'ajax'){
 
 		               		 	<td><?php echo $resta  ?>  </td>
 							<?php } }?>
+							<td><?php echo $fecha  ?>  </td>
 						<?php endif ?>
 
 		            </tr>
 
 		        </tbody>
-		        <?php  } ?>
+		        <?php  } } ?>
 		    </table>
 		</div>
-		<?php 		}
+	<?php
 			}
 
 		}

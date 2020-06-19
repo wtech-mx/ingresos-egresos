@@ -51,15 +51,22 @@ if($action == 'ajax'){
 		</div>
 <?php
 	}
-	if ($numrows>0){
+		if ($numrows>0){
+		$numrows = $row['numrows'];
+		$finales=0;
+
+		$query2 = mysqli_query($con,"SELECT  * FROM  presupuesto GROUP BY fecha");
+		while($row = mysqli_fetch_array($query2)){
+			$fecha=$row['fecha'];
+	if ($fecha == 2020) {
 ?>
 
-
+<h1><?php echo $fecha  ?></h1>
 		<div class="table-responsive">
 		    <table class="table table-bordered mb-0">
 		        <thead class="bg-dark text-white">
 	            <tr>
-	            	<th>servicios</th>
+	            	<th>Servicios</th>
 	                <th>Ingresos </th>
 					<th>Egresos </th>
 					<th>Total </th>
@@ -67,7 +74,6 @@ if($action == 'ajax'){
 		        </thead>
 
 
-			<?php echo $numrows = $row['numrows']; ?>
 
 		        <?php
 					$finales=0;
@@ -80,20 +86,14 @@ if($action == 'ajax'){
 						$area=$row['area'];
 						$estado=$row['estado'];
 						$monto=$row['monto'];
-						$fecha=$row['fecha'];
 						$finales++;
 				?>
 		        <tbody>
 		            <tr>
-<!-- 		        <td><?php echo $id ?></td>
-	                <td><?php echo $servicios ?></td>
-	                <td><?php echo $porcentaje ?></td>
-	                <td><?php echo $partida ?></td>
-	                <td>$ <?php echo $monto ?></td>
-	                <td><?php echo $fecha ?></td> -->
+
 
 					<?php if ($servicios == 1):
-						$result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1  group by fecha");
+						$result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1 GROUP BY fecha HAVING fecha = 2020");
                 	    $servicios = 'Productos' ?>
 		                <td><?php echo $servicios ?></td>
 							<?php	while ($total = $result->fetch_object()){?>
@@ -104,7 +104,7 @@ if($action == 'ajax'){
 						<?php endif ?>
 
 					<?php if ($servicios == 2):
-                	    $result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1 group by fecha, estado=1 ");
+                	    $result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1 GROUP BY fecha, estado=1 HAVING fecha = 2020");
                 	    $servicios = 'Derechos' ?>
 		                <td><?php echo $servicios ?></td>
 							<?php	while ($total = $result->fetch_object()){ ?>
@@ -116,7 +116,7 @@ if($action == 'ajax'){
 
 
 					<?php if ($servicios == 3):
-                	    $result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1 group by fecha, estado=1");
+                	    $result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1 group by fecha, estado=1 HAVING fecha = 2020");
                 	    $servicios = 'Aprovechamiento' ?>
 		                <td><?php echo $servicios ?></td>
 
@@ -133,13 +133,13 @@ if($action == 'ajax'){
 		        </tbody>
 		        <?php  }?>
 
-		        <?php  $result = mysqli_query($con,"SELECT fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE estado=1 group by fecha");
+		        <?php  $result = mysqli_query($con,"SELECT fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE estado=1 group by fecha HAVING fecha = 2020");
 					while ($total = $result->fetch_object()){ ?>
 						<th>Subtotal </th>
 		                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
 
 
-				<?php  $result2 = mysqli_query($con,"SELECT fecha, SUM(egreso) as utilizar_sum2  FROM excedentes_egresos group by fecha");
+				<?php  $result2 = mysqli_query($con,"SELECT fecha, SUM(egreso) as utilizar_sum2  FROM excedentes_egresos group by fecha HAVING fecha = 2020");
 					while ($total2 = $result2->fetch_object()){ ?>
 		                <td>$ <?php echo $total2->utilizar_sum2  ?>  </td>
 
@@ -148,25 +148,106 @@ if($action == 'ajax'){
 		                <td><?php echo $resta  ?>  </td>
 						<?php } }?>
 
-		        <tfoot>
-		            <tr>
-						<td colspan='10'>
-							<?php
-								$inicios=$offset+1;
-								$finales+=$inicios -1;
-								echo "Mostrando $inicios al $finales de $numrows registros";
-								echo paginate($reload, $page, $total_pages, $adjacents);
-							?>
-						</td>
-					</tr>
-				</tfoot>
+
 		    </table>
 		</div>
 
-<?php
-	}else{
-		echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <strong>Sin Resultados!</strong> No se encontraron resultados en la base de datos!.</div>';
+<?php	}else if ($fecha == 2021) { ?>
+	<h1><?php echo $fecha  ?></h1>
+		<div class="table-responsive">
+		    <table class="table table-bordered mb-0">
+		        <thead class="bg-dark text-white">
+		             <tr>
+	            	<th>Fecha</th>
+	            	<th>Servicios</th>
+	                <th>Ingresos </th>
+					<th>Egresos </th>
+					<th>Total </th>
+	            </tr>
+		        </thead>
+
+		        <?php
+		        $query3 = mysqli_query($con,"SELECT  * FROM  excedentes_ingresos HAVING fecha = 2021");
+					while($row = mysqli_fetch_array($query3)){
+						$id=$row['id'];
+						$porcentaje=$row['porcentaje'];
+						$partida=$row['partida'];
+						$servicios=$row['servicios'];
+						$concepto=$row['concepto'];
+						$area=$row['area'];
+						$estado=$row['estado'];
+						$monto=$row['monto'];
+						$fecha=$row['fecha'];
+						$finales++;
+				?>
+		        <tbody>
+
+		           <tr>
+
+
+					<?php if ($servicios == 1):
+						$result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1 GROUP BY fecha HAVING fecha = 2021");
+                	    $servicios = 'Productos' ?>
+		                <td><?php echo $servicios ?></td>
+							<?php	while ($total = $result->fetch_object()){?>
+
+		                <td>$ <?php echo $total->utilizar_sum  ?></td>
+
+						<?php } ?>
+						<?php endif ?>
+
+					<?php if ($servicios == 2):
+                	    $result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1 GROUP BY fecha, estado=1 HAVING fecha = 2021");
+                	    $servicios = 'Derechos' ?>
+		                <td><?php echo $servicios ?></td>
+							<?php	while ($total = $result->fetch_object()){ ?>
+
+		                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
+
+						<?php } ?>
+						<?php endif ?>
+
+
+					<?php if ($servicios == 3):
+                	    $result = mysqli_query($con,"SELECT porcentaje, servicios, fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE servicios=$servicios && estado=1 group by fecha, estado=1 HAVING fecha = 2021");
+                	    $servicios = 'Aprovechamiento' ?>
+		                <td><?php echo $servicios ?></td>
+
+
+							<?php	while ($total = $result->fetch_object()){ ?>
+
+		                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
+
+
+						<?php } ?>
+						<?php endif ?>
+
+		            </tr>
+
+		        </tbody>
+		        <?php  }?>
+
+		        <?php  $result = mysqli_query($con,"SELECT fecha, SUM(monto) as utilizar_sum  FROM excedentes_ingresos WHERE estado=1 group by fecha HAVING fecha = 2021");
+					while ($total = $result->fetch_object()){ ?>
+						<th>Subtotal </th>
+		                <td>$ <?php echo $total->utilizar_sum  ?>  </td>
+
+
+				<?php  $result2 = mysqli_query($con,"SELECT fecha, SUM(egreso) as utilizar_sum2  FROM excedentes_egresos group by fecha HAVING fecha = 2021");
+					while ($total2 = $result2->fetch_object()){ ?>
+		                <td>$ <?php echo $total2->utilizar_sum2  ?>  </td>
+
+
+				<?php  $resta = $total->utilizar_sum - $total2->utilizar_sum2;?>
+		                <td><?php echo $resta  ?>  </td>
+						<?php } }?>
+		        <?php  }  ?>
+		    </table>
+		</div>
+	<?php
+			}
+
+		}
 	}
-}
+
 ?>
