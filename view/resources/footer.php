@@ -1,4 +1,9 @@
-            <footer class="footer text-center text-muted" style="background-color: #707B7C">
+<footer class="footer text-center text-muted" style="background-color: #707B7C;   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: white;
+   text-align: center;">
                 All Rights Reserved by Adminmart. Designed and Developed by <a
                     href="">Power By Web Tech</a>.
             </footer>
