@@ -28,45 +28,73 @@
 
 ?>
         <!--main content start-->
-<div class="col">
-        <div class="row p-3">
 
-          <div class="col-sm-6">
-            <div class="card text-white bg-primary mb-3">
-              <div class="card-body">
-                <h5 class="card-title text-white"><strong>SIGA</strong></h5>
-                <p class="card-text"></p>
-                <a href="https://www.siga.ipn.mx/" class="btn btn-success">ir</a>
+    <section class="main-content-wrapper">
+        <section id="main-content">
+            <div class="row">
+                <div class="col-md-12 ">
+                        <!--breadcrumbs start -->
+                        <ul class="breadcrumb  pull-right">
+                            <li><a href="./?view=dashboard">Dashboard</a></li>
+                            <li class=" active">Panel de Control</li>
+                        </ul>
+                        <!--breadcrumbs end -->
+                        <br>
+                    <h1 class=" bg-white h1 text-dark d-inline-block p-3">Panel de Control</h1>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 13%">
+              <div class="col">
+                      <div class="row p-3">
+                        <div class="col-sm-6">
+                          <div class="card text-white bg-primary mb-3">
+                            <div class="card-body">
+                              <h5 class="card-title text-white"><strong>SIGA</strong></h5>
+                              <p class="card-text"></p>
+                              <a href="https://www.siga.ipn.mx/" target="blank" class="btn btn-success">ir</a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                          <div class="card text-white bg-warning mb-3">
+                            <div class="card-body">
+                              <h5 class="card-title text-white"><strong>SAT</strong></h5>
+                              <p class="card-text"></p>
+                              <a href="https://www.sat.gob.mx/home" target="_blank" class="btn btn-danger">ir</a>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="row p-3">
+
+                        <div class="col-sm-6">
+                          <div class="card text-white bg-success mb-3">
+                            <div class="card-body">
+                              <h5 class="card-title text-white">Clasificador por Objeto</h5>
+                              <p class="card-text"></p>
+                              <a href="https://www.gob.mx/cms/uploads/attachment/file/344041/Clasificador_por_Objeto_del_Gasto_para_la_Administracion_Publica_Federal.pdf"target="_blank" class="btn btn-danger">ir</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
               </div>
             </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card text-white bg-secondary mb-3">
-              <div class="card-body">
-                <h5 class="card-title text-white"><strong>SAT</strong></h5>
-                <p class="card-text"></p>
-                <a href="https://www.sat.gob.mx/home" target="_blank" class="btn btn-danger">ir</a>
-              </div>
+            <div class="row">
+                <div class="col-md-12 ">
+                        <!--breadcrumbs start -->
+                        <hr>
+                        <!--breadcrumbs end -->
+                        <br><br><br><br>
+                    <h1 class="h1 text-dark">-</h1>
+                </div>
             </div>
-          </div>
 
-        </div>
-
-        <div class="row p-3">
-
-          <div class="col-sm-6">
-            <div class="card text-white bg-success mb-3">
-              <div class="card-body">
-                <h5 class="card-title text-white">Clasificador por Objeto</h5>
-                <p class="card-text"></p>
-                <a href="https://www.gob.mx/cms/uploads/attachment/file/344041/Clasificador_por_Objeto_del_Gasto_para_la_Administracion_Publica_Federal.pdf" class="btn btn-dark">ir</a>
-              </div>
-            </div>
-          </div>
-        </div>
-</div>
-
+        </section>
+    </section><!--main content end-->
         <!--main content end-->
 
 <?php
