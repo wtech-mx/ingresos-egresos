@@ -34,9 +34,9 @@
           <div class="col-sm-6">
             <div class="card text-white bg-primary mb-3">
               <div class="card-body">
-                <h5 class="card-title text-white"><strong>Gasto Corriente</strong></h5>
+                <h5 class="card-title text-white"><strong>SIGA</strong></h5>
                 <p class="card-text"></p>
-                <a href="#" class="btn btn-success">ir</a>
+                <a href="https://www.siga.ipn.mx/" class="btn btn-success">ir</a>
               </div>
             </div>
           </div>
@@ -44,51 +44,29 @@
           <div class="col-sm-6">
             <div class="card text-white bg-secondary mb-3">
               <div class="card-body">
-                <h5 class="card-title text-white"><strong>Fideicomiso</strong></h5>
+                <h5 class="card-title text-white"><strong>SAT</strong></h5>
                 <p class="card-text"></p>
-                <a href="#" class="btn btn-danger">ir</a>
+                <a href="https://www.sat.gob.mx/home" target="_blank" class="btn btn-danger">ir</a>
               </div>
             </div>
           </div>
 
         </div>
-        <div class="row">
+
+        <div class="row p-3">
 
           <div class="col-sm-6">
             <div class="card text-white bg-success mb-3">
               <div class="card-body">
-                <h5 class="card-title text-white">Exedentes</h5>
+                <h5 class="card-title text-white">Clasificador por Objeto</h5>
                 <p class="card-text"></p>
-                <a href="#" class="btn btn-dark">ir</a>
+                <a href="https://www.gob.mx/cms/uploads/attachment/file/344041/Clasificador_por_Objeto_del_Gasto_para_la_Administracion_Publica_Federal.pdf" class="btn btn-dark">ir</a>
               </div>
             </div>
           </div>
-
-          <div class="col-sm-6">
-            <div class="card text-white bg-danger mb-3">
-              <div class="card-body">
-                <h5 class="card-title text-white">Presupuesto Federal</h5>
-                <p class="card-text"></p>
-                <a href="#" class="btn btn-secondary">ir</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="row">
-
-          <div class="col-sm-12">
-            <div class="card text-white bg-dark mb-3">
-              <div class="card-body">
-                <h5 class="card-title text-white">Configuracion</h5>
-                <p class="card-text"></p>
-                <a href="#" class="btn btn-success">ir</a>
-              </div>
-            </div>
-          </div>
-
         </div>
 </div>
+
         <!--main content end-->
 
 <?php
